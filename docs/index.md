@@ -6,7 +6,8 @@ I write about life, AI - machine learning - statistics, building a business as i
 
 ## Independent Consulting
 
-I run a solo consulting practice focused on helping startups build better practises relative to machine learning implementation as many software companies transition to AI. Also I can help preparing educational material ad hoc.
+I run a solo consulting practice focused on helping startups build better practises relative to machine learning implementation as many software companies transition to AI. 
+Also I can help preparing educational material ad hoc.
 
 Some clients: [Diggity](https://es.linkedin.com/company/digitty), [Oxford University](https://www.cs.ox.ac.uk/research/ai_ml/index.html)  and working directly with a few CPG startups.
 
