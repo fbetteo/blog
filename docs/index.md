@@ -4,6 +4,12 @@ I'm a consultant, sr. data scientist / machine learning engineer, solopreneur an
 
 I write about life, AI - machine learning - statistics, building a business as indiehacker and of course, sports analytics. 
 
+## Independent Consulting
+
+I run a solo consulting practice focused on helping startups build better practises relative to machine learning implementation as many software companies transition to AI. Also I can help preparing educational material ad hoc.
+
+Some clients: [Diggity](https://es.linkedin.com/company/digitty), [Oxford University](https://www.cs.ox.ac.uk/research/ai_ml/index.html)  and working directly with a few CPG startups.
+
 
 ## Sportsjobs Online
 I run a [job board for sports analytics](https://sportsjobs.online) and data related positions. This includes working for teams, consultancy companies, whole leagues and some esports or betting organizations.  
