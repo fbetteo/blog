@@ -1,0 +1,57 @@
+site_name: Franco Betteo
+nav:
+  - Home: 
+      - Introduction: index.md
+      - User manual: user_manual.md
+      - Interests: interests.md
+  - Technical posts:
+    - "technical/index.md"
+  - Job Board: "https://sportsjobs.online"
+  - NBA salaries legacy model: 
+      - Overview: nba_salaries/index.html
+theme:
+  name: material
+  palette:
+    - scheme: youtube
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+    - content.tooltips
+    - header.autohide
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+  font:
+    text: Roboto
+    code: Fira Code
+plugins:
+  - blog:
+      blog_dir: technical
+      blog_toc: true
+      post_dir: technical/posts
+      post_date_format: yyyy-MM-dd
+      post_url_format: "{date}/{slug}"
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
