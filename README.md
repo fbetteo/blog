@@ -1,4 +1,4 @@
-www.fbetteo.github.io/blog
+https://fbetteo.github.io/blog
 
 To deploy:
 ```bash 
