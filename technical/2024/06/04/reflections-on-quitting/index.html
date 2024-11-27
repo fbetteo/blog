@@ -6,13 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A personal journey exploring the struggle of a machine learning engineer as he faces the consequences of overwork and lack of motivation.">
       
       
       
-        <link rel="prev" href="../../17/bias-variance-tradeoff.en-us/">
+      
+        <link rel="prev" href="../../../../2022/03/25/index.en-us/">
       
       
-        <link rel="next" href="../../23/remarks-on-r2.en-us/">
+        <link rel="next" href="../../../09/05/expectation_maximization_poisson/">
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
@@ -20,7 +22,7 @@
     
     
       
-        <title>Linear Smoothers - Franco Betteo</title>
+        <title>Reflections on quitting my ML job - Franco Betteo</title>
       
     
     
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linear-smoothers" class="md-skip">
+        <a href="#reflections-on-quitting-my-ml-job" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linear Smoothers
+              Reflections on quitting my ML job
             
           </span>
         </div>
@@ -979,18 +981,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#linear-regression-as-smoothing" class="md-nav__link">
+  <a href="#choosing" class="md-nav__link">
     <span class="md-ellipsis">
-      Linear regression as smoothing
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#alternative-smoothers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternative smoothers
+      Choosing
     </span>
   </a>
   
@@ -1052,7 +1045,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2022-01-18 00:00:00+00:00" class="md-ellipsis">2022-01-18</time>
+                        <time datetime="2024-06-04 00:00:00+00:00" class="md-ellipsis">2024-06-04</time>
                       </div>
                     </li>
                     
@@ -1063,10 +1056,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/estadistica/">estadistica</a>, 
-                              <a href="../../../../category/machine-learning/">machine learning</a>, 
-                              <a href="../../../../category/algebra/">algebra</a>, 
-                              <a href="../../../../category/statistics/">statistics</a></span>
+                              <a href="../../../../category/personal/">Personal</a></span>
                         </div>
                       </li>
                     
@@ -1077,7 +1067,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              3 min read
+                              5 min read
                             
                           </span>
                         </div>
@@ -1097,50 +1087,40 @@
         
 
 
-<h1 id="linear-smoothers">Linear Smoothers<a class="headerlink" href="#linear-smoothers" title="Permanent link">&para;</a></h1>
-<h3 id="linear-regression-as-smoothing">Linear regression as smoothing<a class="headerlink" href="#linear-regression-as-smoothing" title="Permanent link">&para;</a></h3>
-<p>Let's assume the DGP (data generating process) is:
-$$ Y = \mu(x) + \epsilon$$ where <span class="arithmatex">\(\mu(x)\)</span> is the mean Y value for that particular x and <span class="arithmatex">\(\epsilon\)</span> is an error with mean 0.</p>
-<p>When running OLS we are trying to approximate <span class="arithmatex">\(\mu(x)\)</span> with a linear function of the form <span class="arithmatex">\(\alpha + \beta x\)</span> and trying to retrieve the best <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> minimizing the mean-squared error.  </p>
-<p>The conclusions don't change but the math gets easier if we assume both X and Y are centered (mean=0).<br />
-With that in mind we can write down the MSE and optimize to get the best parameters.</p>
-<div class="arithmatex">\[MSE(\alpha, \beta) = \mathbb{E}[(Y - \alpha - \beta X)^2] \\
-= \mathbb{E}[\mathbb{E}[(Y - \alpha - \beta X)^2 | X]] \\
-= \mathbb{E}[\mathbb{V}[Y|X]] + \mathbb{E}[Y- \alpha - \beta X | X])^2] \\
-= \mathbb{E}[\mathbb{V}[Y|X]] + \mathbb{E}[(\mathbb{E}[Y- \alpha - \beta X | X])^2]\]</div>
-<p>Deriving with respect to <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> for optimization..<br />
-The first term can be dropped since doesn't include any parameter.</p>
-<p>$$\frac{\partial MSE}{\partial \alpha} =   \mathbb{E}[2(Y - \alpha - \beta X)(-1)] \
- \mathbb{E}[Y - a - b X] =  0 \
- a =  \mathbb{E}[Y] - b  \mathbb{E}[X] = 0
- $$
- when Y and X are centered..</p>
-<p>and
- $$\frac{\partial MSE}{\partial \beta} =   \mathbb{E}[2(Y - \alpha - \beta X)(-X)] \
- \mathbb{E}[XY] - b\mathbb{E}[X^2] = 0 \
-b = \frac{Cov[X,Y]}{\mathbb{V}[X]}
-$$</p>
-<p>The optimal beta is a function of the covariance between Y and X, and the variance of X.</p>
-<p>Putting together <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> we get <span class="arithmatex">\(\mu(x) = x  \frac{Cov[X,Y]}{\mathbb{V}[X]}\)</span></p>
-<p>Replacing with the values from the sampled data we get an estimation of <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span>.  </p>
-<p>Remember they are 0 centered so variance and covariance get simplified.</p>
-<div class="arithmatex">\[ \hat a = 0 \\
-\hat b = \frac{\sum_i y_i x_i}{\sum_i x_i^2}\]</div>
-<p>With all this we can see how <strong>OLS is a smoothing of the data</strong>.<br />
-Writing in terms of the data points:<br />
-$$\hat \mu(x) = \hat b x \
-= x  \frac{\sum_i y_i x_i}{\sum_i x_i^2} \
-= \sum_i y_i \frac{x_i}{\sum_j x_j^2} x \
-= \sum_i y_i \frac{x_i}{n \hat \sigma_x^2} x
-$$
-where <span class="arithmatex">\(\hat \sigma_x^2\)</span> is the sample variance of X.<br />
-<em>In words, our prediction is a weighted average of the observed values <span class="arithmatex">\(y_i\)</span> of the dependent variable, where the weights are proportional to how far <span class="arithmatex">\(x_i\)</span> is from the center (relative to the variance), and proportional to the magnitude of <span class="arithmatex">\(x\)</span>. If <span class="arithmatex">\(x_i\)</span> is on the same side of the center as <span class="arithmatex">\(x\)</span>, it gets a positive weight, and if it's on the opposite side it gets a negative weight.</em> (Shalizi 2017)</p>
-<p>If <span class="arithmatex">\(\mu(x)\)</span> is really a straight line, this is fine, but when it's not, that the weights are proportional to how far they are to the <strong>center</strong> and not the point <strong>to predict</strong> can lead to awful predictions.</p>
-<h3 id="alternative-smoothers">Alternative smoothers<a class="headerlink" href="#alternative-smoothers" title="Permanent link">&para;</a></h3>
-<p>For that, other methods smooth the data in another ways to help mitigate that.</p>
-<p>As quick examples, we have <em>KNN regression</em> where the smoothing is done using only close observations to the one to predict (and getting quite noisy since depend a lot on the sample points around a small area).  </p>
-<p><em>Kernel smoothers</em> are a variant where depending on the kernel selected we get different smoothing. The main idea is that we use a windowd of data with the idea of putting more weight to points close to the one to predict. Could be Gaussian weight around X for example, or uniform around a window. Note this is different than KNN regression since we do not take the average of those points, we get a regression for that area.<br />
-A nice thing about this smoothers (and KNN regression) is that if we want to predict points far from the training data we won't get a linear extrapolation as with OLS but it will be pushed towards the closest data points we had in training.</p>
+<h1 id="reflections-on-quitting-my-ml-job">Reflections on quitting my ML job<a class="headerlink" href="#reflections-on-quitting-my-ml-job" title="Permanent link">&para;</a></h1>
+<p>As I'm starting my sabbatical journey I am reading some posts of <a href="https://jxnl.co/writing/2024/06/01/advice-to-young-people/">Jason Liu</a> since he seems to have a career similar to something I would like to if I got into ML and LLM riding the hype wave. Furthermore I find his writing pleasant and his content could be useful even as a solopreneur. </p>
+<p>One of my goals for this period of time is to write more. To take more notes since I struggle memorizing without them (or even with them but at least I can read a summary later) and I want to actually <em>do</em> more. More of everything, less thinking about and more actual doing. From shipping products, to really learning and that includes writing.</p>
+<p>Reading his post and starting now my journey, a real action would be to take notes about his post, which I found useful, at least some bits of it. Not taking notes would be less writing, less doing, less memorizing. </p>
+<h2 id="choosing">Choosing<a class="headerlink" href="#choosing" title="Permanent link">&para;</a></h2>
+<p>Right now, I feel more at this point</p>
+<blockquote>
+<p>"This despair arises from the realization of one's absolute freedom and the responsibility for creating one's own essence and purpose."</p>
+</blockquote>
+<p>Lately, last few years probably, I have started to realize that quote. We can go a long way by following the usual paths, at least usual to our surroundings. In my case, without major distress that turns everything upside down, it was high school, university, get a job, get married, retire. At least, that's something I (many?) thought as <em>given</em>, a fate that if didn't screw it, it would happen automatically.</p>
+<p>And as I was applied and I did good in school, I got the first 3 steps quite easily. I never really thought of going out of that path and saw the ones doing so as outliers or with greater safety nets to fail. In some cases it could be true, in others it was probably me being short sighted, I guess it was not my fault but just lack of adult life.  </p>
+<p>As years go by, I start questioning the meaning of what I'm doing. Is my job meaningful? Does it create value or help anyone? Corporate world feels like a charade. Despite I was working in analytics and studying and building ML models, I couldn't see if that was worth the effort and time. Once you go past the hype of learning models and cool tech bits, looking over that it feels empty. I changed jobs. Still the same, I was dreading in boredom and rat race. Needing to "impress" people or feeling that I need to be there for work 9-5 each day without feeling motivated was awful. I quit after a few months willing to take some time off. What am I doing? I have no purpose and my day to day means nothing. I like seeing my friends and family, traveling, etc but the regular life has a lot more things and time to fill. I can't make this for 30 more years.</p>
+<p>Fortunately, tech and ML pays high salaries so I felt <em>safe</em>. I could take some time off, I can always look for other job, etc. But the feeling of "I need to do something different" was there. I started looking for other opportunities, looking for purpose in jobs, looking for motivation. I was in despair as I understood that I needed to do my own way and no one was doing it for me. </p>
+<p>Ironically, I took another job quit quickly because it paid much more and I could just try it, maybe I was just in the wrong place. Seemed to work better, it was less of a charade, I had more time for crafting and working, I got some motivation back as I felt at least more comfortable daily. Not that I had purpose really but working was at least with less pressure. The time zone differences helped because I didn't feel like 9 hours a day I was supposed to be there, with someone 1 click away of sending a slack message to me. I stayed two years. Earning good money compared to my spending, saving and "happy". Eventually everything started to decay, the job was less free, the business request were more urgent and I quickly lost motivation and started to fall in despair again. What am I doing? Who cares about this parquet file with funny numbers?</p>
+<p>I quit, this time for good. Despair again, realization, I need to find something for myself, or try at least. I fear for its complexity, I fear if I can do it, if I can make a living in another way. I'm taking some time to rest but I know eventually I will need to figure things out. On my own, making my own way, and I see how no one will do it for me.</p>
+<p>As a side note, finding purpose, finding your way, etc was also a thing when I thought about romantic relationships. Finding someone that you really care about and that cares about you is not easy at all and it doesn't happen magically as I thought as a kid. I am not going to expand about it here but it was another topic that made me realize about our own fate and efforts.</p>
+<p>Side side note, retirement is another one. I don't see my national retirement plan as something you can live off. I see my family, that luckily does well but despite that nothing is granted and we can support the elder in my family because our own safety net. A younger me didn't know that but as my twenties went by I started to see a lot more of adult/real life. Eye opening period of my life.</p>
+<p><strong>How to be lucky</strong></p>
+<p>"Okay, I'm focused on getting X, but let's not forget to read the headlines."</p>
+<p><strong>High Agency and be the plumber</strong></p>
+<p>Reminder to myself, focus on bringing solutions and not the shiny new tool. I think I'm good at high agency or at being responsible and wanting to finish what I commit to.<br />
+I need to work on focusing on which solution am I bringing. Finding the right niche and actually bringing value.
+In my case with sportsjobs.online, not just throwing things into it, but making it clear what I am providing.
+For other topics related to ML and LLM I need to decide what I'll focus on this time coming in.</p>
+<p><strong>Impostor Syndrome</strong>
+I'm the classical example of not trusting myself  and thinking stuff like this.</p>
+<blockquote>
+<p>but at the end of the day, you must just think I have shit taste and that you've somehow tricked me into thinking you're good when you're an impostor? Right?</p>
+</blockquote>
+<p>I need to stop with that. Quitting now I had plenty of nice words for every colleague, including the desire from managers that I stay or I come back if I get bored of not having a job. Of course, as I write that, I think in the back of my mind of exceptions and that technical colleagues were less effusive as my managers and etc. but all of that is probably not true. I'm going against all evidence and just guessing and making things in my head.</p>
+<p><strong>How to Be Good at Many Things</strong>
+Consistency. Every one says this. I need to do it the right way now that I'll have the time. No excuses.</p>
+<p>Do things, practice, keep going for it. Everything will be easier and quicker.</p>
+<p>And I need to be grateful for what I have and how lucky I am to be able to get a sabbatical time to try to change the path I'm going.</p>
 
 
 
@@ -1185,7 +1165,7 @@ A nice thing about this smoothers (and KNN regression) is that if we want to pre
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../17/bias-variance-tradeoff.en-us/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bias Variance Tradeoff">
+          <a href="../../../../2022/03/25/index.en-us/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Weighted regression">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1195,20 +1175,20 @@ A nice thing about this smoothers (and KNN regression) is that if we want to pre
                 Previous
               </span>
               <div class="md-ellipsis">
-                Bias Variance Tradeoff
+                Weighted regression
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../23/remarks-on-r2.en-us/" class="md-footer__link md-footer__link--next" aria-label="Next: Remarks on R2">
+          <a href="../../../09/05/expectation_maximization_poisson/" class="md-footer__link md-footer__link--next" aria-label="Next: Expectation Maximization for Poisson process">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Remarks on R2
+                Expectation Maximization for Poisson process
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -12,7 +12,7 @@
         <link rel="prev" href="../../../interests/">
       
       
-        <link rel="next" href="../../category/python/">
+        <link rel="next" href="../../category/personal/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -614,6 +614,8 @@
       
         
       
+        
+      
     
     
       
@@ -653,6 +655,29 @@
             Categories
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../category/personal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -950,6 +975,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#cadenas-de-markov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cadenas de Markov
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#simulacion-de-monty-hall" class="md-nav__link">
     <span class="md-ellipsis">
       Simulación de Monty Hall
@@ -981,6 +1015,138 @@
       <header class="md-typeset">
         <h1 id="technical">Technical<a class="headerlink" href="#technical" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2018-08-25 00:00:00+00:00">2018-08-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/matematica/" class="md-meta__link">matematica</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="cadenas-de-markov"><a class="toclink" href="../../2018/08/25/cadenas-de-markov/">Cadenas de Markov</a></h2>
+<p>Las cadenas de Markov son herramientas muy útiles para modelar transiciones entre estados. Imaginemos un escenario sencillo con dos posibles estados: día de lluvia o día soleado. En el momento <strong>t</strong> el estado supongamos que es "día soleado". ¿Cuál será el estado en <strong>t+1</strong> ? Dadas las probabilidades de transición de un estado a otro podemos simular escenarios tras el paso del tiempo. Mismo en algunos casos puede ser útil entender si en el largo plazo esta simulación converge hacia algún resultado estable en el tiempo.</p>
+<p>Mostraremos ejemplos sencillos, pero la metodología es escalable a procesos complejos como pueden usarse en meteorología, aplicaciones financieras, etc. El <a href="http://blog.kleinproject.org/?p=1605&amp;lang=es">algoritmo de búsqueda de Google</a> está basado en cadenas de Markov, para que vean la utilidad. <sup id="fnref3:1"><a class="footnote-ref" href="../../2018/08/25/cadenas-de-markov/#fn:1">1</a></sup></p>
+<p>Lo que necesitamos para este ejercicio son las probabilidades de transición de un estado a otro y los valores iniciales en cada estado.</p>
+<p>Supongamos una clase de estadística con n estudiantes, en la que dos estados son posibles. 
+Estado A : El alumno está atento.
+Estado B : El alumno está aburrido.</p>
+<ul>
+<li>Las probablidades son las siguientes: <ul>
+<li>En t+1 el 80% de A sigue en A (y por lo tanto el 20% de A pasa a B)</li>
+<li>En t+1 el 25% de B pasa a A (y por lo tanto el 75% de B queda en B)</li>
+</ul>
+</li>
+</ul>
+<p>La matriz que representa esa probabilidades la vamos a llamar * Matriz de Transición *.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.8</span><span class="p">,</span><span class="m">0.25</span><span class="p">))</span><span class="w">  </span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1"># 80% de A sigue en A, 25% de B pasa a A en t+1</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">tmatrix</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># trasponemos porque necesitamos esta información en la primera fila.</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">tmatrix</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tmatrix</span><span class="p">[</span><span class="m">1</span><span class="p">,])</span><span class="w"> </span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="c1"># Agregamos la segunda fila, que es 1 menos la primera.</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">tmatrix</span><span class="w"> </span><span class="c1"># Matriz de transción</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>##      [,1] [,2]
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>## [1,]  0.8 0.25
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>## [2,]  0.2 0.75
+</span></code></pre></div>
+<p>La matriz de valores iniciales es la siguiente:
+En un primero momento (t), el 10% de los alumnos está atento y el 90% aburrido.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Matriz inicial, 10% Atento, 90% aburridos</span>
+</span></code></pre></div>
+<p>Ya tenemos toda la información necesaria para hacer nuestras primeras simulaciones.
+Supongamos que cada período de tiempo son 10 minutos, por lo tanto si t es el momento 0, t+1 es a los 10 de minutos de empezada la clase, t+2 a los 20 y así sucesivamente.</p>
+<p>Para evaluar el porcentaje de alumnos concentrados en determinado momento de la clase lo que debemos hacer es multiplicar la matriz de estado inicial por la matriz de transición tantas veces como momentos a futuro querramos simular.</p>
+<p>Por ejemplo si queremos ver que pasará con nuestros alumnos luego de 20 minutos de clase debemos multiplicar smatrix * tmatrix 2 veces.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">){</span><span class="w">            </span><span class="c1"># Loopeamos 2 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">  </span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion, </span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="p">}</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 2 iteraciones -&gt; A 42% , B 58%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>##         [,1]
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>## [1,] 0.41775
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>## [2,] 0.58225
+</span></code></pre></div>
+<p>Vemos que luego de 2 transiciones el estado A está compuesto por casi 42% de alumnos (concentrados) y 58% no atentos. Son movimientos bastante rápidos de un estado a otro.</p>
+<p>Veamos qué pasa luego de 10 iteraciones.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Reseteamos smatrix a su estado inicial</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">){</span><span class="w">           </span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Loopeamos 10 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">   </span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion, </span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">}</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 10 iteraciones -&gt; A 55% , B 45%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>##           [,1]
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>## [1,] 0.5544017
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>## [2,] 0.4455983
+</span></code></pre></div>
+<p>Luego de 10 movimientos, A pasa a tener el 55% de los alumnos dejando a 45% en B (no atentos). En este ejemplo con el paso del tiempo los alumnos se concentran más y más en la clase. Pero es este un proceso continuo e infinito? Llega un momento en que dada la matriz de transción todos los alumnos pasan a estar en el estado A, es decir, atentos?</p>
+<p>Para analizar esto podemos ver qué sucede luego de 1000 iteraciones (sería una clase muy muy larga...)</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Reseteamos smatrix a su estado inicial</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">){</span><span class="w">  </span><span class="c1"># Loopeamos 10 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">  </span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion,</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="p">}</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 1000 iteraciones -&gt; A 55% , B 45%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>##           [,1]
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>## [1,] 0.5555556
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>## [2,] 0.4444444
+</span></code></pre></div>
+<p>El resultado es casi idéntico luego de 1000 iteraciones al intento de tan solo 10 iteraciones. Por lo tanto podemos ver que esta cadena de Markov converge rápidamente a 55% en A y 45% en B. Es un estado estacionario del cual no podemos movernos dada la matriz de transición que tenemos.</p>
+<p>Este ejemplo sencillo permite ver la intuición detrás de esta potente herramienta en unos pocos pasos. Obviamente como comentamos antes se puede utilizar para procesos mucho más complejos y de muy diversas areas. 
+Queríamos mostrar los fundamentos con una aplicación rápida y que se comprenda que lo que se requiere es una matriz de transición y un estado inicial.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Para una explicación gráfica y muy didáctica dejamos el siguiente <a href="http://setosa.io/ev/markov-chains/">link en inglés.</a>&#160;<a class="footnote-backref" href="../../2018/08/25/cadenas-de-markov/#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="../../2018/08/25/cadenas-de-markov/#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="../../2018/08/25/cadenas-de-markov/#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -1213,13 +1379,13 @@ Este tipo de variables son muy comunes y se encuentran por todos lados. Temperat
         
         
           
-          <a href="../../category/python/" class="md-footer__link md-footer__link--next" aria-label="Next: Python">
+          <a href="../../category/personal/" class="md-footer__link md-footer__link--next" aria-label="Next: Personal">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Python
+                Personal
               </div>
             </div>
             <div class="md-footer__button md-icon">
