@@ -1,0 +1,2390 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../personal-growth/">
+      
+      
+        <link rel="next" href="../algebra/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>R - Franco Betteo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#r" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Franco Betteo
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              R
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  Technical posts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://sportsjobs.online" class="md-tabs__link">
+        
+  
+    
+  
+  Job Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../nba_salaries/" class="md-tabs__link">
+          
+  
+    
+  
+  NBA salaries legacy model
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Franco Betteo
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Technical posts
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estadistica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    machine learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../personal-growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal Growth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#weighted-regression" class="md-nav__link">
+    Weighted regression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counter-strike-chance-of-winning" class="md-nav__link">
+    Counter Strike: chance of winning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-negative-matrix-factorization" class="md-nav__link">
+    Non Negative Matrix Factorization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-dirichlet-como-prior-de-multinomial" class="md-nav__link">
+    Distribucion Dirichlet como prior de Multinomial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-r-a-python-1" class="md-nav__link">
+    De R a Python 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-gamma" class="md-nav__link">
+    Distribucion Gamma
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maxima-verosimilitud-y-estimacion-bayesiana" class="md-nav__link">
+    Maxima Verosimilitud y estimacion bayesiana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teorema-central-del-limite" class="md-nav__link">
+    Teorema Central del Limite
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-resampleo-islr-capitulo-5" class="md-nav__link">
+    Metodos de Resampleo - ISLR Capitulo 5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regresion-lineal-islr-capitulo-3" class="md-nav__link">
+    Regresion Lineal - ISLR Capítulo 3
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algebra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matematica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    matematica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://sportsjobs.online" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../nba_salaries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NBA salaries legacy model
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#weighted-regression" class="md-nav__link">
+    Weighted regression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counter-strike-chance-of-winning" class="md-nav__link">
+    Counter Strike: chance of winning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-negative-matrix-factorization" class="md-nav__link">
+    Non Negative Matrix Factorization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-dirichlet-como-prior-de-multinomial" class="md-nav__link">
+    Distribucion Dirichlet como prior de Multinomial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-r-a-python-1" class="md-nav__link">
+    De R a Python 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-gamma" class="md-nav__link">
+    Distribucion Gamma
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maxima-verosimilitud-y-estimacion-bayesiana" class="md-nav__link">
+    Maxima Verosimilitud y estimacion bayesiana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teorema-central-del-limite" class="md-nav__link">
+    Teorema Central del Limite
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-resampleo-islr-capitulo-5" class="md-nav__link">
+    Metodos de Resampleo - ISLR Capitulo 5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regresion-lineal-islr-capitulo-3" class="md-nav__link">
+    Regresion Lineal - ISLR Capítulo 3
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="r">R</h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-03-25 00:00:00">2022-03-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../machine-learning/" class="md-meta__link">machine learning</a>, 
+              <a href="../python/" class="md-meta__link">Python</a>, 
+              <a href="./" class="md-meta__link">R</a>, 
+              <a href="../statistics/" class="md-meta__link">statistics</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="weighted-regression"><a class="toclink" href="../../2022/03/25/index.en-us/">Weighted regression</a></h2>
+<p>Weighted regression consists on assigning different weights to each observation and hence more or less importance at the time of fitting the regression.  </p>
+<p>On way to look at it is to think as solving the regression problem minimizing Weighted Mean Squared Error(WSME) instead of Mean Squared Error(MSE)</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(WMSE(\beta, w) = \frac{1}{N} \sum_{i=1}^n w_i(y_i - \overrightarrow {x_i} \beta)^2\)</span>\)</span>
+Intuitively, we are looking fot the coefficients that minimize MSE but putting different weights to each observation. OLS is a particular case where all the <span class="arithmatex">\(w_i = 1\)</span></p>
+<p>Why doing this? A few reasons (Shalizi 2015. Chapter 7.1)  </p>
+<ul>
+<li>
+<p><em>Focusing Accuracy</em>: We want to predict specially well some particular points or region of points, maybe because that's the focus for production or maybe because being wrong at those observations has a huge cost, etc. Using Weighted regression will do an extra effort to match that data.</p>
+</li>
+<li>
+<p><em>Discount imprecision</em>: OLS returns the maximum likelihood estimates when the residuals are independent, normal with mean 0 and with constant variance. When we face non constant variance OLS no longer returns the MLE. 
+The logic behind using weighted regression is that makes no sense to pay equal attention to all the observations since some of them have higher variance and are less indicative of the conditional mean. We should put more emphasis on the regions of lower variance, predict it well and "expect to fit poorly where the noise is big".<br />
+The weights that will return MLE are <span class="arithmatex">\(\frac{1}{\sigma_i^2}\)</span></p>
+</li>
+<li>
+<p><em>Sampling bias</em>: If we think or know that the observations in our data are not completely random and some subset of the population might be under-represented (in a survey for example or because of data availability) it might make sense to weight observation inversely to the probability of being included in the sample. Under-represented observations will get more weights and over-represented less weight.<br />
+Another similar situation is related to <em>covariate shift</em>. If the distribution of variable x changes over time we can use a weight designed as the ratio of the probability density functions. </p>
+<blockquote>
+<p>"If the old pdf was p(x) and the new one is q(x), the weight we'd want to is <span class="arithmatex">\(w_i=q(x_i)/p(x_i)\)</span></p>
+</blockquote>
+</li>
+<li>
+<p><em>Other</em>: Related to GLM, when the conditional mean is a non linear function of a linear predictor. (Not further explained in the book at this point)</p>
+</li>
+</ul>
+<p>Is there a scenario where OLS is better than Weighted regression? Assuming we can compute the weights.</p>
+<h4 id="example"><a class="toclink" href="../../2022/03/25/index.en-us/#example">Example.</a></h4>
+<p>First we will see the impact of using weighted regression, using a simulated scenario where we actually know the variance of the error of each observation. This is not realistic but useful to see it in action.</p>
+<pre><code class="language-r">library(tidyverse)
+</code></pre>
+<p>We generate 1000 datapoints with a linear relation between y and x. Intercept = 0, slope = 5. We let the variance of the error depend on the value of x. Higher values of x are associated with higher values of the variance of the error.</p>
+<pre><code class="language-r">set.seed(23)
+n=1000
+x = runif(n,0,10)
+error = rnorm(n,0, x/1.5)
+df = data.frame(x)
+df = df %&gt;% mutate(y = 5*x + error)
+</code></pre>
+<p>Visually..</p>
+<pre><code class="language-r">ggplot(data=df, aes(x=x, y=y)) +
+  geom_point(alpha=0.3) + 
+  # geom_smooth(color=&quot;blue&quot;) +
+  # geom_smooth(method = &quot;lm&quot;, mapping = aes(weight = (1/sqrt(x)^2)),
+  #             color = &quot;red&quot;, show.legend = FALSE) +
+  NULL
+</code></pre>
+<p><img alt="Image" src="../../img/2022-03-25-weighted-regression-unnamed-chunk-3-1.png" /></p>
+<h5 id="linear-regression"><a class="toclink" href="../../2022/03/25/index.en-us/#linear-regression">Linear regression</a></h5>
+<pre><code class="language-r">ols = lm(formula = &quot;y~x&quot;, data=df)
+summary(ols)
+</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = &quot;y~x&quot;, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -14.868  -1.720  -0.137   1.918  14.722 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.19192    0.24278   0.791    0.429    
+## x            4.95585    0.04148 119.489   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.855 on 998 degrees of freedom
+## Multiple R-squared:  0.9347, Adjusted R-squared:  0.9346 
+## F-statistic: 1.428e+04 on 1 and 998 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+<p>We get an intercept of 0.19, non-significant when the actual value is 0 and a slope of 4.96 when the actual value is 5.</p>
+<h5 id="weighted-linear-regression"><a class="toclink" href="../../2022/03/25/index.en-us/#weighted-linear-regression">Weighted linear regression</a></h5>
+<pre><code class="language-r">wols = lm(formula = &quot;y~x&quot;, data=df, weights = (1/sqrt(x)^2) )
+summary(wols)
+</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = &quot;y~x&quot;, data = df, weights = (1/sqrt(x)^2))
+## 
+## Weighted Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.8880 -0.8601 -0.0016  0.8936  4.6535 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 0.001483   0.030072   0.049    0.961    
+## x           4.993473   0.021874 228.286   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.498 on 998 degrees of freedom
+## Multiple R-squared:  0.9812, Adjusted R-squared:  0.9812 
+## F-statistic: 5.211e+04 on 1 and 998 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+<p>We get an intercept of 0, non-significant too but much closer to 0 and with lower standard error and a slope of 4.99 also much closer to the actual value of 5 and with lower standard error.</p>
+<p><strong>Conclusion:</strong> if we know the right weights we can get better estimates from a linear regression in case of heteroscedasticity.  </p>
+
+    <nav class="md-post__action">
+      <a href="../../2022/03/25/index.en-us/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-10-15 00:00:00">2020-10-15</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">R</a>, 
+              <a href="../estadistica/" class="md-meta__link">estadistica</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="counter-strike-chance-of-winning"><a class="toclink" href="../../2020/10/15/counter-strike-chance-of-winning.en-us/">Counter Strike: chance of winning</a></h2>
+<p>This <a href="https://www.kaggle.com/skihikingkevin/csgo-matchmaking-damage">CS GO Kaggle link</a> has data about several competitive CS GO matches.
+In a few words:  </p>
+<ul>
+<li>those are 5 vs 5 matches where each team tries to kill the other or complete a task (planting or defusing the bomb depending the role you are playing) before the time expires.  </li>
+<li>The goal is to win 16 rounds before the other team.  </li>
+<li>After 15 rounds both teams switch sides/role.</li>
+</ul>
+<p>The data has mostly information about each time a player damages another one (and eventually kills it), some grenades usage and some general data of each round as the amount of money spent by each team and the result of that round.  </p>
+<p>In here I have followed <a href="https://www.youtube.com/watch?v=_UVN1fwkjaU&amp;ab_channel=LanderAnalytics">Namita Nandakumar hockey example</a> to obtain and model some basic winning probability based on the lead and how many rounds have been played so far.  </p>
+<p>This is how probability of winning looks as the game progresses, grouped by how much the current winner is leading. (Averaging leads greater than 4 to keep it clean ).<br />
+The thin line is the <em>empirical probability</em>, based solely on segmenting the data.<br />
+The thick line is a local regression with its standard deviation.
+<img alt="Image" src="../../img/2020-10-15-counter-strike-chance-of-winning.en-us-unnamed-chunk-2-1.png" /></p>
+<p>So, as we see there is some noise around the trend and the approximation wiggles a bit as you go through X. We would like to have a model where winning by some amount is always better if you are closer to 16. Let's say it is not crazy to assume that if you are winning by 3, 15 to 12, you should always have higher chances to win than if you are leading 6-3.  </p>
+<p>Namita shows that xgboost is a nice tool to impose that kind of constraint to a simple model using the monotone constraint parameter.</p>
+<pre><code class="language-r">params = list(objective = &quot;binary:logistic&quot;,
+              eval_metric = &quot;logloss&quot;,
+              max_depth = 2,
+              eta = 0.1,
+              monotone_constraints = c(1,1)) 
+</code></pre>
+<p>What we get is a model that follows the constraints, although has some bias for the lower leading categories. Nevertheless is a quick approach to approximate the probabilities in a credible way.<br />
+You could use the dataset to explore other stuff since it has some rich information about locations.</p>
+<p><img alt="Image" src="../../img/2020-10-15-counter-strike-chance-of-winning.en-us-unnamed-chunk-4-1.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../../2020/10/15/counter-strike-chance-of-winning.en-us/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-10-06 00:00:00">2020-10-06</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="./" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="non-negative-matrix-factorization"><a class="toclink" href="../../2020/10/06/non-negative-matrix-factorization.en-us/">Non Negative Matrix Factorization</a></h2>
+<p>Please follow this <a href="/flexdashboard/nnmf_nba.html">link</a><br />
+It was made with Flexboard (a package to do dashboards in R) so I think it's only visualized correctly in laptops/pc because of the layout.</p>
+
+    <nav class="md-post__action">
+      <a href="../../2020/10/06/non-negative-matrix-factorization.en-us/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-07-18 00:00:00">2020-07-18</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="./" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="distribucion-dirichlet-como-prior-de-multinomial"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/">Distribucion Dirichlet como prior de Multinomial</a></h2>
+<p>Basado en:<br />
+http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week6.pdf<br />
+http://www.inf.ed.ac.uk/teaching/courses/mlpr/assignments/multinomial.pdf</p>
+<p>La distribución Dirichlet es una distribución multivariada para un conjunto de cantidades <span class="arithmatex">\(\theta_i,...,\theta_m\)</span> donde <span class="arithmatex">\(\theta_i &gt;= 0\)</span> y <span class="arithmatex">\(\sum_{i=1}^m \theta_i = 1\)</span>. Esto la hace una candidata útil para modelar un conjunto de probabilidades de una partición (un un conjunto de eventos mutuamente excluyentes). Es decir, un grupo de probabilides de eventos excluyentes, que sumen 1.<br />
+Podemos remplazar los <span class="arithmatex">\(\theta\)</span> por <span class="arithmatex">\(p\)</span> si es más claro que hablamos de probabilidades luego.</p>
+<p>La PDF es:</p>
+<div class="arithmatex">\[f(\theta_i,...,\theta_m; \alpha_i.., \alpha_m) =   \frac{\Gamma(\sum_i{\alpha_i})}{\prod_{i=1}^m \Gamma(\alpha_i)}\prod_{i = 1}^m \theta_i^{(\alpha_1-1)}\]</div>
+<p>Donde la función <span class="arithmatex">\(\Gamma\)</span> es <span class="arithmatex">\(\Gamma(\alpha) = (\alpha -1)!\)</span>. Para más detalles ver <a href="https://en.wikipedia.org/wiki/Gamma_function">acá</a>.<br />
+Los <span class="arithmatex">\(\alpha_i\)</span> son parámetros de la distribución y deben ser mayores a 0.<br />
+Cuando m = 2, obtenemos una función <span class="arithmatex">\(beta(\alpha_1, \alpha_2)\)</span> como caso particular de la Dirichlet.</p>
+<h4 id="dirichtlet-en-inferencia-bayesiana"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/#dirichtlet-en-inferencia-bayesiana">Dirichtlet en Inferencia Bayesiana.</a></h4>
+<p>De la misma manera que la distribución Beta suele usarse como prior de la Distribución Binomial ya que es una distribución conjugada para ese caso, la distribución Dirichlet suele usarse para distribuciones <strong>Multinomiales</strong>, es decir donde hay más de 2 categorías posibles (más de 2 <span class="arithmatex">\(p_i\)</span>). También es distribución conjugada. Es simplemente la versión multinomial de la beta.  </p>
+<p>La distribución multinomial es la siguiente:</p>
+<div class="arithmatex">\[\frac{n!}{\prod_{i = 1}^m x_i!}\prod_{i=1}^m p_i^{x_i}\]</div>
+<p>Cuando m = 2, es la distribución binomial.</p>
+<p>Si tuvieramos un experimento que se puede modelar como una multinomial y queremos estimar los <span class="arithmatex">\(p_i\)</span> podemos utilizar los estimadores de máxima verosimilitud (frecuentista) o ir por el camino de bayesiano donde comenzamos con un prior para cada p, que modelaremos con la Dirichlet. El prior de cada <span class="arithmatex">\(p_i\)</span> va a ser definido con la elección de los <span class="arithmatex">\(\alpha\)</span>.</p>
+<p>Yendo por el camino bayesiano vamos a tener nuestra distribución posterior:
+$$ P(p | x) \propto P(x|p) * P(p)$$
+donde <span class="arithmatex">\(P(x|p)\)</span> no es otra cosa que la distribución multinomial y <span class="arithmatex">\(P(p)\)</span> es nuestro prior de <span class="arithmatex">\(p\)</span> dado por la Dirichlet. Omitimos el denominador que es normalizador ya que es una constante.</p>
+<p>Multiplicamos entonces la PDF multinomial por la Dirichlet y obtenemos:</p>
+<p><em>Importante notar que efectivamente cambiamos <span class="arithmatex">\(\theta\)</span> por <span class="arithmatex">\(p\)</span> en la Dirichlet para que sea consistente con la multinomial.</em></p>
+<div class="arithmatex">\[\frac{n!}{\prod_{i = 1}^m x_i!}\prod_{i=1}^m p_i^{x_i} * \frac{\Gamma(\sum_i{\alpha_i})}{\prod_{i=1}^m \Gamma(\alpha_i)}\prod_{i = 1}^m p_i^{(\alpha_1-1)} \\ \propto \prod_i p_i^{\alpha_i + x_i -1}\]</div>
+<p>Para la proporcionalidad, quitamos todo lo que es factorial (y <span class="arithmatex">\(\Gamma\)</span>) ya que es constante y combinamos los exponentes de base <span class="arithmatex">\(p_i\)</span>.</p>
+<p>Vemos entonces que nuestra distribución posterior es propocional a ese término, que si vemos, es una Dirichlet para la cual nos falta el término constante! Por eso se dice que es una prior conjugada, ya que la posterior es de la misma familia que la prior (con otros valores claro.)<br />
+Es entonces una Dirichlet con parámetros <span class="arithmatex">\(\alpha_i + x_i\)</span> y podemos completar el término faltante obteniendo: 
+$$ \frac{\Gamma(\sum_i{\alpha_i + x_i})}{\prod_{i=1}^m \Gamma(\alpha_i + x_i)}\prod_{i=1}^m p_i^{(\alpha_i + x_i-1)}$$</p>
+<p>He ahí nuestra distribución posterior para los valores de <span class="arithmatex">\(p\)</span> de la multinomial.</p>
+<p>Para calcular rápidamente la esperanza de cada <span class="arithmatex">\(p_i\)</span> hacemos simplemente:
+<span class="arithmatex">\(<span class="arithmatex">\(E(p_i) = \frac{\alpha_i + x_i}{\sum (\alpha_i +  x_i)}\)</span>\)</span></p>
+<p>Si obtenemos nueva información podemos repetir el proceso, pero nuestra nueva prior debería ser la posterior previamente calculada. Y así vamos agregando información a medida que se recolecta y actualizando nuestra inferencia acerca de <span class="arithmatex">\(p_i\)</span></p>
+<p><strong>Aclaración</strong>: La proporción de cada <span class="arithmatex">\(\alpha_i\)</span> iniciales en la Dirichlet prior sobre la suma de todos los <span class="arithmatex">\(\alpha_i\)</span> es nuestro prior de <span class="arithmatex">\(p_i\)</span>. A mayores valores absolutos, mayor peso al prior respecto a los datos, ya que nuestro nuevo <span class="arithmatex">\(p_i\)</span> es función del <span class="arithmatex">\(\alpha_i\)</span> y <span class="arithmatex">\(x_i\)</span>. Revisar bien como ajustar los <span class="arithmatex">\(alpha\)</span> según la magnitud de <span class="arithmatex">\(x\)</span>, si es que hay que hacerlo.</p>
+<h4 id="ejemplo"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/#ejemplo">Ejemplo</a></h4>
+<p>Queremos modelar la compra de remeras de basquet en una tienda. Entra un cliente al azar y tiene determinadas probabilidades de comprar una remera de los Lakers, una de los Celtics, una de San Antonio o cualquier otro equipo.  </p>
+<p>En un primer momento no sabemos las proporciones y empezamos con unos priors <span class="arithmatex">\(\alpha_1 : \alpha_4 = [8,6,4,2]\)</span> que corresponde a 40%, 30%, 20% y 10% respectivamente.</p>
+<p>Recolectamos los datos de 100 clientes y vemos que las ventas fueron las siguientes:<br />
+Lakers : 45<br />
+Celtics: 22<br />
+Spurs: 27<br />
+Otros: 6  </p>
+<p>Calculando rapidamente con la fórmula de la Esperanza las probabildades que se derivan de nuestra posterior obtenemos:</p>
+<p>Lakers = 0.442<br />
+Celtic = 0.233<br />
+Spurs  = 0.258<br />
+Otro   = 0.067  </p>
+<p>Para ser más prolijos habría que agregar la varianza de cada <span class="arithmatex">\(p\)</span>. A agregar en un futuro..</p>
+<p>Si hubieramos calculado los p  de máxima verosimilitud no sería más que la proporción de cada equipo en los datos, sin tener en cuenta nuestro prior. Vemos que acá están obviamente cercanos a la proporción en los datos pero se inclinan hacia el prior. Recordar que el peso de los priors va a verse afectar por los <span class="arithmatex">\(\alpha\)</span> elegidos y por la cantidad de datos recolectados.</p>
+<p>En ML es bastante útil para el caso donde una nueva categoría aparece en el test set. Si no fue vista en el training le va a dar probabilidad 0 mientras que con un prior podemos salvar ese problema.<br />
+En NLP es bastante habitual usar la distribución Dirichlet como prior. Investigar por ese lado.</p>
+
+    <nav class="md-post__action">
+      <a href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-07-11 00:00:00">2020-07-11</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">R</a>, 
+              <a href="../python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="de-r-a-python-1"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/">De R a Python 1</a></h2>
+<p>Serie que documenta cuestiones prácticas que voy descubriendo a medida que empiezo a incursionar en Python un poco más enserio.
+Son más que nada recordatorios para el futuro de mecánicas que hoy entiendo, pero me voy a olvidar.</p>
+<p>Muchos de los objetos no van a tener relación entre sí o no se puede correr el código directo 
+ya que son copy/paste random de scripts.</p>
+<h4 id="usar-objetos-de-otros-scripts"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#usar-objetos-de-otros-scripts">Usar objetos de otros scripts</a></h4>
+<p>Si uno genera modelos, dataframes, etc en otro script por prolijidad y quiere utilizarlos en 
+el principal (o cualquiera en realidad) lo aconsejable es exportarlo como objeto pickle (algo 
+asi como los RDS en R.)</p>
+<pre><code class="language-r">library(reticulate)
+</code></pre>
+<pre><code class="language-python">import pickle
+import pandas as pd
+
+# exportar. Objeto, archivo, permisos
+pickle.dump(OBJETO, open(&quot;working/qualifying.p&quot;, &quot;wb&quot;))
+
+# importar
+leer = pd.read_pickle('archivo.p')
+</code></pre>
+<h4 id="seleccionar-columas-de-dataframe-por-patron-en-el-nombre"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#seleccionar-columas-de-dataframe-por-patron-en-el-nombre">Seleccionar columas de dataframe por patrón en el nombre</a></h4>
+<p>Para seleccionar columnas basados en si contiene determinado string en su nombre y no solo por nombre
+completo o por índice. </p>
+<pre><code class="language-python"># Recordemos que iloc selecciona por índice
+# Función Lambda  que convierte el indice de columna en strings y devuelve mascara (True/false)
+# si contiene determinado patrón. Creo que puede ponerse cualquier Regex
+df2 = df.iloc[:, lambda df:df.columns.str.contains('_points')] # select column based on name
+</code></pre>
+<p>Si queremos combinar esto con otras columnas con otro patrón no encontré manera más sencilla por
+el momento que combinar por separado. Quizás es muy tedioso si son muchas.</p>
+<pre><code class="language-python"># Notar que en point_vars le pasamos la máscara al listado de columnas nuevamente
+# para quedarnos con el nombre real y poder sumarlo a las otras listas
+# luego lo convertimos en lista porque el objeto es de tipo índice si no.
+target = ['position']
+qualy_vars = ['grid', 'dif_to_min_perc']
+point_vars = list(results.columns[results.columns.str.contains('_points')])
+
+vars_keep = target + qualy_vars + point_vars
+</code></pre>
+<h4 id="juntar-dataframes-por-indice"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#juntar-dataframes-por-indice">Juntar dataframes por indice</a></h4>
+<p>Los DF vienen por default con un índice. Si uno trabaja con una copia del DF original para generar nuevas columnas el índice se mantiene (si no lo reseteamos claro). También útil si se tienen varias tablas con mismo índice.</p>
+<p>Esto permite juntar tablas sin tener que hacer un merge explicito por determinadas columnas si no
+tenemos esos keys.</p>
+<pre><code class="language-python">results = results.join(driver_points_merge) # join by index (no need to merge with column)
+</code></pre>
+<h4 id="ifelse"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#ifelse">Ifelse</a></h4>
+<p>El equivalente de IFELSE en R para rapidamente crear una columna basado en otras, fila por fila.</p>
+<pre><code class="language-python">import numpy as np
+#               = condicion, valor si True, valor si False
+df['position'] = np.where(df['position'] &gt; 1, 0, 1)
+</code></pre>
+<h4 id="dropear-columna-de-df"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#dropear-columna-de-df">Dropear columna de DF</a></h4>
+<p>Útil para asegurar que sacan el target de las X...</p>
+<pre><code class="language-python">X = df.drop(columns=&quot;position&quot;)
+</code></pre>
+<h4 id="remplazar-determinado-valor-por-nan-u-otro"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#remplazar-determinado-valor-por-nan-u-otro">Remplazar determinado valor por NaN (u otro)</a></h4>
+<p>df.replace</p>
+<pre><code class="language-python">qualifying = qualifying.replace('\\N', np.nan)
+</code></pre>
+<h4 id="apply-aplicar-funciones-a-cada-fila-o-columna"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#apply-aplicar-funciones-a-cada-fila-o-columna">APPLY. Aplicar funciones a cada fila o columna</a></h4>
+<p>Permite aplicar una función por fila o columna.La funcion se aplica sobre la serie (la fila o columna)
+La serie mantiene los indices. Si usamos apply con axis = 1 que cada serie es una fila entera, 
+podemos llamar a la celda correspondiente usando ['columna']</p>
+<p>Apply es como las distintas versiones de apply de R y/o MAP del tidyverse cuando se aplica a un DF.</p>
+<pre><code class="language-python">import pandas as pd
+rectangles = [
+    { 'height': 40, 'width': 10 },
+    { 'height': 20, 'width': 9 },
+    { 'height': 3.4, 'width': 4 }
+]
+
+rectangles_df = pd.DataFrame(rectangles)
+rectangles_df
+
+
+# Suma de todas las celdas (&quot;filas&quot;) por columna
+</code></pre>
+<pre><code>##    height  width
+## 0    40.0     10
+## 1    20.0      9
+## 2     3.4      4
+</code></pre>
+<pre><code class="language-python">suma_por_columna = rectangles_df.apply(sum)
+print(suma_por_columna)
+
+# Suma de todas las celdas (&quot;columnas&quot;) por filas
+</code></pre>
+<pre><code>## height    63.4
+## width     23.0
+## dtype: float64
+</code></pre>
+<pre><code class="language-python">suma_por_fila = rectangles_df.apply(sum, axis = 1)
+print(suma_por_fila)
+</code></pre>
+<pre><code>## 0    50.0
+## 1    29.0
+## 2     7.4
+## dtype: float64
+</code></pre>
+<h4 id="apply-lambda-para-pasar-funciones-custom-en-el-momento"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#apply-lambda-para-pasar-funciones-custom-en-el-momento">Apply Lambda para pasar funciones custom en el momento</a></h4>
+<pre><code class="language-python">import pandas as pd
+rectangles = [
+    { 'height': 40, 'width': 10 },
+    { 'height': 20, 'width': 9 },
+    { 'height': 3.4, 'width': 4 }
+]
+
+rectangles_df = pd.DataFrame(rectangles)
+
+def multiplicar_2(x):
+   return x*2
+
+# Caso donde paso una funcion propia predefinida
+rectangles_df.apply(multiplicar_2)
+
+
+# Lo mismo pero definido en el momento
+</code></pre>
+<pre><code>##    height  width
+## 0    80.0     20
+## 1    40.0     18
+## 2     6.8      8
+</code></pre>
+<pre><code class="language-python">rectangles_df.apply(lambda x: x*2)
+</code></pre>
+<pre><code>##    height  width
+## 0    80.0     20
+## 1    40.0     18
+## 2     6.8      8
+</code></pre>
+<h4 id="calculos-by-group"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#calculos-by-group">Calculos by group</a></h4>
+<p>Como el bygroup de tidyverse.</p>
+<pre><code class="language-python"># Equivalente a  groupby(raceid) %&gt;% summarise(newcol = min(best_qualy_ms))
+min_qualy_by_race = qualifying.groupby('raceId')['best_qualy_ms'].min()
+</code></pre>
+<h4 id="by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila">By Group más complejo, con calculo acumulado en determinada ventana de obs. por cada fila</a></h4>
+<pre><code class="language-python"># suma acumulada de los ultimos 4 periodos (rolling)
+# luego el gorupby(level = 0).shift() es para lagearlo por grupo
+# el ultimo reset_index es para quitar el indice de este ultimo agrupado
+driver_points.groupby('driverId')['points'].rolling(4, min_periods = 4).sum().groupby(level = 0).shift().fillna(0).reset_index(level = 0)['points']
+</code></pre>
+
+    <nav class="md-post__action">
+      <a href="../../2020/07/11/de-r-a-python-1/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-04-25 00:00:00">2020-04-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="./" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="distribucion-gamma"><a class="toclink" href="../../2020/04/25/distribucion-gamma/">Distribucion Gamma</a></h2>
+<h4 id="origen-y-uso-habitual"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#origen-y-uso-habitual">Origen y uso habitual</a></h4>
+<p>La distribución Gamma es continua y siempre positiva. Se parametriza con dos parámetros que deben ser positivos.</p>
+<p>Lamentablemente no hay un consenso sobre cómo llamar a los parámetros y prevalecen dos formas, bastante similares pero con distinto origen.</p>
+<ul>
+<li>La primera es con los parámetros shape <span class="arithmatex">\(k\)</span> y scale <span class="arithmatex">\(\theta\)</span>.</li>
+<li>La segunda es con los parámetros shape <span class="arithmatex">\(\alpha\)</span> y rate <span class="arithmatex">\(\beta\)</span>.</li>
+</ul>
+<p>La relación entre ambas es <span class="arithmatex">\(k = \alpha\)</span> y <span class="arithmatex">\(\theta = 1/\beta\)</span>.<br />
+Obviamente cualquiera que se use va a resultar en los mismos resultados, pero hay que estar atento para lograr la parametrización adecuada.</p>
+<p>Yo prefiero la segunda opción, donde el rate <span class="arithmatex">\(\beta\)</span> puede relacionarse al rate <span class="arithmatex">\(\lambda\)</span> de una <a href="https://fbetteo.netlify.app/2020/04/proceso-poisson-y-distribucion-exponencial">poisson</a>.</p>
+<h4 id="por-que-nos-interesa-relacionarla-con-la-poisson"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#por-que-nos-interesa-relacionarla-con-la-poisson">Por qué nos interesa relacionarla con la Poisson?</a></h4>
+<p>Uno de los usos habituales y que resulta fácil de entender es que si nos encontramos en un <em>Proceso de Poisson</em> (si no se recuerda ver <a href="https://fbetteo.netlify.app/2020/04/proceso-poisson-y-distribucion-exponencial">ACA</a>), suceden <span class="arithmatex">\(\lambda\)</span> eventos por período en promedio (la distribución poisson nos ayuda con eso), el tiempo (medido en períodos) entre un evento y otro se puede modelar con una exponencial con parámetro rate = <span class="arithmatex">\(\lambda\)</span> (el mismo de la poisson), y ahora adicionamos que el tiempo medido en períodos hasta que suceda el k-ésimo evento, se puede modelar con la distribución gamma, parametrizada con shape = <span class="arithmatex">\(k\)</span> (cantidad de eventos) y rate = <span class="arithmatex">\(\lambda\)</span> (el mismo de la poisson nuevamente.)</p>
+<p>Por ejemplo:</p>
+<p>Si podemos modelar la cantidad de veces que vamos por semana a comprar cerveza como una poisson con <span class="arithmatex">\(\lambda\)</span> = 2, es decir en promedio dos veces por semana, tendremos la siguiente distribución.</p>
+<pre><code class="language-r">set.seed(1)
+ggplot() +
+  geom_bar(aes(x = rpois(10000,2)), fill = &quot;lightgreen&quot;, color = &quot;black&quot;) +
+  xlab(&quot;&quot;) +
+  ylab(&quot;&quot;) + 
+  ggtitle(&quot;Simulación de 10000 variables Poisson con rate = 2&quot;) +
+  scale_x_continuous(breaks = seq(0,9)) + 
+  theme_minimal()
+</code></pre>
+<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-2-1.png" />
+Donde la mayoría de las semanas vamos alrededor de  2 veces.</p>
+<p>Podemos a su vez, modelar el tiempo entre cada evento con una exponencial. Se lo puede pensar como ¿cuánto tiempo falta para que vaya de nuevo a comprar cerveza a partir del momento en que estoy parado?</p>
+<p>Usaremos una exponencial, pero para verlo en días, que sería lo apropiado, cambiamos <span class="arithmatex">\(\lambda = 2\)</span> por <span class="arithmatex">\(\lambda = 2/7\)</span>, que sería el rate por día.</p>
+<pre><code class="language-r">set.seed(2)
+ggplot() +
+  geom_histogram(aes(x = rexp(10000, 2/7)),bins = 100, fill =&quot;darkgreen&quot;, color = &quot;black&quot;) +
+  xlab(&quot;&quot;) +
+  ylab(&quot;&quot;) + 
+  ggtitle(&quot;Simulación de 10000 variables Exponenciales con rate = 2/7&quot;) +
+  scale_x_continuous(breaks = c(seq(0,10),15,20,25,30,35,40)) + 
+  theme_minimal()
+</code></pre>
+<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-3-1.png" />
+Vemos que en general faltan 1 o 2 días para que tengamos que ir de nuevo, aunque si tomamos el promedio veremos que es 3.5 dias, lo cuales lógico porque venimos de una poisson con rate de 2 veces por semana.</p>
+<p>Si ahora queremos ver en cuantos días habremos ido 5 veces, podemos usar la distribución gamma, con <span class="arithmatex">\(shape = 5\)</span> (porque queremos ver el 5 evento), y <span class="arithmatex">\(rate = 2/7\)</span> porque es el rate diario.</p>
+<pre><code class="language-r">set.seed(3)
+ggplot() +
+  geom_histogram(aes(x = rgamma(10000, shape = 5, rate =  2/7)),bins = 100, fill = &quot;darkred&quot;, color =&quot;black&quot;) +
+  xlab(&quot;&quot;) +
+  ylab(&quot;&quot;) + 
+  ggtitle(&quot;Simulación de 10000 variables Gamma con shape = 5  y rate = 2/7&quot;) +
+  scale_x_continuous(breaks = seq(0,60, by = 5)) + 
+  theme_minimal()
+</code></pre>
+<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-4-1.png" /></p>
+<p>Podemos ver que la distribución gamma es asimétrica en este caso y en general faltan unos 12-16 días. Si tomamos el promedio vemos que es de 17.5 días, lo cual tiene sentido ya que es 5 veces el tiempo promedio de espera, que era 3.5 días.</p>
+<p>La media de una gamma puede calcularse rápidamente como <span class="arithmatex">\(media = \frac{shape}{rate} = \frac{5}{2/7} = 17.5\)</span></p>
+<p>Hay una clara relación entre la distribución Exponencial y la Gamma.<br />
+Primero, como ya vimos, la exponencial modela el tiempo hasta el próximo evento en un proceso Poisson y la Gamma hasta el k-ésimo evento.<br />
+Podemos pensar a la distribución Gamma como la suma de K distribuciones Exponenciales con un mismo rate!</p>
+<p>Yendo más allá, en realidad, la distribución Gamma es una familia de distribuciones, y la Exponencial no es más que un caso particular de la Gamma con k = 1.<br />
+Si Gamma nos permite saber el tiempo hasta el k-esimo evento, y la Exponencial es hasta el primer evento, entonces la Exponencial como caso particular de la Gamma parece obvio.</p>
+<h4 id="un-poco-de-formulas"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#un-poco-de-formulas">Un poco de formulas</a></h4>
+<p>La función de densidad de la distribución Gamma, utilizando <span class="arithmatex">\(\alpha\)</span> y <span class="arithmatex">\(\beta\)</span> es:
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{\beta^{\alpha}}{\Gamma (\alpha)}x^{\alpha - 1}e^{-\beta x}\)</span>\)</span></p>
+<p>donde <span class="arithmatex">\(\Gamma (\alpha)\)</span> = <span class="arithmatex">\((\alpha - 1)!\)</span>  </p>
+<p>Cuidado con las distintas maneras de nombrar a los parámetros. En la literatura posiblemente vean <span class="arithmatex">\(\alpha\)</span> y <span class="arithmatex">\(\beta\)</span> cuando usen shape y rate. Aquí para el ejemplo de las cervezas reemplazamos <span class="arithmatex">\(\alpha\)</span> por <span class="arithmatex">\(k\)</span> y <span class="arithmatex">\(\beta\)</span> por <span class="arithmatex">\(\lambda\)</span> para relacionarlo con la distribución Poisson.</p>
+<p>El equivalente con esa notación sería:
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{\lambda^{k}}{\Gamma (k)}x^{k - 1}e^{-\lambda x}\)</span>\)</span></p>
+<p>Como dijimos si reemplazamos k por 1, obtenemos la función de densidad de la Exponencial.</p>
+<p>Otras distribuciones que son casos particulares de la Gamma son la Erlang (es Gamma pero con valores discretos de K, la exponencial también es un caso particular de Erlang con k= 1) y la Chi-Cuadrado</p>
+<h4 id="desestimar-el-significado-de-shape-y-scale"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#desestimar-el-significado-de-shape-y-scale">Desestimar el significado de Shape y Scale</a></h4>
+<p>Ya sea que prefiramos shape y scale o shape y rate como parametrización, sus nombres en inglés llevan a pensar que la dsitribución varía su forma con shape y su escala con scale. Eso no es tan así y puede llevar más a confusiones que otra cosa. Ambos parámetros pueden afectar tanto la forma y escala, por eso me parece más sencillo pensarlo con <span class="arithmatex">\(k\)</span> Y <span class="arithmatex">\(\lambda\)</span>, al menos en el ámbito de los procesos Poisson.<br />
+Igualmente, no olvidar que la distribcuión Gamma se puede usar para otros campos que no son situaciones de un Proceso de Poisson y esa interpretación de los parámetros puede ser poco apropiada.</p>
+<pre><code class="language-r">k = c(2,9)
+rate = c(1,2)
+x= seq(0,10, by = 0.1)
+
+df &lt;- expand.grid(lambda = as.factor(rate), k = k, x = x) %&gt;%
+  mutate(gamma = dgamma(x,k, as.numeric(as.character(lambda))),
+         combination = as.factor(paste0(&quot;k = &quot;,k,&quot;, lambda = &quot;,lambda)))
+
+ggplot(data = df, aes(x = x, y =gamma, color = combination)) + 
+  geom_line() + 
+  #geom_point() + 
+  ggtitle(&quot;Función de Densidad para distintos parámetros de una Distribución Gamma&quot;) +
+  xlab(&quot;Períodos&quot;) + 
+  ylab(&quot;&quot;) + 
+  scale_color_brewer(palette = &quot;Set1&quot;)
+</code></pre>
+<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-5-1.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../../2020/04/25/distribucion-gamma/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2019-10-31 00:00:00">2019-10-31</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="./" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="maxima-verosimilitud-y-estimacion-bayesiana"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/">Maxima Verosimilitud y estimacion bayesiana</a></h2>
+<h3 id="distribucion-prior"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#distribucion-prior">Distribucion prior</a></h3>
+<p>A falta de una buena traducción usamos este término.</p>
+<p>Supongamos que se toman muestras aleatorias de una distribucion con <a href="https://fbetteo.netlify.com/2019/04/funciones-de-probabilidad-y-distribucion/">pdf (funcion de densidad de probabilidad)</a> <span class="arithmatex">\(f(x|\theta)\)</span>. Por ejemplo podrían provenir de una normal con media = <span class="arithmatex">\(\mu\)</span> y varianza = 4.<br />
+Nosotros no sabemos el valor de <span class="arithmatex">\(\mu\)</span> pero podemos tener una idea de qué valores puede tomar y tener en mente una distribución prior de este parámetro <span class="arithmatex">\(\epsilon(\theta)\)</span>. Para el ejemplo sería <span class="arithmatex">\(\epsilon(\mu)\)</span>. Podemos suponer que <span class="arithmatex">\(\mu\)</span> se distribuye como una uniforme (0,1) por decir algo.<br />
+El concepto radica en tener una distribución prior para los parámetros de la distribución de la cual tomamos muestras aleatorias.</p>
+<h3 id="distribucion-posterior"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#distribucion-posterior">Distribución Posterior</a></h3>
+<p>Volviendo a nuestra muestra <span class="arithmatex">\(X_1...X_n\)</span> proveniente de <span class="arithmatex">\(f(x|\theta)\)</span>, podemos decir, debido a que son observaciones aleatorias e independientes que su distribución conjunta es <span class="arithmatex">\(f_n(x_1...X_n|\theta) = f(x_1|\theta)...f(x_n|\theta)\)</span>, que lo podemos escribir como <span class="arithmatex">\(f_n(x|\theta)\)</span>.<br />
+Dado que suponemos que <span class="arithmatex">\(\theta\)</span> proviene de una distribución <span class="arithmatex">\(\epsilon(\theta)\)</span>, la pdf conjunta <span class="arithmatex">\(f_n(x|\theta)\)</span> tiene que ser vista como la pdf conjunta condicional de<span class="arithmatex">\(X_1...X_n\)</span> para un valor particular de <span class="arithmatex">\(\theta\)</span>.<br />
+Multiplicando la pdf conjunta condicional por la pdf <span class="arithmatex">\(\epsilon(\theta)\)</span> obtenemos la (n+1) distribución conjunta de <span class="arithmatex">\(X_1...X_n\)</span> y <span class="arithmatex">\(\theta\)</span> bajo la forma <span class="arithmatex">\(f_n(x|\theta)\epsilon(\theta)\)</span>. Sería la pdf de encontrar en simultáneo determinados valores para x y <span class="arithmatex">\(\theta\)</span>. La probabilidad conjunta marginal de <span class="arithmatex">\(X_1...X_n\)</span> se encuentra integrando la pdf conjunta con <span class="arithmatex">\(\theta\)</span> para todos los valores de <span class="arithmatex">\(\theta\)</span>. Sería la probabilidad marginal de encontrar determinados valores de x (sabiendo la distribución de <span class="arithmatex">\(\theta\)</span> pero sin saber el valor puntual que toma).</p>
+<p><span class="arithmatex">\(g_n(x) = \int_\Omega f_n(x|\theta)\epsilon(\theta) d\theta\)</span></p>
+<p>Por teorema de Bayes tenemos que la distribución posterior de <span class="arithmatex">\(\theta\)</span>, es decir, dados los x es:
+<span class="arithmatex">\(<span class="arithmatex">\(\epsilon(\theta|x) = \frac{f_n(x|\theta)\epsilon(\theta)}{g_n(x)} \text{ para } \theta \in \Omega\)</span>\)</span> 
+ Se dice que la distribución prior <span class="arithmatex">\(\epsilon(\theta)\)</span> representa la verosimilitud, antes de ver los valores de <span class="arithmatex">\(X_1...X_n\)</span>, de que el verdadero valor de <span class="arithmatex">\(\theta\)</span> se encuentre en cada una de las regiones de <span class="arithmatex">\(\Omega\)</span> y que la pdf de la distribución posterior <span class="arithmatex">\(\epsilon(\theta|x)\)</span> representa la verosimilitud después que los valores <span class="arithmatex">\(X_1 = x_1,...,X_n = x_n\)</span> hayan sido observados.</p>
+<p>## La funcion de Versoimilitud</p>
+<p>El denominador de la distribución posterior es básicamente la integral del numerador para todos los posibles valores de <span class="arithmatex">\(\theta\)</span>. Depende de los valores observados <span class="arithmatex">\(X_1...X_n\)</span> pero no de <span class="arithmatex">\(\theta\)</span>, por lo que puede considerarse constante en este contexto.<br />
+ Dado que es una constante podemos quitarla de la distribución posterior que vimos y decir que 
+ <span class="arithmatex">\(<span class="arithmatex">\(\epsilon(\theta|x) \propto f_n(x|\theta)\epsilon(\theta)\)</span>\)</span></p>
+<p>Cuando se ve <span class="arithmatex">\(f_n(x|\theta)\)</span> para una muestra aleatoria como función de <span class="arithmatex">\(\theta\)</span>, se la suele llamar función de verosimilitud. En inglés: Likelihood function.</p>
+<p>Juntando estos términos podemos decir que la pdf posterior de <span class="arithmatex">\(\theta\)</span> es proporcional al producto de la función de verosimilitud y la pdf prior de <span class="arithmatex">\(\theta\)</span>.  </p>
+<p>La idea de ver esta relación de proporcionalidad es para poder calcular la pdf posterior evitando calcular la integral del denomiador <span class="arithmatex">\(g_n(x)\)</span>. Si el numerador tiene la forma de alguna de las distribuciones conocidad (normal, beta, gamma, uniforme, etc) es posible calcular fácilmente el factor constante por el cual multiplicar esa pdf para llegar a la posterior.</p>
+<h3 id="distribuciones-prior-conjugadas"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#distribuciones-prior-conjugadas">Distribuciones prior Conjugadas</a></h3>
+<p>Este concepto refiere a que ciertas distribuciones son particularmente útiles para los cálculos cuando las variables aleatorias observadas provienen de alguna distribución específica.<br />
+Es decir que según la distribución de la que provienen las X puede que haya alguna distribución conjugada tal que al asumirla para la pdf prior <span class="arithmatex">\(\epsilon(\theta)\)</span> ya sabemos que la distribución posterior también será de esa familia.</p>
+<p>Un ejemplo ilustrador:<br />
+  Supongamos que tomamos observaciones <span class="arithmatex">\(X_1...X_n\)</span> de una distribución Bernoulli de la cual no sabemos el parámetro <span class="arithmatex">\(\theta\)</span> (que debe estar entre 0 y 1). Supongamos además que la pdf prior de <span class="arithmatex">\(\theta\)</span> es una distribución beta con algúnos parámetros dados <span class="arithmatex">\(\alpha \text{ y } \beta\)</span>. En este caso sabemos que por ser un caso de distribución conjugada, la pdf posterior de <span class="arithmatex">\(\theta\)</span> dado <span class="arithmatex">\(X = x_i (i = 1,...,n)\)</span> es a su vez una distribución beta con parámetros <span class="arithmatex">\(\alpha + \sum_{i=1}^n x_i \text{ y } \beta + n - \sum_{i=1}^n x_i\)</span>.</p>
+<p>Según la distribución de la que provengan las observaciones hay distintas distribuciones conjugadas que son las más convenientes para ese caso.</p>
+<h2 id="estimacion-de-parametros"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#estimacion-de-parametros">Estimación de parámetros</a></h2>
+<p>La idea es estimar algún parámetro de la distribución de la cual se obtienen los datos observados. El valor estimado del parámetro va a depender de dos cosas:  </p>
+<ul>
+<li>Del <em>estimador</em> que hayamos elegido (es decir, la función de los datos elegida)</li>
+<li>De la muestra. El valor estimado va a depender de los datos aleatorios que tengamos de la distribución.</li>
+</ul>
+<p>Como el estimador depende de la muestra podemos verlo a su vez como una variable aleatoria.</p>
+<h3 id="funcion-de-perdida"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#funcion-de-perdida">Función de pérdida</a></h3>
+<p>Lo que queremos de un estimador es que devuelva un valor estimado "a" para el parámetro lo más cercano posible al verdadero valor de <span class="arithmatex">\(\theta\)</span>. La función de pérdida es una función que cuantifica esto.
+$$ L(\theta,a)$$
+Hay algunas funciones habituales pero pueden adecuarse según el problema.<br />
+Podemos decir que en general lo que se busca es encontrar una estimación para la cual la esperanza de la pérdida sea un mínimo.</p>
+<h3 id="estimador-bayesiano"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#estimador-bayesiano">Estimador bayesiano</a></h3>
+<p>Si tenemos una muestra aleatoria y una pdf posterior para <span class="arithmatex">\(\theta\)</span> entonces el valor esperado de la pérdida para cualquier valor estimado "a" es:
+<span class="arithmatex">\(<span class="arithmatex">\(E[L(\theta,a)|x] = \int_\Omega L(\theta,a)\epsilon(\theta,x)d\theta\)</span>\)</span></p>
+<p>Lo que buscamos es encontrar un valor de a cuya pérdida esperada sea mínima. La función que genera un valor de a mínimo para cada posible valor de X será un estimador de <span class="arithmatex">\(\theta\)</span> y en particular se llamará <em>Estimador Bayesiano</em>.<br />
+El estimador bayesiano, que minimiza la pérdida esperada para cualquier set de datos X, va a depender de la función de pérdida que elijamos y de la pdf prior que se elija para <span class="arithmatex">\(\theta\)</span>.</p>
+<p>Por ejemplo,para la función de pérdida más utilizada, que es la de error cuadrático
+<span class="arithmatex">\(<span class="arithmatex">\(L(\theta,a) = (\theta -a)^2\)</span>\)</span>
+está demostrado que la pérdida es mínima cuando <span class="arithmatex">\(a\)</span> es la media de la distribución posterior <span class="arithmatex">\(E(\theta|x)\)</span>.</p>
+<p>Dijimos que el valor del estimador bayesiano va a depender de la distribución prior elegida. Esto es cierto, pero hay que tener en cuenta que para muestras grandes las diferencias empiezan a achicarse y los estimadores bayesianos provenientes de distintos priors empiezan a converger en la mayoría de los casos.</p>
+<h3 id="estimadores-de-maxima-verosimilitud"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#estimadores-de-maxima-verosimilitud">Estimadores de Máxima Verosimilitud</a></h3>
+<p>Los estimadores de máxima verosimilitud (MLE) son muy comunmente usados para estimar parámetros desconocidos ya que más allá de la discusión casi filosófica de "bayesianos vs frecuentistas", sirven para estimar sin tener que definir una función de pérdida ni una distribución prior para los parámetros. Esto último es importante ya que para casos donde se necesita estimar un vector de parámetros, la distribución prior debe ser una multivariada que englobe a todos y eleva la complejidad del proceso bayesiano ampliamente.<br />
+Para muestras chicas MLE suele hacer un trabajo decente y para muestras grandes suele ser excelente por lo que se llega a resultados muy similares a través de un proceso más directo y más sencillo.  </p>
+<p>Para estimar mediante MLE lo único que necesitamos es la función de verosimilitud ya definida.
+<span class="arithmatex">\(<span class="arithmatex">\(f_n(x_1...X_n|\theta)\)</span>\)</span>
+Luego lo único que se hace es buscar el parámetro <span class="arithmatex">\(\hat \theta\)</span> (estimado) que maximice esa función. Básicamente es buscar qué parámetro hace que la probabilidad conjunta de obtener esos valores de X sea máxima? Ese es nuestro MLE.</p>
+<p>Para la gran mayoría de los casos esta metodología funciona pero hay que tener en cuenta que es posible que para algunos problemas no haya un máximo para la función de verosimilitud o que haya más de un punto, en cuyo caso hay que elegir alguno de ellos.</p>
+<h4 id="mle-en-bernoulli"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#mle-en-bernoulli">MLE en Bernoulli</a></h4>
+<p>Supongamos que tomamos observaciones <span class="arithmatex">\(X_1...X_n\)</span> de una distribución Bernoulli de la cual no sabemos el parámetro <span class="arithmatex">\(\theta\)</span> (que debe estar entre 0 y 1).</p>
+<p>Para cualquier vector de observaciones <span class="arithmatex">\(X_1...X_n\)</span> la función de verosimilitud es:
+$$ f_n(x|\theta) = \prod_{i = 1}^n \theta^{x_i}(1-\theta)^{1-x_i}$$
+El valor de <span class="arithmatex">\(\theta\)</span> que maximice la función de verosimilitud es el mismo valor que maximiza <span class="arithmatex">\(log f_n(x|\theta)\)</span>, por lo que es conveniente encontrar tal valor buscando que maximice:
+<span class="arithmatex">\(<span class="arithmatex">\(L(\theta) = log f_n(x|\theta) = \sum_{i=1}^n[x_i log \theta + (1 - x_i) log(1-\theta)] = (\sum_{i=1}^nx_i)log \theta + (n-\sum_{i=1}^n x_i) log (1-\theta)\)</span>\)</span></p>
+<p>Si derivamos <span class="arithmatex">\(dL(\theta) / d\theta\)</span> e igualamos a 0, resolviendo esa ecuando para <span class="arithmatex">\(\theta\)</span> encontramos que <span class="arithmatex">\(\theta = \bar x_n\)</span>.<br />
+Este valor maximiza el logaritmo de la función de verosimilitud y por ende también de la función de verosimilitud en sí misma. Por lo tanto el MLE de <span class="arithmatex">\(\theta\)</span> es <span class="arithmatex">\(\hat \theta = \bar X_n\)</span></p>
+<pre><code class="language-r"># Generamos 100 observaciones de una Bernoulli
+set.seed(150)
+data = rbinom(100, 1, prob = 0.723)
+
+# Calculamos su promedio, que ya sabemos es la mejor estimación para p dados los datos
+mean(data)
+</code></pre>
+<pre><code>## [1] 0.68
+</code></pre>
+<pre><code class="language-r"># Definimos función de verosimilitud
+# Es la pdf de una Bernoulli para cada observación y sumamos sus logaritmos (en negativo porque 
+# el optimizador minimiza en vez de maximizar)
+LL = function( p){
+   R = dbinom(x = data, size = 1, prob = p)
+
+   -sum(log(R))  # Negativo porque log de probabilidades es &lt;0.
+ }
+
+# Función que busca los parámetros que minimzan el negativo de la log verosimilitud
+# Elegimos un valor inicial de p en el medio.
+stats4::mle(LL, start = list(p = 0.5) )
+</code></pre>
+<pre><code>## 
+## Call:
+## stats4::mle(minuslogl = LL, start = list(p = 0.5))
+## 
+## Coefficients:
+##         p 
+## 0.6799996
+</code></pre>
+<p>Vemos que la estimación por MLE es <em>idéntica</em> a la media. No corresponde con el verdadero valor del parámetro poblacional p debido a la muestra particular que fue seleccionada.</p>
+<p>Algunos comentarios finales:</p>
+<ul>
+<li>En algunos casos no es posible encontrar la solución óptima si no es por métodos numéricos.</li>
+<li>Cuando <span class="arithmatex">\(n \to \infty\)</span> MLE converge en probabilidad al verdadero <span class="arithmatex">\(\theta\)</span>. Por ende cuando <span class="arithmatex">\(n \to \infty\)</span> el estimador bayesiano (que cumple la misma propiedad) y MLE serán muy parecidos entre sí y al verdadero <span class="arithmatex">\(\theta\)</span>.</li>
+<li>MLE solo depende de las observaciones y no de cómo y en qué orden fueron recolectadas.</li>
+</ul>
+
+    <nav class="md-post__action">
+      <a href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2019-10-13 00:00:00">2019-10-13</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="./" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="teorema-central-del-limite"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/">Teorema Central del Limite</a></h2>
+<p>El <a href="https://es.wikipedia.org/wiki/Teorema_del_l%C3%ADmite_central">teorema central del límite (TCL)</a> 
+es fundamental en el desarrollo de la estadística y ha obtenido
+distintas variantes a lo largo de la historia. Veremos dos de las versiones más conocidas.</p>
+<h4 id="teorema-central-del-limite-para-media-muestral-lindeberg-levy"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#teorema-central-del-limite-para-media-muestral-lindeberg-levy">Teorema Central del Límite para Media Muestral (Lindeberg - Lévy)</a></h4>
+<blockquote>
+<p>Si las varaibles <span class="arithmatex">\(X_1 ... X_n\)</span> forman una muestra aleatoria de tamaño n proveniente de una 
+distribución con media <span class="arithmatex">\(\mu\)</span> y varianza <span class="arithmatex">\(\sigma^2\)</span> (0 &lt; <span class="arithmatex">\(\sigma^2\)</span> &lt; <span class="arithmatex">\(\infty\)</span>), entonces  para 
+cualquier número fijo x.
+$$  \lim_{n\to \infty} Pr\Big[\frac{n^{1/2}(\bar X_n - \mu)}{\sigma} &lt;= x\Big] = \Phi (x)$$</p>
+</blockquote>
+<p>Donde <span class="arithmatex">\(\Phi (x)\)</span> es la función de distribución de una Normal Estándar.</p>
+<p>El por qué de la convergencia del teorema no será probado acá pero no es díficil de encontrar.
+Por ejemplo <a href="https://www.uv.es/ceaces/tex1t/2%20conver/levi.htm">ACÁ</a></p>
+<p>Básicamente lo que dice el teorema, es que tomando una muestra grande de una población con media <span class="arithmatex">\(\mu\)</span> y 
+varianza <span class="arithmatex">\(\sigma^2\)</span> definidas, entonces <span class="arithmatex">\(\frac{n^{1/2}(\bar X_n - \mu)}{\sigma}\)</span> va a tender a una normal estándar. Como consecuencia de eso podemos decir que <span class="arithmatex">\(\bar X_n\)</span> va a distribuirse 
+aproximandamete como <span class="arithmatex">\(N(\mu, \sigma^2/n)\)</span>.</p>
+<p>El TCL nos dice cómo se distribuye la media muestral si tenemos una muestra grande.</p>
+<p>Análogamente, también podemos decir que <span class="arithmatex">\(\sum_{i=1}^n X_i\)</span> va a ser aproximadamente una normal
+<span class="arithmatex">\(N(n\mu, n\sigma^2)\)</span></p>
+<h5 id="ejemplo-lanzar-una-moneda"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#ejemplo-lanzar-una-moneda">Ejemplo. Lanzar una moneda</a></h5>
+<p>Si lanzamos una moneda 900 veces. Cuál es la probabilidad  de obtener más de 495 caras?</p>
+<p><span class="arithmatex">\(X_i\)</span> = 1 si sale cara en el lanzamiento i, y 0 si sale cruz.<br />
+E(<span class="arithmatex">\(X_i\)</span>) = 1/2 y Var(<span class="arithmatex">\(X_i\)</span>) = 1/4. Esto se deduce de ser un experimento con distribución Bernouilli.</p>
+<p>Para llevarlo a los términos del TCL, tenemos una muestra de tamaño n = 900, con <span class="arithmatex">\(\mu\)</span> = 1/2 y
+<span class="arithmatex">\(\sigma^2\)</span> = 1/4.</p>
+<p>Por TCL tenemos que la distribución de la suma del número total de caras <span class="arithmatex">\(\sum_{i=1}^{900} X_i\)</span> se
+distribuye aproximádamente como una normal con media = 900 * (1/2) = 450,
+varianza = 900 * (1/4) = 225 y desvío estándar 225^(1/2) = 15.</p>
+<p>Por lo tanto la variable <span class="arithmatex">\(Z = \frac{H - 450}{15}\)</span> se dsitribuye aproximadamente como una normal 
+estándar.
+<span class="arithmatex">\(<span class="arithmatex">\(Pr( H &gt; 495) = Pr(\frac{H - 450}{15} &gt; \frac{495 - 450}{15}) = Pr(Z&gt;3) = 1 - \Phi(3) = 0.0013\)</span>\)</span></p>
+<p>Podemos comparar contra el resultado que obtenemos al hacer el mismo ejercicio pero mirando 
+directamente la distribución binomial (que es la que realmente genera el proceso de datos)</p>
+<pre><code class="language-r">pbinom(495,900, 0.5, lower.tail = FALSE)
+</code></pre>
+<pre><code>## [1] 0.001200108
+</code></pre>
+<p>Vemos que los resultados son muy similares.</p>
+<h4 id="teorema-central-del-limite-para-suma-de-variables-aleatorias-independientes-liapunov"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#teorema-central-del-limite-para-suma-de-variables-aleatorias-independientes-liapunov">Teorema Central del Límite para Suma de Variables Aleatorias Independientes (Liapunov)</a></h4>
+<p>Este TCL aplica a una secuencia de variables aleatorias independientes pero que no necesariamente
+tienen que provenir de una misma distribución. Todas deben tener una media y varianza definidas.</p>
+<p>La variable <span class="arithmatex">\(<span class="arithmatex">\(Y_n = \frac{\sum_{i=1}^n X_i - \sum_{i=1}^2 \mu_i}{(\sum_{i=1}^n\sigma_i^2)^{1/2}}\)</span>\)</span></p>
+<p>Entonces <span class="arithmatex">\(E(Y_n) = 0\)</span> y <span class="arithmatex">\(Var(Y_n)\)</span> = 1</p>
+<p>Siendo un poco más precisos veamos el teorema:</p>
+<blockquote>
+<p>Suponiendo que las variables aleatorias <span class="arithmatex">\(X_1. X_2, ...\)</span>  son independientes y que
+<span class="arithmatex">\(E(|X_i - \mu_i|^3) &lt; \infty\)</span> para 1,2,...
+Y suponidendo que <span class="arithmatex">\(<span class="arithmatex">\(\lim_{n\to \infty} \frac{\sum_{i=1}^n E(|X_i - \mu_i|^3)}{(\sum_{i=1}^n \sigma^2_i)^{3/2}} = 0\)</span>\)</span>
+Entonces, utilizando la variable Y definida previamente tenemos que <span class="arithmatex">\(<span class="arithmatex">\(\lim_{n \to \infty} Pr(Y_n &lt;= x) = \Phi(x)\)</span>\)</span></p>
+</blockquote>
+<p>La interpretacaión del teorema es que si se cumple la condición de los 3eros momentos, entonces para valores grandes de n la distribución de <span class="arithmatex">\(\sum_{i=1}^n X_i\)</span> será aproximadamente normal con media <span class="arithmatex">\(\sum_{i=1}^n \mu_i\)</span> y varianza <span class="arithmatex">\(\sum_{i=1}^n \sigma^2_i\)</span>.</p>
+<h4 id="diferencias-entre-lindeberg-levy-y-liapunov"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#diferencias-entre-lindeberg-levy-y-liapunov">Diferencias entre Lindeberg-Lévy y Liapunov</a></h4>
+<p>El teorema de Lindeberg-Lévy aplica para secuencias de variables aleatorias iid y solo requiere que la varianza de estas variables sea finita. En cambio el teorema de Liapunov aplica a secuencias de variables aleatorias independientes pero que no necesariamente provienen de una misma distribución. Requiere que el tercer momento de cada variable existe y cumple con la ecuación del teorema.</p>
+<h4 id="efecto-de-tcl"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#efecto-de-tcl">Efecto de TCL</a></h4>
+<p>Más allá de la utilidad para aproximar distribuciones y medias mediante una normal, el TCL aporta una posible explicación a por qué tantas variables se distribuyen aproximadamante como normales. Si muchas de las variables a medir pueden pensarse como sumas de otras variables es lógico que tiendan a verse como normales aunque las variables que se suman para darle origen provengan de distintas distribuciones.</p>
+
+    <nav class="md-post__action">
+      <a href="../../2019/10/13/teorema-central-del-limite/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2019-07-01 00:00:00">2019-07-01</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="./" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              11 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="metodos-de-resampleo-islr-capitulo-5"><a class="toclink" href="../../2019/07/01/metodos-de-resampleo/">Metodos de Resampleo - ISLR Capitulo 5</a></h2>
+<p>Los métodos de resampleo son indispensables en la estadística moderna ya que permiten ajustar modelos a diferentes muestras de un mismo set de entrenamiento con el fin de obtener mayor información del modelo. Por ejemplo puede ser de utilidad para ver la variabilidad del modelo en distintas muestras. Los dos métodos que se presentan en el capítulo son <em>cross-validation</em> y <em>bootstrap</em>. A grandes rasgos CV puede servir para estimar el test error de un modelo o para ajustar hiperparámetros del modelo como el nivel de flexbilidad. Por su parte bootstrap puede usarse para medir la precisión de un parámetro estimado mediante un modelo estadístico.</p>
+<h3 id="cross-validation"><a class="toclink" href="../../2019/07/01/metodos-de-resampleo/#cross-validation">Cross-Validation</a></h3>
+<p>De los modelos que uno entrena es de sumo interés obtener el "test error" que sería el error promedio al predecir una nueva observación aplicando el modelo estadístico entrenado. Esto puede calcularse si tenemos un set de testeo puntualmente para ello pero no suele ser el caso lamentablemente.
+En general no se tienen tantos datos como para separar en sets como uno desearía y surgen distintas técnicas para estimar el test error basado solamente en los datos de entrenamiento. Algunas de estas técnicas estiman el test error ajustando el training error por algún factor mientras que otras separan el training set en subsets donde uno hace las veces de test set.</p>
+<h5 id="validation-set"><a class="toclink" href="../../2019/07/01/metodos-de-resampleo/#validation-set">Validation Set</a></h5>
+<p>Un método muy utilizado es el del set de validación. Básicamente consiste en separar nuestro training set en dos sets, un "nuevo" training set y uno set de validación. Una práctica habitual es separar 70-30, pero va a depender de la cantidad de observaciones que tengan y no hay una regla estricta. Básicamente de los datos que tienen para entrenar el modelo separan una parte que va a ser el set de validación y entrenan el modelo con los datos restantes (70% por ejemplo). Luego se mide la precisión del modelo en el 30% restante (set de validación) que  son datos que no fueron utilizados a la hora de ajustar el modelo. Si utilizamos el MSE (mean squared error) cómo medida del error, este va a ser nuestro test error estimado. Recordemos que es el MSE calculado con las predicciones en el set de validación.
+Por otra parte el set de validación también puede servir para ajustar algún hiperparámetro. Se pueden correr muchos modelos con distintos hiperparámetros y ver cuál tiene menor MSE en el set de validación.  </p>
+<p>Es un método muy sencillo y suele ser eficaz pero tiene dos potenciales problemas:
+* El MSE puede variar mucho según cómo dividieron las observaciones en training y validación. Otra segmentación puede dar resultados muy distintos.
+* No utilizás todos tus datos para ajustar el modelo y puede que eso lleve a sobreestimar el test error, que quizás sería menor si usaras todas las observaciones para entrenar el modelo.</p>
+<h5 id="leave-one-out-cross-validation"><a class="toclink" href="../../2019/07/01/metodos-de-resampleo/#leave-one-out-cross-validation">Leave-One-Out Cross-Validation</a></h5>
+<p>LOOCV es un intento de solucionar los problemas del enfoque del set de validación [<strong>SPOILER: No es recomendado pero vale la pena conocerlo</strong>].<br />
+Este enfoque es llevar el set de validación al extremo. Lo que se hace es de nuevo separar nuestro training set en dos pero esta vez guardando una sola observación como validación y usando las n-1 restantes para entrenar el modelo. La idea es hacer esto n veces, dejando cada vez una observación distinta como validación.
+El test error estimado es el promedio de los MSE de cada predicción que se hizo de la observación de validación. 
+Pensando en los problemas del set de validación, con LOOCV logramos usar casi todos los datos disponibles para entrenar el modelo (n-1 observaciones) por lo tanto deberíamos tener modelos con menos sesgo y no sobreestimar tanto el test error como con el enfoque de set de validación.
+Por otra parte con el set de validación podemos obtener resultados muy distintos según el azar de cómo dividamos nuestros datos. En LOOCV esto no pasa ya que todos nuestros modelos de entrenamiento van a ser practicamente iguales salvo por una observación cada vez. No hay azar en la división de training y validación. 
+Enseguida vemos el mayor problema de este enfoque, que es computacional. Debemos ajustar n modelos y no solo uno. Dependiendo de nuestros datos y la complejidad de nuestro modelo esto puede demandar muchísimo tiempo/recursos.</p>
+<h5 id="k-fold-cross-validation"><a class="toclink" href="../../2019/07/01/metodos-de-resampleo/#k-fold-cross-validation">K-Fold Cross-Validation</a></h5>
+<p>K-Fold CV es un punto intermedio entre ambos enfoques y es de lo más utilizado al día de hoy. Consiste en separar nuestros datos en K subsets de mismo tamaño. Se selecciona uno de esos K subsets y se lo deja como validación. Se entrena el modelo con los K-1 subsets y se predice en el de validación que separamos. Así K veces, dejando como validación cada vez uno subset distinto. El Test error estimado es el promedio de los MSE en cada caso. Se puede ver fácilmente que si K = n, entonces estaríamos en LOOCV. Los valores típicos de K suelen ser 5 o 10, y por ende es muchísimo menos costoso que LOOCV.
+Al separar en "solo" 10 subsets cada set de validación puede tener cierta variabilidad en el MSE respecto a otros pero esta va a ser menor que en el enfoque de set de validación. En el libro se muestran unos gráficos para data simulada donde se ve que LOOCV y K-Fold tienen comportamiento muy similar y según el caso pueden sobreestimar o subestimar el verdadero test error (depende el problema y la flexibilidad elegida).
+Como mencionamos para el set de validación, K-fold también puede ser utilizado para ajustar algún hiperparámetro del modelo como el nivel de fleixibilidad. En este caso lo que nos interesa es encontrar el valor mínimo del MSE entre los distintos posibles valores del hiperparámetro para decidir cual es el mejor posible pero el valor puntual del MSE o su precisión no nos interesa tanto.</p>
+<h5 id="trade-off-entre-sesgo-y-varianza-en-k-fold-cross-validation"><a class="toclink" href="../../2019/07/01/metodos-de-resampleo/#trade-off-entre-sesgo-y-varianza-en-k-fold-cross-validation">Trade-Off entre sesgo y varianza en K-Fold Cross-Validation</a></h5>
+<p>Otro punto muy importante de K-Fold, además de que requiere menos intensidad computacional que LOOCV, es que suele dar estimaciones más precisas del test error que LOOCV, y esto tiene que ver por el tradeoff entre sesgo y varianza.</p>
+<p>Vimos antes que LOOCV debería ser el estimar más insesgado del test error ya que utiliza casi todas las observaciones de entrenamiento cada vez sin embargo hay que ver que sucede con la varianza ya que es otro componente del MSE. (Más detalles en <a href="https://fbetteo.netlify.com/2019/05/aprendizaje-estad%C3%ADstico-islr-capitulo-2/">ISLR Cap 2</a>).<br />
+Resulta que LOOCV tiene mayor varianza que K-Fold CV siempre que K sea menor que n. Esto sucede porque en LOOCV lo que hacemos es promediar el resultado de n modelos cuyos datos de entrenamiento son casi idénticos (salvo por una observación) y por ende los resultados están en gran medida correlacionados positivamente.<br />
+Por otro lado al hacer K-Fold CV se promedian <em>solo</em> K resultados que están menos correlacionados entre sí ya que los datos de entrenamiento se solapan menos entre ellos. 
+La clave acá es que el promedio de muchos valores altamente correlacionados tiene mayor varianza que el promedio de muchos valores que no están tan correlacionados. Dado este escenario se hicieron pruebas que llegaron a la conclusión empírica de que K=5 y k = 10 son valores que no suelen tener excesivo sesgo ni varianza.<br />
+Al parecer en los últimos años se empezó a dudar de la universalidad de este enunciado y se han hecho pruebas donde LOOCV no tiene mayor varianza. Sin embargo sigue siendo computacionalmente más demandante y el beneficio del menor sesgo no era suficiente para darle demasiada importancia.</p>
+<h5 id="cross-validation-en-problemas-de-clasificacion"><a class="toclink" href="../../2019/07/01/metodos-de-resampleo/#cross-validation-en-problemas-de-clasificacion">Cross-Validation en problemas de clasificación.</a></h5>
+<p>Los procedimientos vistos hasta ahora son útiles tanto para variables continuas como para problemas de clasificación. Vinimos usando ejemplos donde la medida del error era el MSE (variable dependiente continua) pero podemos aplicar todo de la misma manera utilizando alguna medida de clasificación como la cantidad de observaciones mal clasificadas. Todo el resto se mantiene y es válido, tanto sete de validación, como LOOCV o K-Fold.</p>
+<h3 id="bootstrap"><a class="toclink" href="../../2019/07/01/metodos-de-resampleo/#bootstrap">Bootstrap</a></h3>
+<p>El <em>bootstrap</em> es una herramienta estadística muy extendida que se utiliza para cuantificar la incertidumbre asociada a algún estimador o método de aprendizaje estadístico. Un ejemplo sencilla sería que se puede usar para estimar los errores estándar de los coeficientes de una regresión lineal. Sin embargo lo poderoso de esta herramienta es que es utilizable en muchísimos métodos de aprendizaje, incluso en algunos donde es difícil estimar la varianza o esta no es calculado por los paquetes estadísticos.<br />
+Idealmente para estimar la variabilidad de un estimador lo que uno haría es ajustar un modelo n veces y ver cómo varía el estimador a lo largo de esos n modelos utilizando n muestras. Sin embargo no es habitual tener tantos datos ni muestras disponibles. Mismo uno querría utilizar todos los datos en simultáneo posiblemente para reducir el sesgo. Acá es donde bootstrap se luce ya que permite emular el proceso de obtener nuevas muestras de datos a partir de nuestros datos de entrenamiento. <strong>En vez de muestrear de manera independiente sobre la población lo que se hace es muestrear n veces con reposición de nuestro set de entrenamiento, generado n muestras a partir de nuestros datos originales</strong>.
+Ya con nuestras nuevas muestras (provenientes todas del dataset original) podemos calcular n modelos y por ende n veces el mismo estimador, pudiendo estimar el desvío estándar de este.<br />
+En el fondo lo que se hace es suponer que nuestra muestra es <em>representativa</em> de la población y es nuestra mejor aproximación. Luego obtenemos muestras de estos datos que son nuestra versión reducida de la población. Posiblemente haya algún sesgo pero es una herramienta bastante útil para estimar la variabilidad de nuestros estimadores.</p>
+<p>Generamos un ejemplo para ver cómo funciona.</p>
+<p>Empezamos generado una población de y que depende x con intercepto 5 y b1 = 5.</p>
+<pre><code class="language-r">library(ggplot2)
+set.seed(1)
+x &lt;-rnorm(10000, mean = 2, sd = 3)
+y &lt;- 4 + 5*x + rnorm(10000,0,4)
+df &lt;- cbind.data.frame(y,x)
+
+ggplot(data = df, aes( x =x, y =y )) + 
+  geom_point()
+</code></pre>
+<p><img alt="Image" src="../../img/2019-07-01-metodos-de-resampleo-unnamed-chunk-1-1.png" /></p>
+<p>Primero vemos el caso ideal que sería poder obtener muchas muestras de la población y ajustar modelos a estas. Luego veremos como varían nuestros coeficientes.</p>
+<pre><code class="language-r"># Muestras de la población
+results_pop &lt;- data.frame(b0 = double(), b1 = double())
+set.seed(123)
+for (i in 1:1000){
+  df_train &lt;- df[sample(nrow(df),size = 500,replace = FALSE),]
+  ml_train &lt;- lm(formula = y ~ x, data = df_train)
+  results_pop[i,1] = ml_train$coefficients[[1]]
+  results_pop[i,2] = ml_train$coefficients[[2]]
+
+}
+
+summary(results_pop)
+</code></pre>
+<pre><code>##        b0              b1       
+##  Min.   :3.198   Min.   :4.804  
+##  1st Qu.:3.834   1st Qu.:4.969  
+##  Median :3.974   Median :5.005  
+##  Mean   :3.975   Mean   :5.004  
+##  3rd Qu.:4.115   3rd Qu.:5.043  
+##  Max.   :4.615   Max.   :5.169
+</code></pre>
+<pre><code class="language-r">print(paste0(&quot;El desvío estándar de b0 a partir de 1000 modelos es &quot;, sd(x = results_pop$b0)))
+</code></pre>
+<pre><code>## [1] &quot;El desvío estándar de b0 a partir de 1000 modelos es 0.207882713489026&quot;
+</code></pre>
+<pre><code class="language-r">ggplot(data = results_pop) + 
+  geom_histogram( aes( x = b0), fill = &quot;white&quot;, colour = &quot;black&quot;)  + 
+  geom_vline( aes(xintercept = mean(b0)), colour = &quot;red&quot;, size = 1)
+</code></pre>
+<p><img alt="Image" src="../../img/2019-07-01-metodos-de-resampleo-unnamed-chunk-2-1.png" /></p>
+<p>Vemos que estimando 1000 modelos a partir de 500 observaciones independientes de la población original obtenemos para b0 estimaciones centradas aproximadamente en el valor real (3.975) pero con un mínimo encontrado en 3.198 y un máximo en 4.615. El desvío estándar de la estimación es de 0.2078.
+A su vez mostramos un histograma de cómo se distribuye la estimación de b0.</p>
+<p>Ahora simulemos un caso real donde solo tenemos una muestra de 500 observaciones y es todo con lo que podemos trabajar.
+Como primera medida estimamos una regresión lineal y vemos qué parámetros ajustan mejor nuestros datos.</p>
+<pre><code class="language-r"># Muestras de la población
+results_sample &lt;- data.frame(b0 = double(), b1 = double())
+set.seed(456)
+df_train_sample &lt;- df[sample(nrow(df),size = 500,replace = FALSE),]
+ml_train_sample &lt;- lm(formula = y ~ x, data = df_train_sample)
+
+results_sample[1,1] &lt;- ml_train_sample$coefficients[[1]]
+results_sample[1,2] &lt;- ml_train_sample$coefficients[[2]]
+
+knitr::kable(results_sample, caption = &quot;Coefficients&quot;)
+</code></pre>
+<p>Table: Coefficients</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">b0</th>
+<th style="text-align: right;">b1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">3.89621</td>
+<td style="text-align: right;">5.025914</td>
+</tr>
+</tbody>
+</table>
+<p>Vemos que a partir de entrenar el modelo con las 500 observaciones obtenemos un intercepto de 3.896 y un b1 estimado de 5.026.
+Nosotros, como conocemos la población, sabemos que el intercepto no es del todo preciso ya que el real es 4 sin embargo en un caso real eso no lo sabríamos. Nos interesaría saber qué variabilidad tiene ese coeficiente para tener una medida de qué tan variable es nuestro resultado.<br />
+Para una regresión lineal eso se puede saber ya que no es difícil calcular la varianza de los estimadores, pero con modelos más complicados no siempre se puede y ahí es donde bootstrap ayuda realmente. Acá lo hacemos con la regresión lineal porque es lo más sencillo de mostrar.<br />
+Suponiendo que queremos obtener una estimaación de la variabilidad del coeficiente estimado b0 procedemos con bootstrap.</p>
+<p>Fijense que lo que hacemos es distinto al primer caso. Acá tomamos 10000 muestras no de la población sino de nuestro set de 500 observaciones. Estas muestras son también de 500 observaciones, la diferencia es que es con reposición por lo tanto una misma observación puede figurar más de una vez.</p>
+<pre><code class="language-r"># Muestras de la población
+results_bootstrap &lt;- data.frame(b0 = double(), b1 = double())
+set.seed(789)
+for (i in 1:10000){
+  df_train_bs &lt;- df[sample(nrow(df_train_sample),size = 500,replace = TRUE),]
+  ml_train_bs &lt;- lm(formula = y ~ x, data = df_train_bs)
+  results_bootstrap[i,1] = ml_train_bs$coefficients[[1]]
+  results_bootstrap[i,2] = ml_train_bs$coefficients[[2]]
+
+}
+
+summary(results_bootstrap)
+</code></pre>
+<pre><code>##        b0              b1       
+##  Min.   :3.245   Min.   :4.791  
+##  1st Qu.:3.822   1st Qu.:4.982  
+##  Median :3.962   Median :5.020  
+##  Mean   :3.962   Mean   :5.019  
+##  3rd Qu.:4.100   3rd Qu.:5.057  
+##  Max.   :4.709   Max.   :5.205
+</code></pre>
+<pre><code class="language-r">print(paste0(&quot;El desvío estándar de b0 a partir de 10000 modelos es &quot;, sd(x = results_bootstrap$b0)))
+</code></pre>
+<pre><code>## [1] &quot;El desvío estándar de b0 a partir de 10000 modelos es 0.207126704818891&quot;
+</code></pre>
+<pre><code class="language-r">ggplot(data = results_bootstrap) + 
+  geom_histogram( aes( x = b0),fill = &quot;white&quot;, colour = &quot;black&quot;) + 
+  geom_vline( aes(xintercept = mean(b0)), colour = &quot;blue&quot;, size = 1)
+</code></pre>
+<p><img alt="Image" src="../../img/2019-07-01-metodos-de-resampleo-unnamed-chunk-4-1.png" /></p>
+<p>Voilà. Corrimos 10000 iteraciones de nuestro modelo a partir de 10000 muestras de nuestra data original. El desvío estándar de b0 para bootstrap quedó de 0.2071. Que si comparamos con el de 1000 muestras independientes que era 0.2078 es prácticamente igual.
+A su vez, podemos calcular el desvío teórico de b0 a partir del modelo (la solución fácil).</p>
+<pre><code class="language-r">summary(ml_train_sample)
+</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x, data = df_train_sample)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -13.2193  -2.8265   0.0281   2.7421  10.7577 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.89621    0.21607   18.03   &lt;2e-16 ***
+## x            5.02591    0.05902   85.16   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.98 on 498 degrees of freedom
+## Multiple R-squared:  0.9357, Adjusted R-squared:  0.9356 
+## F-statistic:  7252 on 1 and 498 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+<p>Vemos que desde R el modelo nos devuelve que b0 tiene un desvío de 0.21607. Prácticamente igual al desvío de las muestras independientes como al de bootstrap.
+Por otra parte vemos que el promedio de b0 estimado en bootstrap es mucho más cercano a 4 que el estimado con una sola iteración y quedó mucho más cerca que el promedio de los estimados mediante muestras independientes.
+Nada mal no?</p>
+
+    <nav class="md-post__action">
+      <a href="../../2019/07/01/metodos-de-resampleo/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2019-05-25 00:00:00">2019-05-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="./" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              13 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="regresion-lineal-islr-capitulo-3"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/">Regresion Lineal - ISLR Capítulo 3</a></h2>
+<p>La regresión lineal simple es un método muy directo para estimar una variable cuantitativa Y en base a un solo predictor X. Asume que hay una relación lineal entre X e Y.
+$$ Y \approx \beta_0 + \beta_1X$$
+<span class="arithmatex">\(\beta_0\)</span> y <span class="arithmatex">\(\beta_1\)</span> son dos constantes desconocidas que representan al <em>intercepto</em> y a la <em>pendiente</em> del modelo lineal. Son los coeficientes o parámetros. Con nuestros datos podemos estimar coeficientes para predecir futuros valores de Y basados en X y nuestro modelo.</p>
+<h4 id="estimacion-de-coeficientes"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#estimacion-de-coeficientes">Estimación de Coeficientes</a></h4>
+<p>Los coeficientes que buscamos son <span class="arithmatex">\(\hat \beta_0\)</span> y <span class="arithmatex">\(\hat \beta_1\)</span> (estimados, por eso el sombrero) son aquellos que generen una recta que pase lo más cerca posible de todos nuestros datos de entrenamiento. Hay varias manera de definir "cerca" pero la más usada es el enfoque de <em>mínimos cuadrados</em>.</p>
+<p>Supongamos un ejemplo donde tenemos datos de horas trabajadas por ciertos individuos y la paga que reciben. Supongamos a fines del ejemplo que la relación entre salario y horas es lineal (sabemos que no es real...)</p>
+<p>Cuando estimemos <span class="arithmatex">\(\hat \beta_0\)</span> y <span class="arithmatex">\(\hat \beta_1\)</span> obtendremos después un valor <span class="arithmatex">\(\hat y_i\)</span> para cada valor de <span class="arithmatex">\(x_i\)</span> (cada observación), que será el resultado de la predicción de nuestro modelo para ese valor de horas trabajadas.
+$$ \hat y_i = \hat \beta_0 + \hat \beta_1 x_i$$
+Luego <span class="arithmatex">\(e_i = y_i - \hat y_i\)</span> representa el <em>residuo</em>, que es la diferencia entre el valor real del salario para esa observación y el valor que predice nuestro modelo.<br />
+Una métrica importante a saber es la <em>suma de resiudos al cuadrado</em> (RSS por siglas en inglés) que es:
+$$ RSS = e_1^2 + e_2^2 + ... + e_n^2$$
+o de manera equivalente:
+$$ RSS = (y_1 - \hat \beta_0 - \hat \beta_1x_1) ^2 +  (y_2 - \hat \beta_0 - \hat \beta_1x_2) ^2  + ... + (y_n - \hat \beta_0 - \hat \beta_1x_n) ^2 $$</p>
+<p>Que basicamente es la suma de todas las diferencias entre lo predicho por nuestro modelo y el dato real de nuestro set, elevadas al cuadrado. Esto último es principalmente para evitar que se compensen los errores. Sobreestimar por 10 y luego subestimar por 10 tiene como suma de errores 0. Si elevamos esas diferencias al cuadrado, todos los errores serán positivos y se acumularán. En este caso seria <span class="arithmatex">\(10^2\)</span> + <span class="arithmatex">\((-10)^2\)</span>, que es 200.<br />
+El enfoque de mínimos cuadrados estima <span class="arithmatex">\(\hat \beta_0\)</span> y <span class="arithmatex">\(\hat \beta_1\)</span> de tal manera que el RSS sea el mínimo posible dados los datos.  </p>
+<p>Usando un poco de cálculo se puede demostrar que los parámetros que minimizan RSS son:
+$$ \hat \beta_1 = \frac{\sum_{i = 1}^n (x_i - \bar{x}) (y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2}$$
+$$ \hat \beta_0 = \bar{y} - \hat \beta_1\bar{x}$$
+donde <span class="arithmatex">\(\bar{y}\)</span> y <span class="arithmatex">\(\bar{x}\)</span> son las respectivas medias muestrales.</p>
+<p><img alt="Image" src="../../img/2019-05-15-regresion-lineal-islr-reg1-1.png" /></p>
+<p>En nuesto caso usando este set de datos generado ficticiamente obtenemos <span class="arithmatex">\(\hat \beta_0\)</span> = 2.000713 &times; 10<sup>4</sup><br />
+y <span class="arithmatex">\(\hat \beta_1\)</span> = 299.82</p>
+<p>Recordemos que esta es una estimación en base a los datos y no sabemos los verdaderos parámetros de la DGP real(proceso generador de datos). En este caso yo si lo sé porque generé los datos pero en la vida real es inaccesible.<br />
+Lo que hicimos fue estimar, a partir de un set de datos, ciertos coeficientes o característica de una población mucho más amplia. (Todos los trabajadores del país..)</p>
+<h4 id="precision-de-nuestros-estimadores"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#precision-de-nuestros-estimadores">Precisión de nuestros estimadores</a></h4>
+<p>En este caso teníamos una sola muestra pero podríamos haber tenido muchas muestras (K) de la misma población (muchos sets de datos con horas trabajadas y salarios).<br />
+Si estimáramos los coeficientes para cada uno de esos sets obtendríamos K pares de coeficientes, cada uno calculado con las particularidades de esos sets.<br />
+Se puede demostrar que el promedio de una cantidad grande de estimadores provenientes de muchas muestras se centra en el verdadero valor poblacional (si el modelo es correcto). Es decir que el promedio de los K <span class="arithmatex">\(\hat \beta_1\)</span> va a centrarse en el verdadero valor poblacional de <span class="arithmatex">\(\beta_1\)</span> ( y lo mismo para <span class="arithmatex">\(\beta_0\)</span>).<br />
+Pero estos K parámetros centrados en el verdadero valor van a tener cierta dispoersión, es decir, pueden estar todos muy cerca del verdadero o estar muy dispersos pero que en promedio si quede centrado. Esto determina que tan preciso es el coeficiente que estimemos de una muestra.  Este desvío estándar de los parámetros (SE) puede estimarse y depende de la varianza del error del modelo.</p>
+<p>Puede ser útil para calcular los <em>intervalos de confianza</em> de los parámetros. Estos son intervalos que con X% de probabilidad contienen al verdadero valor del parámetro poblacional. Lo más habitual es calcular el intervalo de confianza al 95%.
+Para <span class="arithmatex">\(\hat \beta_1\)</span> esto es aproximadamente:
+$$ \hat \beta_1 \pm 2 \cdot SE(\hat \beta_1)$$
+La interpretación sería que de 100 intervalos que construya de esta manera (de 100 muestras distintas), 95 van a tener al verdadero valor de <span class="arithmatex">\(\beta_1\)</span>.  </p>
+<p>Por otra parte podemos realizar un test de hipotésis de los coeficientes. El más común es testear la siguiente hipótesis nula:<br />
+<em>H_0</em> : No hay relación entre X e Y<br />
+contra la hipótesis alternativa<br />
+<em>H_1</em> : Hay alguna relación entre X e Y<br />
+Lo cual se traduce en:
+$$ H_0 : \beta_1 = 0 $$
+$$ H_1 : \beta_1 \neq 0$$</p>
+<p>Lo que se hace es determinar si <span class="arithmatex">\(\hat \beta_1\)</span> está lo suficientemente lejos de 0 como para rechazar la hipótesis nula. Qué tan lejos es suficiente depende en gran parte del desvío estándar (SE) del coeficiente. Si el SE es grande , necesitaremos valores elevado de <span class="arithmatex">\(\hat \beta_1\)</span> para estar tranquilos con que el valor real no puede ser 0.<br />
+Para esto lo que se hace es calcular el estadístico <em>t</em>:
+$$ t = \frac{\hat \beta_1 - 0}{SE(\hat \beta_1)}$$
+Que mide cuantos desvíos estándar <span class="arithmatex">\(\hat \beta_1\)</span> está alejado de 0. Si no hay relación entre X e Y se espera que el estadístico tenga una distribución t con n - 2 grados de libertad. Dado ese supuesto, lo que se hace es calcular la probabilidad de obtener un valor de t como el de nuestro estadístico, si este proviene de una distribución t con n-2 grados de libertad. Esta probabilidad se la conoce como  <em>p valor</em>.
+Sería qué tan probable es encontrar un valor al menos tan grande como el de t si este proviniera de la distribución t con n-2 grados de libertad. Si esta probabilidad es muy chica (el umbral habitual es 0.05 pero depende del trabajo) uno rechaza la hipótesis nula en favor de la alternativa, suponiendo que sí hay una relación entre X e Y.</p>
+<h4 id="precision-del-modelo"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#precision-del-modelo">Precisión del modelo.</a></h4>
+<p>Naturalmente a uno le interesa saber qué tan bien ajusta nuestro modelo a los datos.</p>
+<p>El método más habitual para regresión lineal es el R^2. Toma valores entre 0 y 1 porque es la proporción de la varianza de Y explicada por nuestro modelo.</p>
+<div class="arithmatex">\[ R^2 = \frac{TSS - RSS}{TSS} = 1 - \frac{RSS}{TSS}\]</div>
+<p>donde $TSS = \sum (y_i -\bar{y})^2 $ es la suma de cuadrados totales y RSS es la suma de errores cuadrados que ya definimos antes. TSS mide la varianza total de Y y representa la variabilidad total inherent de la variable dependiente <em>antes</em> de correr la regresión. Por el contrario RSS mide la variabilidad que queda sin explicar por nuestro modelo (recuerden que proviene de los residuos).  Por lo tanto el numerador TSS - RSS mide la parte de la variabilidad de Y que sí pudo ser explicada por el modelo, y lo divide por la variabilidad total. <span class="arithmatex">\(R^2\)</span> mide entonces la proporción de la variablidad que pudo ser explicada usando X. Cuanto más cerca de 1, mejor.</p>
+<h4 id="regresion-con-multiples-predictores"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#regresion-con-multiples-predictores">Regresión con Múltiples Predictores</a></h4>
+<p>Suena mucho más lógico tratar de explicar una variable dependiente no solo por una independiente si no por varias. La regresión lineal simple puede ampliarse a regresión lineal múltiple donde nuestro modelo pasa a ser:
+$$ \hat y_i = \hat \beta_0 + \hat \beta_1 x_i + ... + \hat \beta_p x_p$$
+Y mantenemos un término de error con distribución normal y media 0.</p>
+<p>En esencia la idea es la misma, explicar la variabilidad de Y basado en la variabilidad de nuestros predictores. La metodología para estimar los coeficientes suele ser Mínimos Cuadrados como vimos antes, sin embargo la solución no suele ser tan fácil de expresar y es más sencillo verlo en términos matriciales o simplemente ver los resultados desde el programa estadístico que estemos usando.
+No olvidar que varias regresiones simples no pueden sumarse en una resgresión múltiple, es decir, los coeficientes de las regresiones simples no tienen por que ser los mismos ni por qué mantener el signo cuando se juntan todas las variables en un solo modelo. Esto sucede porque la regresión múltiple estima coeficientes <em>controlando</em> por todas las otras variables, es decir, quitando el efecto de las otras. Por eso es que por separado quizás dos variables son significativas pero en una regresión múltiple solo una de ellas lo es. En general esto viene dado porque están correlacionadas y se comportan de manera similar. Al final del día no es fácilmente distinguible cuál es realmente la que lidera el efecto.</p>
+<h5 id="hay-relacion-entre-la-dependiente-y-los-predictores-test-f"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#hay-relacion-entre-la-dependiente-y-los-predictores-test-f">Hay relación entre la dependiente y los predictores? (test F)</a></h5>
+<p>En regresión simple vimos el test de hipótesis para ver si el coeficiente de <span class="arithmatex">\(\hat \beta_1\)</span> era significativamente distinto de 0. En regresión múltiple lo que debemos hacer es chequear si <em>todos</em> nuestros coeficientes son distintos de 0. (Y no uno por uno)</p>
+<p>Lo cual se traduce en:
+$$ H_0 : \beta_1 = \beta_2 = ... = \beta_p = 0 $$
+$$ H_1 : \text{Al menos algún } \beta_j \neq 0$$
+El test de hipótesis se hace calculando el estadístico F.
+$$ F = \frac{(TSS - RSS) / p}{RSS / (n - p -1)}$$</p>
+<p>Si los supuestos del modelo lineal se cumplen puede probarse que <span class="arithmatex">\(E[RSS/(n - p-1)] = \sigma^2\)</span> y si <span class="arithmatex">\(H_0\)</span> es verdadera <span class="arithmatex">\(E[(TSS-RSS)/p] = \sigma^2\)</span>. Por lo tanto si no hay relación el estadístico F será cercano a 1 y si en realidad la hipótesis alternativa es verdadera el numerador será mayor que <span class="arithmatex">\(\sigma^2\)</span> y por lo tanto F será mayor que 1. Dependiendo de n, p y del nivel de significatividad que busquemos F deberá superar un umbral distinto para poder rechazar la hipótesis nula.<br />
+Es inevitable mirar los p-valores individuales sin embargo debemos tener cuidado particularmente cuando tenemos muchas variables. Por definición, algunos coeficientes saldrán significativos <em>por azar</em> aunque no tengan relación con la variable dependiente. En el caso típico de significativdad del 95%, esto sucede en promedio el 5% de las veces. Con muchas variables nuestras posibilidades de encontrarnos con al menos algún falso significativo aumentan notoriamente por lo que hay que mirar con cuidado. Por su parte, el estadístico F corrige en su cálculo por la cantidad de coeficientes y por lo tanto no se ve afectado por este problema.</p>
+<h5 id="seleccion-de-variables"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#seleccion-de-variables">Selección de variables</a></h5>
+<p>Cuando tenemos un set de datos grande es habitual tener que seleccionar cuáles son las variables importantes para el modelo. Más allá del conocimiento del problema (fundamental), idealmente lo mejor es probar una gran cantidad de modelos y con alguna métrica de comparación seleccionar los mejores. El problema es que la cantidad de modelos posible crece exponencialmente con la cantidad de variables y esto no es posible.<br />
+En el libro los autores mencionan como alternativas Forward Selection, Backward Selection y Selección mixta. Básicamente son enfoques que prueban una muestra de todos los modelos posibles según la significatividad de las variables. Son métodos iterativos. Habiendo avanzado la disciplina, llegado el caso buscaría otros métodos vigentes para atacar este problema.</p>
+<h5 id="ajsute-del-modelo"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#ajsute-del-modelo">Ajsute del modelo</a></h5>
+<p>Para verificar el ajuste del modelo se sigue usando el <span class="arithmatex">\(R^2\)</span> como métrica principal. En este caso es equivalente a la correlación al cuadrado de Y e <span class="arithmatex">\(\hat Y\)</span>. Un punto a tener en cuenta es que el R^2 nunca puede disminuir al agregar variables ya que el peor escenario posible es que la nueva variable tenga coeficiente de 0 y el ajuste quede igual que antes. Lo que se hace para controlar por esto y poder comparar modelos es ajustar el <span class="arithmatex">\(R^2\)</span> por la cantidad de variables utilizadas o usar el RSE. De cualquier manera lo importante es recordar que el R2 sigue siendo útil en la regresión lineal múltiple.</p>
+<h4 id="otras-consideraciones"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#otras-consideraciones">Otras consideraciones</a></h4>
+<ul>
+<li>
+<p>Las variables independientes admiten variables categóricas! (Binarias o multiclase). Ej: Educación máxima alcanzada.
+Hay que mirar con atención la interpretación. Alteran el intercepto según la categoría de la observación y puede alterar pendientes si se las incluye en interacción con alguna variable continua.</p>
+</li>
+<li>
+<p>El modelo que venimos viendo el aditivo y lineal, pero podemos remover esos supuestos. Por ejemplo podemos agregar interacción entre variable y por lo tanto relajar la aditividad. Esto significa que las variables se modelan multiplicadas entre sí por ejemplo.</p>
+</li>
+</ul>
+<div class="arithmatex">\[ Y = \beta_0 + \beta_1X_1 + \beta_2X_2 +  \beta_3X_1X_2 + \epsilon \]</div>
+<ul>
+<li>Podemos aproximar relaciones no lineales extendiendo el modelo a regresión polinómica.
+Suponiendo que los datos provienen de un modelo polinómico, podemos ver en el siguiente gráfico cómo cambia al agregar el término de no linealidad.
+La línea naranja es la regresión lineal simple y la celeste (que ajusta casi perfecto) es la regresión polinómica que respeta el proceso generador de los datos (la ecuación que se ve en el gráfico). Vemos que la variable Y depende de X linealmente pero también de X al cuadrado, lo que le da la curvatura.</li>
+</ul>
+<p><img alt="Image" src="../../img/2019-05-15-regresion-lineal-islr-reg2-1.png" /></p>
+<h4 id="potenciales-problemas"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#potenciales-problemas">Potenciales problemas</a></h4>
+<h5 id="no-linealidad-de-los-datos"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#no-linealidad-de-los-datos">No linealidad de los datos</a></h5>
+<p>Si la relación entre nuestras variables independientes y la dependiente no es lineal nuestro modelo va a tener sesgo alto. Para el modelo simple es fácil de ver al graficar X vs Y en un gráfico de puntos pero con muchas variables eso ya no es tan sencillo. Un buen enfoque es realizar una regresión lineal y graficar los residuos contra los valores predichos.</p>
+<p>Es un caso un poco extremo pero supongamos que la relación es no lineal, polinómica  de orden 2 (como el ejemplo de arriba).<br />
+Si nosotros corremos una regresión lineal, nuestros residuos van a seguir un patrón muy obvio.
+<img alt="Image" src="../../img/2019-05-15-regresion-lineal-islr-unnamed-chunk-2-1.png" /></p>
+<p>Claramente en ese gráfico el residuo no está centrado en 0...
+En cambio, si nosotros corremos una regresión lineal para un modelo realmente lineal, o para este caso, corremos un modelo no lineal, deberíamos ver una nube de puntos dispersa para los resiudos, centrada en 0 y con algún desvío estándar.
+Idealmente veríamos algo asi.</p>
+<p><img alt="Image" src="../../img/2019-05-15-regresion-lineal-islr-unnamed-chunk-3-1.png" /></p>
+<h5 id="correlacion-de-los-terminos-de-error"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#correlacion-de-los-terminos-de-error">Correlación de los términos de error</a></h5>
+<p>Uno de los supuestos de la regresión lineal es que los errores no están correlacionados, es decir que el error <span class="arithmatex">\(\epsilon_i\)</span> de una observación no nos aporta información acerca del error <span class="arithmatex">\(\epsilon_j\)</span> de otra observación. Son independientes.<br />
+Si esto no se cumple lo que sucede es que el SE de los coeficientes estimados es menor al real y puede llevarnos a confiar más en nuestro modelo de lo que deberíamos.<br />
+Los errores correlacionados suelen suceder más frecuentemente en series de tiempo pero también pueden darse  en estudios experimentales mal diseñados.</p>
+<h5 id="varianza-de-los-terminos-de-error-no-constante-heterocedasticidad"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#varianza-de-los-terminos-de-error-no-constante-heterocedasticidad">Varianza de los términos de error no constante. (Heterocedasticidad)</a></h5>
+<p>Otro supuesto de la regresión lineal es que la varianza de los errores es constante <span class="arithmatex">\(Var(\epsilon_i) = \sigma^2\)</span>. Esto no siempre es el caso.
+En este ejemplo vemos como los resiudos siguen centrados en 0 pero con una dispersión mucho mayor a medida que avanzamos en el eje X.
+<img alt="Image" src="../../img/2019-05-15-regresion-lineal-islr-unnamed-chunk-4-1.png" />
+Entre las soluciones para este problema se encuentra transformar la variable dependiente - <span class="arithmatex">\(ln(y)\)</span> por ejemplo, o utilizar Mínimos cuadrados ponderados, que pondera por la inversa de la varianza. El libro no se explaya mucho más al respecto en este capítulo.</p>
+<h5 id="outliers"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#outliers">Outliers</a></h5>
+<p>Los outliers son observaciones cuya variable dependiente tienen valores que se alejan mucho del patrón regular de los datos, por ejemplo debido a un error de medición o problema al registrar la información. Los outliers pueden tener diversas consecuencias en los modelos lineales. Puede afectar la estimación de los parámetros, puede afectar el ajuste del modelo (caída del <span class="arithmatex">\(R^2\)</span>) o puede por ejemplo aumentar los intervalos de confianza ya que el outlier afecta el RSE que es común a todos los intervalos. Todo esto puede ser generado por una sola observación. Generalmente si no se distinguen en el análisis exploratorio pueden saltar a la vista analizando los resiudos del modelo (o los residuos estandarizados).</p>
+<h5 id="puntos-con-alto-leverage"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#puntos-con-alto-leverage">Puntos con alto "leverage"</a></h5>
+<ul>
+<li>Si alguno tiene una traducción satisfactoria bienvenido sea..
+Los puntos con alto leverage son aquellos cuyo valor de la variable independiente se aleja del rango estándar. Las observaciones con esta característica tienden a afectar en buena medida a la curva ajustada y por ende a los parámetros de nuestro modelo. Nuestra estimación por mínimos cuadrados puede verse muy influenciada por estos puntos e invalidar el ajuste por eso es muy necesario identificar estas observaciones.<br />
+En regresión simple es sencillo de ver porque resaltan si graficamos una nube de puntos pero en regresión múltiple es más difícil de ver ya que debemos encontrar anomalías en el conjunto de todas las variables. Es decir que una observación puede estar en el rango individual de cada variable pero si miramos a nivel conjunto, esa combinacion dentro de los rangos individuales es súper anómala. Con más de dos variables independientes se dificulta identificar visualmente. Para ayudar en estos casos se puede calcular el <em>estádistico de leverage</em> en algún programa estadístico.</li>
+</ul>
+<h5 id="colinealidad"><a class="toclink" href="../../2019/05/25/regresion-lineal-islr/#colinealidad">Colinealidad</a></h5>
+<p>Este problema refiere a la alta correlación entre variables independientes del modelo, es decir que tienden a aumentar o decrecer de manera conjunta. Esto genera que sea difícil (o imposible en el extremo) diferenciar el impacto de cada una de ellas en la variable dependiente.<br />
+En una regresión lineal esto se traduce en aumento de la varianza de los estimadores y por ende incertidumbre sobre los parámetros estimados. A modo intuitivo, con variables con alta correlación puede haber una gran cantidad de combinaciones de coeficientes para estas variables que resulten en un mismo ajuste (<span class="arithmatex">\(R^2\)</span>) y por ende mínimos cuadrados es <em>indistinto</em> frente a ellos. Cambiando alguna observación puede que el modelo pase de una combinación a otra muy disinta en ese arco de posibilidades. Otra consecuencia es que el aumento de la varianza de los coeficientes reduce el estadístico t que miramos para la significatividad y puede que lleve a no rechazar una hipótesis nula que debía ser rechazada. La potencia del test de hipótesis se ve disminuida por la colinealidad.<br />
+No solo la correlación sirve para detectar colinealidad. Puede existir multicolinealidad en donde varias variables son colineales aún sin tener alta correlación de a pares. Posiblemente se deba a combinación lineal generada por algunas de las variables. Para estos casos lo que se puede mirar es el VIF ( Variance Inflation Factor) en inglés. Este estadístico se calcula para cara variable y compara la varianza del estimador al tener la variable en el modelo versus ajustando un modelo solo con esa variable. Cuanto mayor es el VIF, mayores problemas de colinealidad resalta.
+Se puede calcular con la siguiente formula donde <span class="arithmatex">\(R^2_{X_j|X_{-j}}\)</span> es el <span class="arithmatex">\(R^2\)</span> de la regresión de <span class="arithmatex">\(X_j\)</span> contra todas las otras variables independientes del modelo.
+$$ VIF(\hat \beta_j) = \frac{1}{1 - R^2_{X_j|X_{-j}}}$$
+La solución a este problema suele ser descartar alguna de las variables o agruparlas de alguna manera para quedarnos con una única variable que represente a ambas.</p>
+
+    <nav class="md-post__action">
+      <a href="../../2019/05/25/regresion-lineal-islr/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  <span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page/2/">2</a>
+</nav>
+        
+      
+    </div>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../personal-growth/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Personal Growth" rel="prev">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Personal Growth
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../algebra/" class="md-footer__link md-footer__link--next" aria-label="Next: algebra" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                algebra
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

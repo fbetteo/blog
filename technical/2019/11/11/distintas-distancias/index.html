@@ -1,0 +1,1305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../10/31/maxima-verosimilitud-y-estimacion-bayesiana/">
+      
+      
+        <link rel="next" href="../../../../2020/04/18/proceso-poisson-y-distribucion-exponencial/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Distintas Distancias - Franco Betteo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#distintas-distancias" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Franco Betteo
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Distintas Distancias
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Technical posts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://sportsjobs.online" class="md-tabs__link">
+        
+  
+    
+  
+  Job Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../nba_salaries/" class="md-tabs__link">
+          
+  
+    
+  
+  NBA salaries legacy model
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Franco Betteo
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../.." class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Technical posts
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/estadistica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    machine learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/personal-growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal Growth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algebra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/matematica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    matematica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://sportsjobs.online" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../nba_salaries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NBA salaries legacy model
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#distancia-euclideana" class="md-nav__link">
+    Distancia Euclideana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distancia-de-manhattan" class="md-nav__link">
+    Distancia de Manhattan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#similaridad-coseno" class="md-nav__link">
+    Similaridad coseno
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distancia-de-mahalanobis" class="md-nav__link">
+    Distancia de Mahalanobis
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__title">
+                <div class="md-nav__link">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+              </li>
+              <li class="md-nav__item">
+                <div class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                  <time datetime="2019-11-11 00:00:00" class="md-ellipsis">2019-11-11</time>
+                </div>
+              </li>
+              
+              
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                    <span class="md-ellipsis">
+                      in
+                      
+                        <a href="../../../../category/algebra/">algebra</a>, 
+                        <a href="../../../../category/estadistica/">estadistica</a>, 
+                        <a href="../../../../category/matematica/">matematica</a></span>
+                  </div>
+                </li>
+              
+              
+                
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                    <span class="md-ellipsis">
+                      
+                        7 min read
+                      
+                    </span>
+                  </div>
+                </li>
+              
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="distintas-distancias">Distintas Distancias</h1>
+<pre><code class="language-r">library(tidyverse)
+</code></pre>
+<p>Si tenemos un espacio euclideo, es decir, una linea, un plano o un hiperplano, que son los espacios
+típicos de la geometría clásica, podemos calcular la distancia entre dos puntos que se hayen en él.</p>
+<p>Es decir, cuál es la distancia entre los puntos A (1,1) y B (1,0) en un plano?
+Empecemos pensando en los casos donde todos los valores del vector son numéricos.</p>
+<pre><code class="language-r">A = c(0,0,1,1)
+B = c(0,0,1,0)
+recta = c(1,1,1,0)
+df = as.data.frame(matrix(data = c(A,B, recta),
+                          nrow = 4, 
+                          ncol = 4,
+                          byrow = TRUE )) %&gt;%
+  rename( x0 = V1,
+          y0 = V2,
+          x1 = V3,
+          y1 = V4)
+
+
+ggplot(data=df[1:2,], aes(x=x0, y=y0)) + 
+  geom_segment(aes(xend=x1, yend=y1),
+               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) + 
+  geom_point( aes(x = x1, y = y1), 
+              color = &quot;red&quot;, size = 2)
+</code></pre>
+<p><img alt="Image" src="../../../../img/2019-11-11-distintas-distancias-unnamed-chunk-2-1.png" /></p>
+<h3 id="distancia-euclideana">Distancia Euclideana</h3>
+<p>La métrica más habitual que se utiliza es la distancia euclideana, que consiste en la recta que une ambos puntos. </p>
+<pre><code class="language-r">ggplot(data=df[1:2,], aes(x=x0, y=y0))+
+  geom_segment(aes(xend=x1, yend=y1),
+               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) + 
+  geom_point(aes(x = x1, y = y1), 
+               color = &quot;red&quot;, size = 2) + 
+  geom_segment(data = df[3,], 
+               aes(xend=x1, yend=y1),
+               color = &quot;blue&quot;, 
+               arrow = arrow(length = unit(0.3,&quot;cm&quot;)))
+</code></pre>
+<p><img alt="Image" src="../../../../img/2019-11-11-distintas-distancias-unnamed-chunk-3-1.png" /></p>
+<p>Esta distancia se calcula con:<br />
+<span class="arithmatex">\(<span class="arithmatex">\(d(A,B) = d(B,A) = \sqrt{(A_1 - B_1)^2 + (A_2 - B_2)^2 + ... + (A_n - B_n)^2}  
+= \sqrt{\sum_{i=1}^n (A_i - B_i)^2}\)</span>\)</span></p>
+<p>Como se ve en la imagen, los puntos A y B pueden verse como vectores que inician en el origen (0,0). La distancia euclidea es a su vez la distancia entre sus puntas, que a su vez puede pensarse como un vector de desplazamiento (de A a B por ejemplo).</p>
+<p>En este caso la distancia euclidea es:
+<span class="arithmatex">\(<span class="arithmatex">\(d(A,B) = \sqrt{ (1-1)^2 + (1 - 0)^2} = 1\)</span>\)</span>
+Y que es algo visible en el gráfico.</p>
+<p>De manera más general, podemos definir toda una familia de distancias en el espacio euclideo.
+<em>Las distancias de Minkowsky.</em></p>
+<p>La distancia Minkowsky de orden p es:
+<span class="arithmatex">\(<span class="arithmatex">\(d(A,B) = d(B,A) = \Bigg({\sum_{i=1}^n |A_i - B_i|^p}\Bigg)^{1/p}\)</span>\)</span></p>
+<p>Vemos que si p = 2, entonces la distancia de Minkowsky no es otra que la distancia euclideana.</p>
+<h3 id="distancia-de-manhattan">Distancia de Manhattan</h3>
+<p>Otro valor que suele tomarse para p es p = 1, y eso corresponde a la <em>distancia de Manhattan</em>.</p>
+<p>Esta distancia se calcula con:<br />
+<span class="arithmatex">\(<span class="arithmatex">\(d(A,B) = d(B,A) =  |A_1 - B_1| + |A_2 - B_2| + ... + |A_n - B_n|  
+=\sum_{i=1}^n |A_i - B_i|\)</span>\)</span></p>
+<p>Es básicamente la suma de las diferencias absolutas entre las distintas dimensiones de los vectores.</p>
+<p>Luce asi.</p>
+<pre><code class="language-r">A = c(0,0,3,3)
+B = c(0,0,2,1)
+recta = c(2,1,3,3)
+manhattan1 = c(2,1,3,1)
+manhattan2 = c(3,1,3,3)
+
+df = as.data.frame(matrix(data = c(A,B, recta, manhattan1, manhattan2),
+                          nrow = 5, 
+                          ncol = 4,
+                          byrow = TRUE )) %&gt;%
+  rename( x0 = V1,
+          y0 = V2,
+          x1 = V3,
+          y1 = V4)
+
+
+ggplot(data=df[1:2,], aes(x=x0, y=y0)) + 
+    geom_point( aes(x = x1, y = y1), 
+              color = &quot;red&quot;, size = 2) + 
+      geom_segment(data = df[3,], 
+               aes(xend=x1, yend=y1, color = &quot;blue&quot;),
+               #color = &quot;blue&quot;, 
+               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) +
+      geom_segment(data = df[4,], 
+               aes(xend=x1, yend=y1,  color = &quot;green&quot;,),
+               #color = &quot;green&quot;, 
+               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) + 
+      geom_segment(data = df[5,], 
+               aes(xend=x1, yend=y1),
+               color = &quot;green&quot;, 
+               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) +
+      scale_colour_manual(name = 'the colour', 
+         values =c('blue'='blue','green'='green'),
+         labels = c('Euclideana','Manhattan'))
+</code></pre>
+<p><img alt="Image" src="../../../../img/2019-11-11-distintas-distancias-unnamed-chunk-4-1.png" /></p>
+<p>Vemos como el valor abosluto imposibilita ir en dirección diagonal. Lo que se logra es medir la distancia como si hubiera una grilla como la del gráfico. Su nombre proviene de su utilización para medir distancias al interior de una ciudad (uno no puede cruzar las manzanas por el medio!).</p>
+<p>Para saber cual conviene utilizar hay que pensar en el problema en cuestión. </p>
+<ul>
+<li>Ya sea medir distancias en ciudades o donde haya restricciones de ese tipo puede que Manhattan sea más apropiado.  </li>
+<li>Por otra parte al no elevar al cuadrado le da menos pesos a las grandes distancias o mismo outliers por lo que puede ser otro motivo válido.  </li>
+<li>Por último, algunos trabajos argumentan que es más adecuada en problema de alta dimensionalidad (o mismo valores menores a 1 en el exponente de la formula de Minkowsky)</li>
+</ul>
+<h3 id="similaridad-coseno">Similaridad coseno</h3>
+<p>La similaridad coseno se utiliza cuando se quiere ver la similitud "angular" entre dos observaciones y no la distancia en el plano. Es decir, vemos la dirección pero no la magnitud</p>
+<pre><code class="language-r">A = c(0,0,1,1)
+B = c(0,0,2,2)
+C = c(0,0,5,0)
+
+df = as.data.frame(matrix(data = c(A,B,C),
+                          nrow = 3, 
+                          ncol = 4,
+                          byrow = TRUE )) %&gt;%
+  rename( x0 = V1,
+          y0 = V2,
+          x1 = V3,
+          y1 = V4)
+
+
+ggplot(data=df[1:3,], aes(x=x0, y=y0 )) + 
+  geom_segment(aes(xend=x1, yend=y1),
+               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) + 
+  geom_point( aes(x = x1, y = y1), 
+              color = &quot;red&quot;, size = 2) + 
+  geom_text(aes(x=x1, y = y1, label = c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)),
+            vjust = -0.5)
+</code></pre>
+<p><img alt="Image" src="../../../../img/2019-11-11-distintas-distancias-unnamed-chunk-5-1.png" /></p>
+<p>Si hicieramos la distancia euclideando entre A y B obtendriamos el valor de la distancia en el plano, sin embargo podemos ver que se encuentran sobre la misma recta y por lo tanto su dirección es la misma. La similaridad coseno mide el ángulo entre dos puntos. En este caso el ángulo entre A y B es 0, y por ende su similaridad coseno es 1. Ambas tendrían la misma similaridad con cualquier otro punto de la misma recta, por más alejado que esté.
+Respecto a C, tanto A y B tiene comparten el ángulo por lo tanto la similaridad coseno entre A y C será la misma que entre B y C.</p>
+<pre><code class="language-r">cosA = c(1,1)
+cosB = c(2,2)
+cosC = c(5,0)
+
+# Similaridad coseno entre A y B
+lsa::cosine(cosA, cosB)[[1]]
+</code></pre>
+<pre><code>## [1] 1
+</code></pre>
+<pre><code class="language-r"># Similaridad coseno entre A y C
+lsa::cosine(cosA, cosC)[[1]]
+</code></pre>
+<pre><code>## [1] 0.7071068
+</code></pre>
+<pre><code class="language-r"># Similaridad coseno entre B y C
+lsa::cosine(cosC, cosB)[[1]]
+</code></pre>
+<pre><code>## [1] 0.7071068
+</code></pre>
+<p>Hay que tener en cuenta el contexto de nuestro problema para decidir qué medida de distancia usar. Por ejemplo la similaridad coseno se usa de manera estándar en análisis de texto (text mining).</p>
+<h3 id="distancia-de-mahalanobis">Distancia de Mahalanobis</h3>
+<p>La distancia de Mahalanobis tiene la particularidad que mide la distancia entre un punto (P) y una distribución de datos (D). Si tenemos una nube de puntos correspondiente a una distribución D, cuanto más cerca esté P del centro de masa (o "promedio") más cerca se encuetran P y D. Intuitivamente sirve para pensar si P puede pertenecer a D o no.<br />
+Dado que la nube de puntos no tiene por qué ser una esfera (donde cada dirección tiene la misma cantidad de puntos), hay que tener en cuenta cómo se dispersan los puntos alrededor del centro de masa.</p>
+<p>No es lo mismo, </p>
+<pre><code class="language-r">esfera = as.data.frame(MASS::mvrnorm(1000, mu = c(3,3), 
+                                     Sigma = matrix(c(1,0,0,1),
+                                                    nrow = 2,
+                                                    ncol = 2)))
+
+ggplot(data = esfera, aes(x = V1, y = V2)) + 
+  geom_point() + 
+  geom_point(data = as.data.frame(matrix(c(6,2),ncol = 2)), 
+             aes(x = V1, y = V2), color = &quot;red&quot;) + 
+  geom_text(data = as.data.frame(matrix(c(6,2),ncol = 2)),
+            aes(x = V1, y = V2,label = &quot;P&quot;),
+            vjust = 1.5, color = &quot;blue&quot;) +
+  labs(title = &quot;Distribución esférica&quot;)
+</code></pre>
+<p><img alt="Image" src="../../../../img/2019-11-11-distintas-distancias-unnamed-chunk-7-1.png" /></p>
+<p>que,</p>
+<pre><code class="language-r">elipse = as.data.frame(MASS::mvrnorm(1000, mu = c(3,3), 
+                                     Sigma = matrix(c(1,0.6,0.6,1),
+                                                    nrow = 2,
+                                                    ncol = 2)))
+
+
+
+ggplot(data = elipse, aes(x = V1, y = V2)) + 
+  geom_point() + 
+  geom_point(data = as.data.frame(matrix(c(6,2),ncol = 2)), 
+             aes(x = V1, y = V2), color = &quot;red&quot;) + 
+  geom_text(data = as.data.frame(matrix(c(6,2),ncol = 2)),
+            aes(x = V1, y = V2,label = &quot;P&quot;),
+            vjust = 1.5, color = &quot;blue&quot;) +
+  labs(title = &quot;Distribución Elíptica&quot;)
+</code></pre>
+<p><img alt="Image" src="../../../../img/2019-11-11-distintas-distancias-unnamed-chunk-8-1.png" /></p>
+<p>Los centros de masa son los mismos y lo único que cambia es la matriz de variancias y covarianzas (o como se correlacionan las variables). La distancia de P al centro es la misma, pero está claro que en el caso esférico P se encuentra más cerca de la distribución que en el caso elíptico.</p>
+<p>Mahalanobis tiene en cuenta este aspecto ya que involucra la matriz de varianzas y covarianzas.</p>
+<p>La distancia entre el punto x y la distribución con vector de medias <span class="arithmatex">\(\vec{\mu}\)</span> y matriz de covarianzas S es:
+$$ D_M(\vec{x}) = \sqrt{(\vec{x} - \vec{\mu})^TS^{-1}(\vec{x} - \vec{\mu})})$$</p>
+<p>Tanto el vector <span class="arithmatex">\(\vec{x}\)</span> como la distribución pueden ser multivariadas (como se ve en los gráficos de arriba).</p>
+<p>Tener en cuenta que si tenemos dos puntos provenientes de la misma distribución, podemos usar la distancia de Mahalanobis como una medida de disimilaridad:
+$$ D_M(\vec{x},\vec{y}) = \sqrt{(\vec{x} - \vec{y})^TS^{-1}(\vec{x} - \vec{y})})$$
+Veamos por ejemplo como queda la distancia de P a las distribuciones esféricas y elípticas graficadas.</p>
+<pre><code class="language-r"># Caso Esférico
+
+mahalanobis(x = c(6,2), 
+            center = c(3,3), 
+            cov = matrix(c(1,0,0,1),
+                         nrow = 2,
+                         ncol = 2))
+</code></pre>
+<pre><code>## [1] 10
+</code></pre>
+<pre><code class="language-r"># Caso Elíptico
+mahalanobis(x = c(6,2), 
+            center = c(3,3), 
+            cov = matrix(c(1,0.6,0.6,1),
+                         nrow = 2,
+                         ncol = 2))
+</code></pre>
+<pre><code>## [1] 21.25
+</code></pre>
+<p>Queda claro que P es más cercano a la distribución esférica que a la elíptica.</p>
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../10/31/maxima-verosimilitud-y-estimacion-bayesiana/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Maxima Verosimilitud y estimacion bayesiana" rel="prev">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Maxima Verosimilitud y estimacion bayesiana
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../../2020/04/18/proceso-poisson-y-distribucion-exponencial/" class="md-footer__link md-footer__link--next" aria-label="Next: Proceso Poisson y distribucion exponencial" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Proceso Poisson y distribucion exponencial
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1273 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../05/03/anova/">
+      
+      
+        <link rel="next" href="../../18/disitrbucion-dirichlet-como-prior-de-mulitnomial/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>De R a Python 1 - Franco Betteo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#de-r-a-python-1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Franco Betteo
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              De R a Python 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Technical posts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://sportsjobs.online" class="md-tabs__link">
+        
+  
+    
+  
+  Job Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../nba_salaries/" class="md-tabs__link">
+          
+  
+    
+  
+  NBA salaries legacy model
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Franco Betteo
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../.." class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Technical posts
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/estadistica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    machine learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/personal-growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal Growth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algebra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/matematica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    matematica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://sportsjobs.online" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../nba_salaries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NBA salaries legacy model
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usar-objetos-de-otros-scripts" class="md-nav__link">
+    Usar objetos de otros scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seleccionar-columas-de-dataframe-por-patron-en-el-nombre" class="md-nav__link">
+    Seleccionar columas de dataframe por patrón en el nombre
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juntar-dataframes-por-indice" class="md-nav__link">
+    Juntar dataframes por indice
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ifelse" class="md-nav__link">
+    Ifelse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dropear-columna-de-df" class="md-nav__link">
+    Dropear columna de DF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remplazar-determinado-valor-por-nan-u-otro" class="md-nav__link">
+    Remplazar determinado valor por NaN (u otro)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-aplicar-funciones-a-cada-fila-o-columna" class="md-nav__link">
+    APPLY. Aplicar funciones a cada fila o columna
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apply-lambda-para-pasar-funciones-custom-en-el-momento" class="md-nav__link">
+    Apply Lambda para pasar funciones custom en el momento
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculos-by-group" class="md-nav__link">
+    Calculos by group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila" class="md-nav__link">
+    By Group más complejo, con calculo acumulado en determinada ventana de obs. por cada fila
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__title">
+                <div class="md-nav__link">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+              </li>
+              <li class="md-nav__item">
+                <div class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                  <time datetime="2020-07-11 00:00:00" class="md-ellipsis">2020-07-11</time>
+                </div>
+              </li>
+              
+              
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                    <span class="md-ellipsis">
+                      in
+                      
+                        <a href="../../../../category/r/">R</a>, 
+                        <a href="../../../../category/python/">Python</a></span>
+                  </div>
+                </li>
+              
+              
+                
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                    <span class="md-ellipsis">
+                      
+                        3 min read
+                      
+                    </span>
+                  </div>
+                </li>
+              
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="de-r-a-python-1">De R a Python 1</h1>
+<p>Serie que documenta cuestiones prácticas que voy descubriendo a medida que empiezo a incursionar en Python un poco más enserio.
+Son más que nada recordatorios para el futuro de mecánicas que hoy entiendo, pero me voy a olvidar.</p>
+<p>Muchos de los objetos no van a tener relación entre sí o no se puede correr el código directo 
+ya que son copy/paste random de scripts.</p>
+<h3 id="usar-objetos-de-otros-scripts">Usar objetos de otros scripts</h3>
+<p>Si uno genera modelos, dataframes, etc en otro script por prolijidad y quiere utilizarlos en 
+el principal (o cualquiera en realidad) lo aconsejable es exportarlo como objeto pickle (algo 
+asi como los RDS en R.)</p>
+<pre><code class="language-r">library(reticulate)
+</code></pre>
+<pre><code class="language-python">import pickle
+import pandas as pd
+
+# exportar. Objeto, archivo, permisos
+pickle.dump(OBJETO, open(&quot;working/qualifying.p&quot;, &quot;wb&quot;))
+
+# importar
+leer = pd.read_pickle('archivo.p')
+</code></pre>
+<h3 id="seleccionar-columas-de-dataframe-por-patron-en-el-nombre">Seleccionar columas de dataframe por patrón en el nombre</h3>
+<p>Para seleccionar columnas basados en si contiene determinado string en su nombre y no solo por nombre
+completo o por índice. </p>
+<pre><code class="language-python"># Recordemos que iloc selecciona por índice
+# Función Lambda  que convierte el indice de columna en strings y devuelve mascara (True/false)
+# si contiene determinado patrón. Creo que puede ponerse cualquier Regex
+df2 = df.iloc[:, lambda df:df.columns.str.contains('_points')] # select column based on name
+</code></pre>
+<p>Si queremos combinar esto con otras columnas con otro patrón no encontré manera más sencilla por
+el momento que combinar por separado. Quizás es muy tedioso si son muchas.</p>
+<pre><code class="language-python"># Notar que en point_vars le pasamos la máscara al listado de columnas nuevamente
+# para quedarnos con el nombre real y poder sumarlo a las otras listas
+# luego lo convertimos en lista porque el objeto es de tipo índice si no.
+target = ['position']
+qualy_vars = ['grid', 'dif_to_min_perc']
+point_vars = list(results.columns[results.columns.str.contains('_points')])
+
+vars_keep = target + qualy_vars + point_vars
+</code></pre>
+<h3 id="juntar-dataframes-por-indice">Juntar dataframes por indice</h3>
+<p>Los DF vienen por default con un índice. Si uno trabaja con una copia del DF original para generar nuevas columnas el índice se mantiene (si no lo reseteamos claro). También útil si se tienen varias tablas con mismo índice.</p>
+<p>Esto permite juntar tablas sin tener que hacer un merge explicito por determinadas columnas si no
+tenemos esos keys.</p>
+<pre><code class="language-python">results = results.join(driver_points_merge) # join by index (no need to merge with column)
+</code></pre>
+<h3 id="ifelse">Ifelse</h3>
+<p>El equivalente de IFELSE en R para rapidamente crear una columna basado en otras, fila por fila.</p>
+<pre><code class="language-python">import numpy as np
+#               = condicion, valor si True, valor si False
+df['position'] = np.where(df['position'] &gt; 1, 0, 1)
+</code></pre>
+<h3 id="dropear-columna-de-df">Dropear columna de DF</h3>
+<p>Útil para asegurar que sacan el target de las X...</p>
+<pre><code class="language-python">X = df.drop(columns=&quot;position&quot;)
+</code></pre>
+<h3 id="remplazar-determinado-valor-por-nan-u-otro">Remplazar determinado valor por NaN (u otro)</h3>
+<p>df.replace</p>
+<pre><code class="language-python">qualifying = qualifying.replace('\\N', np.nan)
+</code></pre>
+<h3 id="apply-aplicar-funciones-a-cada-fila-o-columna">APPLY. Aplicar funciones a cada fila o columna</h3>
+<p>Permite aplicar una función por fila o columna.La funcion se aplica sobre la serie (la fila o columna)
+La serie mantiene los indices. Si usamos apply con axis = 1 que cada serie es una fila entera, 
+podemos llamar a la celda correspondiente usando ['columna']</p>
+<p>Apply es como las distintas versiones de apply de R y/o MAP del tidyverse cuando se aplica a un DF.</p>
+<pre><code class="language-python">import pandas as pd
+rectangles = [
+    { 'height': 40, 'width': 10 },
+    { 'height': 20, 'width': 9 },
+    { 'height': 3.4, 'width': 4 }
+]
+
+rectangles_df = pd.DataFrame(rectangles)
+rectangles_df
+
+
+# Suma de todas las celdas (&quot;filas&quot;) por columna
+</code></pre>
+<pre><code>##    height  width
+## 0    40.0     10
+## 1    20.0      9
+## 2     3.4      4
+</code></pre>
+<pre><code class="language-python">suma_por_columna = rectangles_df.apply(sum)
+print(suma_por_columna)
+
+# Suma de todas las celdas (&quot;columnas&quot;) por filas
+</code></pre>
+<pre><code>## height    63.4
+## width     23.0
+## dtype: float64
+</code></pre>
+<pre><code class="language-python">suma_por_fila = rectangles_df.apply(sum, axis = 1)
+print(suma_por_fila)
+</code></pre>
+<pre><code>## 0    50.0
+## 1    29.0
+## 2     7.4
+## dtype: float64
+</code></pre>
+<h3 id="apply-lambda-para-pasar-funciones-custom-en-el-momento">Apply Lambda para pasar funciones custom en el momento</h3>
+<pre><code class="language-python">import pandas as pd
+rectangles = [
+    { 'height': 40, 'width': 10 },
+    { 'height': 20, 'width': 9 },
+    { 'height': 3.4, 'width': 4 }
+]
+
+rectangles_df = pd.DataFrame(rectangles)
+
+def multiplicar_2(x):
+   return x*2
+
+# Caso donde paso una funcion propia predefinida
+rectangles_df.apply(multiplicar_2)
+
+
+# Lo mismo pero definido en el momento
+</code></pre>
+<pre><code>##    height  width
+## 0    80.0     20
+## 1    40.0     18
+## 2     6.8      8
+</code></pre>
+<pre><code class="language-python">rectangles_df.apply(lambda x: x*2)
+</code></pre>
+<pre><code>##    height  width
+## 0    80.0     20
+## 1    40.0     18
+## 2     6.8      8
+</code></pre>
+<h3 id="calculos-by-group">Calculos by group</h3>
+<p>Como el bygroup de tidyverse.</p>
+<pre><code class="language-python"># Equivalente a  groupby(raceid) %&gt;% summarise(newcol = min(best_qualy_ms))
+min_qualy_by_race = qualifying.groupby('raceId')['best_qualy_ms'].min()
+</code></pre>
+<h3 id="by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila">By Group más complejo, con calculo acumulado en determinada ventana de obs. por cada fila</h3>
+<pre><code class="language-python"># suma acumulada de los ultimos 4 periodos (rolling)
+# luego el gorupby(level = 0).shift() es para lagearlo por grupo
+# el ultimo reset_index es para quitar el indice de este ultimo agrupado
+driver_points.groupby('driverId')['points'].rolling(4, min_periods = 4).sum().groupby(level = 0).shift().fillna(0).reset_index(level = 0)['points']
+</code></pre>
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../05/03/anova/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ANOVA" rel="prev">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                ANOVA
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../18/disitrbucion-dirichlet-como-prior-de-mulitnomial/" class="md-footer__link md-footer__link--next" aria-label="Next: Distribucion Dirichlet como prior de Multinomial" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Distribucion Dirichlet como prior de Multinomial
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

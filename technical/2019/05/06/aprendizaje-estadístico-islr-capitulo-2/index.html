@@ -1,0 +1,1261 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../04/20/esencia-del-algebra-lineal/">
+      
+      
+        <link rel="next" href="../../25/regresion-lineal-islr/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Aprendizaje Estadístico - ISLR Capitulo 2 - Franco Betteo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aprendizaje-estadistico-islr-capitulo-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Franco Betteo
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Aprendizaje Estadístico - ISLR Capitulo 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Technical posts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://sportsjobs.online" class="md-tabs__link">
+        
+  
+    
+  
+  Job Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../nba_salaries/" class="md-tabs__link">
+          
+  
+    
+  
+  NBA salaries legacy model
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Franco Betteo
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../.." class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Technical posts
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/estadistica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    machine learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/personal-growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal Growth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algebra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/matematica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    matematica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://sportsjobs.online" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../nba_salaries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NBA salaries legacy model
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#por-que-estimar-fx" class="md-nav__link">
+    Por qué estimar f(X)?
+  </a>
+  
+    <nav class="md-nav" aria-label="Por qué estimar f(X)?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prediccion" class="md-nav__link">
+    Predicción
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inferencia" class="md-nav__link">
+    Inferencia
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-estimar-fx" class="md-nav__link">
+    Como Estimar f(X)?
+  </a>
+  
+    <nav class="md-nav" aria-label="Como Estimar f(X)?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metodos-parametricos" class="md-nav__link">
+    Métodos Paramétricos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metodos-no-parametricos" class="md-nav__link">
+    Métodos No Paramétricos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prediccion-vs-interpretabilidad" class="md-nav__link">
+    Predicción vs Interpretabilidad
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos-supervisados-vs-no-supervisados" class="md-nav__link">
+    Modelos Supervisados vs No Supervisados
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regresion-vs-clasificacion" class="md-nav__link">
+    Regresión vs Clasificación
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#midiendo-el-ajuste-del-modelo" class="md-nav__link">
+    Midiendo el ajuste del modelo
+  </a>
+  
+    <nav class="md-nav" aria-label="Midiendo el ajuste del modelo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regresion" class="md-nav__link">
+    Regresión
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-tradeoff-entre-sesgo-y-varianza" class="md-nav__link">
+    El tradeoff entre Sesgo y Varianza
+  </a>
+  
+    <nav class="md-nav" aria-label="El tradeoff entre Sesgo y Varianza">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clasificacion" class="md-nav__link">
+    Clasificación
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clasificador-de-bayes" class="md-nav__link">
+    Clasificador de Bayes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-vecinos-mas-cercanos-knn-en-ingles" class="md-nav__link">
+    K vecinos más cercanos (KNN en inglés)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__title">
+                <div class="md-nav__link">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+              </li>
+              <li class="md-nav__item">
+                <div class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                  <time datetime="2019-05-06 00:00:00" class="md-ellipsis">2019-05-06</time>
+                </div>
+              </li>
+              
+              
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                    <span class="md-ellipsis">
+                      in
+                      
+                        <a href="../../../../category/estadistica/">estadistica</a></span>
+                  </div>
+                </li>
+              
+              
+                
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                    <span class="md-ellipsis">
+                      
+                        8 min read
+                      
+                    </span>
+                  </div>
+                </li>
+              
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="aprendizaje-estadistico-islr-capitulo-2">Aprendizaje Estadístico - ISLR Capitulo 2</h1>
+<p>Suponemos que las variables que encontramos en un set de datos son generadas a través de un proceso generador de datos (DGP por sus siglas en inglés) cuya expresión es: 
+$$ Y = f(X) + \epsilon $$</p>
+<p>Donde Y es la variable, en este caso la dependiente o la que queremos explicar. f(X) es una función respecto a otra/s variable/s X (independientes) y <span class="arithmatex">\(\epsilon\)</span> es el error irreducible, es decir un valor aleatorio con media 0 pero que no depende de otras variables, es al azar. Puede referir a errores de medición, cambios inmesurables en las situaciones del experimento o simplemente azar en la generación real de los datos. Cabe destacar que f(X) es desconocida para nosotros y justamente lo que queremos explorar con el análisis estadístico. Puede tenerse suposiciones o conocimiento de la forma funcional (lineal, no lineal, etc) pero en principio no tenemos mayores certezas y esperamos aprender a partir de la muestra que analizamos.</p>
+<h3 id="por-que-estimar-fx">Por qué estimar f(X)?</h3>
+<p>Los dos principales motivos para interesarse en f(X) son <em>predicción</em> (de Y) e <em>inferencia</em> de los parámetros de f(X).</p>
+<h4 id="prediccion">Predicción</h4>
+<p>Queremos predecir valores de Y para nuevos datos X. Como <span class="arithmatex">\(\epsilon\)</span> en promedio es 0 podemos aproximar Y de la forma: 
+$$ \hat Y = \hat f(X)$$
+La precisión de <span class="arithmatex">\(\hat Y\)</span> va a depender del <strong>error reducible</strong> y del <strong>error irreducible</strong>. El primero depende de qué tan bien nos aproximemos a la verdadera f(X) y puede ser potencialmente reducido si utilizamos las técnicas más adecuadas para el caso. El segundo error es justamente irreducible y es porque nuestra aproximación no puede tener en cuenta a <span class="arithmatex">\(\epsilon\)</span>. El término aleatorio introducido por esa variable no lo podemos estimar para cada observación y por lo tanto debemos convivir con ese margen de error.</p>
+<p>Suponiendo que tenemos una estimación <span class="arithmatex">\(\hat f\)</span> y un set de datos X puede probarse que:
+$$ E(Y - \hat Y)^2 = E[f(X) + \epsilon - \hat f(X)]^2$$
+                   $$   \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \     = \underbrace{[f(X) - \hat f(X)]^2}<em>\text{Reducible} + \underbrace{Var(\epsilon)}</em>\text{Irreducible}$$</p>
+<p>Donde <span class="arithmatex">\(E(Y-\hat Y)^2\)</span> es el promedio o valor esperado de la diferencia al cuadrado del valor real de Y y de la predicción correspondiente.
+<span class="arithmatex">\(Var(\epsilon)\)</span> es la varianza del término de error <span class="arithmatex">\(\epsilon\)</span>.</p>
+<h4 id="inferencia">Inferencia</h4>
+<p>Este enfoque se basa en entender la relación entre las variables de X y la dependiente. Es necesario entender bien la f(X) elegida para poder interpretar sus coeficientes y poder ver qué variables están asociadas con Y, cómo es esa relación, cuál es la forma de la función f(X), etc para poder actuar sobre las variables X o comprender su efecto aunque no siendo tan exigentes con el poder de predicción de nuestro modelo.</p>
+<h3 id="como-estimar-fx">Como Estimar f(X)?</h3>
+<h4 id="metodos-parametricos">Métodos Paramétricos</h4>
+<p>Los métodos paramétricos se conforman por dos etapas.<br />
+La primera es asumir o suponer la forma funcional de f(X). Podes definir por ejemplo que f(X) es una función lineal de la forma
+$$ f(X) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p$$  </p>
+<p>Una vez definida la forma del modelo la segunda etapa consiste en estimar los parámetros con algún método, a partir de los datos de entrenamiento. En este caso sería estimar todos los <span class="arithmatex">\(\beta\)</span>. Por ejemplo para las funciones lineales se suele utilizar el método de <em>mínimos cuadrados ordinario</em>.<br />
+La ventaja de definir una forma funcional es que luego es más sencillo estimar sus parámetro y el problema se reduce a eso finalmente. Por el otro lado, posiblemente la forma que elijamos no sea exactamente igual a la real (DGP) y tengamos que aceptar que va a haber errores debido a eso. Si estamos muy lejos de la forma real esos errores serán groseros. Existen modelos flexibles que permiten ajustar modelos con diferentes formas de f(X) pero en general requieren estimar más parámetros  y son más propensos a sufrir sobreajuste/overfitting que básicamente es ajustarse mucho al ruido o error (<span class="arithmatex">\(\epsilon\)</span>) en los datos de entrenamiento y luego ajustar mal en testeo.  </p>
+<h4 id="metodos-no-parametricos">Métodos No Paramétricos</h4>
+<p>Los métodos no paramétricos no requieren definir explícitamente una forma funcional de f. Buscan un f que sea lo más cercano posible a los datos sin ser demasiado estricto o flexible. Al no asumir una forma puede cubrir potencialmente un rango mucho mayor. El problema es que al no reducir el problema a estimar parámetros necesitan muchas más observaciones para estimar f de forma medianamente precisa. En general uno tiene que decidir el nivel de "suavidad" del modelo, lo cual afecta que tan variable termina siendo la estimación. Sirve para encontrar el punto de fleixibilidad/rigidez del modelo que queremos para que no sobreajuste (ni falle demasiado).</p>
+<h3 id="prediccion-vs-interpretabilidad">Predicción vs Interpretabilidad</h3>
+<p>Uno puede elegir entre modelos flexibles o más rígidos. Con pocas observaciones a veces uno no puede alejarse mucho de los rígidos pero suponiendo que uno tiene muchos datos, a veces puede igualmente elegir rígidez frente a modelos flexibles que permiten ajustar varias formas de f. 
+El motivo es que generalmente los modelos restrictivos son más fáciles de interpretar y se le puede dar un significado claro a sus coeficientes mientras que con formas muy flexibles no es sencillo entender el impacto de las variables de manera individual. La elección va a depender del objetivo del análisis y de qué tan bien o mal nuestros modelos ajustan a los datos.</p>
+<h3 id="modelos-supervisados-vs-no-supervisados">Modelos Supervisados vs No Supervisados</h3>
+<p>Nuestros datos pueden tener una variable dependiente que queremos explicar o predecir en base a un set de variables independientes, con algún modelo a definir. Los casos de este estilo son llamados <em>supervisados</em> porque sabemos la "respuesta" (nuestra variable Y) y podemos validar nuestros modelos contra la realidad.<br />
+Si los datos no tienen una variable dependiente lo que se puede hacer es un análisis no supervisado donde por ejemplo lo que se puede hacer es agrupar las observaciones en clusters o grupos. Es decir segmentar en distintas clasificaciones y descubrir patrones. El desafío es que no hay en los datos nada contra qué validarlo, aunque sí contra el conocimiento del dominio o de la temática.</p>
+<h3 id="regresion-vs-clasificacion">Regresión vs Clasificación</h3>
+<p>En los modelos supervisados, nuestra variable dependiente puede ser <em>cuantitativa</em> o <em>cualitativa</em>.<br />
+En el primer caso la variable toma valores númericos, como por ejemplo la altura de una persona, el precio de una propiedad, etc. Son problemas de regresión.  <br />
+En el segundo caso la variable dependiente puede tomar el valor de una clase o categoría. Por ejemplo, género de una persona, si paga o no paga su deuda, etc. Son problemas de clasificación.</p>
+<h3 id="midiendo-el-ajuste-del-modelo">Midiendo el ajuste del modelo</h3>
+<h4 id="regresion">Regresión</h4>
+<p>Para problemas de regresión una de las medidas más utilizadas es el Error Cuadrático Medio (MSE por sus siglas en inglés).
+$$ MSE = \frac{1}{n} \sum_{i=1}^n(y_i - \hat f(x_i))^2 $$</p>
+<p>Es básicamente la diferencia promedio entre la realidad y lo que predice nuestro modelo elevado al cuadrado. Esto último es para que los errores sean siempre positivos aunque subestimemos o sobreestimemos (y por su comodidad para cálculos matemáticos).</p>
+<p>En primero lugar se calcula este valor con los datos de entrenamiento sin embargo lo que realmente importa es como performa el modelo en datos de testeo, es decir en datos que no fueron utilizados para estimar f(X). Podemos decir que cada modelo debería tener un MSE de entrenamiento y un MSE de testeo. Debido a la posibilidad de sobreajuste y a las diferencias en muestras nada garantiza que el modelo que estimemos con menor MSE en entrenamiento también sea el de menor MSE en testeo. </p>
+<p>A medida que aumentamos la flexibilidad de un modelo (sus grados de libertad) el MSE en entrenamiento va a disminuir, ya que tiene más herramientas para ajustarse a los datos pero puede que sobreajuste y por lo tanto no se traduzca en un menor MSE en testeo.</p>
+<h3 id="el-tradeoff-entre-sesgo-y-varianza">El tradeoff entre Sesgo y Varianza</h3>
+<p>No está demostrado en el libro pero es posible descomponer el MSE esperado de una observación de testeo en sesgo de <span class="arithmatex">\(\hat f(x_0)\)</span>, varianza de <span class="arithmatex">\(\hat f(x_0)\)</span> y varianza del error irreducible <span class="arithmatex">\(\epsilon\)</span>.</p>
+<div class="arithmatex">\[ E(y_0 - \hat f(x_0))^2 = Var(\hat f(x_0)) + [Sesgo(\hat f(x_0))]^2 + Var(\epsilon)\]</div>
+<p>El lado izquierdo de la ecuación es el MSE esperado y coresponde MSE de testeo promedio que obtendríamos si estimaramos f utilizando una gran cantidad de sets de entrenamiento y testearamos cada uno en <span class="arithmatex">\(x_0\)</span>.</p>
+<p>Algunas observaciones:</p>
+<ul>
+<li>El MSE nunca puede ser menor que la varianza de <span class="arithmatex">\(\epsilon\)</span>. Es un término fijo y por eso se lo llama error irreducible.</li>
+<li>La varianza es cuanto cambiar <span class="arithmatex">\(\hat f\)</span> si utilizamos otro set de entrenamiento. Siempre va a cambiar con otro set pero idealmente ese cambio no debería ser grande. Modelos muy flexibles tienden a cambiar más frente a distintos sets y son más inestables.</li>
+<li>Sesgo es el error provocado por la diferencia entre el modelo elegido y el verdadero proceso generador de los datos. En general modelos más flexibles tienen menor sesgo ya que pueden ajustar mayor variedad de formas funcionales.</li>
+<li>Al aumentar la flexibilidad de un modelo en general reducimos el sesgo pero aumentamos la varianza. En general en un primer momento el sesgo suele disminuir a mayor velocidad de lo que aumenta la varianza y por lo tanto el MSE esperado se reduce. Sin embargo llega un punto donde mayor flexibilidad reduce menos el sesgo que lo que aumenta la varianza y el MSE empieza a aumentar. Es el primer indicio de sobreajuste. Por eso se habla de tradeoff o "balance".</li>
+<li>En la realidad donde la verdadera f del DGP es inobservable no suele ser posible calcular explícitamente el MSE de testeo, el sesgo o la varianza de un método estadístico pero el proceso de fondo aplica y siempre debemos tener en mente el tradeoff.</li>
+</ul>
+<h4 id="clasificacion">Clasificación</h4>
+<p>Para problemas de clasificación uno de los enfoques más frecuentes para cuantificar la precisión de una función estimada <span class="arithmatex">\(\hat f\)</span> se suele usar el porcentaje de error en los datos de entrenamiento.</p>
+<p>$$ \frac{1}{n} \sum_{i=1}^nI(y_i \neq \hat y_i) $$
+Básicamente es el porcentaje de observaciones clasificadas erroneamente.
+Al igual que con MSE es de gran importance el porcentaje de error en los datos de testeo.</p>
+<h4 id="clasificador-de-bayes">Clasificador de Bayes</h4>
+<p>No lo demuestra en el libro pero la mejor manera de reducir el porcentaje de error en test es asignar a cada observación la clase con mayor probabilidad (según el DGP ). Es un concepto muy sencillo, dado X, asignar la clase cuya chance de acierto sea mayor.</p>
+<p>$$ Pr(Y = j | X = x_0) $$
+El porcentaje de error de Bayes (es decir el error luego de clasificar siguiendo esa regla) es análogo al Error Irreducible de regresión.
+Hay que tener en cuenta que la distribución condicional de Y dado X no lo sabemos en los casos aplicados en la vida real, sería como saber la función f(X) o el DGP y por lo tanto no lo podemos calcular.</p>
+<h4 id="k-vecinos-mas-cercanos-knn-en-ingles">K vecinos más cercanos (KNN en inglés)</h4>
+<p>Idealmente uno querría aplicar el clasificador de Bayes pero es imposible ya que no sabemos la distribución real de los datos (es justamente lo que queremos estimar). KNN intenta aproximarse a la distribución condicional para clasificar las observaciones. Lo que hace este método es, dado un valor de K que elegimos nosotros, clasificar cada nueva observación según la clase mayoritaria entre las K observaciones más cercanas a esta.</p>
+<p>$$ Pr(Y = j | X = x_0) = \frac{1}{K} \sum_{i \in N_0} I(y_i = j) $$
+El valor que seleccionemos de K afecta en gran medida las predicciones del modelo. Un K menor hace más variable el modelo ya que selecciona menos observaciones y por lo tanto pocos cambios en el set de entrenamiento cambian la clasificación. Suele reducir el sesgo pero ser mas variable. Es análogo a hacer más flexible un modelo en regresión. Valores de K más grandes seleccionan puntos en un entorno más abarcativo y por lo tanto suele ser más constante pero con sesgo superior.<br />
+Al igual que en regresión hay que tener cuidado con el sobreajuste. Reducir K garantiza menos errores en los datos de entrenamiento pero pasado un umbral la varianza aumenta en mayor medida y el porcentaje de error en test se incrementa.</p>
+<p><strong>Conclusión</strong>: Tanto en Clasificación como en Regresión la elección del nivel de flexibilidad  es central en el éxito de método de aprendizaje estadístico.</p>
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../04/20/esencia-del-algebra-lineal/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Esencia del Algebra Lineal" rel="prev">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Esencia del Algebra Lineal
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../25/regresion-lineal-islr/" class="md-footer__link md-footer__link--next" aria-label="Next: Regresion Lineal - ISLR Capítulo 3" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Regresion Lineal - ISLR Capítulo 3
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

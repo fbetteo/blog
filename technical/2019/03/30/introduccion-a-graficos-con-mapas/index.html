@@ -1,0 +1,1232 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="FB">
+      
+      
+      
+        <link rel="prev" href="../../../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/">
+      
+      
+        <link rel="next" href="../../../04/03/funciones-de-probabilidad-y-distribucion/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Introduccion a graficos con mapas - Franco Betteo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduccion-a-graficos-con-mapas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Franco Betteo
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduccion a graficos con mapas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Technical posts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://sportsjobs.online" class="md-tabs__link">
+        
+  
+    
+  
+  Job Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../nba_salaries/" class="md-tabs__link">
+          
+  
+    
+  
+  NBA salaries legacy model
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Franco Betteo
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../.." class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Technical posts
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/estadistica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    machine learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/personal-growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal Growth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algebra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/matematica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    matematica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://sportsjobs.online" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../nba_salaries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NBA salaries legacy model
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    Data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__title">
+                <div class="md-nav__link">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+              </li>
+              <li class="md-nav__item">
+                <div class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                  <time datetime="2019-03-30 00:00:00" class="md-ellipsis">2019-03-30</time>
+                </div>
+              </li>
+              
+              
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                    <span class="md-ellipsis">
+                      in
+                      
+                        <a href="../../../../category/r/">R</a></span>
+                  </div>
+                </li>
+              
+              
+                
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                    <span class="md-ellipsis">
+                      
+                        6 min read
+                      
+                    </span>
+                  </div>
+                </li>
+              
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="introduccion-a-graficos-con-mapas">Introduccion a graficos con mapas</h1>
+<h2 id="data">Data</h2>
+<p>Vamos a ver un ejemplo sencillo para representar información visualmente sobre mapas. En este caso un pequeño dataset de incendios forestales en Argentina de 2012 a 2015. La idea es usar ggplot y mantener el enfoque de gráficos por capas.</p>
+<p>Vamos a necesitar.</p>
+<pre><code>&gt; tidyverse
+&gt; rgdal
+&gt; rgeos
+</code></pre>
+<p>Tendremos como input las provincias, departamento, cantidad de focos por incendio, area afectada y año de inicio y fin.
+Cada observación es un incendio.</p>
+<p>Para este ejemplo nos vamos a centrar en las provincias, los focos y su efecto sin importar la fecha.</p>
+<p>Empezamos cargando la data.</p>
+<pre><code class="language-r">library(tidyverse)
+# Load Raw data
+raw &lt;- read.csv(&quot;../../static/post/2019-03-30-introduccion-a-graficos-en-mapas/focosincendio.csv&quot;, sep = &quot;;&quot;)
+raw &lt;- as.tibble(raw)
+</code></pre>
+<pre><code>## Warning: `as.tibble()` was deprecated in tibble 2.0.0.
+## i Please use `as_tibble()` instead.
+## i The signature and semantics have changed, see `?as_tibble`.
+</code></pre>
+<pre><code class="language-r">glimpse(raw)
+</code></pre>
+<pre><code>## Rows: 120
+## Columns: 11
+## $ pais_id         &lt;int&gt; 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32,~
+## $ pais            &lt;chr&gt; &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina~
+## $ provincia_id    &lt;int&gt; 6, 14, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 30, 30, 30, 30, 30, 30, 30, 30, 30, ~
+## $ provincia       &lt;chr&gt; &quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;C~
+## $ departamento_id &lt;int&gt; 833, 14, 56, 28, 28, 28, 70, 84, 84, 84, 112, 112, 119, 119, 126, 147, 154, 154, 161, 168, 168, 168, 168, 8, 15, 15, 15, 15, 28~
+## $ departamento    &lt;chr&gt; &quot;Tres Arroyos&quot;, &quot;Calamuchita&quot;, &quot;General Alvear&quot;, &quot;Concepción&quot;, &quot;Concepción&quot;, &quot;Concepción&quot;, &quot;Goya&quot;, &quot;Itizaingó&quot;, &quot;Ituzaingo&quot;, &quot;I~
+## $ sup_afectada    &lt;dbl&gt; 2400.00, 50.00, 257.00, 130.00, 5.00, 146.00, 30.00, 294.30, 378.00, 158.00, 300.00, 450.00, 450.00, 15.00, 20.00, 141.00, 295.~
+## $ uni_med_id      &lt;chr&gt; &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;~
+## $ cant_focos      &lt;int&gt; 1, 1, 1, 2, 1, 1, 1, 3, 1, 3, 1, 1, 5, 2, 2, 1, 3, 1, 1, 18, 2, 3, 2, 1, 0, 0, 1, 7, 0, 2, 1, 0, 0, 0, 5, 10, 10, 3, 1, 1, 1, 1~
+## $ año_inicial     &lt;int&gt; 2014, 2015, 2012, 2012, 2013, 2015, 2012, 2012, 2013, 2014, 2012, 2013, 2012, 2013, 2015, 2012, 2012, 2014, 2012, 2012, 2013, 2~
+## $ año_final       &lt;int&gt; 2014, 2015, 2012, 2012, 2013, 2015, 2012, 2012, 2013, 2014, 2012, 2013, 2012, 2013, 2015, 2012, 2012, 2014, 2012, 2012, 2013, 2~
+</code></pre>
+<p>Exploramos un poco el dataset. Lo que nos vas a interesar represetnar es la segunda parte del código. Variables agregadas a nivel provincia.</p>
+<pre><code class="language-r"># Generate Summary to Explore
+sum_year &lt;- raw %&gt;% group_by(año_inicial) %&gt;%
+  summarise(focos = sum(cant_focos), sup = sum(sup_afectada, na.rm = TRUE)) %&gt;%
+  mutate(sup_prom = sup/focos)
+
+# Actual data to be plotted
+sum_prov &lt;- raw %&gt;% group_by(provincia) %&gt;%
+  summarise(focos = sum(cant_focos), sup = sum(sup_afectada, na.rm = TRUE)) %&gt;%
+  mutate(sup_prom = sup/focos) %&gt;%
+  arrange(desc(sup_prom)) %&gt;%
+  mutate(provincia = as.character(provincia))
+
+head(sum_prov)
+</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   provincia    focos   sup sup_prom
+##   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Buenos Aires     1 2400    2400  
+## 2 Corrientes      55 5440.     98.9
+## 3 Misiones        10  679      67.9
+## 4 Córdoba          1   50      50  
+## 5 Entre Ríos      12  594      49.5
+## 6 Jujuy           62 2721.     43.9
+</code></pre>
+<p>Tenemos por provincia la cantidad de focos y la superficie  afectada. Vamos a usar la superficie promedio por foco para visualizar la magnitud de cada foco de incendio.</p>
+<p>Ahora llega lo importante. ¿Cómo representar esta data provincial en un mapa de Argentina?</p>
+<h1 id="mapa">Mapa</h1>
+<p>Necesitamos un <strong>ShapeFile</strong> de Argentina, que basicamente es el tipo de archivo que se usa para representar mapas en gráficos. Contiene divisiones del país (provincias) con sus respectivas coordenadas y nombres.</p>
+<p>Utilizaremos data descargada del siguiente link.
+url &lt;- "http://biogeo.ucdavis.edu/data/diva/adm/ARG_adm.zip"</p>
+<p>Lo descargué y deszipee en la computadora. Lo leemos con una librería particular <em>RGDAL</em>.</p>
+<p>dsn contiene la ruta a la carpeta con los archivos del shapefile.
+Layer apunta a al set de archivos que contiene la data que queremos. Generalmente hay otros sets con información no relevante al gráfico.</p>
+<pre><code class="language-r">argentina &lt;- rgdal::readOGR(dsn = &quot;../../static/post/2019-03-30-introduccion-a-graficos-en-mapas/ARG_adm&quot;, layer = &quot;ARG_adm1&quot;, use_iconv=TRUE, encoding='UTF-8')
+</code></pre>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;D:\DataScience\StatsBlog\blogStats\static\post\2019-03-30-introduccion-a-graficos-en-mapas\ARG_adm&quot;, layer: &quot;ARG_adm1&quot;
+## with 24 features
+## It has 9 fields
+## Integer64 fields read as strings:  ID_0 ID_1
+</code></pre>
+<p>Es un archivo S4 por lo que se utiliza "@" para acceder a su contenido. Por ejemplo:</p>
+<pre><code class="language-r">head(argentina@data)
+</code></pre>
+<pre><code>##   ID_0 ISO    NAME_0 ID_1                 NAME_1           TYPE_1        ENGTYPE_1 NL_NAME_1
+## 0   12 ARG Argentina    1           Buenos Aires        Provincia         Province      &lt;NA&gt;
+## 1   12 ARG Argentina    2                Córdoba        Provincia         Province      &lt;NA&gt;
+## 2   12 ARG Argentina    3              Catamarca        Provincia         Province      &lt;NA&gt;
+## 3   12 ARG Argentina    4                  Chaco        Provincia         Province      &lt;NA&gt;
+## 4   12 ARG Argentina    5                 Chubut        Provincia         Province      &lt;NA&gt;
+## 5   12 ARG Argentina    6 Ciudad de Buenos Aires Distrito Federal Federal District      &lt;NA&gt;
+##                                                                               VARNAME_1
+## 0                                                                   Baires|Buenos Ayres
+## 1                                                                               Cordova
+## 2                                                                                  &lt;NA&gt;
+## 3                                                        El Chaco|Presidente Juan Peron
+## 4                                                                                  &lt;NA&gt;
+## 5 BUENOS AIRES D.F.|Capital Federal|Distretto Federale|Distrito Federal|Federal Capital
+</code></pre>
+<p>Este tipo de archivos tiene una estructura complicada y hay varias librerías útiles. Con el fin de mantenernos dentro del tidyverse usaremos el enfoque de ggplot por capaz para graficar.
+Primero necesitamos llevar la información del shapefile a un dataframe.</p>
+<pre><code class="language-r"># Transformo a dataframe.
+argentina_df &lt;- broom::tidy(argentina)
+</code></pre>
+<pre><code>## Regions defined for each Polygons
+</code></pre>
+<pre><code class="language-r"># id es la provincia
+head(argentina_df)
+</code></pre>
+<pre><code>## # A tibble: 6 x 7
+##    long   lat order hole  piece group id   
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;lgl&gt; &lt;fct&gt; &lt;fct&gt; &lt;chr&gt;
+## 1 -60.2 -33.3     1 FALSE 1     0.1   0    
+## 2 -60.2 -33.3     2 FALSE 1     0.1   0    
+## 3 -60.2 -33.3     3 FALSE 1     0.1   0    
+## 4 -60.2 -33.3     4 FALSE 1     0.1   0    
+## 5 -60.2 -33.3     5 FALSE 1     0.1   0    
+## 6 -60.2 -33.3     6 FALSE 1     0.1   0
+</code></pre>
+<p>Ahora genero un diccionario de ids con su respectiva provincia para poder linkear mi mapa con la data de incendios.</p>
+<pre><code class="language-r">ids &lt;- cbind.data.frame(provincia = as.character(argentina@data$NAME_1), id = as.character(rownames(argentina@data))) %&gt;%
+  mutate(provincia = as.character(provincia), id = as.character(id))
+</code></pre>
+<p>El dataframe generado a partir del shapefile tiene las coordenadas que forman cada provincia y el id. Ahora lo que haremos es pegarle la data de incendios para poder utilizarla sobre el mapa.
+Está generado el log de los focos porque en una prueba intenté usar la data transformada para suavizar outliers pero no se verá en esta versión.</p>
+<pre><code class="language-r"># Agrego provincia por ID y data de incendios a la data del shapefile.
+argentina_df2 &lt;- argentina_df %&gt;% left_join(ids, by = &quot;id&quot;) %&gt;%
+  left_join(sum_prov, by = &quot;provincia&quot;) %&gt;%
+  mutate(focos = ifelse(is.na(focos),0.5,focos),
+         logfocos = log(focos), 
+         logfocos2 = logfocos - min(logfocos))
+</code></pre>
+<p>Por ahora vamos a poder ser capaces de graficar un mapa de argentina con sus provincias delimitadas y pintarlas según la cantidad de focos de incendio por ejemplo. Pero además vamos a querer agregar alguna forma sobre cada provincia. Por ejemplo un punto de distinto tamaño según el area afectada por cada foco en promedio. Para eso necesitamos localizar el centroide de cada poligono, es decir, el centro de cada provincia.
+Para ellos usamos la librería <strong>RGEOS</strong>
+Luego a cada centro le agrego la data que voy a querer usar. En este caso la superficie promedio afectada por foco de cada provincia.</p>
+<pre><code class="language-r"># Calculo el centro de cada poligono (provincias)
+# para obtener el &quot;centro&quot; donde iran los puntos o nombres.
+centros &lt;- rgeos::gCentroid(argentina, byid = TRUE) %&gt;%
+  as.data.frame() %&gt;%
+  mutate(id = rownames(.))
+
+# Agrego data relevante para el ploteo (superficie promedio)
+centros2 &lt;- centros %&gt;% left_join(ids, by = &quot;id&quot;) %&gt;%
+  left_join(sum_prov, by = &quot;provincia&quot;) %&gt;%
+  mutate(focos = ifelse(is.na(focos),0.5,focos),
+         sup = ifelse(is.na(sup),0,sup),
+         log_sup_prom = log(sup_prom),
+         sup_prom_sin_outlier = ifelse(sup_prom &gt; 150, 150,sup_prom) ) # esto es para suavizar el outlier. Buscar otro enfoque.
+</code></pre>
+<h2 id="grafico">Grafico!</h2>
+<p>Ya tenemos todo. Tenemos el mapa, tenemos la cantidad de focos de incendio por provincia y tenemos el centro de cada provincia donde vamos a incluir un punto que muestra la intensidad de los incendios.
+Simplemente graficamos sigueindo la lógica por capas de ggplot.
+Las provincias sin puntos son aquellas que no tuvieron ningún incendio.</p>
+<pre><code class="language-r">ggplot() +
+  geom_polygon(data = argentina_df2, aes(x=long, y = lat, group = group,  fill = focos), color = &quot;white&quot;) + # mapa de argentina
+  # coloreado segun cantidad de focos
+  coord_fixed(0.8) + # tamañp del mapa
+  scale_fill_gradient2(&quot;Cantidad de Focos de incendio&quot;, low = &quot;white&quot;, mid = &quot;lightgreen&quot;, high = &quot;darkred&quot;) + # escala de colores para focos
+  geom_point(data = centros2, aes(x = x, y = y, size = sup_prom_sin_outlier)) + # puntos por provincia con superficie promedio
+  scale_size(name = &quot;Superficie Promedio Afectada (ha)&quot;,range = c(1,5)) + # escala de los puntos
+  guides(fill = guide_legend(order = 1), # Orden de los leyendas a la derecha.
+         size = guide_legend(order = 2)) # Por algun motivo esto discretizo la leyenda de focos
+</code></pre>
+<p><img alt="Image" src="../../../../img/2019-03-30-introduccion-a-graficos-con-mapas-unnamed-chunk-10-1.png" /></p>
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Como correr un proyecto con R en Google Cloud " rel="prev">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Como correr un proyecto con R en Google Cloud 
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../04/03/funciones-de-probabilidad-y-distribucion/" class="md-footer__link md-footer__link--next" aria-label="Next: Funciones de Probabilidad y Distribucion" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Funciones de Probabilidad y Distribucion
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

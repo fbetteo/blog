@@ -1,0 +1,1183 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../13/teorema-central-del-limite/">
+      
+      
+        <link rel="next" href="../../../11/11/distintas-distancias/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Maxima Verosimilitud y estimacion bayesiana - Franco Betteo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#maxima-verosimilitud-y-estimacion-bayesiana" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Franco Betteo
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Maxima Verosimilitud y estimacion bayesiana
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Technical posts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://sportsjobs.online" class="md-tabs__link">
+        
+  
+    
+  
+  Job Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../nba_salaries/" class="md-tabs__link">
+          
+  
+    
+  
+  NBA salaries legacy model
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Franco Betteo
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../.." class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Technical posts
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/estadistica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    machine learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/personal-growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal Growth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algebra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/matematica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    matematica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://sportsjobs.online" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../../nba_salaries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NBA salaries legacy model
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-prior" class="md-nav__link">
+    Distribucion prior
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-posterior" class="md-nav__link">
+    Distribución Posterior
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribuciones-prior-conjugadas" class="md-nav__link">
+    Distribuciones prior Conjugadas
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__title">
+                <div class="md-nav__link">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+              </li>
+              <li class="md-nav__item">
+                <div class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                  <time datetime="2019-10-31 00:00:00" class="md-ellipsis">2019-10-31</time>
+                </div>
+              </li>
+              
+              
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                    <span class="md-ellipsis">
+                      in
+                      
+                        <a href="../../../../category/estadistica/">estadistica</a>, 
+                        <a href="../../../../category/r/">R</a></span>
+                  </div>
+                </li>
+              
+              
+                
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                    <span class="md-ellipsis">
+                      
+                        7 min read
+                      
+                    </span>
+                  </div>
+                </li>
+              
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="maxima-verosimilitud-y-estimacion-bayesiana">Maxima Verosimilitud y estimacion bayesiana</h1>
+<h2 id="distribucion-prior">Distribucion prior</h2>
+<p>A falta de una buena traducción usamos este término.</p>
+<p>Supongamos que se toman muestras aleatorias de una distribucion con <a href="https://fbetteo.netlify.com/2019/04/funciones-de-probabilidad-y-distribucion/">pdf (funcion de densidad de probabilidad)</a> <span class="arithmatex">\(f(x|\theta)\)</span>. Por ejemplo podrían provenir de una normal con media = <span class="arithmatex">\(\mu\)</span> y varianza = 4.<br />
+Nosotros no sabemos el valor de <span class="arithmatex">\(\mu\)</span> pero podemos tener una idea de qué valores puede tomar y tener en mente una distribución prior de este parámetro <span class="arithmatex">\(\epsilon(\theta)\)</span>. Para el ejemplo sería <span class="arithmatex">\(\epsilon(\mu)\)</span>. Podemos suponer que <span class="arithmatex">\(\mu\)</span> se distribuye como una uniforme (0,1) por decir algo.<br />
+El concepto radica en tener una distribución prior para los parámetros de la distribución de la cual tomamos muestras aleatorias.</p>
+<h2 id="distribucion-posterior">Distribución Posterior</h2>
+<p>Volviendo a nuestra muestra <span class="arithmatex">\(X_1...X_n\)</span> proveniente de <span class="arithmatex">\(f(x|\theta)\)</span>, podemos decir, debido a que son observaciones aleatorias e independientes que su distribución conjunta es <span class="arithmatex">\(f_n(x_1...X_n|\theta) = f(x_1|\theta)...f(x_n|\theta)\)</span>, que lo podemos escribir como <span class="arithmatex">\(f_n(x|\theta)\)</span>.<br />
+Dado que suponemos que <span class="arithmatex">\(\theta\)</span> proviene de una distribución <span class="arithmatex">\(\epsilon(\theta)\)</span>, la pdf conjunta <span class="arithmatex">\(f_n(x|\theta)\)</span> tiene que ser vista como la pdf conjunta condicional de<span class="arithmatex">\(X_1...X_n\)</span> para un valor particular de <span class="arithmatex">\(\theta\)</span>.<br />
+Multiplicando la pdf conjunta condicional por la pdf <span class="arithmatex">\(\epsilon(\theta)\)</span> obtenemos la (n+1) distribución conjunta de <span class="arithmatex">\(X_1...X_n\)</span> y <span class="arithmatex">\(\theta\)</span> bajo la forma <span class="arithmatex">\(f_n(x|\theta)\epsilon(\theta)\)</span>. Sería la pdf de encontrar en simultáneo determinados valores para x y <span class="arithmatex">\(\theta\)</span>. La probabilidad conjunta marginal de <span class="arithmatex">\(X_1...X_n\)</span> se encuentra integrando la pdf conjunta con <span class="arithmatex">\(\theta\)</span> para todos los valores de <span class="arithmatex">\(\theta\)</span>. Sería la probabilidad marginal de encontrar determinados valores de x (sabiendo la distribución de <span class="arithmatex">\(\theta\)</span> pero sin saber el valor puntual que toma).</p>
+<p><span class="arithmatex">\(g_n(x) = \int_\Omega f_n(x|\theta)\epsilon(\theta) d\theta\)</span></p>
+<p>Por teorema de Bayes tenemos que la distribución posterior de <span class="arithmatex">\(\theta\)</span>, es decir, dados los x es:
+<span class="arithmatex">\(<span class="arithmatex">\(\epsilon(\theta|x) = \frac{f_n(x|\theta)\epsilon(\theta)}{g_n(x)} \text{ para } \theta \in \Omega\)</span>\)</span> 
+ Se dice que la distribución prior <span class="arithmatex">\(\epsilon(\theta)\)</span> representa la verosimilitud, antes de ver los valores de <span class="arithmatex">\(X_1...X_n\)</span>, de que el verdadero valor de <span class="arithmatex">\(\theta\)</span> se encuentre en cada una de las regiones de <span class="arithmatex">\(\Omega\)</span> y que la pdf de la distribución posterior <span class="arithmatex">\(\epsilon(\theta|x)\)</span> representa la verosimilitud después que los valores <span class="arithmatex">\(X_1 = x_1,...,X_n = x_n\)</span> hayan sido observados.</p>
+<p>## La funcion de Versoimilitud</p>
+<p>El denominador de la distribución posterior es básicamente la integral del numerador para todos los posibles valores de <span class="arithmatex">\(\theta\)</span>. Depende de los valores observados <span class="arithmatex">\(X_1...X_n\)</span> pero no de <span class="arithmatex">\(\theta\)</span>, por lo que puede considerarse constante en este contexto.<br />
+ Dado que es una constante podemos quitarla de la distribución posterior que vimos y decir que 
+ <span class="arithmatex">\(<span class="arithmatex">\(\epsilon(\theta|x) \propto f_n(x|\theta)\epsilon(\theta)\)</span>\)</span></p>
+<p>Cuando se ve <span class="arithmatex">\(f_n(x|\theta)\)</span> para una muestra aleatoria como función de <span class="arithmatex">\(\theta\)</span>, se la suele llamar función de verosimilitud. En inglés: Likelihood function.</p>
+<p>Juntando estos términos podemos decir que la pdf posterior de <span class="arithmatex">\(\theta\)</span> es proporcional al producto de la función de verosimilitud y la pdf prior de <span class="arithmatex">\(\theta\)</span>.  </p>
+<p>La idea de ver esta relación de proporcionalidad es para poder calcular la pdf posterior evitando calcular la integral del denomiador <span class="arithmatex">\(g_n(x)\)</span>. Si el numerador tiene la forma de alguna de las distribuciones conocidad (normal, beta, gamma, uniforme, etc) es posible calcular fácilmente el factor constante por el cual multiplicar esa pdf para llegar a la posterior.</p>
+<h2 id="distribuciones-prior-conjugadas">Distribuciones prior Conjugadas</h2>
+<p>Este concepto refiere a que ciertas distribuciones son particularmente útiles para los cálculos cuando las variables aleatorias observadas provienen de alguna distribución específica.<br />
+Es decir que según la distribución de la que provienen las X puede que haya alguna distribución conjugada tal que al asumirla para la pdf prior <span class="arithmatex">\(\epsilon(\theta)\)</span> ya sabemos que la distribución posterior también será de esa familia.</p>
+<p>Un ejemplo ilustrador:<br />
+  Supongamos que tomamos observaciones <span class="arithmatex">\(X_1...X_n\)</span> de una distribución Bernoulli de la cual no sabemos el parámetro <span class="arithmatex">\(\theta\)</span> (que debe estar entre 0 y 1). Supongamos además que la pdf prior de <span class="arithmatex">\(\theta\)</span> es una distribución beta con algúnos parámetros dados <span class="arithmatex">\(\alpha \text{ y } \beta\)</span>. En este caso sabemos que por ser un caso de distribución conjugada, la pdf posterior de <span class="arithmatex">\(\theta\)</span> dado <span class="arithmatex">\(X = x_i (i = 1,...,n)\)</span> es a su vez una distribución beta con parámetros <span class="arithmatex">\(\alpha + \sum_{i=1}^n x_i \text{ y } \beta + n - \sum_{i=1}^n x_i\)</span>.</p>
+<p>Según la distribución de la que provengan las observaciones hay distintas distribuciones conjugadas que son las más convenientes para ese caso.</p>
+<h1 id="estimacion-de-parametros">Estimación de parámetros</h1>
+<p>La idea es estimar algún parámetro de la distribución de la cual se obtienen los datos observados. El valor estimado del parámetro va a depender de dos cosas:  </p>
+<ul>
+<li>Del <em>estimador</em> que hayamos elegido (es decir, la función de los datos elegida)</li>
+<li>De la muestra. El valor estimado va a depender de los datos aleatorios que tengamos de la distribución.</li>
+</ul>
+<p>Como el estimador depende de la muestra podemos verlo a su vez como una variable aleatoria.</p>
+<h2 id="funcion-de-perdida">Función de pérdida</h2>
+<p>Lo que queremos de un estimador es que devuelva un valor estimado "a" para el parámetro lo más cercano posible al verdadero valor de <span class="arithmatex">\(\theta\)</span>. La función de pérdida es una función que cuantifica esto.
+$$ L(\theta,a)$$
+Hay algunas funciones habituales pero pueden adecuarse según el problema.<br />
+Podemos decir que en general lo que se busca es encontrar una estimación para la cual la esperanza de la pérdida sea un mínimo.</p>
+<h2 id="estimador-bayesiano">Estimador bayesiano</h2>
+<p>Si tenemos una muestra aleatoria y una pdf posterior para <span class="arithmatex">\(\theta\)</span> entonces el valor esperado de la pérdida para cualquier valor estimado "a" es:
+<span class="arithmatex">\(<span class="arithmatex">\(E[L(\theta,a)|x] = \int_\Omega L(\theta,a)\epsilon(\theta,x)d\theta\)</span>\)</span></p>
+<p>Lo que buscamos es encontrar un valor de a cuya pérdida esperada sea mínima. La función que genera un valor de a mínimo para cada posible valor de X será un estimador de <span class="arithmatex">\(\theta\)</span> y en particular se llamará <em>Estimador Bayesiano</em>.<br />
+El estimador bayesiano, que minimiza la pérdida esperada para cualquier set de datos X, va a depender de la función de pérdida que elijamos y de la pdf prior que se elija para <span class="arithmatex">\(\theta\)</span>.</p>
+<p>Por ejemplo,para la función de pérdida más utilizada, que es la de error cuadrático
+<span class="arithmatex">\(<span class="arithmatex">\(L(\theta,a) = (\theta -a)^2\)</span>\)</span>
+está demostrado que la pérdida es mínima cuando <span class="arithmatex">\(a\)</span> es la media de la distribución posterior <span class="arithmatex">\(E(\theta|x)\)</span>.</p>
+<p>Dijimos que el valor del estimador bayesiano va a depender de la distribución prior elegida. Esto es cierto, pero hay que tener en cuenta que para muestras grandes las diferencias empiezan a achicarse y los estimadores bayesianos provenientes de distintos priors empiezan a converger en la mayoría de los casos.</p>
+<h2 id="estimadores-de-maxima-verosimilitud">Estimadores de Máxima Verosimilitud</h2>
+<p>Los estimadores de máxima verosimilitud (MLE) son muy comunmente usados para estimar parámetros desconocidos ya que más allá de la discusión casi filosófica de "bayesianos vs frecuentistas", sirven para estimar sin tener que definir una función de pérdida ni una distribución prior para los parámetros. Esto último es importante ya que para casos donde se necesita estimar un vector de parámetros, la distribución prior debe ser una multivariada que englobe a todos y eleva la complejidad del proceso bayesiano ampliamente.<br />
+Para muestras chicas MLE suele hacer un trabajo decente y para muestras grandes suele ser excelente por lo que se llega a resultados muy similares a través de un proceso más directo y más sencillo.  </p>
+<p>Para estimar mediante MLE lo único que necesitamos es la función de verosimilitud ya definida.
+<span class="arithmatex">\(<span class="arithmatex">\(f_n(x_1...X_n|\theta)\)</span>\)</span>
+Luego lo único que se hace es buscar el parámetro <span class="arithmatex">\(\hat \theta\)</span> (estimado) que maximice esa función. Básicamente es buscar qué parámetro hace que la probabilidad conjunta de obtener esos valores de X sea máxima? Ese es nuestro MLE.</p>
+<p>Para la gran mayoría de los casos esta metodología funciona pero hay que tener en cuenta que es posible que para algunos problemas no haya un máximo para la función de verosimilitud o que haya más de un punto, en cuyo caso hay que elegir alguno de ellos.</p>
+<h3 id="mle-en-bernoulli">MLE en Bernoulli</h3>
+<p>Supongamos que tomamos observaciones <span class="arithmatex">\(X_1...X_n\)</span> de una distribución Bernoulli de la cual no sabemos el parámetro <span class="arithmatex">\(\theta\)</span> (que debe estar entre 0 y 1).</p>
+<p>Para cualquier vector de observaciones <span class="arithmatex">\(X_1...X_n\)</span> la función de verosimilitud es:
+$$ f_n(x|\theta) = \prod_{i = 1}^n \theta^{x_i}(1-\theta)^{1-x_i}$$
+El valor de <span class="arithmatex">\(\theta\)</span> que maximice la función de verosimilitud es el mismo valor que maximiza <span class="arithmatex">\(log f_n(x|\theta)\)</span>, por lo que es conveniente encontrar tal valor buscando que maximice:
+<span class="arithmatex">\(<span class="arithmatex">\(L(\theta) = log f_n(x|\theta) = \sum_{i=1}^n[x_i log \theta + (1 - x_i) log(1-\theta)] = (\sum_{i=1}^nx_i)log \theta + (n-\sum_{i=1}^n x_i) log (1-\theta)\)</span>\)</span></p>
+<p>Si derivamos <span class="arithmatex">\(dL(\theta) / d\theta\)</span> e igualamos a 0, resolviendo esa ecuando para <span class="arithmatex">\(\theta\)</span> encontramos que <span class="arithmatex">\(\theta = \bar x_n\)</span>.<br />
+Este valor maximiza el logaritmo de la función de verosimilitud y por ende también de la función de verosimilitud en sí misma. Por lo tanto el MLE de <span class="arithmatex">\(\theta\)</span> es <span class="arithmatex">\(\hat \theta = \bar X_n\)</span></p>
+<pre><code class="language-r"># Generamos 100 observaciones de una Bernoulli
+set.seed(150)
+data = rbinom(100, 1, prob = 0.723)
+
+# Calculamos su promedio, que ya sabemos es la mejor estimación para p dados los datos
+mean(data)
+</code></pre>
+<pre><code>## [1] 0.68
+</code></pre>
+<pre><code class="language-r"># Definimos función de verosimilitud
+# Es la pdf de una Bernoulli para cada observación y sumamos sus logaritmos (en negativo porque 
+# el optimizador minimiza en vez de maximizar)
+LL = function( p){
+   R = dbinom(x = data, size = 1, prob = p)
+
+   -sum(log(R))  # Negativo porque log de probabilidades es &lt;0.
+ }
+
+# Función que busca los parámetros que minimzan el negativo de la log verosimilitud
+# Elegimos un valor inicial de p en el medio.
+stats4::mle(LL, start = list(p = 0.5) )
+</code></pre>
+<pre><code>## 
+## Call:
+## stats4::mle(minuslogl = LL, start = list(p = 0.5))
+## 
+## Coefficients:
+##         p 
+## 0.6799996
+</code></pre>
+<p>Vemos que la estimación por MLE es <em>idéntica</em> a la media. No corresponde con el verdadero valor del parámetro poblacional p debido a la muestra particular que fue seleccionada.</p>
+<p>Algunos comentarios finales:</p>
+<ul>
+<li>En algunos casos no es posible encontrar la solución óptima si no es por métodos numéricos.</li>
+<li>Cuando <span class="arithmatex">\(n \to \infty\)</span> MLE converge en probabilidad al verdadero <span class="arithmatex">\(\theta\)</span>. Por ende cuando <span class="arithmatex">\(n \to \infty\)</span> el estimador bayesiano (que cumple la misma propiedad) y MLE serán muy parecidos entre sí y al verdadero <span class="arithmatex">\(\theta\)</span>.</li>
+<li>MLE solo depende de las observaciones y no de cómo y en qué orden fueron recolectadas.</li>
+</ul>
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../13/teorema-central-del-limite/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Teorema Central del Limite" rel="prev">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Teorema Central del Limite
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../11/11/distintas-distancias/" class="md-footer__link md-footer__link--next" aria-label="Next: Distintas Distancias" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Distintas Distancias
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

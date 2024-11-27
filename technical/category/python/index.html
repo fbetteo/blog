@@ -1,0 +1,1795 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../statistics/">
+      
+      
+        <link rel="next" href="../personal-growth/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Python - Franco Betteo</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Franco Betteo
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  Technical posts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://sportsjobs.online" class="md-tabs__link">
+        
+  
+    
+  
+  Job Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../nba_salaries/" class="md-tabs__link">
+          
+  
+    
+  
+  NBA salaries legacy model
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Franco Betteo
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../.." class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Technical posts
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_2">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Technical posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estadistica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    machine learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#expectation-maximization-for-poisson-process" class="md-nav__link">
+    Expectation Maximization for Poisson process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weighted-regression" class="md-nav__link">
+    Weighted regression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spark-and-pyspark" class="md-nav__link">
+    Spark and Pyspark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#softmax-vs-sigmoid" class="md-nav__link">
+    Softmax vs sigmoid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-r-a-python-1" class="md-nav__link">
+    De R a Python 1
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../personal-growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal Growth
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../r/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../algebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    algebra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matematica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    matematica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://sportsjobs.online" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Job Board
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../nba_salaries/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NBA salaries legacy model
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#expectation-maximization-for-poisson-process" class="md-nav__link">
+    Expectation Maximization for Poisson process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weighted-regression" class="md-nav__link">
+    Weighted regression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spark-and-pyspark" class="md-nav__link">
+    Spark and Pyspark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#softmax-vs-sigmoid" class="md-nav__link">
+    Softmax vs sigmoid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-r-a-python-1" class="md-nav__link">
+    De R a Python 1
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="python">Python</h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-09-05 00:00:00">2024-09-05</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../machine-learning/" class="md-meta__link">machine learning</a>, 
+              <a href="../statistics/" class="md-meta__link">statistics</a>, 
+              <a href="./" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="expectation-maximization-for-poisson-process"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/">Expectation Maximization for Poisson process</a></h2>
+<h5 id="the-problem"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#the-problem">The problem</a></h5>
+<p>What if you want to run a regression to estimate the coefficients and retrieve the data generating process of some data <strong>BUT</strong> you are in a scenario with censored data? How does that affect my estimation? Can I do better?</p>
+<h5 id="censored-data"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#censored-data">Censored data</a></h5>
+<p>In short, you have censored data when some observation is unobserved or constrained because of some specific reason which is natural and unavoidable.</p>
+<h6 id="unobserved"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#unobserved">Unobserved</a></h6>
+<p>For instance, in survival analysis, if the subject is not yet dead (luckily) you can not observe the time of death yet and hence you don't know if he will die tomorrow or in two years. You can't observe yet the death date.  </p>
+<h6 id="constrained"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#constrained">Constrained</a></h6>
+<p>For goods with limited demand, once you deplete your stock, by definition you can't sell more and you can't observe all the demand that you would have if more items were able to be sold. Or an Airline , when selling seats, can't observe the full demand after all the seats have been sold, maybe more people were willing to flight.</p>
+<p>We will simulate an example of the latest case, for an airline with simple toy data.</p>
+<pre><code class="language-python">import numpy as np
+import statsmodels.api as sm
+from scipy.stats import poisson
+import matplotlib.pyplot as plt
+</code></pre>
+<p>We create some fake data, where seats sold are generated from a poisson distribution, with an intercept (2) and a coefficient related to how many days are left to the departure (-0.2), the further from the departure, the less seats are sold.</p>
+<p>What we also do, is that on the last date, we constrain the demand. We don't get the full seats that would have been sold under a poisson distribution but the amount minus 3. Only ourselves know that because we want to tweak the data. In real life we would see data similar to the one generated and we couldn't see the actual sales that would have been present in a complete poisson generating process (that actually is how the tickets are sold in our example)</p>
+<pre><code class="language-python"># Step 1: Generate data
+np.random.seed(100)
+n_samples = 20
+n_features = 1
+substract_sales = 3
+
+# Generate features
+X = np.random.normal(size=(n_samples, n_features))
+X = np.array(range(n_samples+1, 1, -1))
+X = sm.add_constant(X)  # Add intercept term
+
+# True coefficients
+beta_true = np.array([2, -0.2])
+
+# Generate Poisson-distributed target values
+linear_pred = np.dot(X, beta_true)
+lambda_true = np.exp(linear_pred)
+y = np.random.poisson(lambda_true)
+# y
+
+# Right-censoring threshold in the last date (when the fare is closed)
+censor_threshold = np.concatenate([(y+1)[:-1],np.array([y[-1]-substract_sales])])
+y_censored = np.where(y &gt; censor_threshold, censor_threshold, y)
+is_censored = (y &gt; censor_threshold)
+</code></pre>
+<p>Maybe it's easier to visualize.<br />
+The green curve is the actual lambda parameter for each data, based on the intercept and the real coefficient multiplied by days to departure.<br />
+The blue dots are the actual data points we see for all dates except from the last one.<br />
+The grey dot is the data we should see if there was no limit of how many seats to sell, following the poisson distribution.<br />
+The red dot is the actual data point we have, the last day the airline sold all the remaining seats and couldn't fulfill the true demand and hence we see lower sales than the ones generated by the poisson distribution.  </p>
+<pre><code class="language-python"># Plot the data
+plt.xlabel('Days to departure')
+plt.ylabel('Bookings')
+plt.title('Data Plot')
+plt.plot(X[:-1, 1], y[:-1], 'o')
+plt.plot(X[:, 1], lambda_true, label='Lambda True', color=&quot;green&quot;)
+# plt.plot(X[:, 1], lambda_est, label='Lambda Estimated')
+plt.scatter(X[-1, 1], y[-1:],  color=&quot;grey&quot;, label=&quot;Real unseen demand&quot; )
+plt.scatter(X[-1, 1], y[-1:]-substract_sales, color='red', label='Constrained')
+plt.legend()
+plt.show()
+</code></pre>
+<p><img alt="Image" src="../../img/2024-09-05-expectation-maximization-for-poisson-process-unnamed-chunk-5-1.png" /></p>
+<h5 id="esimation"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#esimation">Esimation</a></h5>
+<h6 id="poisson-regression"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#poisson-regression">Poisson Regression</a></h6>
+<p>First we estimate the parameters using a poisson regression. We assume the data follows a poisson process and we don't do anything to manage the constrained data.<br />
+The results are kind of ok, we get some closeness to the true parameters but it is clearly biased.</p>
+<pre><code class="language-python">
+
+model_censored = sm.GLM(y_censored, X, family=sm.families.Poisson())
+results_censored = model_censored.fit()
+print(f'Estimated Censored coefficients: {results_censored.params}')
+</code></pre>
+<pre><code>## Estimated Censored coefficients: [ 1.86976922 -0.21124541]
+</code></pre>
+<h6 id="expectation-maximization"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#expectation-maximization">Expectation Maximization</a></h6>
+<p>OK, here is our alternative. What we can do, a bit more sophisticated, is to apply EM algorithm, which is a iterative process, to estimate the coefficients of the poisson regression, including the knowledge we have, that there might be constrained data.</p>
+<pre><code class="language-python">
+
+
+# Step 2: Initialize parameters
+beta_est = np.zeros(n_features + 1)
+tol = 1e-4
+max_iter = 1000
+
+for iteration in range(max_iter):
+    # Step 3: E-step
+    # Estimate the expected values of censored data
+    lambda_est = np.exp(np.dot(X, beta_est))
+    expected_y = np.where(
+        is_censored,
+        (censor_threshold + 1) / (1 - poisson.cdf(censor_threshold, lambda_est)),
+        y_censored
+    )
+    # Ensure expected_y values are valid
+    expected_y = np.nan_to_num(expected_y, nan=np.mean(y_censored), posinf=np.max(y_censored), neginf=0)
+    # Step 4: M-step
+    # Update parameter estimates using Poisson regression
+    model = sm.GLM(expected_y, X, family=sm.families.Poisson())
+    results = model.fit(method=&quot;lbfgs&quot;)
+    # results = model.fit_regularized(L1_wt=0, alpha=0.1) 
+    new_beta_est = results.params
+
+    # Check convergence
+    if np.linalg.norm(new_beta_est - beta_est) &lt; tol:
+        break
+
+    beta_est = new_beta_est
+</code></pre>
+<pre><code>## &lt;string&gt;:7: RuntimeWarning: divide by zero encountered in divide
+</code></pre>
+<pre><code class="language-python">print(f'Estimated coefficients: {beta_est}')
+</code></pre>
+<pre><code>## Estimated coefficients: [ 2.11015996 -0.23573144]
+</code></pre>
+<p>We can see our estimates are of course not perfect but the intercept is closer to the true parameter.<br />
+Let's visualize the results to have a clear intuition.</p>
+<pre><code class="language-python">uncensored_predictions = results.predict(X)
+censored_predictions = results_censored.predict(X)
+</code></pre>
+<p>Promising!<br />
+For the furthest dates we see a bias in both approaches, we are not doing better than the Poisson regression, but neither worse.<br />
+As we move closer the the departure, the EM algorithm predictions get closer and closer to the true lambdas, while the regular poisson regression continues it's biased trajectory.<br />
+The EM procedure adjusted the coefficients to better match the constrained data.</p>
+<pre><code class="language-python">plt.plot(X[:, 1], lambda_true, label='Lambda True', color=&quot;green&quot;)
+plt.plot(X[:, 1], uncensored_predictions, label='Uncensored Predictions (EM)', color=&quot;blue&quot;)
+plt.plot(X[:, 1], censored_predictions, label='Censored Predictions', color=&quot;red&quot;)
+plt.xlabel('Days to departure')
+plt.ylabel('Lambda - Poisson regression')
+plt.title('Lambda Predictions')
+plt.legend()
+plt.show()
+</code></pre>
+<p><img alt="Image" src="../../img/2024-09-05-expectation-maximization-for-poisson-process-unnamed-chunk-9-3.png" /></p>
+
+    <nav class="md-post__action">
+      <a href="../../2024/09/05/expectation_maximization_poisson/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-03-25 00:00:00">2022-03-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../machine-learning/" class="md-meta__link">machine learning</a>, 
+              <a href="./" class="md-meta__link">Python</a>, 
+              <a href="../r/" class="md-meta__link">R</a>, 
+              <a href="../statistics/" class="md-meta__link">statistics</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="weighted-regression"><a class="toclink" href="../../2022/03/25/index.en-us/">Weighted regression</a></h2>
+<p>Weighted regression consists on assigning different weights to each observation and hence more or less importance at the time of fitting the regression.  </p>
+<p>On way to look at it is to think as solving the regression problem minimizing Weighted Mean Squared Error(WSME) instead of Mean Squared Error(MSE)</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(WMSE(\beta, w) = \frac{1}{N} \sum_{i=1}^n w_i(y_i - \overrightarrow {x_i} \beta)^2\)</span>\)</span>
+Intuitively, we are looking fot the coefficients that minimize MSE but putting different weights to each observation. OLS is a particular case where all the <span class="arithmatex">\(w_i = 1\)</span></p>
+<p>Why doing this? A few reasons (Shalizi 2015. Chapter 7.1)  </p>
+<ul>
+<li>
+<p><em>Focusing Accuracy</em>: We want to predict specially well some particular points or region of points, maybe because that's the focus for production or maybe because being wrong at those observations has a huge cost, etc. Using Weighted regression will do an extra effort to match that data.</p>
+</li>
+<li>
+<p><em>Discount imprecision</em>: OLS returns the maximum likelihood estimates when the residuals are independent, normal with mean 0 and with constant variance. When we face non constant variance OLS no longer returns the MLE. 
+The logic behind using weighted regression is that makes no sense to pay equal attention to all the observations since some of them have higher variance and are less indicative of the conditional mean. We should put more emphasis on the regions of lower variance, predict it well and "expect to fit poorly where the noise is big".<br />
+The weights that will return MLE are <span class="arithmatex">\(\frac{1}{\sigma_i^2}\)</span></p>
+</li>
+<li>
+<p><em>Sampling bias</em>: If we think or know that the observations in our data are not completely random and some subset of the population might be under-represented (in a survey for example or because of data availability) it might make sense to weight observation inversely to the probability of being included in the sample. Under-represented observations will get more weights and over-represented less weight.<br />
+Another similar situation is related to <em>covariate shift</em>. If the distribution of variable x changes over time we can use a weight designed as the ratio of the probability density functions. </p>
+<blockquote>
+<p>"If the old pdf was p(x) and the new one is q(x), the weight we'd want to is <span class="arithmatex">\(w_i=q(x_i)/p(x_i)\)</span></p>
+</blockquote>
+</li>
+<li>
+<p><em>Other</em>: Related to GLM, when the conditional mean is a non linear function of a linear predictor. (Not further explained in the book at this point)</p>
+</li>
+</ul>
+<p>Is there a scenario where OLS is better than Weighted regression? Assuming we can compute the weights.</p>
+<h4 id="example"><a class="toclink" href="../../2022/03/25/index.en-us/#example">Example.</a></h4>
+<p>First we will see the impact of using weighted regression, using a simulated scenario where we actually know the variance of the error of each observation. This is not realistic but useful to see it in action.</p>
+<pre><code class="language-r">library(tidyverse)
+</code></pre>
+<p>We generate 1000 datapoints with a linear relation between y and x. Intercept = 0, slope = 5. We let the variance of the error depend on the value of x. Higher values of x are associated with higher values of the variance of the error.</p>
+<pre><code class="language-r">set.seed(23)
+n=1000
+x = runif(n,0,10)
+error = rnorm(n,0, x/1.5)
+df = data.frame(x)
+df = df %&gt;% mutate(y = 5*x + error)
+</code></pre>
+<p>Visually..</p>
+<pre><code class="language-r">ggplot(data=df, aes(x=x, y=y)) +
+  geom_point(alpha=0.3) + 
+  # geom_smooth(color=&quot;blue&quot;) +
+  # geom_smooth(method = &quot;lm&quot;, mapping = aes(weight = (1/sqrt(x)^2)),
+  #             color = &quot;red&quot;, show.legend = FALSE) +
+  NULL
+</code></pre>
+<p><img alt="Image" src="../../img/2022-03-25-weighted-regression-unnamed-chunk-3-1.png" /></p>
+<h5 id="linear-regression"><a class="toclink" href="../../2022/03/25/index.en-us/#linear-regression">Linear regression</a></h5>
+<pre><code class="language-r">ols = lm(formula = &quot;y~x&quot;, data=df)
+summary(ols)
+</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = &quot;y~x&quot;, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -14.868  -1.720  -0.137   1.918  14.722 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.19192    0.24278   0.791    0.429    
+## x            4.95585    0.04148 119.489   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.855 on 998 degrees of freedom
+## Multiple R-squared:  0.9347, Adjusted R-squared:  0.9346 
+## F-statistic: 1.428e+04 on 1 and 998 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+<p>We get an intercept of 0.19, non-significant when the actual value is 0 and a slope of 4.96 when the actual value is 5.</p>
+<h5 id="weighted-linear-regression"><a class="toclink" href="../../2022/03/25/index.en-us/#weighted-linear-regression">Weighted linear regression</a></h5>
+<pre><code class="language-r">wols = lm(formula = &quot;y~x&quot;, data=df, weights = (1/sqrt(x)^2) )
+summary(wols)
+</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = &quot;y~x&quot;, data = df, weights = (1/sqrt(x)^2))
+## 
+## Weighted Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.8880 -0.8601 -0.0016  0.8936  4.6535 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 0.001483   0.030072   0.049    0.961    
+## x           4.993473   0.021874 228.286   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.498 on 998 degrees of freedom
+## Multiple R-squared:  0.9812, Adjusted R-squared:  0.9812 
+## F-statistic: 5.211e+04 on 1 and 998 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+<p>We get an intercept of 0, non-significant too but much closer to 0 and with lower standard error and a slope of 4.99 also much closer to the actual value of 5 and with lower standard error.</p>
+<p><strong>Conclusion:</strong> if we know the right weights we can get better estimates from a linear regression in case of heteroscedasticity.  </p>
+
+    <nav class="md-post__action">
+      <a href="../../2022/03/25/index.en-us/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2021-07-11 00:00:00">2021-07-11</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../machine-learning/" class="md-meta__link">machine learning</a>, 
+              <a href="./" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="spark-and-pyspark"><a class="toclink" href="../../2021/07/11/spark.en-us/">Spark and Pyspark</a></h2>
+<h3 id="whats-spark"><a class="toclink" href="../../2021/07/11/spark.en-us/#whats-spark">What's Spark?</a></h3>
+<p>prueba
+The <a href="https://spark.apache.org/faq.html">definition</a> says:  </p>
+<blockquote>
+<p>Spark is a fast and general processing engine compatible with Hadoop data. It can run in Hadoop clusters &gt;through YARN or Spark's standalone mode, and it can process data in HDFS, HBase, Cassandra, Hive, and any &gt;Hadoop InputFormat. It is designed to perform both batch processing (similar to MapReduce) and new &gt;workloads like streaming, interactive queries, and machine learning.</p>
+</blockquote>
+<p>Basically is a framework to work with big amounts of data stored in distributed systems instead of just one machine. This allows parallelization and hence much faster calculations.<br />
+It's biggest difference with plain Hadoop is that Spark uses RAM to process data while Hadoop doesn't.  </p>
+<p>Not being a data engineer myself I can tell you that you can use Spark to work with data stored in HDFS, S3 buckets or a data lake for example. All distributed systems.  </p>
+<p>Since those usually store huge big amount of data you can see how all this relate. The use case I have been exposed to, as a data scientist, is to query this distributed data and process it before using it for some purpose (modeling, reporting, etc).</p>
+<h3 id="how-to-use-it"><a class="toclink" href="../../2021/07/11/spark.en-us/#how-to-use-it">How to use it?</a></h3>
+<p>I haven't deployed a distributed storage system myself but I think it's safe to assume that amount of data is gathered in big organizations and probably some data engineer has already done all the setup. You just want to access the data from an environment connected to the spark cluster. </p>
+<p>There are several languages that can interact with Spark. Scala is the original one but you could use Java or Python. As data scientist we are probably more familiar with Python so I will show you Pyspark</p>
+<h4 id="pyspark"><a class="toclink" href="../../2021/07/11/spark.en-us/#pyspark">Pyspark</a></h4>
+<p>Pyspark is an API to work with Spark using Python. In order to run you need also Java installed and Apache Spark.
+In our fictional organization a data engineer might have set up a server with Jupyter notebooks linked to the data lake and with all the dependencies.</p>
+<p>There are probably ways to connect to the remote spark server from your local machine but I haven't done that.</p>
+<p>So, Pyspark allows you to query the datalake/bigdata storage from a jupyter notebook and then convert that to a Pandas Dataframe and work as you are used to.</p>
+<p>Spark/Pyspark has a particular syntax that is quite clear but has some particularities based on the parallelization notion. For example, many functions don't actually retrieve all the data, that only happens when you decide to. For example <code>show()</code> or <code>collect()</code> do retrieve the data (and can take a while if you are working with a lot of data) while <code>filter()</code> or <code>withColumn()</code> don't.</p>
+<p>Another thing to notice is that you will need to create/initiate a sparkContext before actually being able to query data.</p>
+<p>To understand this and have a good amount of examples regarding the functions and syntax I highly recommend <a href="https://sparkbyexamples.com/pyspark-tutorial/">THIS SITE.</a></p>
+<h4 id="how-to-practice"><a class="toclink" href="../../2021/07/11/spark.en-us/#how-to-practice">How to practice?</a></h4>
+<p>You can practice Pyspark queries and scripts by installing Pyspark in your local machine despite not having a cluster running distributed data. With Pyspark installed you can create some data and use it as it was real.<br />
+You will be able to use all the functions and check them by yourself.</p>
+<p>How to install it? You can check <a href="https://sparkbyexamples.com/pyspark-tutorial/#pyspark-installation">THIS GUIDE FOR WINDOWS.</a></p>
+<p>I have struggled a bit to make it work so these are some things I learned during the way. </p>
+<ul>
+<li>I have downloaded Java 8 since that's what the guide says and use that at my current organization.</li>
+<li>To avoid creating an account in Oracle to download Java you can check <a href="https://gist.github.com/wavezhang/ba8425f24a968ec9b2a8619d7c2d86a6#gistcomment-3799446">THIS SOLUTION.</a></li>
+<li>When creating Environment variables avoid blank spaces</li>
+<li>If Pyspark doesn't run because can't find Java. Check the %JAVA_HOME% path.</li>
+<li>If the error is related to missing Python3 , check the %PYTHONPATH% and create in the anaconda path a copy of <code>python.exe</code> but rename it <code>python3.exe</code></li>
+</ul>
+
+    <nav class="md-post__action">
+      <a href="../../2021/07/11/spark.en-us/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2021-01-18 00:00:00">2021-01-18</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="./" class="md-meta__link">Python</a>, 
+              <a href="../machine-learning/" class="md-meta__link">machine learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="softmax-vs-sigmoid"><a class="toclink" href="../../2021/01/18/softmax-vs-sigmoid.en-us/">Softmax vs sigmoid</a></h2>
+<p>When using Neural Nets for a multiclass classification problem it's standard to have a softmax layer at the end to normalize the probabilities for each class. This means that the output of our net is a vector of probabilities (one for each class) that sums to 1. If there isn't a softmax layer at the end, then the net will output a value in each of the last cells (one for each class) but without a delimited range.<br />
+Just a set of numbers where usually the highest is the one with the most probable class but it's not obvious how to value the differences between them.</p>
+<p>So, you have a ordered set of numbers, you know which one is the most probable but you want to transform that into clear probabilities. You use the softmax layer. </p>
+<p>You could use a sigmoid activation function in the last cell to have <em>individual</em> probabilities. For each class, it transforms the output of the net into a probability. However the sum of those probabilities is not guaranteed to sum 1, actually it won't in practice. It's a simple proxy but you can get better intuitions with softmax.</p>
+<p>We will compare how these two approaches affect the last group of weights by inspecting the gradient after calculating the loss for an observation.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>I'm using the <em>reticulate</em> package in R to include Python code in Rmarkdown. Pretty nice.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="language-r">library(reticulate)
+</code></pre>
+<p>We import pytorch to handle tensors and neural net functions.</p>
+<pre><code class="language-python">import numpy as np
+import torch
+import torch.nn.functional as F
+</code></pre>
+<pre><code class="language-python">torch.manual_seed(99)
+</code></pre>
+<pre><code>## &lt;torch._C.Generator object at 0x00000262714CF730&gt;
+</code></pre>
+<ul>
+<li>1 obs  </li>
+<li>5 features (X)  </li>
+<li>3 possible classes (index 1 = class 2)  </li>
+<li>W. 3 output cells, each one with 5 weights (one per feature)  </li>
+<li>W1 = W2 because we run it twice (two scenarios) and we can't re use the same weights because of the gradient calculated</li>
+</ul>
+<pre><code class="language-python">X = torch.randn(5)
+W1 = torch.randn(3,5)
+W2 = W1.detach().clone() 
+y = torch.tensor([1]) 
+</code></pre>
+<p>We transform everything to positives to make it cleaner and we add the requires_grad_() characteristic
+that tells pytorch that those tensors need the gradient backpropagated during training</p>
+<pre><code class="language-python">X = X.abs()
+W1 = W1.abs().requires_grad_()
+W2 = W2.abs().requires_grad_()
+</code></pre>
+<p>We define both losses (softmax and sigmoid).  </p>
+<p><em>Softmax</em>  </p>
+<ul>
+<li>Weights * input: cell value</li>
+<li>we change dimension of output to use it as input of softmax</li>
+<li>We calculate the softmax (probabilities of each class that sum 1)</li>
+<li>Apply log because we will use the negative log likelihood</li>
+<li>We calculate the loss (log of softmax probabilities vs actual class)</li>
+</ul>
+<p><em>Sigmoid</em>  </p>
+<ul>
+<li>Weights * input: cell value</li>
+<li>we change dimension of output to use it as input of sigmoid</li>
+<li>We calculate the sigmoid (probabilities of each class individually)</li>
+<li>Apply log because we will use the negative log likelihood</li>
+<li>We calculate the loss (log of sigmoid probabilities vs actual class)</li>
+</ul>
+<pre><code class="language-python"># funcion con softmax al final
+def softmax_loss(W):
+    z = W @ X
+    z = z.unsqueeze(0)
+    z = torch.softmax(z, dim=1)
+    z = torch.log(z)
+    return F.nll_loss(z, y)
+
+# funcion con una sigmoidea por activacion
+def sigmoid_loss(W):
+    z = W @ X
+    z = z.unsqueeze(0)
+    z = torch.sigmoid(z)
+    z = torch.log(z)
+    return F.nll_loss(z, y)
+</code></pre>
+<p>We run the forward pass and calculate the loss for the sigmoid first. Then we look for the gradient.<br />
+As we can see in the results, only the weights that go to the correct class' output cell are modified. Classes one and three rest untouched. This is because the sigmoid activation just has the individual weights (and cross entropy only look to the correct class)</p>
+<pre><code class="language-python">out_sigmoid = sigmoid_loss(W1)
+out_sigmoid.backward()
+W1.grad
+</code></pre>
+<pre><code>## tensor([[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+##         [-0.0452, -0.0867, -0.0564, -0.0492, -0.0549],
+##         [ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000]])
+</code></pre>
+<p>On the contrary, when running the same net but with softmax layer we see that all the weights are updated. The correct class has gradient with the same sign that for the sigmoid example but the other two classes have in this case opposite sign gradients (which makes sense since you want them to go in the other direction).<br />
+This happens because the softmax includes the other classes in each cell since they are needed to normalize and return probabilities that sum up to 1.</p>
+<pre><code class="language-python">out_softmax = softmax_loss(W2)
+out_softmax.backward()
+W2.grad
+</code></pre>
+<pre><code>## tensor([[ 0.5393,  1.0346,  0.6731,  0.5868,  0.6552],
+##         [-0.5576, -1.0697, -0.6959, -0.6066, -0.6775],
+##         [ 0.0183,  0.0351,  0.0228,  0.0199,  0.0222]])
+</code></pre>
+<p>This is a simple case with just one layer of weights so we can clearly see this. If you had a fully connected net with more layers, this is valid just for the last one because the gradient is backpropagated and the weights from "other paths" still affect the cell that corresponds to the second class.  </p>
+<h4 id="conclusion"><a class="toclink" href="../../2021/01/18/softmax-vs-sigmoid.en-us/#conclusion">Conclusion</a></h4>
+<p>The net should evolve during training in a similar way with both last layer activations but the way they do it is different and we try to show in here why. In the end, the sigmoid still reflects the preference for one of the classes and during each epoch it will go through the desired path but just updating some of the weights and not all at the same time.</p>
+
+    <nav class="md-post__action">
+      <a href="../../2021/01/18/softmax-vs-sigmoid.en-us/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-07-11 00:00:00">2020-07-11</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../r/" class="md-meta__link">R</a>, 
+              <a href="./" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="de-r-a-python-1"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/">De R a Python 1</a></h2>
+<p>Serie que documenta cuestiones prácticas que voy descubriendo a medida que empiezo a incursionar en Python un poco más enserio.
+Son más que nada recordatorios para el futuro de mecánicas que hoy entiendo, pero me voy a olvidar.</p>
+<p>Muchos de los objetos no van a tener relación entre sí o no se puede correr el código directo 
+ya que son copy/paste random de scripts.</p>
+<h4 id="usar-objetos-de-otros-scripts"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#usar-objetos-de-otros-scripts">Usar objetos de otros scripts</a></h4>
+<p>Si uno genera modelos, dataframes, etc en otro script por prolijidad y quiere utilizarlos en 
+el principal (o cualquiera en realidad) lo aconsejable es exportarlo como objeto pickle (algo 
+asi como los RDS en R.)</p>
+<pre><code class="language-r">library(reticulate)
+</code></pre>
+<pre><code class="language-python">import pickle
+import pandas as pd
+
+# exportar. Objeto, archivo, permisos
+pickle.dump(OBJETO, open(&quot;working/qualifying.p&quot;, &quot;wb&quot;))
+
+# importar
+leer = pd.read_pickle('archivo.p')
+</code></pre>
+<h4 id="seleccionar-columas-de-dataframe-por-patron-en-el-nombre"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#seleccionar-columas-de-dataframe-por-patron-en-el-nombre">Seleccionar columas de dataframe por patrón en el nombre</a></h4>
+<p>Para seleccionar columnas basados en si contiene determinado string en su nombre y no solo por nombre
+completo o por índice. </p>
+<pre><code class="language-python"># Recordemos que iloc selecciona por índice
+# Función Lambda  que convierte el indice de columna en strings y devuelve mascara (True/false)
+# si contiene determinado patrón. Creo que puede ponerse cualquier Regex
+df2 = df.iloc[:, lambda df:df.columns.str.contains('_points')] # select column based on name
+</code></pre>
+<p>Si queremos combinar esto con otras columnas con otro patrón no encontré manera más sencilla por
+el momento que combinar por separado. Quizás es muy tedioso si son muchas.</p>
+<pre><code class="language-python"># Notar que en point_vars le pasamos la máscara al listado de columnas nuevamente
+# para quedarnos con el nombre real y poder sumarlo a las otras listas
+# luego lo convertimos en lista porque el objeto es de tipo índice si no.
+target = ['position']
+qualy_vars = ['grid', 'dif_to_min_perc']
+point_vars = list(results.columns[results.columns.str.contains('_points')])
+
+vars_keep = target + qualy_vars + point_vars
+</code></pre>
+<h4 id="juntar-dataframes-por-indice"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#juntar-dataframes-por-indice">Juntar dataframes por indice</a></h4>
+<p>Los DF vienen por default con un índice. Si uno trabaja con una copia del DF original para generar nuevas columnas el índice se mantiene (si no lo reseteamos claro). También útil si se tienen varias tablas con mismo índice.</p>
+<p>Esto permite juntar tablas sin tener que hacer un merge explicito por determinadas columnas si no
+tenemos esos keys.</p>
+<pre><code class="language-python">results = results.join(driver_points_merge) # join by index (no need to merge with column)
+</code></pre>
+<h4 id="ifelse"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#ifelse">Ifelse</a></h4>
+<p>El equivalente de IFELSE en R para rapidamente crear una columna basado en otras, fila por fila.</p>
+<pre><code class="language-python">import numpy as np
+#               = condicion, valor si True, valor si False
+df['position'] = np.where(df['position'] &gt; 1, 0, 1)
+</code></pre>
+<h4 id="dropear-columna-de-df"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#dropear-columna-de-df">Dropear columna de DF</a></h4>
+<p>Útil para asegurar que sacan el target de las X...</p>
+<pre><code class="language-python">X = df.drop(columns=&quot;position&quot;)
+</code></pre>
+<h4 id="remplazar-determinado-valor-por-nan-u-otro"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#remplazar-determinado-valor-por-nan-u-otro">Remplazar determinado valor por NaN (u otro)</a></h4>
+<p>df.replace</p>
+<pre><code class="language-python">qualifying = qualifying.replace('\\N', np.nan)
+</code></pre>
+<h4 id="apply-aplicar-funciones-a-cada-fila-o-columna"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#apply-aplicar-funciones-a-cada-fila-o-columna">APPLY. Aplicar funciones a cada fila o columna</a></h4>
+<p>Permite aplicar una función por fila o columna.La funcion se aplica sobre la serie (la fila o columna)
+La serie mantiene los indices. Si usamos apply con axis = 1 que cada serie es una fila entera, 
+podemos llamar a la celda correspondiente usando ['columna']</p>
+<p>Apply es como las distintas versiones de apply de R y/o MAP del tidyverse cuando se aplica a un DF.</p>
+<pre><code class="language-python">import pandas as pd
+rectangles = [
+    { 'height': 40, 'width': 10 },
+    { 'height': 20, 'width': 9 },
+    { 'height': 3.4, 'width': 4 }
+]
+
+rectangles_df = pd.DataFrame(rectangles)
+rectangles_df
+
+
+# Suma de todas las celdas (&quot;filas&quot;) por columna
+</code></pre>
+<pre><code>##    height  width
+## 0    40.0     10
+## 1    20.0      9
+## 2     3.4      4
+</code></pre>
+<pre><code class="language-python">suma_por_columna = rectangles_df.apply(sum)
+print(suma_por_columna)
+
+# Suma de todas las celdas (&quot;columnas&quot;) por filas
+</code></pre>
+<pre><code>## height    63.4
+## width     23.0
+## dtype: float64
+</code></pre>
+<pre><code class="language-python">suma_por_fila = rectangles_df.apply(sum, axis = 1)
+print(suma_por_fila)
+</code></pre>
+<pre><code>## 0    50.0
+## 1    29.0
+## 2     7.4
+## dtype: float64
+</code></pre>
+<h4 id="apply-lambda-para-pasar-funciones-custom-en-el-momento"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#apply-lambda-para-pasar-funciones-custom-en-el-momento">Apply Lambda para pasar funciones custom en el momento</a></h4>
+<pre><code class="language-python">import pandas as pd
+rectangles = [
+    { 'height': 40, 'width': 10 },
+    { 'height': 20, 'width': 9 },
+    { 'height': 3.4, 'width': 4 }
+]
+
+rectangles_df = pd.DataFrame(rectangles)
+
+def multiplicar_2(x):
+   return x*2
+
+# Caso donde paso una funcion propia predefinida
+rectangles_df.apply(multiplicar_2)
+
+
+# Lo mismo pero definido en el momento
+</code></pre>
+<pre><code>##    height  width
+## 0    80.0     20
+## 1    40.0     18
+## 2     6.8      8
+</code></pre>
+<pre><code class="language-python">rectangles_df.apply(lambda x: x*2)
+</code></pre>
+<pre><code>##    height  width
+## 0    80.0     20
+## 1    40.0     18
+## 2     6.8      8
+</code></pre>
+<h4 id="calculos-by-group"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#calculos-by-group">Calculos by group</a></h4>
+<p>Como el bygroup de tidyverse.</p>
+<pre><code class="language-python"># Equivalente a  groupby(raceid) %&gt;% summarise(newcol = min(best_qualy_ms))
+min_qualy_by_race = qualifying.groupby('raceId')['best_qualy_ms'].min()
+</code></pre>
+<h4 id="by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila">By Group más complejo, con calculo acumulado en determinada ventana de obs. por cada fila</a></h4>
+<pre><code class="language-python"># suma acumulada de los ultimos 4 periodos (rolling)
+# luego el gorupby(level = 0).shift() es para lagearlo por grupo
+# el ultimo reset_index es para quitar el indice de este ultimo agrupado
+driver_points.groupby('driverId')['points'].rolling(4, min_periods = 4).sum().groupby(level = 0).shift().fillna(0).reset_index(level = 0)['points']
+</code></pre>
+
+    <nav class="md-post__action">
+      <a href="../../2020/07/11/de-r-a-python-1/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  
+</nav>
+        
+      
+    </div>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../statistics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: statistics" rel="prev">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                statistics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../personal-growth/" class="md-footer__link md-footer__link--next" aria-label="Next: Personal Growth" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Personal Growth
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
