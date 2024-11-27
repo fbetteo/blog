@@ -1,6 +1,7 @@
 ---
 title: Softmax vs sigmoid
-author: ''
+authors:
+  - fbetteo 
 date: 2021-01-18
 slug: softmax-vs-sigmoid.en-us
 categories:

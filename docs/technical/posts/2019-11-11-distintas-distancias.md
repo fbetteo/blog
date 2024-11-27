@@ -1,6 +1,7 @@
 ---
 title: 'Distintas Distancias'
-author: ''
+authors:
+  - fbetteo 
 date: 2019-11-11
 slug: distintas-distancias
 categories:

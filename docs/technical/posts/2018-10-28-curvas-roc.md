@@ -1,6 +1,7 @@
 ---
 title: "Curvas ROC"
-author: ""
+authors:
+  - fbetteo 
 date: 2018-10-28
 slug: curvas-roc
 thumbnailImage: https://lh3.googleusercontent.com/tLg0Pr_VbROknZC9tfWmkQRxtItwLZEalRMnszkTwnROkVlJDOC4QUsUnJLdfL8s6A1BhuW8UGIOzoLS7Q=w221-h220-rw

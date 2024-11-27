@@ -1,6 +1,7 @@
 ---
 title: "Simulación de Monty Hall"
-author: "FB"
+authors:
+  - fbetteo 
 date: 2018-08-25
 slug: simulación-de-monty-hall
 tags: 

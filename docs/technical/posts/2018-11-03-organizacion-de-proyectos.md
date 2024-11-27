@@ -1,6 +1,7 @@
 ---
 title: Organización de Proyectos
-author: ''
+authors:
+  - fbetteo 
 date: 2018-11-03
 slug: organizacion-de-proyectos
 categories:

@@ -1,6 +1,7 @@
 ---
 title: Cadenas de Markov
-author: FB
+authors:
+  - fbetteo
 date: 2018-08-25
 slug: cadenas-de-markov
 categories: 

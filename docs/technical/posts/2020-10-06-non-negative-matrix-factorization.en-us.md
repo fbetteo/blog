@@ -1,6 +1,7 @@
 ---
 title: Non Negative Matrix Factorization
-author: ''
+authors:
+  - fbetteo 
 date: 2020-10-06
 slug: non-negative-matrix-factorization.en-us
 categories:

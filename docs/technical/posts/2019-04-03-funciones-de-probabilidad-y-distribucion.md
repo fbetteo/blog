@@ -1,6 +1,7 @@
 ---
 title: Funciones de Probabilidad y Distribucion
-author: ''
+authors:
+  - fbetteo 
 date: 2019-04-03
 slug: funciones-de-probabilidad-y-distribucion
 categories:

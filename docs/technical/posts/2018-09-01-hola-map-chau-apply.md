@@ -1,6 +1,7 @@
 ---
 title: "Hola MAP. Chau Apply."
-author: "Franco Betteo"
+authors:
+  - fbetteo
 date: 2018-09-01
 output:
   blogdown::html_page:

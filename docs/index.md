@@ -6,7 +6,7 @@ I write about life, AI - machine learning - statistics, building a business as i
 
 
 ## Sportsjobs Online
-I run a [job board for sports analytics](www.sportsjobs.online) and data related positions. This includes working for teams, consultancy companies, whole leagues and some esports or betting organizations.  
+I run a [job board for sports analytics](https://sportsjobs.online) and data related positions. This includes working for teams, consultancy companies, whole leagues and some esports or betting organizations.  
 
 This is a project I handle myself, all self hosted and that I'm growing from a personal perspective. Finding sports analytics opportunities is not easy and I have a business running 24/7 which is something I encourage anyone to try.  
 

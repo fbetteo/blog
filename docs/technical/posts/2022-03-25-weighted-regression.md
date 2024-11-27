@@ -1,5 +1,7 @@
 ---
 title: Weighted regression
+authors:
+  - fbetteo
 date: 2022-03-25
 slug: index.en-us
 categories:

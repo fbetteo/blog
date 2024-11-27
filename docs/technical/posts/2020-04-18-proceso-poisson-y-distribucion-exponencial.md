@@ -1,6 +1,7 @@
 ---
 title: Proceso Poisson y distribucion exponencial
-author: ''
+authors:
+  - fbetteo 
 date: 2020-04-18
 slug: proceso-poisson-y-distribucion-exponencial
 categories:

@@ -1,6 +1,7 @@
 ---
 title: Expectation Maximization for Poisson process
-author: ''
+authors: 
+  - fbetteo 
 date: 2024-09-05
 slug: expectation_maximization_poisson
 categories:

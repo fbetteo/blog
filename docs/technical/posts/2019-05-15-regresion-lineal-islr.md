@@ -1,6 +1,7 @@
 ---
 title: Regresion Lineal - ISLR Capítulo 3
-author: ''
+authors:
+  - fbetteo 
 date: 2019-05-25
 slug: regresion-lineal-islr
 categories:

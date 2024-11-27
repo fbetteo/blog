@@ -1,6 +1,7 @@
 ---
 title: "Metodos de Resampleo - ISLR Capitulo 5"
-author: ''
+authors:
+  - fbetteo 
 date: 2019-07-01
 slug: metodos-de-resampleo
 tags:

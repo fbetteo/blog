@@ -1,6 +1,7 @@
 ---
 title: "Teorema Central del Limite"
-author: ''
+authors:
+  - fbetteo 
 date: 2019-10-13
 slug: teorema-central-del-limite
 tags:

@@ -1,6 +1,7 @@
 ---
 title: Bias Variance Tradeoff
-author: ''
+authors:
+  - fbetteo 
 date: 2022-01-17
 slug: bias-variance-tradeoff.en-us
 categories:

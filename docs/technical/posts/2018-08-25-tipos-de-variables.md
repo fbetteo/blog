@@ -1,6 +1,7 @@
 ---
 title: Tipos de Variables
-author: ''
+authors:
+  - fbetteo 
 date: 2018-08-25
 slug: tipos-de-variables
 categories:

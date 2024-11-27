@@ -1,6 +1,7 @@
 ---
 title: 'Counter Strike: chance of winning'
-author: ''
+authors:
+  - fbetteo 
 date: 2020-10-15
 slug: counter-strike-chance-of-winning.en-us
 categories:

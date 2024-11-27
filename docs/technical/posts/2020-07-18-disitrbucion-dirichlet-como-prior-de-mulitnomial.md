@@ -1,6 +1,7 @@
 ---
 title: Distribucion Dirichlet como prior de Multinomial
-author: ''
+authors:
+  - fbetteo 
 date: 2020-07-18
 output: pdf_document
 slug: disitrbucion-dirichlet-como-prior-de-mulitnomial

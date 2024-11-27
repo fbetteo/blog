@@ -1,5 +1,7 @@
 ---
 title: Inference is not valid in the dataset used for model selection.
+authors:
+  - fbetteo
 date: 2022-01-30
 slug: inference-is-not-valid-in-the-dataset-used-for-model-selection.en-us
 categories:

@@ -1,6 +1,7 @@
 ---
 title: 'Como correr un proyecto con R en Google Cloud '
-author: ''
+authors:
+  - fbetteo 
 date: 2018-11-10
 slug: como-correr-un-proyecto-con-r-en-google-cloud
 categories:

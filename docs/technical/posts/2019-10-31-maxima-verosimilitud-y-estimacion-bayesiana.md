@@ -1,6 +1,7 @@
 ---
 title: "Maxima Verosimilitud y estimacion bayesiana"
-author: ''
+authors:
+  - fbetteo 
 date: 2019-10-31
 keywords: tech
 slug: maxima-verosimilitud-y-estimacion-bayesiana

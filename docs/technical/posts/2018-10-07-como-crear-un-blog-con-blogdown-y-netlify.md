@@ -1,6 +1,7 @@
 ---
 title: "Como crear un blog con Blogdown y Netlify"
-author: ''
+authors:
+  - fbetteo 
 date: 2018-10-07
 slug: como-crear-un-blog-con-blogdown-y-netlify
 thumbnailImage: https://lh3.googleusercontent.com/mQSV47CnAqm-l4jRnnOmNa1w9_FtRm4bN0L-YO7tfe32SzP0_bGZ3dJrvsbUEK2xkWMnZsSqXDc5VE2ukA=w190-h220-rw

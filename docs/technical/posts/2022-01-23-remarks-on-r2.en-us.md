@@ -1,6 +1,7 @@
 ---
 title: Remarks on R2
-author: ''
+authors:
+  - fbetteo 
 date: 2022-01-23
 slug: remarks-on-r2.en-us
 categories:

@@ -1,6 +1,7 @@
 ---
 title: Linear Smoothers
-author: ''
+authors:
+  - fbetteo 
 date: 2022-01-18
 slug: linear-smoothers.en-us
 categories:

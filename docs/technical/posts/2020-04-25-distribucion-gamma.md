@@ -1,6 +1,7 @@
 ---
 title: Distribucion Gamma
-author: ''
+authors:
+  - fbetteo 
 date: 2020-04-25
 slug: distribucion-gamma
 categories:

@@ -1,6 +1,7 @@
 ---
 title: Introduccion a graficos con mapas
-author: 'FB'
+authors:
+  - fbetteo 
 date: 2019-03-30
 slug: introduccion-a-graficos-con-mapas
 tags:

@@ -1,6 +1,7 @@
 ---
 title: Esencia del Algebra Lineal
-author: ''
+authors:
+  - fbetteo 
 date: 2019-04-20
 slug: esencia-del-algebra-lineal
 categories:
