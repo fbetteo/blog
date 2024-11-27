@@ -9,14 +9,14 @@
       
       
       
-        <link rel="prev" href="../algebra/">
+        <link rel="prev" href="../machine-learning/">
       
       
-        <link rel="next" href="../blog/">
+        <link rel="next" href="../statistics/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
     
     
       
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,7 +48,7 @@
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -67,9 +67,6 @@
     
     <body dir="ltr" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -96,12 +93,12 @@
     <a href="../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -126,11 +123,14 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="youtube" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
     
   
 </form>
       
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -253,7 +253,7 @@
     <a href="../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
     Franco Betteo
@@ -263,6 +263,7 @@
     
       
       
+  
   
   
   
@@ -280,6 +281,14 @@
     
     
       
+      
+        
+      
+    
+    
+      
+        
+        
       
     
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
@@ -313,6 +322,7 @@
     
   
   
+  
     
     
       
@@ -326,10 +336,19 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
@@ -347,7 +366,8 @@
 
             </a>
             
-              <label class="md-nav__link " for="__nav_2">
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -367,6 +387,7 @@
   
   
   
+  
     
     
       
@@ -380,6 +401,15 @@
       
         
       
+        
+      
+    
+    
+      
+      
+        
+          
+          
         
       
     
@@ -390,13 +420,12 @@
       
         
         
-        
-        
           
         
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -419,6 +448,9 @@
   
   
   
+    
+  
+  
     <li class="md-nav__item">
       <a href="../../archive/2024/" class="md-nav__link">
         
@@ -437,6 +469,9 @@
               
                 
   
+  
+  
+    
   
   
     <li class="md-nav__item">
@@ -459,6 +494,9 @@
   
   
   
+    
+  
+  
     <li class="md-nav__item">
       <a href="../../archive/2021/" class="md-nav__link">
         
@@ -477,6 +515,9 @@
               
                 
   
+  
+  
+    
   
   
     <li class="md-nav__item">
@@ -499,6 +540,9 @@
   
   
   
+    
+  
+  
     <li class="md-nav__item">
       <a href="../../archive/2019/" class="md-nav__link">
         
@@ -517,6 +561,9 @@
               
                 
   
+  
+  
+    
   
   
     <li class="md-nav__item">
@@ -549,6 +596,7 @@
     
   
   
+  
     
     
       
@@ -566,6 +614,15 @@
       
         
       
+        
+      
+    
+    
+      
+      
+        
+          
+          
         
       
     
@@ -576,11 +633,10 @@
       
         
         
-        
-        
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -603,64 +659,7 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../estadistica/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    estadistica
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../machine-learning/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    machine learning
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../statistics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    statistics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
+    
   
   
     <li class="md-nav__item">
@@ -683,6 +682,9 @@
   
   
   
+    
+  
+  
     <li class="md-nav__item">
       <a href="../r/" class="md-nav__link">
         
@@ -701,6 +703,9 @@
               
                 
   
+  
+  
+    
   
   
     <li class="md-nav__item">
@@ -722,6 +727,80 @@
                 
   
   
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../estadistica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    machine learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+      
     
   
   
@@ -771,28 +850,36 @@
       
         <li class="md-nav__item">
   <a href="#bias-variance-tradeoff" class="md-nav__link">
-    Bias Variance Tradeoff
+    <span class="md-ellipsis">
+      Bias Variance Tradeoff
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#distintas-distancias" class="md-nav__link">
-    Distintas Distancias
+    <span class="md-ellipsis">
+      Distintas Distancias
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#esencia-del-algebra-lineal" class="md-nav__link">
-    Esencia del Algebra Lineal
+    <span class="md-ellipsis">
+      Esencia del Algebra Lineal
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#cadenas-de-markov" class="md-nav__link">
-    Cadenas de Markov
+    <span class="md-ellipsis">
+      Cadenas de Markov
+    </span>
   </a>
   
 </li>
@@ -811,12 +898,15 @@
   
   
   
+    
+  
+  
     <li class="md-nav__item">
-      <a href="../blog/" class="md-nav__link">
+      <a href="../statistics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    blog
+    statistics
   </span>
   
 
@@ -843,6 +933,7 @@
     
       
       
+  
   
   
   
@@ -865,6 +956,7 @@
   
   
   
+  
     
     
       
@@ -875,6 +967,14 @@
     
     
       
+      
+        
+      
+    
+    
+      
+        
+        
       
     
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
@@ -929,28 +1029,36 @@
       
         <li class="md-nav__item">
   <a href="#bias-variance-tradeoff" class="md-nav__link">
-    Bias Variance Tradeoff
+    <span class="md-ellipsis">
+      Bias Variance Tradeoff
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#distintas-distancias" class="md-nav__link">
-    Distintas Distancias
+    <span class="md-ellipsis">
+      Distintas Distancias
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#esencia-del-algebra-lineal" class="md-nav__link">
-    Esencia del Algebra Lineal
+    <span class="md-ellipsis">
+      Esencia del Algebra Lineal
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#cadenas-de-markov" class="md-nav__link">
-    Cadenas de Markov
+    <span class="md-ellipsis">
+      Cadenas de Markov
+    </span>
   </a>
   
 </li>
@@ -967,16 +1075,24 @@
   <div class="md-content" data-md-component="content">
     <div class="md-content__inner">
       <header class="md-typeset">
-        <h1 id="matematica">matematica</h1>
+        <h1 id="matematica">matematica<a class="headerlink" href="#matematica" title="Permanent link">&para;</a></h1>
       </header>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
-          <time datetime="2022-01-17 00:00:00">2022-01-17</time></li>
+          <time datetime="2022-01-17 00:00:00+00:00">2022-01-17</time></li>
         
           <li class="md-meta__item">
             in
@@ -1022,7 +1138,7 @@ What we actually want is the MSE of the method used <span class="arithmatex">\(\
 = ... \
 = \sigma^2_x + (\mu(x) -  E[\hat M_n(x)])^2 - V[\hat M_n(x)]
 $$
-This is our 2nd bias-variance decomposition.<br />
+This is our 2<sup>nd</sup> bias-variance decomposition.<br />
 The first term is still the irreducible error.<br />
 The second term is the bias of using <span class="arithmatex">\(\hat M_n\)</span> to approximate <span class="arithmatex">\(\mu(x)\)</span>. Is the approximation bias/error.<br />
 The third term is the variance of the estimate of the regression function. If our estimates have high variance we can have large errors despite using an unbiased approximation.  </p>
@@ -1030,22 +1146,25 @@ The third term is the variance of the estimate of the regression function. If ou
 Usually larger N decreases the MSE since it decreases bias and variance error.</p>
 <h5 id="reference"><a class="toclink" href="../../2022/01/17/bias-variance-tradeoff.en-us/#reference">Reference</a></h5>
 <p>Based on 1.4.1 from Advanced data analysis from a elementary point of view.</p>
-
-    <nav class="md-post__action">
-      <a href="../../2022/01/17/bias-variance-tradeoff.en-us/">
-        Continue reading
-      </a>
-    </nav>
+    
   </div>
 </article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
-          <time datetime="2019-11-11 00:00:00">2019-11-11</time></li>
+          <time datetime="2019-11-11 00:00:00+00:00">2019-11-11</time></li>
         
           <li class="md-meta__item">
             in
@@ -1068,44 +1187,44 @@ Usually larger N decreases the MSE since it decreases bias and variance error.</
   </header>
   <div class="md-post__content md-typeset">
     <h2 id="distintas-distancias"><a class="toclink" href="../../2019/11/11/distintas-distancias/">Distintas Distancias</a></h2>
-<pre><code class="language-r">library(tidyverse)
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></code></pre></div>
 <p>Si tenemos un espacio euclideo, es decir, una linea, un plano o un hiperplano, que son los espacios
 típicos de la geometría clásica, podemos calcular la distancia entre dos puntos que se hayen en él.</p>
 <p>Es decir, cuál es la distancia entre los puntos A (1,1) y B (1,0) en un plano?
 Empecemos pensando en los casos donde todos los valores del vector son numéricos.</p>
-<pre><code class="language-r">A = c(0,0,1,1)
-B = c(0,0,1,0)
-recta = c(1,1,1,0)
-df = as.data.frame(matrix(data = c(A,B, recta),
-                          nrow = 4, 
-                          ncol = 4,
-                          byrow = TRUE )) %&gt;%
-  rename( x0 = V1,
-          y0 = V2,
-          x1 = V3,
-          y1 = V4)
-
-
-ggplot(data=df[1:2,], aes(x=x0, y=y0)) + 
-  geom_segment(aes(xend=x1, yend=y1),
-               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) + 
-  geom_point( aes(x = x1, y = y1), 
-              color = &quot;red&quot;, size = 2)
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="n">recta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">recta</span><span class="p">),</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">                          </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">                          </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="w">                          </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="w">  </span><span class="nf">rename</span><span class="p">(</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="w">          </span><span class="n">y0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">,</span>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="w">          </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V3</span><span class="p">,</span>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="w">          </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V4</span><span class="p">)</span>
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,],</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">y0</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="w">  </span><span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">yend</span><span class="o">=</span><span class="n">y1</span><span class="p">),</span>
+</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a><span class="w">               </span><span class="n">arrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">arrow</span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">unit</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="s">&quot;cm&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y1</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a><span class="w">              </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></div>
 <p><img alt="Image" src="../../img/2019-11-11-distintas-distancias-unnamed-chunk-2-1.png" /></p>
 <h4 id="distancia-euclideana"><a class="toclink" href="../../2019/11/11/distintas-distancias/#distancia-euclideana">Distancia Euclideana</a></h4>
 <p>La métrica más habitual que se utiliza es la distancia euclideana, que consiste en la recta que une ambos puntos. </p>
-<pre><code class="language-r">ggplot(data=df[1:2,], aes(x=x0, y=y0))+
-  geom_segment(aes(xend=x1, yend=y1),
-               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) + 
-  geom_point(aes(x = x1, y = y1), 
-               color = &quot;red&quot;, size = 2) + 
-  geom_segment(data = df[3,], 
-               aes(xend=x1, yend=y1),
-               color = &quot;blue&quot;, 
-               arrow = arrow(length = unit(0.3,&quot;cm&quot;)))
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,],</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">y0</span><span class="p">))</span><span class="o">+</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">  </span><span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">yend</span><span class="o">=</span><span class="n">y1</span><span class="p">),</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">               </span><span class="n">arrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">arrow</span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">unit</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="s">&quot;cm&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y1</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">               </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="w">  </span><span class="nf">geom_segment</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="m">3</span><span class="p">,],</span><span class="w"> </span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="w">               </span><span class="nf">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">yend</span><span class="o">=</span><span class="n">y1</span><span class="p">),</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="w">               </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="w">               </span><span class="n">arrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">arrow</span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">unit</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="s">&quot;cm&quot;</span><span class="p">)))</span>
+</span></code></pre></div>
 <p><img alt="Image" src="../../img/2019-11-11-distintas-distancias-unnamed-chunk-3-1.png" /></p>
 <p>Esta distancia se calcula con:<br />
 <span class="arithmatex">\(<span class="arithmatex">\(d(A,B) = d(B,A) = \sqrt{(A_1 - B_1)^2 + (A_2 - B_2)^2 + ... + (A_n - B_n)^2}  
@@ -1126,41 +1245,41 @@ Y que es algo visible en el gráfico.</p>
 =\sum_{i=1}^n |A_i - B_i|\)</span>\)</span></p>
 <p>Es básicamente la suma de las diferencias absolutas entre las distintas dimensiones de los vectores.</p>
 <p>Luce asi.</p>
-<pre><code class="language-r">A = c(0,0,3,3)
-B = c(0,0,2,1)
-recta = c(2,1,3,3)
-manhattan1 = c(2,1,3,1)
-manhattan2 = c(3,1,3,3)
-
-df = as.data.frame(matrix(data = c(A,B, recta, manhattan1, manhattan2),
-                          nrow = 5, 
-                          ncol = 4,
-                          byrow = TRUE )) %&gt;%
-  rename( x0 = V1,
-          y0 = V2,
-          x1 = V3,
-          y1 = V4)
-
-
-ggplot(data=df[1:2,], aes(x=x0, y=y0)) + 
-    geom_point( aes(x = x1, y = y1), 
-              color = &quot;red&quot;, size = 2) + 
-      geom_segment(data = df[3,], 
-               aes(xend=x1, yend=y1, color = &quot;blue&quot;),
-               #color = &quot;blue&quot;, 
-               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) +
-      geom_segment(data = df[4,], 
-               aes(xend=x1, yend=y1,  color = &quot;green&quot;,),
-               #color = &quot;green&quot;, 
-               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) + 
-      geom_segment(data = df[5,], 
-               aes(xend=x1, yend=y1),
-               color = &quot;green&quot;, 
-               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) +
-      scale_colour_manual(name = 'the colour', 
-         values =c('blue'='blue','green'='green'),
-         labels = c('Euclideana','Manhattan'))
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="n">recta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="n">manhattan1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="n">manhattan2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">recta</span><span class="p">,</span><span class="w"> </span><span class="n">manhattan1</span><span class="p">,</span><span class="w"> </span><span class="n">manhattan2</span><span class="p">),</span>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="w">                          </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="w">                          </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span>
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="w">                          </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a><span class="w">  </span><span class="nf">rename</span><span class="p">(</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span>
+</span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a><span class="w">          </span><span class="n">y0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">,</span>
+</span><span id="__span-37-13"><a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a><span class="w">          </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V3</span><span class="p">,</span>
+</span><span id="__span-37-14"><a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a><span class="w">          </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V4</span><span class="p">)</span>
+</span><span id="__span-37-15"><a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a>
+</span><span id="__span-37-16"><a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>
+</span><span id="__span-37-17"><a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">,],</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">y0</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-37-18"><a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a><span class="w">    </span><span class="nf">geom_point</span><span class="p">(</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y1</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-37-19"><a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a><span class="w">              </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-37-20"><a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a><span class="w">      </span><span class="nf">geom_segment</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="m">3</span><span class="p">,],</span><span class="w"> </span>
+</span><span id="__span-37-21"><a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a><span class="w">               </span><span class="nf">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">yend</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">),</span>
+</span><span id="__span-37-22"><a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a><span class="w">               </span><span class="c1">#color = &quot;blue&quot;, </span>
+</span><span id="__span-37-23"><a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a><span class="w">               </span><span class="n">arrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">arrow</span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">unit</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="s">&quot;cm&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-37-24"><a id="__codelineno-37-24" name="__codelineno-37-24" href="#__codelineno-37-24"></a><span class="w">      </span><span class="nf">geom_segment</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="m">4</span><span class="p">,],</span><span class="w"> </span>
+</span><span id="__span-37-25"><a id="__codelineno-37-25" name="__codelineno-37-25" href="#__codelineno-37-25"></a><span class="w">               </span><span class="nf">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">yend</span><span class="o">=</span><span class="n">y1</span><span class="p">,</span><span class="w">  </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;green&quot;</span><span class="p">,),</span>
+</span><span id="__span-37-26"><a id="__codelineno-37-26" name="__codelineno-37-26" href="#__codelineno-37-26"></a><span class="w">               </span><span class="c1">#color = &quot;green&quot;, </span>
+</span><span id="__span-37-27"><a id="__codelineno-37-27" name="__codelineno-37-27" href="#__codelineno-37-27"></a><span class="w">               </span><span class="n">arrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">arrow</span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">unit</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="s">&quot;cm&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-37-28"><a id="__codelineno-37-28" name="__codelineno-37-28" href="#__codelineno-37-28"></a><span class="w">      </span><span class="nf">geom_segment</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="m">5</span><span class="p">,],</span><span class="w"> </span>
+</span><span id="__span-37-29"><a id="__codelineno-37-29" name="__codelineno-37-29" href="#__codelineno-37-29"></a><span class="w">               </span><span class="nf">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">yend</span><span class="o">=</span><span class="n">y1</span><span class="p">),</span>
+</span><span id="__span-37-30"><a id="__codelineno-37-30" name="__codelineno-37-30" href="#__codelineno-37-30"></a><span class="w">               </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-37-31"><a id="__codelineno-37-31" name="__codelineno-37-31" href="#__codelineno-37-31"></a><span class="w">               </span><span class="n">arrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">arrow</span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">unit</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="s">&quot;cm&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-37-32"><a id="__codelineno-37-32" name="__codelineno-37-32" href="#__codelineno-37-32"></a><span class="w">      </span><span class="nf">scale_colour_manual</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;the colour&#39;</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-37-33"><a id="__codelineno-37-33" name="__codelineno-37-33" href="#__codelineno-37-33"></a><span class="w">         </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;blue&#39;</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span><span class="s">&#39;green&#39;</span><span class="o">=</span><span class="s">&#39;green&#39;</span><span class="p">),</span>
+</span><span id="__span-37-34"><a id="__codelineno-37-34" name="__codelineno-37-34" href="#__codelineno-37-34"></a><span class="w">         </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Euclideana&#39;</span><span class="p">,</span><span class="s">&#39;Manhattan&#39;</span><span class="p">))</span>
+</span></code></pre></div>
 <p><img alt="Image" src="../../img/2019-11-11-distintas-distancias-unnamed-chunk-4-1.png" /></p>
 <p>Vemos como el valor abosluto imposibilita ir en dirección diagonal. Lo que se logra es medir la distancia como si hubiera una grilla como la del gráfico. Su nombre proviene de su utilización para medir distancias al interior de una ciudad (uno no puede cruzar las manzanas por el medio!).</p>
 <p>Para saber cual conviene utilizar hay que pensar en el problema en cuestión. </p>
@@ -1171,132 +1290,135 @@ ggplot(data=df[1:2,], aes(x=x0, y=y0)) +
 </ul>
 <h4 id="similaridad-coseno"><a class="toclink" href="../../2019/11/11/distintas-distancias/#similaridad-coseno">Similaridad coseno</a></h4>
 <p>La similaridad coseno se utiliza cuando se quiere ver la similitud "angular" entre dos observaciones y no la distancia en el plano. Es decir, vemos la dirección pero no la magnitud</p>
-<pre><code class="language-r">A = c(0,0,1,1)
-B = c(0,0,2,2)
-C = c(0,0,5,0)
-
-df = as.data.frame(matrix(data = c(A,B,C),
-                          nrow = 3, 
-                          ncol = 4,
-                          byrow = TRUE )) %&gt;%
-  rename( x0 = V1,
-          y0 = V2,
-          x1 = V3,
-          y1 = V4)
-
-
-ggplot(data=df[1:3,], aes(x=x0, y=y0 )) + 
-  geom_segment(aes(xend=x1, yend=y1),
-               arrow = arrow(length = unit(0.3,&quot;cm&quot;))) + 
-  geom_point( aes(x = x1, y = y1), 
-              color = &quot;red&quot;, size = 2) + 
-  geom_text(aes(x=x1, y = y1, label = c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)),
-            vjust = -0.5)
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">),</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="w">                          </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="w">                          </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span>
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="w">                          </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a><span class="w">  </span><span class="nf">rename</span><span class="p">(</span><span class="w"> </span><span class="n">x0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span>
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a><span class="w">          </span><span class="n">y0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">,</span>
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a><span class="w">          </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V3</span><span class="p">,</span>
+</span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a><span class="w">          </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V4</span><span class="p">)</span>
+</span><span id="__span-38-13"><a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>
+</span><span id="__span-38-14"><a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>
+</span><span id="__span-38-15"><a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,],</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">y0</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-38-16"><a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a><span class="w">  </span><span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">xend</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">yend</span><span class="o">=</span><span class="n">y1</span><span class="p">),</span>
+</span><span id="__span-38-17"><a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a><span class="w">               </span><span class="n">arrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">arrow</span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">unit</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="s">&quot;cm&quot;</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-38-18"><a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y1</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-38-19"><a id="__codelineno-38-19" name="__codelineno-38-19" href="#__codelineno-38-19"></a><span class="w">              </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-38-20"><a id="__codelineno-38-20" name="__codelineno-38-20" href="#__codelineno-38-20"></a><span class="w">  </span><span class="nf">geom_text</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">)),</span>
+</span><span id="__span-38-21"><a id="__codelineno-38-21" name="__codelineno-38-21" href="#__codelineno-38-21"></a><span class="w">            </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-0.5</span><span class="p">)</span>
+</span></code></pre></div>
 <p><img alt="Image" src="../../img/2019-11-11-distintas-distancias-unnamed-chunk-5-1.png" /></p>
 <p>Si hicieramos la distancia euclideando entre A y B obtendriamos el valor de la distancia en el plano, sin embargo podemos ver que se encuentran sobre la misma recta y por lo tanto su dirección es la misma. La similaridad coseno mide el ángulo entre dos puntos. En este caso el ángulo entre A y B es 0, y por ende su similaridad coseno es 1. Ambas tendrían la misma similaridad con cualquier otro punto de la misma recta, por más alejado que esté.
 Respecto a C, tanto A y B tiene comparten el ángulo por lo tanto la similaridad coseno entre A y C será la misma que entre B y C.</p>
-<pre><code class="language-r">cosA = c(1,1)
-cosB = c(2,2)
-cosC = c(5,0)
-
-# Similaridad coseno entre A y B
-lsa::cosine(cosA, cosB)[[1]]
-</code></pre>
-<pre><code>## [1] 1
-</code></pre>
-<pre><code class="language-r"># Similaridad coseno entre A y C
-lsa::cosine(cosA, cosC)[[1]]
-</code></pre>
-<pre><code>## [1] 0.7071068
-</code></pre>
-<pre><code class="language-r"># Similaridad coseno entre B y C
-lsa::cosine(cosC, cosB)[[1]]
-</code></pre>
-<pre><code>## [1] 0.7071068
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">cosA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="n">cosB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="n">cosC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="c1"># Similaridad coseno entre A y B</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="n">lsa</span><span class="o">::</span><span class="nf">cosine</span><span class="p">(</span><span class="n">cosA</span><span class="p">,</span><span class="w"> </span><span class="n">cosB</span><span class="p">)[[</span><span class="m">1</span><span class="p">]]</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>## [1] 1
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># Similaridad coseno entre A y C</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="n">lsa</span><span class="o">::</span><span class="nf">cosine</span><span class="p">(</span><span class="n">cosA</span><span class="p">,</span><span class="w"> </span><span class="n">cosC</span><span class="p">)[[</span><span class="m">1</span><span class="p">]]</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>## [1] 0.7071068
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1"># Similaridad coseno entre B y C</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="n">lsa</span><span class="o">::</span><span class="nf">cosine</span><span class="p">(</span><span class="n">cosC</span><span class="p">,</span><span class="w"> </span><span class="n">cosB</span><span class="p">)[[</span><span class="m">1</span><span class="p">]]</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>## [1] 0.7071068
+</span></code></pre></div>
 <p>Hay que tener en cuenta el contexto de nuestro problema para decidir qué medida de distancia usar. Por ejemplo la similaridad coseno se usa de manera estándar en análisis de texto (text mining).</p>
 <h4 id="distancia-de-mahalanobis"><a class="toclink" href="../../2019/11/11/distintas-distancias/#distancia-de-mahalanobis">Distancia de Mahalanobis</a></h4>
 <p>La distancia de Mahalanobis tiene la particularidad que mide la distancia entre un punto (P) y una distribución de datos (D). Si tenemos una nube de puntos correspondiente a una distribución D, cuanto más cerca esté P del centro de masa (o "promedio") más cerca se encuetran P y D. Intuitivamente sirve para pensar si P puede pertenecer a D o no.<br />
 Dado que la nube de puntos no tiene por qué ser una esfera (donde cada dirección tiene la misma cantidad de puntos), hay que tener en cuenta cómo se dispersan los puntos alrededor del centro de masa.</p>
 <p>No es lo mismo, </p>
-<pre><code class="language-r">esfera = as.data.frame(MASS::mvrnorm(1000, mu = c(3,3), 
-                                     Sigma = matrix(c(1,0,0,1),
-                                                    nrow = 2,
-                                                    ncol = 2)))
-
-ggplot(data = esfera, aes(x = V1, y = V2)) + 
-  geom_point() + 
-  geom_point(data = as.data.frame(matrix(c(6,2),ncol = 2)), 
-             aes(x = V1, y = V2), color = &quot;red&quot;) + 
-  geom_text(data = as.data.frame(matrix(c(6,2),ncol = 2)),
-            aes(x = V1, y = V2,label = &quot;P&quot;),
-            vjust = 1.5, color = &quot;blue&quot;) +
-  labs(title = &quot;Distribución esférica&quot;)
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">esfera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">MASS</span><span class="o">::</span><span class="nf">mvrnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">                                     </span><span class="n">Sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="w">                                                    </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="w">                                                    </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)))</span>
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>
+</span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esfera</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-45-8"><a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)),</span><span class="w"> </span>
+</span><span id="__span-45-9"><a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a><span class="w">             </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">),</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-45-10"><a id="__codelineno-45-10" name="__codelineno-45-10" href="#__codelineno-45-10"></a><span class="w">  </span><span class="nf">geom_text</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)),</span>
+</span><span id="__span-45-11"><a id="__codelineno-45-11" name="__codelineno-45-11" href="#__codelineno-45-11"></a><span class="w">            </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">,</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="p">),</span>
+</span><span id="__span-45-12"><a id="__codelineno-45-12" name="__codelineno-45-12" href="#__codelineno-45-12"></a><span class="w">            </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-45-13"><a id="__codelineno-45-13" name="__codelineno-45-13" href="#__codelineno-45-13"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Distribución esférica&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 <p><img alt="Image" src="../../img/2019-11-11-distintas-distancias-unnamed-chunk-7-1.png" /></p>
 <p>que,</p>
-<pre><code class="language-r">elipse = as.data.frame(MASS::mvrnorm(1000, mu = c(3,3), 
-                                     Sigma = matrix(c(1,0.6,0.6,1),
-                                                    nrow = 2,
-                                                    ncol = 2)))
-
-
-
-ggplot(data = elipse, aes(x = V1, y = V2)) + 
-  geom_point() + 
-  geom_point(data = as.data.frame(matrix(c(6,2),ncol = 2)), 
-             aes(x = V1, y = V2), color = &quot;red&quot;) + 
-  geom_text(data = as.data.frame(matrix(c(6,2),ncol = 2)),
-            aes(x = V1, y = V2,label = &quot;P&quot;),
-            vjust = 1.5, color = &quot;blue&quot;) +
-  labs(title = &quot;Distribución Elíptica&quot;)
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">elipse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">MASS</span><span class="o">::</span><span class="nf">mvrnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="w">                                     </span><span class="n">Sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">0.6</span><span class="p">,</span><span class="m">0.6</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a><span class="w">                                                    </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a><span class="w">                                                    </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)))</span>
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>
+</span><span id="__span-46-6"><a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>
+</span><span id="__span-46-7"><a id="__codelineno-46-7" name="__codelineno-46-7" href="#__codelineno-46-7"></a>
+</span><span id="__span-46-8"><a id="__codelineno-46-8" name="__codelineno-46-8" href="#__codelineno-46-8"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elipse</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-46-9"><a id="__codelineno-46-9" name="__codelineno-46-9" href="#__codelineno-46-9"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-46-10"><a id="__codelineno-46-10" name="__codelineno-46-10" href="#__codelineno-46-10"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)),</span><span class="w"> </span>
+</span><span id="__span-46-11"><a id="__codelineno-46-11" name="__codelineno-46-11" href="#__codelineno-46-11"></a><span class="w">             </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">),</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-46-12"><a id="__codelineno-46-12" name="__codelineno-46-12" href="#__codelineno-46-12"></a><span class="w">  </span><span class="nf">geom_text</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)),</span>
+</span><span id="__span-46-13"><a id="__codelineno-46-13" name="__codelineno-46-13" href="#__codelineno-46-13"></a><span class="w">            </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">V2</span><span class="p">,</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="p">),</span>
+</span><span id="__span-46-14"><a id="__codelineno-46-14" name="__codelineno-46-14" href="#__codelineno-46-14"></a><span class="w">            </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-46-15"><a id="__codelineno-46-15" name="__codelineno-46-15" href="#__codelineno-46-15"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Distribución Elíptica&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 <p><img alt="Image" src="../../img/2019-11-11-distintas-distancias-unnamed-chunk-8-1.png" /></p>
 <p>Los centros de masa son los mismos y lo único que cambia es la matriz de variancias y covarianzas (o como se correlacionan las variables). La distancia de P al centro es la misma, pero está claro que en el caso esférico P se encuentra más cerca de la distribución que en el caso elíptico.</p>
 <p>Mahalanobis tiene en cuenta este aspecto ya que involucra la matriz de varianzas y covarianzas.</p>
 <p>La distancia entre el punto x y la distribución con vector de medias <span class="arithmatex">\(\vec{\mu}\)</span> y matriz de covarianzas S es:
-$$ D_M(\vec{x}) = \sqrt{(\vec{x} - \vec{\mu})^TS^{-1}(\vec{x} - \vec{\mu})})$$</p>
+$$ D_M(\vec{x}) = \sqrt{(\vec{x} - \vec{\mu})<sup -1="-1">TS</sup>)$$}(\vec{x} - \vec{\mu})</p>
 <p>Tanto el vector <span class="arithmatex">\(\vec{x}\)</span> como la distribución pueden ser multivariadas (como se ve en los gráficos de arriba).</p>
 <p>Tener en cuenta que si tenemos dos puntos provenientes de la misma distribución, podemos usar la distancia de Mahalanobis como una medida de disimilaridad:
-$$ D_M(\vec{x},\vec{y}) = \sqrt{(\vec{x} - \vec{y})^TS^{-1}(\vec{x} - \vec{y})})$$
-Veamos por ejemplo como queda la distancia de P a las distribuciones esféricas y elípticas graficadas.</p>
-<pre><code class="language-r"># Caso Esférico
-
-mahalanobis(x = c(6,2), 
-            center = c(3,3), 
-            cov = matrix(c(1,0,0,1),
-                         nrow = 2,
-                         ncol = 2))
-</code></pre>
-<pre><code>## [1] 10
-</code></pre>
-<pre><code class="language-r"># Caso Elíptico
-mahalanobis(x = c(6,2), 
-            center = c(3,3), 
-            cov = matrix(c(1,0.6,0.6,1),
-                         nrow = 2,
-                         ncol = 2))
-</code></pre>
-<pre><code>## [1] 21.25
-</code></pre>
+$$ D_M(\vec{x},\vec{y}) = \sqrt{(\vec{x} - \vec{y})<sup -1="-1">TS</sup>)$$
+Veamos por ejemplo como queda la distancia de P a las distribuciones esféricas y elípticas graficadas.}(\vec{x} - \vec{y})</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="c1"># Caso Esférico</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="nf">mahalanobis</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">            </span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="w">            </span><span class="n">cov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="w">                         </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="w">                         </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>## [1] 10
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="c1"># Caso Elíptico</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="nf">mahalanobis</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="w">            </span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a><span class="w">            </span><span class="n">cov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">0.6</span><span class="p">,</span><span class="m">0.6</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a><span class="w">                         </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a><span class="w">                         </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>## [1] 21.25
+</span></code></pre></div>
 <p>Queda claro que P es más cercano a la distribución esférica que a la elíptica.</p>
-
-    <nav class="md-post__action">
-      <a href="../../2019/11/11/distintas-distancias/">
-        Continue reading
-      </a>
-    </nav>
+    
   </div>
 </article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
-          <time datetime="2019-04-20 00:00:00">2019-04-20</time></li>
+          <time datetime="2019-04-20 00:00:00+00:00">2019-04-20</time></li>
         
           <li class="md-meta__item">
             in
@@ -1347,8 +1469,8 @@ Se puede ver también como:  <span class="arithmatex">\(<span class="arithmatex"
 <p>!!!. Las transformaciones afectan el area (en R2, el volumen en R3..) de las figuras en el espacio (todas por igual). El <em>DETERMINANTE</em> de una matriz mide ese cambio.</p>
 </li>
 <li>Si el determinante <strong>es 0</strong> significa que se perdió una dimensión o que todo se comprimió. Pasa de <span class="arithmatex">\(R^{2}\)</span> a una recta (o a un punto!)</li>
-<li>Si el determinante <strong> es &lt; 0</strong> significa que el espacio se invirtió (en sentido.. como dar vuelta una hoja) pero |DET| siguen siendo el cambio en el area.</li>
-<li>A^-1^A = I -&gt; una transformación que no hace nada.</li>
+<li>Si el determinante ** es &lt; 0** significa que el espacio se invirtió (en sentido.. como dar vuelta una hoja) pero |DET| siguen siendo el cambio en el area.</li>
+<li>A<sup>-1</sup>A = I -&gt; una transformación que no hace nada.</li>
 <li>
 <p>Si DET(A) = 0 no existe la matriz inversa. Ej. <span class="arithmatex">\(R^{2}\)</span> -&gt; si det(A) = 0 la transformación lleva el espacio a una recta. No hay función que lleve cada vector de la recta a un punto en <span class="arithmatex">\(R{2}\)</span>. No hay vuelta atrás.
 &nbsp;
@@ -1382,7 +1504,7 @@ Quedan todos los puntos de <span class="arithmatex">\(R^{2}\)</span> en un plano
 <ul>
 <li>Está definido para vectores en <span class="arithmatex">\(R^{3}\)</span></li>
 <li>El cross product <span class="arithmatex">\(\vec u \times \vec v\)</span> es el area del paralelograma que se puede imaginar con las paralelas de los vectores (imaginandolo en <span class="arithmatex">\(R^{2}\)</span>. El signo depende de la orientación de los vectores. El vector de la "derecha" tiene que estar primero para que el cross product sea &gt; 0.</li>
-<li>En realidad el paralelograma formado por dos vectores en R^3^ tiene area equivalente al <strong>Largo</strong> del vector output de su cross product. Ese vector es ortogonal al paralelograma.</li>
+<li>En realidad el paralelograma formado por dos vectores en R<sup>3</sup> tiene area equivalente al <strong>Largo</strong> del vector output de su cross product. Ese vector es ortogonal al paralelograma.</li>
 </ul>
 <p>&nbsp;
 &nbsp;</p>
@@ -1419,7 +1541,7 @@ E -&gt; Matriz de autovectores que forman la nueva base <span class="arithmatex"
 D -&gt; Matriz Diagonal cuyos valores son los eigenvalues
 $$ E^{-1}AE=D$$</li>
 </ul>
-<p>E cambia la base a eigenvectors (expresado en la base original), A aplica transformación y E^-1^ lo lleva al lenguaje de la nueva base (queda expresado en las nuevas coordenadas)
+<p>E cambia la base a eigenvectors (expresado en la base original), A aplica transformación y E<sup>-1</sup> lo lleva al lenguaje de la nueva base (queda expresado en las nuevas coordenadas)
 &nbsp;
 &nbsp;</p>
 <h4 id="espacios-vectoriales-abstractos"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#espacios-vectoriales-abstractos">Espacios Vectoriales Abstractos</a></h4>
@@ -1432,22 +1554,25 @@ $$ L(\vec v + \vec  w) = L(\vec v) + L(\vec w)$$
 $$ L(c\vec v) = cL(\vec v)$$</li>
 <li>En general cualquier espacio que cumpla los axiomas los espacios vectoriales puede ser considerado uno.</li>
 </ul>
-
-    <nav class="md-post__action">
-      <a href="../../2019/04/20/esencia-del-algebra-lineal/">
-        Continue reading
-      </a>
-    </nav>
+    
   </div>
 </article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
-          <time datetime="2018-08-25 00:00:00">2018-08-25</time></li>
+          <time datetime="2018-08-25 00:00:00+00:00">2018-08-25</time></li>
         
           <li class="md-meta__item">
             in
@@ -1469,7 +1594,7 @@ $$ L(c\vec v) = cL(\vec v)$$</li>
   <div class="md-post__content md-typeset">
     <h2 id="cadenas-de-markov"><a class="toclink" href="../../2018/08/25/cadenas-de-markov/">Cadenas de Markov</a></h2>
 <p>Las cadenas de Markov son herramientas muy útiles para modelar transiciones entre estados. Imaginemos un escenario sencillo con dos posibles estados: día de lluvia o día soleado. En el momento <strong>t</strong> el estado supongamos que es "día soleado". ¿Cuál será el estado en <strong>t+1</strong> ? Dadas las probabilidades de transición de un estado a otro podemos simular escenarios tras el paso del tiempo. Mismo en algunos casos puede ser útil entender si en el largo plazo esta simulación converge hacia algún resultado estable en el tiempo.</p>
-<p>Mostraremos ejemplos sencillos, pero la metodología es escalable a procesos complejos como pueden usarse en meteorología, aplicaciones financieras, etc. El <a href="http://blog.kleinproject.org/?p=1605&amp;lang=es">algoritmo de búsqueda de Google</a> está basado en cadenas de Markov, para que vean la utilidad. [^1]</p>
+<p>Mostraremos ejemplos sencillos, pero la metodología es escalable a procesos complejos como pueden usarse en meteorología, aplicaciones financieras, etc. El <a href="http://blog.kleinproject.org/?p=1605&amp;lang=es">algoritmo de búsqueda de Google</a> está basado en cadenas de Markov, para que vean la utilidad. <sup id="fnref2:1"><a class="footnote-ref" href="../../2018/08/25/cadenas-de-markov/#fn:1">1</a></sup></p>
 <p>Lo que necesitamos para este ejercicio son las probabilidades de transición de un estado a otro y los valores iniciales en cada estado.</p>
 <p>Supongamos una clase de estadística con n estudiantes, en la que dos estados son posibles. 
 Estado A : El alumno está atento.
@@ -1482,84 +1607,86 @@ Estado B : El alumno está aburrido.</p>
 </li>
 </ul>
 <p>La matriz que representa esa probabilidades la vamos a llamar * Matriz de Transición *.</p>
-<pre><code class="language-r">tmatrix &lt;-  as.matrix(c(0.8,0.25))  
-# 80% de A sigue en A, 25% de B pasa a A en t+1
-
-tmatrix &lt;- t(tmatrix) 
-# trasponemos porque necesitamos esta información en la primera fila.
-
-tmatrix &lt;- rbind(tmatrix, 1 - tmatrix[1,]) 
-# Agregamos la segunda fila, que es 1 menos la primera.
-
-tmatrix # Matriz de transción
-</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,]  0.8 0.25
-## [2,]  0.2 0.75
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.8</span><span class="p">,</span><span class="m">0.25</span><span class="p">))</span><span class="w">  </span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># 80% de A sigue en A, 25% de B pasa a A en t+1</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">tmatrix</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># trasponemos porque necesitamos esta información en la primera fila.</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">tmatrix</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tmatrix</span><span class="p">[</span><span class="m">1</span><span class="p">,])</span><span class="w"> </span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># Agregamos la segunda fila, que es 1 menos la primera.</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="n">tmatrix</span><span class="w"> </span><span class="c1"># Matriz de transción</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>##      [,1] [,2]
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>## [1,]  0.8 0.25
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>## [2,]  0.2 0.75
+</span></code></pre></div>
 <p>La matriz de valores iniciales es la siguiente:
 En un primero momento (t), el 10% de los alumnos está atento y el 90% aburrido.</p>
-<pre><code class="language-r">smatrix &lt;- as.matrix(c(0.1,0.9)) # Matriz inicial, 10% Atento, 90% aburridos
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Matriz inicial, 10% Atento, 90% aburridos</span>
+</span></code></pre></div>
 <p>Ya tenemos toda la información necesaria para hacer nuestras primeras simulaciones.
 Supongamos que cada período de tiempo son 10 minutos, por lo tanto si t es el momento 0, t+1 es a los 10 de minutos de empezada la clase, t+2 a los 20 y así sucesivamente.</p>
 <p>Para evaluar el porcentaje de alumnos concentrados en determinado momento de la clase lo que debemos hacer es multiplicar la matriz de estado inicial por la matriz de transición tantas veces como momentos a futuro querramos simular.</p>
 <p>Por ejemplo si queremos ver que pasará con nuestros alumnos luego de 20 minutos de clase debemos multiplicar smatrix * tmatrix 2 veces.</p>
-<pre><code class="language-r">for (i in 1:2){            # Loopeamos 2 veces. %*% es la multiplicacion matricial.
-  smatrix = tmatrix %*% smatrix  
-# smatrix va tomando nuevos valores en cada iteracion, 
-# reflejando el movimiento de un estado a otro
-}
-
-smatrix  # Despues de 2 iteraciones -&gt; A 42% , B 58%
-</code></pre>
-<pre><code>##         [,1]
-## [1,] 0.41775
-## [2,] 0.58225
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">){</span><span class="w">            </span><span class="c1"># Loopeamos 2 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">  </span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion, </span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">}</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 2 iteraciones -&gt; A 42% , B 58%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>##         [,1]
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>## [1,] 0.41775
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>## [2,] 0.58225
+</span></code></pre></div>
 <p>Vemos que luego de 2 transiciones el estado A está compuesto por casi 42% de alumnos (concentrados) y 58% no atentos. Son movimientos bastante rápidos de un estado a otro.</p>
 <p>Veamos qué pasa luego de 10 iteraciones.</p>
-<pre><code class="language-r">smatrix &lt;- as.matrix(c(0.1,0.9)) # Reseteamos smatrix a su estado inicial
-
-for (i in 1:10){           
-# Loopeamos 10 veces. %*% es la multiplicacion matricial.
-  smatrix = tmatrix %*% smatrix   
-# smatrix va tomando nuevos valores en cada iteracion, 
-# reflejando el movimiento de un estado a otro
-}
-
-smatrix  # Despues de 10 iteraciones -&gt; A 55% , B 45%
-</code></pre>
-<pre><code>##           [,1]
-## [1,] 0.5544017
-## [2,] 0.4455983
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Reseteamos smatrix a su estado inicial</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">){</span><span class="w">           </span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Loopeamos 10 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">   </span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion, </span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="p">}</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 10 iteraciones -&gt; A 55% , B 45%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>##           [,1]
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>## [1,] 0.5544017
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>## [2,] 0.4455983
+</span></code></pre></div>
 <p>Luego de 10 movimientos, A pasa a tener el 55% de los alumnos dejando a 45% en B (no atentos). En este ejemplo con el paso del tiempo los alumnos se concentran más y más en la clase. Pero es este un proceso continuo e infinito? Llega un momento en que dada la matriz de transción todos los alumnos pasan a estar en el estado A, es decir, atentos?</p>
 <p>Para analizar esto podemos ver qué sucede luego de 1000 iteraciones (sería una clase muy muy larga...)</p>
-<pre><code class="language-r">smatrix &lt;- as.matrix(c(0.1,0.9)) # Reseteamos smatrix a su estado inicial
-
-for (i in 1:1000){  # Loopeamos 10 veces. %*% es la multiplicacion matricial.
-  smatrix = tmatrix %*% smatrix  
-# smatrix va tomando nuevos valores en cada iteracion,
-# reflejando el movimiento de un estado a otro
-}
-
-smatrix  # Despues de 1000 iteraciones -&gt; A 55% , B 45%
-</code></pre>
-<pre><code>##           [,1]
-## [1,] 0.5555556
-## [2,] 0.4444444
-</code></pre>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Reseteamos smatrix a su estado inicial</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">){</span><span class="w">  </span><span class="c1"># Loopeamos 10 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">  </span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion,</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="p">}</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 1000 iteraciones -&gt; A 55% , B 45%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>##           [,1]
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>## [1,] 0.5555556
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>## [2,] 0.4444444
+</span></code></pre></div>
 <p>El resultado es casi idéntico luego de 1000 iteraciones al intento de tan solo 10 iteraciones. Por lo tanto podemos ver que esta cadena de Markov converge rápidamente a 55% en A y 45% en B. Es un estado estacionario del cual no podemos movernos dada la matriz de transición que tenemos.</p>
 <p>Este ejemplo sencillo permite ver la intuición detrás de esta potente herramienta en unos pocos pasos. Obviamente como comentamos antes se puede utilizar para procesos mucho más complejos y de muy diversas areas. 
 Queríamos mostrar los fundamentos con una aplicación rápida y que se comprenda que lo que se requiere es una matriz de transición y un estado inicial.</p>
-<p>[^1]: Para una explicación gráfica y muy didáctica dejamos el siguiente <a href="http://setosa.io/ev/markov-chains/">link en inglés.</a></p>
-
-    <nav class="md-post__action">
-      <a href="../../2018/08/25/cadenas-de-markov/">
-        Continue reading
-      </a>
-    </nav>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Para una explicación gráfica y muy didáctica dejamos el siguiente <a href="http://setosa.io/ev/markov-chains/">link en inglés.</a>&#160;<a class="footnote-backref" href="../../2018/08/25/cadenas-de-markov/#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="../../2018/08/25/cadenas-de-markov/#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+    
   </div>
 </article>
       
@@ -1578,15 +1705,16 @@ Queríamos mostrar los fundamentos con una aplicación rápida y que se comprend
   </div>
 
           
-  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
 
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-            
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </button>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -1597,35 +1725,35 @@ Queríamos mostrar los fundamentos con una aplicación rápida y que se comprend
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../algebra/" class="md-footer__link md-footer__link--prev" aria-label="Previous: algebra" rel="prev">
+          <a href="../machine-learning/" class="md-footer__link md-footer__link--prev" aria-label="Previous: machine learning">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Previous
               </span>
               <div class="md-ellipsis">
-                algebra
+                machine learning
               </div>
             </div>
           </a>
         
         
           
-          <a href="../blog/" class="md-footer__link md-footer__link--next" aria-label="Next: blog" rel="next">
+          <a href="../statistics/" class="md-footer__link md-footer__link--next" aria-label="Next: statistics">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                blog
+                statistics
               </div>
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
             </div>
           </a>
         
@@ -1653,10 +1781,13 @@ Queríamos mostrar los fundamentos con una aplicación rápida y que se comprend
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-      <script src="../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
