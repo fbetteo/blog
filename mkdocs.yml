@@ -2,10 +2,10 @@ site_name: Franco Betteo
 nav:
   - Home: 
       - Introduction: index.md
-      - User manual: user_manual.md
+      - Good resources: good_resources.md
       - Interests: interests.md
   - Writing:
-    - "technical/index.md"
+    - "writing/index.md"
   - Job Board: "https://sportsjobs.online"
   - NBA salaries legacy model: 
       - Overview: nba_salaries/index.html
@@ -62,9 +62,9 @@ theme:
     code: Fira Code
 plugins:
   - blog:
-      blog_dir: technical
+      blog_dir: writing
       blog_toc: true
-      post_dir: technical/posts
+      post_dir: writing/posts
       post_date_format: yyyy-MM-dd
       post_url_format: "{date}/{slug}"
       authors_file: "{blog}/.authors.yml"

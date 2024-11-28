@@ -20,3 +20,21 @@ This is a project I handle myself, all self hosted and that I'm growing from a p
 ![Sportsjobs cover](public/img/sportsjobs_cover.png)
 
 If you want to post a job, reach out to me at franco@sportsjobs.online or by any other channel and I'll happily charge 50% if you are coming from this site.
+
+
+## Get in touch
+
+<div class="grid cards" markdown>
+
+
+-   :material-account-group:{ .lg .middle } __Social Media__
+
+    ---
+
+    You can reach out to me by email or social media.
+
+    Email: francobetteo@gmail.com
+
+    Stay connected and get the latest updates by following me on [:fontawesome-brands-x-twitter: Twitter](https://x.com/franbetteo), [:fontawesome-brands-bluesky: Bluesky](https://bsky.app/profile/franbetteo.bsky.social) and [:fontawesome-brands-github: GitHub](https://github.com/fbetteo). These platforms are where I share my latest content, thoughts, and projects in the world of AI and machine learning.
+
+</div>
