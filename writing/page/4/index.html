@@ -975,6 +975,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#hola-map-chau-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hola MAP. Chau Apply
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cadenas-de-markov" class="md-nav__link">
     <span class="md-ellipsis">
       Cadenas de Markov
@@ -1015,6 +1024,154 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2018-09-01 00:00:00+00:00">2018-09-01</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="hola-map-chau-apply"><a class="toclink" href="../../2018/09/01/hola-map-chau-apply/">Hola MAP. Chau Apply</a></h2>
+<h3 id="introduccion"><a class="toclink" href="../../2018/09/01/hola-map-chau-apply/#introduccion">Introducción</a></h3>
+<p>La idea de este post es introducirlos a la familia de funciones <strong>MAP</strong>, propias de <a href="https://www.tidyverse.org/">tidyverse</a>.
+A grandes rasgos son un remplazo MUY útil a la familia de funciones <strong>APPLY</strong>, propias de R base. Estas últimas se suelen enseñar en todos los cursos introductorios de R, como la manera correcta de aplicar funciones a listas o columnas de dataframes. 
+No es que no sirvan, pero dado el surgimiento de tantas librerías que facilitan el manejo de la data, no tiene sentido seguir insistiendo con ellas dado que hay nuevas con mayor flexibilidad, muy sencillas de utilizar y mucho más amenas.</p>
+<ul>
+<li>Lo mejor que tienen las funciones MAP es:<ul>
+<li>Consistencia en los inputs.</li>
+<li>Flexibilidad del output.</li>
+<li>Integración con todo el universo tidyverse y prolijidad.</li>
+</ul>
+</li>
+</ul>
+<p>Empecemos.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span><span class="w"> </span><span class="c1"># MAP está contenida acá</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>## Warning: package &#39;dplyr&#39; was built under R version 4.0.5
+</span></code></pre></div>
+<p>Como regla general, MAP aplica funciones a elementos de una lista o de un vector.
+Su output es otra lista. Muy similar a lapply().</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">l1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">200</span><span class="p">),</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">8</span><span class="p">,</span><span class="m">10</span><span class="p">))</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">map</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">)</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>## $a
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>## [1] 200
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>## 
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>## $b
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>## [1] 10
+</span></code></pre></div>
+A cada lista le calcula el máximo y devuelve una lista con cada elemento siendo el resultado de la función.</p>
+<p>Tenemos la flexibilidad para pasarle funciones anónimas..</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nf">map</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>## $a
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>## [1] 200
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>## 
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>## $b
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>## [1] 10
+</span></code></pre></div>
+<p>Aplicando funciones a elementos de un vector.
+Cada numero de 1 a 5 es usado como primer input de la funcion <em>rnorm</em>, sd y n son otros parámetros de rnorm.
+El resultado de nuevo es una lista.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">rnorm</span><span class="p">,</span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>## [[1]]
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>## [1] -0.2529076  1.3672866 -0.6712572  4.1905616  1.6590155
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>## 
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>## [[2]]
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>## [1] 0.3590632 2.9748581 3.4766494 3.1515627 1.3892232
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>## 
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>## [[3]]
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>## [1]  6.023562  3.779686  1.757519 -1.429400  5.249862
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>## 
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>## [[4]]
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>## [1] 3.910133 3.967619 5.887672 5.642442 5.187803
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>## 
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>## [[5]]
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>## [1] 6.837955 6.564273 5.149130 1.021297 6.239651
+</span></code></pre></div>
+<h3 id="consistencia-entre-variantes"><a class="toclink" href="../../2018/09/01/hola-map-chau-apply/#consistencia-entre-variantes">Consistencia entre variantes</a></h3>
+<p>Por ahora solo vimos la versión de lapply en MAP, pero esta familia tiene varios integrantes.</p>
+<h3 id="map_if"><a class="toclink" href="../../2018/09/01/hola-map-chau-apply/#map_if">map_if</a></h3>
+<p>Ejecuta la función solo si el elemento cumple determinada condición.
+Devuelve una lista.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">l2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">213</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nf">map_if</span><span class="p">(</span><span class="n">l2</span><span class="p">,</span><span class="w"> </span><span class="n">is.numeric</span><span class="p">,</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>## $a
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>## [1] 426
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>## 
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>## $b
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>## [1] &quot;string&quot;
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>## 
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>## $c
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>## [1] 2 4
+</span></code></pre></div>
+El output es la lista original con los elementos correspondientes transformados. Vemos que no hubo ningún problema con
+"string" ya que fue omitido.</p>
+<h3 id="map_at"><a class="toclink" href="../../2018/09/01/hola-map-chau-apply/#map_at">map_at</a></h3>
+<p>Ejecuta la función solo en los elementos que seleccionemos. No hace falta que cumplan alguna condición.
+Misma función de antes pero solo aplicada al tercer elemento. Devuelve una lista.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nf">map_at</span><span class="p">(</span><span class="n">l2</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>## $a
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>## [1] 213
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>## 
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>## $b
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>## [1] &quot;string&quot;
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>## 
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>## $c
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>## [1] 2 4
+</span></code></pre></div>
+<p>Variantes súper útiles que permiten no utilizar loops y que dan mucho control de manera sencilla sobre las funciones a ejecutar. Por otra parte, en términos de consistencia, la estructura es siempre la misma. El primer argumento es x= y luego viene la función a aplicar. En el caso de map_if y map_at entre medio surge el condicionante.
+Si recuerdan, la familia apply cambia el orden de los inputs según si es apply, lapply, mapply, sapply...</p>
+<h2 id="flexibilidad-del-output"><a class="toclink" href="../../2018/09/01/hola-map-chau-apply/#flexibilidad-del-output">Flexibilidad del output</a></h2>
+<p>Por el momento vimos que todos los outputs eran listas. Lo interesante es que podemos controlar eso y cambiar el formato del resultado, ahorrándonos conversiones molestas con <em>unlist</em> y etc.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">l3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">200</span><span class="p">),</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5000</span><span class="p">,</span><span class="m">6000</span><span class="p">))</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nf">map_dbl</span><span class="p">(</span><span class="n">l3</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>## [1]    4  200 6000
+</span></code></pre></div>
+<p>Nos devuelve un vector con los resultados de aplicar la función max a cada elemento!</p>
+<p>De este mismo tipo esta.</p>
+<ul>
+<li>map_chr # vector caracter</li>
+<li>map_int # vector de integers</li>
+<li>map_lgl # vector de booleanos</li>
+</ul>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
