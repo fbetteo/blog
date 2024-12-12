@@ -1441,7 +1441,7 @@ Consistency. Every one says this. I need to do it the right way now that I'll ha
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="weighted-regression"><a class="toclink" href="2022/03/25/index.en-us/">Weighted regression</a></h2>
+    <h2 id="weighted-regression"><a class="toclink" href="2022/03/25/weighted-regression/">Weighted regression</a></h2>
 <p>Weighted regression consists on assigning different weights to each observation and hence more or less importance at the time of fitting the regression.  </p>
 <p>On way to look at it is to think as solving the regression problem minimizing Weighted Mean Squared Error(WSME) instead of Mean Squared Error(MSE)</p>
 <p><span class="arithmatex">\(<span class="arithmatex">\(WMSE(\beta, w) = \frac{1}{N} \sum_{i=1}^n w_i(y_i - \overrightarrow {x_i} \beta)^2\)</span>\)</span>
@@ -1468,7 +1468,7 @@ Another similar situation is related to <em>covariate shift</em>. If the distrib
 </li>
 </ul>
 <p>Is there a scenario where OLS is better than Weighted regression? Assuming we can compute the weights.</p>
-<h4 id="example"><a class="toclink" href="2022/03/25/index.en-us/#example">Example.</a></h4>
+<h4 id="example"><a class="toclink" href="2022/03/25/weighted-regression/#example">Example.</a></h4>
 <p>First we will see the impact of using weighted regression, using a simulated scenario where we actually know the variance of the error of each observation. This is not realistic but useful to see it in action.</p>
 <div class="language-r highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 </span></code></pre></div>
@@ -1489,7 +1489,7 @@ Visually..</p>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="kc">NULL</span>
 </span></code></pre></div>
 <p><img alt="Image" src="img/2022-03-25-weighted-regression-unnamed-chunk-3-1.png" /></p>
-<h5 id="linear-regression"><a class="toclink" href="2022/03/25/index.en-us/#linear-regression">Linear regression</a></h5>
+<h5 id="linear-regression"><a class="toclink" href="2022/03/25/weighted-regression/#linear-regression">Linear regression</a></h5>
 <div class="language-r highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">ols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;y~x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nf">summary</span><span class="p">(</span><span class="n">ols</span><span class="p">)</span>
 </span></code></pre></div>
@@ -1513,7 +1513,7 @@ Visually..</p>
 </span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>## F-statistic: 1.428e+04 on 1 and 998 DF,  p-value: &lt; 2.2e-16
 </span></code></pre></div>
 We get an intercept of 0.19, non-significant when the actual value is 0 and a slope of 4.96 when the actual value is 5.</p>
-<h5 id="weighted-linear-regression"><a class="toclink" href="2022/03/25/index.en-us/#weighted-linear-regression">Weighted linear regression</a></h5>
+<h5 id="weighted-linear-regression"><a class="toclink" href="2022/03/25/weighted-regression/#weighted-linear-regression">Weighted linear regression</a></h5>
 <div class="language-r highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">wols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;y~x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">weights</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">summary</span><span class="p">(</span><span class="n">wols</span><span class="p">)</span>
 </span></code></pre></div>
