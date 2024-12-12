@@ -3,7 +3,7 @@ title: Aprendizaje Estadístico - ISLR Capitulo 2
 authors:
   - fbetteo 
 date: 2019-05-06
-slug: aprendizaje-estadístico-islr-capitulo-2
+slug: aprendizaje-estadistico-islr-capitulo-2
 categories:
   - estadistica
 tags:

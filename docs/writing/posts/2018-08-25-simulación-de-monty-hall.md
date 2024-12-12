@@ -3,7 +3,7 @@ title: "Simulación de Monty Hall"
 authors:
   - fbetteo 
 date: 2018-08-25
-slug: simulación-de-monty-hall
+slug: simulacion-de-monty-hall
 tags: 
 - R 
 - simulacion
