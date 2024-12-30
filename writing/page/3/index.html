@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -985,6 +985,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#teorema-central-del-limite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Teorema Central del Limite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#metodos-de-resampleo-islr-capitulo-5" class="md-nav__link">
     <span class="md-ellipsis">
       Metodos de Resampleo - ISLR Capitulo 5
@@ -1065,15 +1074,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#como-crear-un-blog-con-blogdown-y-netlify" class="md-nav__link">
-    <span class="md-ellipsis">
-      Como crear un blog con Blogdown y Netlify
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1088,6 +1088,101 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2019-10-13 00:00:00+00:00">2019-10-13</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="teorema-central-del-limite"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/">Teorema Central del Limite</a></h2>
+<p>El <a href="https://es.wikipedia.org/wiki/Teorema_del_l%C3%ADmite_central">teorema central del límite (TCL)</a> 
+es fundamental en el desarrollo de la estadística y ha obtenido
+distintas variantes a lo largo de la historia. Veremos dos de las versiones más conocidas.</p>
+<h4 id="teorema-central-del-limite-para-media-muestral-lindeberg-levy"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#teorema-central-del-limite-para-media-muestral-lindeberg-levy">Teorema Central del Límite para Media Muestral (Lindeberg - Lévy)</a></h4>
+<blockquote>
+<p>Si las varaibles <span class="arithmatex">\(X_1 ... X_n\)</span> forman una muestra aleatoria de tamaño n proveniente de una 
+distribución con media <span class="arithmatex">\(\mu\)</span> y varianza <span class="arithmatex">\(\sigma^2\)</span> (0 &lt; <span class="arithmatex">\(\sigma^2\)</span> &lt; <span class="arithmatex">\(\infty\)</span>), entonces  para 
+cualquier número fijo x.
+$$  \lim_{n\to \infty} Pr\Big[\frac{n^{&frac12;}(\bar X_n - \mu)}{\sigma} &lt;= x\Big] = \Phi (x)$$</p>
+</blockquote>
+<p>Donde <span class="arithmatex">\(\Phi (x)\)</span> es la función de distribución de una Normal Estándar.</p>
+<p>El por qué de la convergencia del teorema no será probado acá pero no es díficil de encontrar.
+Por ejemplo <a href="https://www.uv.es/ceaces/tex1t/2%20conver/levi.htm">ACÁ</a></p>
+<p>Básicamente lo que dice el teorema, es que tomando una muestra grande de una población con media <span class="arithmatex">\(\mu\)</span> y 
+varianza <span class="arithmatex">\(\sigma^2\)</span> definidas, entonces <span class="arithmatex">\(\frac{n^{1/2}(\bar X_n - \mu)}{\sigma}\)</span> va a tender a una normal estándar. Como consecuencia de eso podemos decir que <span class="arithmatex">\(\bar X_n\)</span> va a distribuirse 
+aproximandamete como <span class="arithmatex">\(N(\mu, \sigma^2/n)\)</span>.</p>
+<p>El TCL nos dice cómo se distribuye la media muestral si tenemos una muestra grande.</p>
+<p>Análogamente, también podemos decir que <span class="arithmatex">\(\sum_{i=1}^n X_i\)</span> va a ser aproximadamente una normal
+<span class="arithmatex">\(N(n\mu, n\sigma^2)\)</span></p>
+<h5 id="ejemplo-lanzar-una-moneda"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#ejemplo-lanzar-una-moneda">Ejemplo. Lanzar una moneda</a></h5>
+<p>Si lanzamos una moneda 900 veces. Cuál es la probabilidad  de obtener más de 495 caras?</p>
+<p><span class="arithmatex">\(X_i\)</span> = 1 si sale cara en el lanzamiento i, y 0 si sale cruz.<br />
+E(<span class="arithmatex">\(X_i\)</span>) = &frac12; y Var(<span class="arithmatex">\(X_i\)</span>) = &frac14;. Esto se deduce de ser un experimento con distribución Bernouilli.</p>
+<p>Para llevarlo a los términos del TCL, tenemos una muestra de tamaño n = 900, con <span class="arithmatex">\(\mu\)</span> = &frac12; y
+<span class="arithmatex">\(\sigma^2\)</span> = &frac14;.</p>
+<p>Por TCL tenemos que la distribución de la suma del número total de caras <span class="arithmatex">\(\sum_{i=1}^{900} X_i\)</span> se
+distribuye aproximádamente como una normal con media = 900 * (&frac12;) = 450,
+varianza = 900 * (&frac14;) = 225 y desvío estándar 225^(&frac12;) = 15.</p>
+<p>Por lo tanto la variable <span class="arithmatex">\(Z = \frac{H - 450}{15}\)</span> se dsitribuye aproximadamente como una normal 
+estándar.
+<span class="arithmatex">\(<span class="arithmatex">\(Pr( H &gt; 495) = Pr(\frac{H - 450}{15} &gt; \frac{495 - 450}{15}) = Pr(Z&gt;3) = 1 - \Phi(3) = 0.0013\)</span>\)</span></p>
+<p>Podemos comparar contra el resultado que obtenemos al hacer el mismo ejercicio pero mirando 
+directamente la distribución binomial (que es la que realmente genera el proceso de datos)</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">pbinom</span><span class="p">(</span><span class="m">495</span><span class="p">,</span><span class="m">900</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">lower.tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>## [1] 0.001200108
+</span></code></pre></div>
+<p>Vemos que los resultados son muy similares.</p>
+<h4 id="teorema-central-del-limite-para-suma-de-variables-aleatorias-independientes-liapunov"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#teorema-central-del-limite-para-suma-de-variables-aleatorias-independientes-liapunov">Teorema Central del Límite para Suma de Variables Aleatorias Independientes (Liapunov)</a></h4>
+<p>Este TCL aplica a una secuencia de variables aleatorias independientes pero que no necesariamente
+tienen que provenir de una misma distribución. Todas deben tener una media y varianza definidas.</p>
+<p>La variable <span class="arithmatex">\(<span class="arithmatex">\(Y_n = \frac{\sum_{i=1}^n X_i - \sum_{i=1}^2 \mu_i}{(\sum_{i=1}^n\sigma_i^2)^{1/2}}\)</span>\)</span></p>
+<p>Entonces <span class="arithmatex">\(E(Y_n) = 0\)</span> y <span class="arithmatex">\(Var(Y_n)\)</span> = 1</p>
+<p>Siendo un poco más precisos veamos el teorema:</p>
+<blockquote>
+<p>Suponiendo que las variables aleatorias <span class="arithmatex">\(X_1. X_2, ...\)</span>  son independientes y que
+<span class="arithmatex">\(E(|X_i - \mu_i|^3) &lt; \infty\)</span> para 1,2,...
+Y suponidendo que <span class="arithmatex">\(<span class="arithmatex">\(\lim_{n\to \infty} \frac{\sum_{i=1}^n E(|X_i - \mu_i|^3)}{(\sum_{i=1}^n \sigma^2_i)^{3/2}} = 0\)</span>\)</span>
+Entonces, utilizando la variable Y definida previamente tenemos que <span class="arithmatex">\(<span class="arithmatex">\(\lim_{n \to \infty} Pr(Y_n &lt;= x) = \Phi(x)\)</span>\)</span></p>
+</blockquote>
+<p>La interpretacaión del teorema es que si se cumple la condición de los 3eros momentos, entonces para valores grandes de n la distribución de <span class="arithmatex">\(\sum_{i=1}^n X_i\)</span> será aproximadamente normal con media <span class="arithmatex">\(\sum_{i=1}^n \mu_i\)</span> y varianza <span class="arithmatex">\(\sum_{i=1}^n \sigma^2_i\)</span>.</p>
+<h4 id="diferencias-entre-lindeberg-levy-y-liapunov"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#diferencias-entre-lindeberg-levy-y-liapunov">Diferencias entre Lindeberg-Lévy y Liapunov</a></h4>
+<p>El teorema de Lindeberg-Lévy aplica para secuencias de variables aleatorias iid y solo requiere que la varianza de estas variables sea finita. En cambio el teorema de Liapunov aplica a secuencias de variables aleatorias independientes pero que no necesariamente provienen de una misma distribución. Requiere que el tercer momento de cada variable existe y cumple con la ecuación del teorema.</p>
+<h4 id="efecto-de-tcl"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#efecto-de-tcl">Efecto de TCL</a></h4>
+<p>Más allá de la utilidad para aproximar distribuciones y medias mediante una normal, el TCL aporta una posible explicación a por qué tantas variables se distribuyen aproximadamante como normales. Si muchas de las variables a medir pueden pensarse como sumas de otras variables es lógico que tiendan a verse como normales aunque las variables que se suman para darle origen provengan de distintas distribuciones.</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2348,72 +2443,6 @@ El eje X es 1 - Especificidad (Falsos Negativos) y el eje Y es Sensitividad (Ver
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2018-10-07 00:00:00+00:00">2018-10-07</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/r/" class="md-meta__link">R</a>, 
-              <a href="../../category/blog/" class="md-meta__link">blog</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="como-crear-un-blog-con-blogdown-y-netlify"><a class="toclink" href="../../2018/10/07/como-crear-un-blog-con-blogdown-y-netlify/">Como crear un blog con Blogdown y Netlify</a></h2>
-<p>En este post vamos a ver el proceso reusmido para crear un blog donde podemos generar contenido directamente desde RStudio, utilizando el paquete <a href="https://bookdown.org/yihui/blogdown/">blogdown</a>, <a href="https://www.github.com">Github</a> y <a href="https://www.netlify.com">Netlify</a>.
-La idea es que al finalizar la configuración, simplemente creemos el post en Rstudio (un markdown) usando blogdown y que al subirlo a github automaticamente se actualice el blog y se vea reflejado en nuestra página. Es lo que estoy haciendo en este momento.</p>
-<p>Lo primero y más importante más allá de este tema en particular es tener una cuenta en github. Si no la tienen se los recomiendo ampliamente para hacer version control - <em>actualizar código de forma segura y con backups constantes en un servidor + compartir proyectos</em>. Es gratis, al menos la versión básica que alcanza y sobra para el uso cotidiano. 
-En nuestro repositorio crearemos un proyecto para el blog y ahi se subirán nuestros posts en formato html. A su vez, estará el theme y otras configuraciones básicas del blog.  </p>
-<p>Lo segundo es instalar el paquete blogdown en nuestro R. Es una obra maestra de Yihui Xie, ingeniero de RStudio y creador de varios paquetes.
-En un nuevo proyecto de R, ejecutan el siguiente comando.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">blogdown</span><span class="o">::</span><span class="nf">new_site</span><span class="p">()</span>
-</span></code></pre></div>
-<p>Con eso ya tienen generado la estructura básica de lo que será su blog. Se crearán carpetas y archivos en la ruta del proyecto con contenido de prueba para tener algo funcional.
-Blogdown es bastante complejo y hay un millón de configuraciones y detalles que uno puede personalizar. No entraremos en eso acá porque se haría super extenso. Para eso está la <a href="https://bookdown.org/yihui/blogdown/">documentación oficial</a> <em>en ingles</em>.</p>
-<p>Eventualmente van a tener que cambiar el archivo config.toml con ciertos pasos de la guía y luego podrán explorar todas las posibilidades que presenta. Entre ellas pueden (y recomiendo) descargar otro theme para cambiar el formato. El que uso actualmente es <a href="https://github.com/kakawait/hugo-tranquilpeak-theme">tranquilpeak</a>.</p>
-<p>Para crear un post nuevo simplemente escriben el comando.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">blogdown</span><span class="o">::</span><span class="nf">new_post</span><span class="p">()</span>
-</span></code></pre></div>
-<p>Lo cual genera un script con un YAML, que es la configuración con el título, tags y otros metadatos del post. Simplemente escriben como cualquier markdown debajo.
-Cuando terminan el post (o mientras para ir visualizando como queda) corren </p>
-<p><div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">blogdown</span><span class="o">::</span><span class="nf">serve_site</span><span class="p">()</span>
-</span></code></pre></div>
-Lo cual generará el archivo html correspondiente que luego será usado en su web y les permite ver el resultado temporal de su post.</p>
-<p>Luego lo que deben hacer es pushear  la carpeta que se les generó del blog a su repositorio en github. O al menos las carpetas y archivos que se ven en la siguiente imagen. <strong>Public</strong> no la pusheen.</p>
-<p><img alt="gitsnap" src="/post/2018-10-07-como-crear-un-blog-con-blogdown-y-netlify/figure-html/GitSnapshot.PNG" /></p>
-<p>Llegado a este punto tenemos el contenido inicial del blog, pero no hay sitio web. Ahí es donde entra en juego Netlify.
-No vamos a entrar en el paso a paso minucioso pero básicamente deben crearse una cuenta, generar una nueva web y linkearla a su repositorio Github. Es bastante lineal. Luego configuran el nombre de la web y otros detalles y en cuestión de minutos ya están publicados! (Y Gratis.)
-Para ver bien esta etapa les recomiendo la explicación del link de blogdown.</p>
-<p>Una vez puesto en marcha solo es cuestión de abrir su proyecto en R (en su pc), crear un nuevo post con blogdown::new_post() y pushear a github!
-Prueben chusmeando todas las configuraciones para cambiar la estética del blog!</p>
-    
-  </div>
-</article>
-      
       
         
           
@@ -2511,7 +2540,7 @@ Prueben chusmeando todas las configuraciones para cambiar la estética del blog!
     <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

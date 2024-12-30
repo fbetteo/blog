@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -985,6 +985,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#softmax-vs-sigmoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Softmax vs sigmoid
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#counter-strike-chance-of-winning" class="md-nav__link">
     <span class="md-ellipsis">
       Counter Strike: chance of winning
@@ -1065,15 +1074,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#teorema-central-del-limite" class="md-nav__link">
-    <span class="md-ellipsis">
-      Teorema Central del Limite
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1088,6 +1088,144 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2021-01-18 00:00:00+00:00">2021-01-18</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/python/" class="md-meta__link">Python</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">machine learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="softmax-vs-sigmoid"><a class="toclink" href="../../2021/01/18/softmax-vs-sigmoid.en-us/">Softmax vs sigmoid</a></h2>
+<p>When using Neural Nets for a multiclass classification problem it's standard to have a softmax layer at the end to normalize the probabilities for each class. This means that the output of our net is a vector of probabilities (one for each class) that sums to 1. If there isn't a softmax layer at the end, then the net will output a value in each of the last cells (one for each class) but without a delimited range.<br />
+Just a set of numbers where usually the highest is the one with the most probable class but it's not obvious how to value the differences between them.</p>
+<p>So, you have a ordered set of numbers, you know which one is the most probable but you want to transform that into clear probabilities. You use the softmax layer. </p>
+<p>You could use a sigmoid activation function in the last cell to have <em>individual</em> probabilities. For each class, it transforms the output of the net into a probability. However the sum of those probabilities is not guaranteed to sum 1, actually it won't in practice. It's a simple proxy but you can get better intuitions with softmax.</p>
+<p>We will compare how these two approaches affect the last group of weights by inspecting the gradient after calculating the loss for an observation.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>I'm using the <em>reticulate</em> package in R to include Python code in Rmarkdown. Pretty nice.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
+</span></code></pre></div>
+<p>We import pytorch to handle tensors and neural net functions.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="kn">import</span> <span class="nn">torch</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>## &lt;torch._C.Generator object at 0x00000262714CF730&gt;
+</span></code></pre></div>
+<ul>
+<li>1 obs  </li>
+<li>5 features (X)  </li>
+<li>3 possible classes (index 1 = class 2)  </li>
+<li>W. 3 output cells, each one with 5 weights (one per feature)  </li>
+<li>W1 = W2 because we run it twice (two scenarios) and we can't re use the same weights because of the gradient calculated</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="n">W1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="n">W2</span> <span class="o">=</span> <span class="n">W1</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> 
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span> 
+</span></code></pre></div>
+<p>We transform everything to positives to make it cleaner and we add the requires_grad_() characteristic
+that tells pytorch that those tensors need the gradient backpropagated during training</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="n">W1</span> <span class="o">=</span> <span class="n">W1</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="n">W2</span> <span class="o">=</span> <span class="n">W2</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+</span></code></pre></div>
+<p>We define both losses (softmax and sigmoid).  </p>
+<p><em>Softmax</em>  </p>
+<ul>
+<li>Weights * input: cell value</li>
+<li>we change dimension of output to use it as input of softmax</li>
+<li>We calculate the softmax (probabilities of each class that sum 1)</li>
+<li>Apply log because we will use the negative log likelihood</li>
+<li>We calculate the loss (log of softmax probabilities vs actual class)</li>
+</ul>
+<p><em>Sigmoid</em>  </p>
+<ul>
+<li>Weights * input: cell value</li>
+<li>we change dimension of output to use it as input of sigmoid</li>
+<li>We calculate the sigmoid (probabilities of each class individually)</li>
+<li>Apply log because we will use the negative log likelihood</li>
+<li>We calculate the loss (log of sigmoid probabilities vs actual class)</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># funcion con softmax al final</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="k">def</span> <span class="nf">softmax_loss</span><span class="p">(</span><span class="n">W</span><span class="p">):</span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">W</span> <span class="o">@</span> <span class="n">X</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">nll_loss</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>
+</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a><span class="c1"># funcion con una sigmoidea por activacion</span>
+</span><span id="__span-50-10"><a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a><span class="k">def</span> <span class="nf">sigmoid_loss</span><span class="p">(</span><span class="n">W</span><span class="p">):</span>
+</span><span id="__span-50-11"><a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">W</span> <span class="o">@</span> <span class="n">X</span>
+</span><span id="__span-50-12"><a id="__codelineno-50-12" name="__codelineno-50-12" href="#__codelineno-50-12"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-50-13"><a id="__codelineno-50-13" name="__codelineno-50-13" href="#__codelineno-50-13"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-14"><a id="__codelineno-50-14" name="__codelineno-50-14" href="#__codelineno-50-14"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-15"><a id="__codelineno-50-15" name="__codelineno-50-15" href="#__codelineno-50-15"></a>    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">nll_loss</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></code></pre></div>
+<p>We run the forward pass and calculate the loss for the sigmoid first. Then we look for the gradient.<br />
+As we can see in the results, only the weights that go to the correct class' output cell are modified. Classes one and three rest untouched. This is because the sigmoid activation just has the individual weights (and cross entropy only look to the correct class)</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">out_sigmoid</span> <span class="o">=</span> <span class="n">sigmoid_loss</span><span class="p">(</span><span class="n">W1</span><span class="p">)</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="n">out_sigmoid</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="n">W1</span><span class="o">.</span><span class="n">grad</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>## tensor([[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>##         [-0.0452, -0.0867, -0.0564, -0.0492, -0.0549],
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>##         [ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000]])
+</span></code></pre></div>
+On the contrary, when running the same net but with softmax layer we see that all the weights are updated. The correct class has gradient with the same sign that for the sigmoid example but the other two classes have in this case opposite sign gradients (which makes sense since you want them to go in the other direction).<br />
+This happens because the softmax includes the other classes in each cell since they are needed to normalize and return probabilities that sum up to 1.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="n">out_softmax</span> <span class="o">=</span> <span class="n">softmax_loss</span><span class="p">(</span><span class="n">W2</span><span class="p">)</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="n">out_softmax</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="n">W2</span><span class="o">.</span><span class="n">grad</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>## tensor([[ 0.5393,  1.0346,  0.6731,  0.5868,  0.6552],
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>##         [-0.5576, -1.0697, -0.6959, -0.6066, -0.6775],
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>##         [ 0.0183,  0.0351,  0.0228,  0.0199,  0.0222]])
+</span></code></pre></div>
+This is a simple case with just one layer of weights so we can clearly see this. If you had a fully connected net with more layers, this is valid just for the last one because the gradient is backpropagated and the weights from "other paths" still affect the cell that corresponds to the second class.  </p>
+<h4 id="conclusion"><a class="toclink" href="../../2021/01/18/softmax-vs-sigmoid.en-us/#conclusion">Conclusion</a></h4>
+<p>The net should evolve during training in a similar way with both last layer activations but the way they do it is different and we try to show in here why. In the end, the sigmoid still reflects the preference for one of the classes and during each epoch it will go through the desired path but just updating some of the weights and not all at the same time.</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2239,101 +2377,6 @@ Vemos que la estimación por MLE es <em>idéntica</em> a la media. No correspond
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2019-10-13 00:00:00+00:00">2019-10-13</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="../../category/r/" class="md-meta__link">R</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="teorema-central-del-limite"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/">Teorema Central del Limite</a></h2>
-<p>El <a href="https://es.wikipedia.org/wiki/Teorema_del_l%C3%ADmite_central">teorema central del límite (TCL)</a> 
-es fundamental en el desarrollo de la estadística y ha obtenido
-distintas variantes a lo largo de la historia. Veremos dos de las versiones más conocidas.</p>
-<h4 id="teorema-central-del-limite-para-media-muestral-lindeberg-levy"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#teorema-central-del-limite-para-media-muestral-lindeberg-levy">Teorema Central del Límite para Media Muestral (Lindeberg - Lévy)</a></h4>
-<blockquote>
-<p>Si las varaibles <span class="arithmatex">\(X_1 ... X_n\)</span> forman una muestra aleatoria de tamaño n proveniente de una 
-distribución con media <span class="arithmatex">\(\mu\)</span> y varianza <span class="arithmatex">\(\sigma^2\)</span> (0 &lt; <span class="arithmatex">\(\sigma^2\)</span> &lt; <span class="arithmatex">\(\infty\)</span>), entonces  para 
-cualquier número fijo x.
-$$  \lim_{n\to \infty} Pr\Big[\frac{n^{&frac12;}(\bar X_n - \mu)}{\sigma} &lt;= x\Big] = \Phi (x)$$</p>
-</blockquote>
-<p>Donde <span class="arithmatex">\(\Phi (x)\)</span> es la función de distribución de una Normal Estándar.</p>
-<p>El por qué de la convergencia del teorema no será probado acá pero no es díficil de encontrar.
-Por ejemplo <a href="https://www.uv.es/ceaces/tex1t/2%20conver/levi.htm">ACÁ</a></p>
-<p>Básicamente lo que dice el teorema, es que tomando una muestra grande de una población con media <span class="arithmatex">\(\mu\)</span> y 
-varianza <span class="arithmatex">\(\sigma^2\)</span> definidas, entonces <span class="arithmatex">\(\frac{n^{1/2}(\bar X_n - \mu)}{\sigma}\)</span> va a tender a una normal estándar. Como consecuencia de eso podemos decir que <span class="arithmatex">\(\bar X_n\)</span> va a distribuirse 
-aproximandamete como <span class="arithmatex">\(N(\mu, \sigma^2/n)\)</span>.</p>
-<p>El TCL nos dice cómo se distribuye la media muestral si tenemos una muestra grande.</p>
-<p>Análogamente, también podemos decir que <span class="arithmatex">\(\sum_{i=1}^n X_i\)</span> va a ser aproximadamente una normal
-<span class="arithmatex">\(N(n\mu, n\sigma^2)\)</span></p>
-<h5 id="ejemplo-lanzar-una-moneda"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#ejemplo-lanzar-una-moneda">Ejemplo. Lanzar una moneda</a></h5>
-<p>Si lanzamos una moneda 900 veces. Cuál es la probabilidad  de obtener más de 495 caras?</p>
-<p><span class="arithmatex">\(X_i\)</span> = 1 si sale cara en el lanzamiento i, y 0 si sale cruz.<br />
-E(<span class="arithmatex">\(X_i\)</span>) = &frac12; y Var(<span class="arithmatex">\(X_i\)</span>) = &frac14;. Esto se deduce de ser un experimento con distribución Bernouilli.</p>
-<p>Para llevarlo a los términos del TCL, tenemos una muestra de tamaño n = 900, con <span class="arithmatex">\(\mu\)</span> = &frac12; y
-<span class="arithmatex">\(\sigma^2\)</span> = &frac14;.</p>
-<p>Por TCL tenemos que la distribución de la suma del número total de caras <span class="arithmatex">\(\sum_{i=1}^{900} X_i\)</span> se
-distribuye aproximádamente como una normal con media = 900 * (&frac12;) = 450,
-varianza = 900 * (&frac14;) = 225 y desvío estándar 225^(&frac12;) = 15.</p>
-<p>Por lo tanto la variable <span class="arithmatex">\(Z = \frac{H - 450}{15}\)</span> se dsitribuye aproximadamente como una normal 
-estándar.
-<span class="arithmatex">\(<span class="arithmatex">\(Pr( H &gt; 495) = Pr(\frac{H - 450}{15} &gt; \frac{495 - 450}{15}) = Pr(Z&gt;3) = 1 - \Phi(3) = 0.0013\)</span>\)</span></p>
-<p>Podemos comparar contra el resultado que obtenemos al hacer el mismo ejercicio pero mirando 
-directamente la distribución binomial (que es la que realmente genera el proceso de datos)</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">pbinom</span><span class="p">(</span><span class="m">495</span><span class="p">,</span><span class="m">900</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">lower.tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>## [1] 0.001200108
-</span></code></pre></div>
-<p>Vemos que los resultados son muy similares.</p>
-<h4 id="teorema-central-del-limite-para-suma-de-variables-aleatorias-independientes-liapunov"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#teorema-central-del-limite-para-suma-de-variables-aleatorias-independientes-liapunov">Teorema Central del Límite para Suma de Variables Aleatorias Independientes (Liapunov)</a></h4>
-<p>Este TCL aplica a una secuencia de variables aleatorias independientes pero que no necesariamente
-tienen que provenir de una misma distribución. Todas deben tener una media y varianza definidas.</p>
-<p>La variable <span class="arithmatex">\(<span class="arithmatex">\(Y_n = \frac{\sum_{i=1}^n X_i - \sum_{i=1}^2 \mu_i}{(\sum_{i=1}^n\sigma_i^2)^{1/2}}\)</span>\)</span></p>
-<p>Entonces <span class="arithmatex">\(E(Y_n) = 0\)</span> y <span class="arithmatex">\(Var(Y_n)\)</span> = 1</p>
-<p>Siendo un poco más precisos veamos el teorema:</p>
-<blockquote>
-<p>Suponiendo que las variables aleatorias <span class="arithmatex">\(X_1. X_2, ...\)</span>  son independientes y que
-<span class="arithmatex">\(E(|X_i - \mu_i|^3) &lt; \infty\)</span> para 1,2,...
-Y suponidendo que <span class="arithmatex">\(<span class="arithmatex">\(\lim_{n\to \infty} \frac{\sum_{i=1}^n E(|X_i - \mu_i|^3)}{(\sum_{i=1}^n \sigma^2_i)^{3/2}} = 0\)</span>\)</span>
-Entonces, utilizando la variable Y definida previamente tenemos que <span class="arithmatex">\(<span class="arithmatex">\(\lim_{n \to \infty} Pr(Y_n &lt;= x) = \Phi(x)\)</span>\)</span></p>
-</blockquote>
-<p>La interpretacaión del teorema es que si se cumple la condición de los 3eros momentos, entonces para valores grandes de n la distribución de <span class="arithmatex">\(\sum_{i=1}^n X_i\)</span> será aproximadamente normal con media <span class="arithmatex">\(\sum_{i=1}^n \mu_i\)</span> y varianza <span class="arithmatex">\(\sum_{i=1}^n \sigma^2_i\)</span>.</p>
-<h4 id="diferencias-entre-lindeberg-levy-y-liapunov"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#diferencias-entre-lindeberg-levy-y-liapunov">Diferencias entre Lindeberg-Lévy y Liapunov</a></h4>
-<p>El teorema de Lindeberg-Lévy aplica para secuencias de variables aleatorias iid y solo requiere que la varianza de estas variables sea finita. En cambio el teorema de Liapunov aplica a secuencias de variables aleatorias independientes pero que no necesariamente provienen de una misma distribución. Requiere que el tercer momento de cada variable existe y cumple con la ecuación del teorema.</p>
-<h4 id="efecto-de-tcl"><a class="toclink" href="../../2019/10/13/teorema-central-del-limite/#efecto-de-tcl">Efecto de TCL</a></h4>
-<p>Más allá de la utilidad para aproximar distribuciones y medias mediante una normal, el TCL aporta una posible explicación a por qué tantas variables se distribuyen aproximadamante como normales. Si muchas de las variables a medir pueden pensarse como sumas de otras variables es lógico que tiendan a verse como normales aunque las variables que se suman para darle origen provengan de distintas distribuciones.</p>
-    
-  </div>
-</article>
-      
       
         
           
@@ -2431,7 +2474,7 @@ Entonces, utilizando la variable Y definida previamente tenemos que <span class=
     <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
