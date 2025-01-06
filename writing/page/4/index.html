@@ -12,7 +12,7 @@
         <link rel="prev" href="../../../interests/">
       
       
-        <link rel="next" href="../../category/personal/">
+        <link rel="next" href="../../category/ai/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -413,6 +413,8 @@
       
         
       
+        
+      
     
     
       
@@ -452,6 +454,29 @@
             Archive
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -626,6 +651,8 @@
       
         
       
+        
+      
     
     
       
@@ -665,6 +692,52 @@
             Categories
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../category/ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../category/machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -795,29 +868,6 @@
   
   <span class="md-ellipsis">
     estadistica
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../category/machine-learning/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    machine learning
   </span>
   
 
@@ -985,6 +1035,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#curvas-roc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curvas ROC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#como-crear-un-blog-con-blogdown-y-netlify" class="md-nav__link">
     <span class="md-ellipsis">
       Como crear un blog con Blogdown y Netlify
@@ -1043,6 +1102,87 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2018-10-28 00:00:00+00:00">2018-10-28</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="curvas-roc"><a class="toclink" href="../../2018/10/28/curvas-roc/">Curvas ROC</a></h2>
+<p>La curva ROC y AUC (area bajo la curva) permiten evaluar la eficacia de un modelo clasificador y elegir el mejor umbral de corte donde determinar qué observación es predicha positiva y cual negativa.</p>
+<p>Vamos a generar rapidamente un clasificador con regresión logísitca utilizando el dataset <em>mtcars</em> ya provisto por R. Solo a modo ilustrativo utilizaremos AM (caja manual o automática) como la variable a predecir y mpg y drat como independientes. No separamos en train y test dadas las pocas observaciones.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">modelr</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">pROC</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mtcars</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">am</span><span class="p">,</span><span class="w"> </span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">drat</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">am</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">am</span><span class="p">))</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nf">summary</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>##  am          mpg             drat      
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>##  0:19   Min.   :10.40   Min.   :2.760  
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>##  1:13   1st Qu.:15.43   1st Qu.:3.080  
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>##         Median :19.20   Median :3.695  
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>##         Mean   :20.09   Mean   :3.597  
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>##         3rd Qu.:22.80   3rd Qu.:3.920  
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>##         Max.   :33.90   Max.   :4.930
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Clase dentro de todo balanceada</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">mdl.log</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="s">&quot;logit&quot;</span><span class="p">))</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">mdl.log</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nf">roc</span><span class="p">(</span><span class="n">df</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w">  </span><span class="n">fit</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">percent</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span><span class="w">   </span><span class="n">boot.n</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">ci.alpha</span><span class="o">=</span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">stratified</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">plot</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">show.thres</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">legacy.axes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">reuse.auc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="c1"># print.thres = c(0.30,0.35, 0.40, 0.45,0.48, 0.50,0.55, 0.60),#</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">print.auc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">print.thres.col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ci</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">ci.type</span><span class="o">=</span><span class="s">&quot;bars&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">print.thres.cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;ROC curve using&quot;</span><span class="p">,</span><span class="s">&quot;(N = &quot;</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">),</span><span class="s">&quot;)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2018-10-28-curvas-roc-unnamed-chunk-1-1.png" /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>## 
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>## Call:
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>## roc.default(response = df[, 1], predictor = fit, percent = F,     ci = TRUE, plot = TRUE, boot.n = 1000, ci.alpha = 0.9, stratified = FALSE,     grid = TRUE, show.thres = TRUE, legacy.axes = TRUE, reuse.auc = TRUE,     print.auc = TRUE, print.thres.col = &quot;blue&quot;, ci.type = &quot;bars&quot;,     print.thres.cex = 0.7, main = paste(&quot;ROC curve using&quot;, &quot;(N = &quot;,         nrow(df), &quot;)&quot;))
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>## 
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>## Data: fit in 19 controls (df[, 1] 0) &lt; 13 cases (df[, 1] 1).
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>## Area under the curve: 0.9433
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>## 95% CI: 0.8695-1 (DeLong)
+</span></code></pre></div>
+<p>Básicamente entrenamos un modelo logístico y graficamos la curva ROC prediciendo sobre el mismo dataset con el que fue entrenado. No es lo adecuado pero dadas las pocas observaciones y el propósito explicativo no lo tomamos como un problema.
+La curva ROC es la más oscura y como vemos empieza en (0,0) y termina en el (1,1).
+El eje X es 1 - Especificidad (Falsos Negativos) y el eje Y es Sensitividad (Verdaderos Positivos) por lo tanto lo deseable es estar lo más arriba a la izquierda posible. El punto (0,1) sería óptimo ya que habría 0 falsos negativos y 100% de verdaderos positivos.</p>
+<p>Lo que representa la curva es la combinación de Sensitividad y (1 - especificidad) para varios puntos de corte. Recordemos que la regresión logística devuelve un valor entre 0 y 1 por lo tanto hay que determinar en qué valor empezamos a considerar una predicción como positiva o negativa. En este caso positivo sería tener un valor de 1 en am, por lo tanto tener caja automática. Cada punto de la curva corresponde a algún punto de corte. Como decíamos antes, el mejor debería ser el más "arriba a la izquierda" aunque depende el problema eso puede cambiar, dependiendo del costo de equivocarse en uno u otro sentido.</p>
+<p>El peor escenario es que la curva siga a la diagonal, lo que equivaldría a ser iguales a un modelo eligiendo siempre la clase mayoritaria, totalmente inútil. Si estuviera por debajo de la diagonal, sería peor aún, pero bastaría con invertir las predicciones para pasar a estar por encima. Un viejo truco no muy científico.</p>
+<p>El área bajo la curva (AUC) es una medida resumen de la curva ROC ya que justamente describe el área entre la curva ROC y la diagonal. Valores mayores se corresponden con curvas ROC más alejadas de la diagonal y por lo tanto que separan mejor a la clase dependiente. Es útil para comparar modelos.</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -1621,13 +1761,13 @@ Este tipo de variables son muy comunes y se encuentran por todos lados. Temperat
         
         
           
-          <a href="../../category/personal/" class="md-footer__link md-footer__link--next" aria-label="Next: Personal">
+          <a href="../../category/ai/" class="md-footer__link md-footer__link--next" aria-label="Next: AI">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Personal
+                AI
               </div>
             </div>
             <div class="md-footer__button md-icon">

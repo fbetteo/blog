@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Entropy and information theory">
       
       
       
-        <link rel="prev" href="../tipos-de-variables/">
       
+        <link rel="prev" href="../../../../2024/12/29/taking-notes/">
       
-        <link rel="next" href="../cadenas-de-markov/">
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Simulación de Monty Hall - Franco Betteo</title>
+        <title>Entropy and information - Franco Betteo</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#simulacion-de-monty-hall" class="md-skip">
+        <a href="#entropy-and-information" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Simulación de Monty Hall
+              Entropy and information
             
           </span>
         </div>
@@ -1086,7 +1086,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2018-08-25 00:00:00+00:00" class="md-ellipsis">2018-08-25</time>
+                        <time datetime="2025-01-06 00:00:00+00:00" class="md-ellipsis">2025-01-06</time>
                       </div>
                     </li>
                     
@@ -1097,7 +1097,8 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/r/">R</a></span>
+                              <a href="../../../../category/ai/">AI</a>, 
+                              <a href="../../../../category/machine-learning/">Machine Learning</a></span>
                         </div>
                       </li>
                     
@@ -1108,7 +1109,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              4 min read
+                              2 min read
                             
                           </span>
                         </div>
@@ -1128,67 +1129,23 @@
         
 
 
-<h1 id="simulacion-de-monty-hall">Simulación de Monty Hall<a class="headerlink" href="#simulacion-de-monty-hall" title="Permanent link">&para;</a></h1>
-<p>Vamos a ver en un corto y sencillo ejemplo cómo hacer una simulación en R. El caso a utilizar es el "famoso" <a href="https://es.wikipedia.org/wiki/Problema_de_Monty_Hall">problema de Monty Hall</a>, asociado a un programa televisivo de Estados Unidos. </p>
-<p>En breve, el problema consiste en que un concursante debe elegir una entre 3 puertas (A,B y C). Detrás de una hay un premio (en general un automóvil) y tras las otras dos no hay nada (o una cabra en algunos ejemplos, lo cual no me parece tan malo en realidad..).
-Una vez que el concursante eligió una puerta, el organizador del programa, que sabe qué puerta oculta el premio y cuáles no, abre una de las dos puertas restantes, tras la cual no hay premio (recuerden que sabe qué hay detrás de cada puerta).
-Ante el nuevo escenario, el concursante debe elegir si mantiene su elección original o decide cambiar por la puerta restante, es decir, la que no eligió ni la que abrió el organizador.</p>
-<ul>
-<li>Qué conviene hacer ante tal incertidumbre? <ul>
-<li>Cambiar? </li>
-<li>Mantenerse fiel a la decisión original sin caer en los juegos psicológicos del programa? </li>
-<li>Es indistinto? 50/50 entre las dos puertas.</li>
-</ul>
-</li>
-</ul>
-<p>La simulación deberíaa darnos una respuesta acertada. Comencemos.</p>
-<p>Generamos las puertas y un vector donde vamos a guardar el resultado de la simulación.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">puertas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">xdata</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
-</span></code></pre></div>
-<p>Ahora lo que vamos a hacer es simular 10000 escenarios distintos emulando la lógica del problema. En cada uno vamos a asignarle a una puerta al azar el premio (con el comando "sample"). Luego elegiremos, como si fueramos el concursante, una puerta al azar. Descartaremos una de las puertas sin premio y por último y más importante, vamos a analizar en cada escenario qué hubiera pasado si nos quedabamos con la puerta elegida originalmente y qué hubiera pasado si cambiábamos. 
-Si no hay diferencia entre cambiar y no cambiar, luego de 10000 simulaciones deberíamos haber ganado 5000 veces al cambiar y 5000 al no cambiar (con algún margen de error). En caso contrario, alguna de las dos estrategias es superadora.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1"># 10000 iteraciones</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="n">premio</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">puertas</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="c1"># Asignar al premio una puerta al azar</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="n">eleccion</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">puertas</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="c1"># Concursante elige una puerta al azar</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="n">abrir</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">puertas</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">puertas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">eleccion</span><span class="w"> </span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="n">puertas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">premio</span><span class="p">)])[</span><span class="m">1</span><span class="p">]</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="c1"># &quot;Abren&quot; una que no es la que elegiste ni la que tiene premio</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="n">cambiarsi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">puertas</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">puertas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">eleccion</span><span class="w"> </span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="n">puertas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">abrir</span><span class="p">)]</span><span class="w"> </span><span class="c1"># Situacion si cambiaras. </span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nf">if</span><span class="p">(</span><span class="n">eleccion</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">premio</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">xdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="s">&quot;nocambiargana&quot;</span><span class="p">))</span><span class="w"> </span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="c1"># Caso en que eleccion original ganara y guardas resultado</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="nf">if</span><span class="p">(</span><span class="n">cambiarsi</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">premio</span><span class="p">)(</span><span class="n">xdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cambiargana&quot;</span><span class="p">))</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="c1"># Caso en que cambiar ganara y guardas resultado</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>LLegado este punto tenemos un vector xdata que tiene para cada una de las 10000 iteraciones, qué estategia hubiera ganado. Si cambiar de puerta o no cambiar.
-Ahora simplemente contamos cuántas hay de cada una y analizamos el resultado.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">xdata</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cambiargana&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1"># Cantidad que hubieran ganado si cambiabas</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>## [1] 6623
-</span></code></pre></div>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">xdata</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;nocambiargana&quot;</span><span class="p">))</span><span class="w"> </span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>## [1] 3377
-</span></code></pre></div>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Cantidad que hubieran ganado si no cambiabas</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nf">table</span><span class="p">(</span><span class="n">xdata</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>## xdata
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>##   cambiargana nocambiargana 
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>##          6623          3377
-</span></code></pre></div>
-<p>Para sorpresa o no de ustedes, la elección parece obvia. Cambiar de puerta nos hace elegir el premio un 66% de las veces y no cambiar tan solo un 33%.  </p>
-<p>Entender por qué es interesante.  </p>
-<p>Al elegir inicialmente una puerta entre las 3 opciones, la probabilidad de acertarle al premio es &#8531;. De ahí que la estrategia de no cambiar de puerta es efectiva solo un 33% de las veces. Es simplemente quedarse con la elección inicial que tenia &#8531; de chances de ser correcta, independientemente de la puerta que abra el organizador.</p>
-<p>Ahora, supongamos que en la elección inicial elegimos una puerta que no contiene el premio ( 66% de probabilidades). La estrategia de no cambiar de puerta nos hace perder indiscutidamente.</p>
-<p>Si juntamos las dos proposiciones obtenemos que no cambiar de puerta nos hace ganar &#8531; de las veces, cuando elegimos bien por azar la puerta del premio inicialmente, y nos va a hacer perder el resto de las veces - &#8532; de las veces - que es cuando elegimos una puerta sin premio al principio.</p>
-<p>Otro razonamiento equivalente es que cambiar de puerta nos hacer perder siempre y cuando hayamos elegido la puerta del premio originalmente (&#8531;) pero nos va a hacer ganar siempre que hayamos elegido una sin premio (&#8532;) porque la nueva puerta si o sí tendrá el premio, ya que la tercera es la que abre el organizador y no tiene premio.</p>
-<p>En caso de que la rápida intuición nos hiciera creer que la elección entre cambiar y no cambiar era indistinto y ambas tenían 50% de chances de garantizarnos el premio, el ejercicio de simulación nos hubiera hecho elegir correctamente.</p>
-<p>En este caso razonar el problema es posible ya que involucra pocas opciones pero en situaciones más complejas la simulación puede ayudar enormemente a la toma de decisiones.</p>
+<h1 id="entropy-and-information">Entropy and information<a class="headerlink" href="#entropy-and-information" title="Permanent link">&para;</a></h1>
+<p>Term that comes from information theory.
+The most intuitive way to think about <em>information</em> of a variable is to relate to the <strong>degree of surprise</strong> on learning the value of the variable X.<br />
+This definition was mentioned both in <a href="https://www.bishopbook.com/">Deep Learning, Bishop</a> and in <a href="https://worrydream.com/refs/Hamming_1997_-_The_Art_of_Doing_Science_and_Engineering.pdf">Hamming</a>, and the former is the text I was just reading before starting this note.</p>
+<p>So, having a variable X with <code>p(x)</code>, what's <code>h(x)</code> , the information of observing X? This quantity <code>h(x)</code> should be a monotonic function of <code>p(x)</code>. Remember, information is tied to the surprise, observing an almost sure event, high p(x), reveals less information than an unexpected event,low p(x). In the extreme, observing a known value, gives 0 information.</p>
+<p>How to define the information mathematically comes (in some way intuitively) by the definition that, observing two independent variables <code>x</code> and <code>y</code> should provide an amount of information equal to the sum of the individual informations.</p>
+<div class="arithmatex">\[h(x,y) = h(x) + h(y)\]</div>
+<p>We know that for independent events <span class="arithmatex">\(p(x, y) = p(x)*p(y)\)</span>  </p>
+<p>It can be derived then that  </p>
+<div class="arithmatex">\[h(x) = - \log_2 p(x)\]</div>
+<p>The log provides the summation part coming from a multiplication. The negative ensure 0 or positive values. Remember that we are taking the log of a value between 0 and 1.</p>
+<p>Now, there is another important term, <strong>entropy</strong>.
+It summarizes the average amount of information that is transmitted <em>if a sender wishes to transmit the value of a random variable to a receiver</em>. 
+The entropy is the expectation of the information, with respect to the distribution p(x).  </p>
+<div class="arithmatex">\[H[x] = - \sum_x p(x) \log_2 p(x)\]</div>
+<p>For p(x) = 0, where the log would bring problem, we consider <span class="arithmatex">\(p(x) \log p(x)\)</span>=0</p>
+<p>Classical information theory uses <span class="arithmatex">\(\log_2\)</span> because it relates to bits and the amount of bits required to send a message but the book changes to <span class="arithmatex">\(\ln\)</span> because is much more used in ML and it's just a different unit to measure entropy. </p>
 
 
 
@@ -1235,7 +1192,7 @@ Ahora simplemente contamos cuántas hay de cada una y analizamos el resultado.</
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../tipos-de-variables/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tipos de Variables">
+          <a href="../../../../2024/12/29/taking-notes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Taking notes is life changing.">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1245,27 +1202,11 @@ Ahora simplemente contamos cuántas hay de cada una y analizamos el resultado.</
                 Previous
               </span>
               <div class="md-ellipsis">
-                Tipos de Variables
+                Taking notes is life changing.
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../cadenas-de-markov/" class="md-footer__link md-footer__link--next" aria-label="Next: Cadenas de Markov">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Cadenas de Markov
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

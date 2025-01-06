@@ -12,7 +12,7 @@
         <link rel="prev" href="../../../interests/">
       
       
-        <link rel="next" href="../../category/personal/">
+        <link rel="next" href="../../category/ai/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -413,6 +413,8 @@
       
         
       
+        
+      
     
     
       
@@ -452,6 +454,29 @@
             Archive
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -626,6 +651,8 @@
       
         
       
+        
+      
     
     
       
@@ -665,6 +692,52 @@
             Categories
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../category/ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../category/machine-learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -795,29 +868,6 @@
   
   <span class="md-ellipsis">
     estadistica
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
-      <a href="../../category/machine-learning/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    machine learning
   </span>
   
 
@@ -985,6 +1035,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#maxima-verosimilitud-y-estimacion-bayesiana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maxima Verosimilitud y estimacion bayesiana
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#teorema-central-del-limite" class="md-nav__link">
     <span class="md-ellipsis">
       Teorema Central del Limite
@@ -1065,15 +1124,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#curvas-roc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Curvas ROC
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1088,6 +1138,145 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2019-10-31 00:00:00+00:00">2019-10-31</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="maxima-verosimilitud-y-estimacion-bayesiana"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/">Maxima Verosimilitud y estimacion bayesiana</a></h2>
+<h3 id="distribucion-prior"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#distribucion-prior">Distribucion prior</a></h3>
+<p>A falta de una buena traducción usamos este término.</p>
+<p>Supongamos que se toman muestras aleatorias de una distribucion con <a href="https://fbetteo.netlify.com/2019/04/funciones-de-probabilidad-y-distribucion/">pdf (funcion de densidad de probabilidad)</a> <span class="arithmatex">\(f(x|\theta)\)</span>. Por ejemplo podrían provenir de una normal con media = <span class="arithmatex">\(\mu\)</span> y varianza = 4.<br />
+Nosotros no sabemos el valor de <span class="arithmatex">\(\mu\)</span> pero podemos tener una idea de qué valores puede tomar y tener en mente una distribución prior de este parámetro <span class="arithmatex">\(\epsilon(\theta)\)</span>. Para el ejemplo sería <span class="arithmatex">\(\epsilon(\mu)\)</span>. Podemos suponer que <span class="arithmatex">\(\mu\)</span> se distribuye como una uniforme (0,1) por decir algo.<br />
+El concepto radica en tener una distribución prior para los parámetros de la distribución de la cual tomamos muestras aleatorias.</p>
+<h3 id="distribucion-posterior"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#distribucion-posterior">Distribución Posterior</a></h3>
+<p>Volviendo a nuestra muestra <span class="arithmatex">\(X_1...X_n\)</span> proveniente de <span class="arithmatex">\(f(x|\theta)\)</span>, podemos decir, debido a que son observaciones aleatorias e independientes que su distribución conjunta es <span class="arithmatex">\(f_n(x_1...X_n|\theta) = f(x_1|\theta)...f(x_n|\theta)\)</span>, que lo podemos escribir como <span class="arithmatex">\(f_n(x|\theta)\)</span>.<br />
+Dado que suponemos que <span class="arithmatex">\(\theta\)</span> proviene de una distribución <span class="arithmatex">\(\epsilon(\theta)\)</span>, la pdf conjunta <span class="arithmatex">\(f_n(x|\theta)\)</span> tiene que ser vista como la pdf conjunta condicional de<span class="arithmatex">\(X_1...X_n\)</span> para un valor particular de <span class="arithmatex">\(\theta\)</span>.<br />
+Multiplicando la pdf conjunta condicional por la pdf <span class="arithmatex">\(\epsilon(\theta)\)</span> obtenemos la (n+1) distribución conjunta de <span class="arithmatex">\(X_1...X_n\)</span> y <span class="arithmatex">\(\theta\)</span> bajo la forma <span class="arithmatex">\(f_n(x|\theta)\epsilon(\theta)\)</span>. Sería la pdf de encontrar en simultáneo determinados valores para x y <span class="arithmatex">\(\theta\)</span>. La probabilidad conjunta marginal de <span class="arithmatex">\(X_1...X_n\)</span> se encuentra integrando la pdf conjunta con <span class="arithmatex">\(\theta\)</span> para todos los valores de <span class="arithmatex">\(\theta\)</span>. Sería la probabilidad marginal de encontrar determinados valores de x (sabiendo la distribución de <span class="arithmatex">\(\theta\)</span> pero sin saber el valor puntual que toma).</p>
+<p><span class="arithmatex">\(g_n(x) = \int_\Omega f_n(x|\theta)\epsilon(\theta) d\theta\)</span></p>
+<p>Por teorema de Bayes tenemos que la distribución posterior de <span class="arithmatex">\(\theta\)</span>, es decir, dados los x es:
+<span class="arithmatex">\(<span class="arithmatex">\(\epsilon(\theta|x) = \frac{f_n(x|\theta)\epsilon(\theta)}{g_n(x)} \text{ para } \theta \in \Omega\)</span>\)</span> 
+ Se dice que la distribución prior <span class="arithmatex">\(\epsilon(\theta)\)</span> representa la verosimilitud, antes de ver los valores de <span class="arithmatex">\(X_1...X_n\)</span>, de que el verdadero valor de <span class="arithmatex">\(\theta\)</span> se encuentre en cada una de las regiones de <span class="arithmatex">\(\Omega\)</span> y que la pdf de la distribución posterior <span class="arithmatex">\(\epsilon(\theta|x)\)</span> representa la verosimilitud después que los valores <span class="arithmatex">\(X_1 = x_1,...,X_n = x_n\)</span> hayan sido observados.</p>
+<p>## La funcion de Versoimilitud</p>
+<p>El denominador de la distribución posterior es básicamente la integral del numerador para todos los posibles valores de <span class="arithmatex">\(\theta\)</span>. Depende de los valores observados <span class="arithmatex">\(X_1...X_n\)</span> pero no de <span class="arithmatex">\(\theta\)</span>, por lo que puede considerarse constante en este contexto.<br />
+ Dado que es una constante podemos quitarla de la distribución posterior que vimos y decir que 
+ <span class="arithmatex">\(<span class="arithmatex">\(\epsilon(\theta|x) \propto f_n(x|\theta)\epsilon(\theta)\)</span>\)</span></p>
+<p>Cuando se ve <span class="arithmatex">\(f_n(x|\theta)\)</span> para una muestra aleatoria como función de <span class="arithmatex">\(\theta\)</span>, se la suele llamar función de verosimilitud. En inglés: Likelihood function.</p>
+<p>Juntando estos términos podemos decir que la pdf posterior de <span class="arithmatex">\(\theta\)</span> es proporcional al producto de la función de verosimilitud y la pdf prior de <span class="arithmatex">\(\theta\)</span>.  </p>
+<p>La idea de ver esta relación de proporcionalidad es para poder calcular la pdf posterior evitando calcular la integral del denomiador <span class="arithmatex">\(g_n(x)\)</span>. Si el numerador tiene la forma de alguna de las distribuciones conocidad (normal, beta, gamma, uniforme, etc) es posible calcular fácilmente el factor constante por el cual multiplicar esa pdf para llegar a la posterior.</p>
+<h3 id="distribuciones-prior-conjugadas"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#distribuciones-prior-conjugadas">Distribuciones prior Conjugadas</a></h3>
+<p>Este concepto refiere a que ciertas distribuciones son particularmente útiles para los cálculos cuando las variables aleatorias observadas provienen de alguna distribución específica.<br />
+Es decir que según la distribución de la que provienen las X puede que haya alguna distribución conjugada tal que al asumirla para la pdf prior <span class="arithmatex">\(\epsilon(\theta)\)</span> ya sabemos que la distribución posterior también será de esa familia.</p>
+<p>Un ejemplo ilustrador:<br />
+  Supongamos que tomamos observaciones <span class="arithmatex">\(X_1...X_n\)</span> de una distribución Bernoulli de la cual no sabemos el parámetro <span class="arithmatex">\(\theta\)</span> (que debe estar entre 0 y 1). Supongamos además que la pdf prior de <span class="arithmatex">\(\theta\)</span> es una distribución beta con algúnos parámetros dados <span class="arithmatex">\(\alpha \text{ y } \beta\)</span>. En este caso sabemos que por ser un caso de distribución conjugada, la pdf posterior de <span class="arithmatex">\(\theta\)</span> dado <span class="arithmatex">\(X = x_i (i = 1,...,n)\)</span> es a su vez una distribución beta con parámetros <span class="arithmatex">\(\alpha + \sum_{i=1}^n x_i \text{ y } \beta + n - \sum_{i=1}^n x_i\)</span>.</p>
+<p>Según la distribución de la que provengan las observaciones hay distintas distribuciones conjugadas que son las más convenientes para ese caso.</p>
+<h2 id="estimacion-de-parametros"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#estimacion-de-parametros">Estimación de parámetros</a></h2>
+<p>La idea es estimar algún parámetro de la distribución de la cual se obtienen los datos observados. El valor estimado del parámetro va a depender de dos cosas:  </p>
+<ul>
+<li>Del <em>estimador</em> que hayamos elegido (es decir, la función de los datos elegida)</li>
+<li>De la muestra. El valor estimado va a depender de los datos aleatorios que tengamos de la distribución.</li>
+</ul>
+<p>Como el estimador depende de la muestra podemos verlo a su vez como una variable aleatoria.</p>
+<h3 id="funcion-de-perdida"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#funcion-de-perdida">Función de pérdida</a></h3>
+<p>Lo que queremos de un estimador es que devuelva un valor estimado "a" para el parámetro lo más cercano posible al verdadero valor de <span class="arithmatex">\(\theta\)</span>. La función de pérdida es una función que cuantifica esto.
+$$ L(\theta,a)$$
+Hay algunas funciones habituales pero pueden adecuarse según el problema.<br />
+Podemos decir que en general lo que se busca es encontrar una estimación para la cual la esperanza de la pérdida sea un mínimo.</p>
+<h3 id="estimador-bayesiano"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#estimador-bayesiano">Estimador bayesiano</a></h3>
+<p>Si tenemos una muestra aleatoria y una pdf posterior para <span class="arithmatex">\(\theta\)</span> entonces el valor esperado de la pérdida para cualquier valor estimado "a" es:
+<span class="arithmatex">\(<span class="arithmatex">\(E[L(\theta,a)|x] = \int_\Omega L(\theta,a)\epsilon(\theta,x)d\theta\)</span>\)</span></p>
+<p>Lo que buscamos es encontrar un valor de a cuya pérdida esperada sea mínima. La función que genera un valor de a mínimo para cada posible valor de X será un estimador de <span class="arithmatex">\(\theta\)</span> y en particular se llamará <em>Estimador Bayesiano</em>.<br />
+El estimador bayesiano, que minimiza la pérdida esperada para cualquier set de datos X, va a depender de la función de pérdida que elijamos y de la pdf prior que se elija para <span class="arithmatex">\(\theta\)</span>.</p>
+<p>Por ejemplo,para la función de pérdida más utilizada, que es la de error cuadrático
+<span class="arithmatex">\(<span class="arithmatex">\(L(\theta,a) = (\theta -a)^2\)</span>\)</span>
+está demostrado que la pérdida es mínima cuando <span class="arithmatex">\(a\)</span> es la media de la distribución posterior <span class="arithmatex">\(E(\theta|x)\)</span>.</p>
+<p>Dijimos que el valor del estimador bayesiano va a depender de la distribución prior elegida. Esto es cierto, pero hay que tener en cuenta que para muestras grandes las diferencias empiezan a achicarse y los estimadores bayesianos provenientes de distintos priors empiezan a converger en la mayoría de los casos.</p>
+<h3 id="estimadores-de-maxima-verosimilitud"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#estimadores-de-maxima-verosimilitud">Estimadores de Máxima Verosimilitud</a></h3>
+<p>Los estimadores de máxima verosimilitud (MLE) son muy comunmente usados para estimar parámetros desconocidos ya que más allá de la discusión casi filosófica de "bayesianos vs frecuentistas", sirven para estimar sin tener que definir una función de pérdida ni una distribución prior para los parámetros. Esto último es importante ya que para casos donde se necesita estimar un vector de parámetros, la distribución prior debe ser una multivariada que englobe a todos y eleva la complejidad del proceso bayesiano ampliamente.<br />
+Para muestras chicas MLE suele hacer un trabajo decente y para muestras grandes suele ser excelente por lo que se llega a resultados muy similares a través de un proceso más directo y más sencillo.  </p>
+<p>Para estimar mediante MLE lo único que necesitamos es la función de verosimilitud ya definida.
+<span class="arithmatex">\(<span class="arithmatex">\(f_n(x_1...X_n|\theta)\)</span>\)</span>
+Luego lo único que se hace es buscar el parámetro <span class="arithmatex">\(\hat \theta\)</span> (estimado) que maximice esa función. Básicamente es buscar qué parámetro hace que la probabilidad conjunta de obtener esos valores de X sea máxima? Ese es nuestro MLE.</p>
+<p>Para la gran mayoría de los casos esta metodología funciona pero hay que tener en cuenta que es posible que para algunos problemas no haya un máximo para la función de verosimilitud o que haya más de un punto, en cuyo caso hay que elegir alguno de ellos.</p>
+<h4 id="mle-en-bernoulli"><a class="toclink" href="../../2019/10/31/maxima-verosimilitud-y-estimacion-bayesiana/#mle-en-bernoulli">MLE en Bernoulli</a></h4>
+<p>Supongamos que tomamos observaciones <span class="arithmatex">\(X_1...X_n\)</span> de una distribución Bernoulli de la cual no sabemos el parámetro <span class="arithmatex">\(\theta\)</span> (que debe estar entre 0 y 1).</p>
+<p>Para cualquier vector de observaciones <span class="arithmatex">\(X_1...X_n\)</span> la función de verosimilitud es:
+$$ f_n(x|\theta) = \prod_{i = 1}^n \theta<sup 1-x_i="1-x_i">{x_i}(1-\theta)</sup>$$
+El valor de <span class="arithmatex">\(\theta\)</span> que maximice la función de verosimilitud es el mismo valor que maximiza <span class="arithmatex">\(log f_n(x|\theta)\)</span>, por lo que es conveniente encontrar tal valor buscando que maximice:
+<span class="arithmatex">\(<span class="arithmatex">\(L(\theta) = log f_n(x|\theta) = \sum_{i=1}^n[x_i log \theta + (1 - x_i) log(1-\theta)] = (\sum_{i=1}^nx_i)log \theta + (n-\sum_{i=1}^n x_i) log (1-\theta)\)</span>\)</span></p>
+<p>Si derivamos <span class="arithmatex">\(dL(\theta) / d\theta\)</span> e igualamos a 0, resolviendo esa ecuando para <span class="arithmatex">\(\theta\)</span> encontramos que <span class="arithmatex">\(\theta = \bar x_n\)</span>.<br />
+Este valor maximiza el logaritmo de la función de verosimilitud y por ende también de la función de verosimilitud en sí misma. Por lo tanto el MLE de <span class="arithmatex">\(\theta\)</span> es <span class="arithmatex">\(\hat \theta = \bar X_n\)</span></p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Generamos 100 observaciones de una Bernoulli</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">150</span><span class="p">)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.723</span><span class="p">)</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># Calculamos su promedio, que ya sabemos es la mejor estimación para p dados los datos</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>## [1] 0.68
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Definimos función de verosimilitud</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># Es la pdf de una Bernoulli para cada observación y sumamos sus logaritmos (en negativo porque </span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># el optimizador minimiza en vez de maximizar)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">LL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="w"> </span><span class="n">p</span><span class="p">){</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">   </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dbinom</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">   </span><span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">R</span><span class="p">))</span><span class="w">  </span><span class="c1"># Negativo porque log de probabilidades es &lt;0.</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># Función que busca los parámetros que minimzan el negativo de la log verosimilitud</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># Elegimos un valor inicial de p en el medio.</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="n">stats4</span><span class="o">::</span><span class="nf">mle</span><span class="p">(</span><span class="n">LL</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>## 
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>## Call:
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>## stats4::mle(minuslogl = LL, start = list(p = 0.5))
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>## 
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>## Coefficients:
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>##         p 
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>## 0.6799996
+</span></code></pre></div>
+Vemos que la estimación por MLE es <em>idéntica</em> a la media. No corresponde con el verdadero valor del parámetro poblacional p debido a la muestra particular que fue seleccionada.</p>
+<p>Algunos comentarios finales:</p>
+<ul>
+<li>En algunos casos no es posible encontrar la solución óptima si no es por métodos numéricos.</li>
+<li>Cuando <span class="arithmatex">\(n \to \infty\)</span> MLE converge en probabilidad al verdadero <span class="arithmatex">\(\theta\)</span>. Por ende cuando <span class="arithmatex">\(n \to \infty\)</span> el estimador bayesiano (que cumple la misma propiedad) y MLE serán muy parecidos entre sí y al verdadero <span class="arithmatex">\(\theta\)</span>.</li>
+<li>MLE solo depende de las observaciones y no de cómo y en qué orden fueron recolectadas.</li>
+</ul>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2362,87 +2551,6 @@ Para evitar que una carpeta sea subida a github solo deben incluirla en el archi
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2018-10-28 00:00:00+00:00">2018-10-28</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="../../category/r/" class="md-meta__link">R</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="curvas-roc"><a class="toclink" href="../../2018/10/28/curvas-roc/">Curvas ROC</a></h2>
-<p>La curva ROC y AUC (area bajo la curva) permiten evaluar la eficacia de un modelo clasificador y elegir el mejor umbral de corte donde determinar qué observación es predicha positiva y cual negativa.</p>
-<p>Vamos a generar rapidamente un clasificador con regresión logísitca utilizando el dataset <em>mtcars</em> ya provisto por R. Solo a modo ilustrativo utilizaremos AM (caja manual o automática) como la variable a predecir y mpg y drat como independientes. No separamos en train y test dadas las pocas observaciones.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">modelr</span><span class="p">)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">pROC</span><span class="p">)</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mtcars</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">am</span><span class="p">,</span><span class="w"> </span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">drat</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">am</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">am</span><span class="p">))</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nf">summary</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>##  am          mpg             drat      
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>##  0:19   Min.   :10.40   Min.   :2.760  
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>##  1:13   1st Qu.:15.43   1st Qu.:3.080  
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>##         Median :19.20   Median :3.695  
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>##         Mean   :20.09   Mean   :3.597  
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>##         3rd Qu.:22.80   3rd Qu.:3.920  
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>##         Max.   :33.90   Max.   :4.930
-</span></code></pre></div>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Clase dentro de todo balanceada</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">mdl.log</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="s">&quot;logit&quot;</span><span class="p">))</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">mdl.log</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;response&quot;</span><span class="p">)</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nf">roc</span><span class="p">(</span><span class="n">df</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w">  </span><span class="n">fit</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">percent</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span><span class="w">   </span><span class="n">boot.n</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">ci.alpha</span><span class="o">=</span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">stratified</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">plot</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">show.thres</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">legacy.axes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">reuse.auc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="c1"># print.thres = c(0.30,0.35, 0.40, 0.45,0.48, 0.50,0.55, 0.60),#</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="n">print.auc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">print.thres.col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ci</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">ci.type</span><span class="o">=</span><span class="s">&quot;bars&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">print.thres.cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;ROC curve using&quot;</span><span class="p">,</span><span class="s">&quot;(N = &quot;</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">),</span><span class="s">&quot;)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2018-10-28-curvas-roc-unnamed-chunk-1-1.png" /></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>## 
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>## Call:
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>## roc.default(response = df[, 1], predictor = fit, percent = F,     ci = TRUE, plot = TRUE, boot.n = 1000, ci.alpha = 0.9, stratified = FALSE,     grid = TRUE, show.thres = TRUE, legacy.axes = TRUE, reuse.auc = TRUE,     print.auc = TRUE, print.thres.col = &quot;blue&quot;, ci.type = &quot;bars&quot;,     print.thres.cex = 0.7, main = paste(&quot;ROC curve using&quot;, &quot;(N = &quot;,         nrow(df), &quot;)&quot;))
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>## 
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>## Data: fit in 19 controls (df[, 1] 0) &lt; 13 cases (df[, 1] 1).
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>## Area under the curve: 0.9433
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>## 95% CI: 0.8695-1 (DeLong)
-</span></code></pre></div>
-<p>Básicamente entrenamos un modelo logístico y graficamos la curva ROC prediciendo sobre el mismo dataset con el que fue entrenado. No es lo adecuado pero dadas las pocas observaciones y el propósito explicativo no lo tomamos como un problema.
-La curva ROC es la más oscura y como vemos empieza en (0,0) y termina en el (1,1).
-El eje X es 1 - Especificidad (Falsos Negativos) y el eje Y es Sensitividad (Verdaderos Positivos) por lo tanto lo deseable es estar lo más arriba a la izquierda posible. El punto (0,1) sería óptimo ya que habría 0 falsos negativos y 100% de verdaderos positivos.</p>
-<p>Lo que representa la curva es la combinación de Sensitividad y (1 - especificidad) para varios puntos de corte. Recordemos que la regresión logística devuelve un valor entre 0 y 1 por lo tanto hay que determinar en qué valor empezamos a considerar una predicción como positiva o negativa. En este caso positivo sería tener un valor de 1 en am, por lo tanto tener caja automática. Cada punto de la curva corresponde a algún punto de corte. Como decíamos antes, el mejor debería ser el más "arriba a la izquierda" aunque depende el problema eso puede cambiar, dependiendo del costo de equivocarse en uno u otro sentido.</p>
-<p>El peor escenario es que la curva siga a la diagonal, lo que equivaldría a ser iguales a un modelo eligiendo siempre la clase mayoritaria, totalmente inútil. Si estuviera por debajo de la diagonal, sería peor aún, pero bastaría con invertir las predicciones para pasar a estar por encima. Un viejo truco no muy científico.</p>
-<p>El área bajo la curva (AUC) es una medida resumen de la curva ROC ya que justamente describe el área entre la curva ROC y la diagonal. Valores mayores se corresponden con curvas ROC más alejadas de la diagonal y por lo tanto que separan mejor a la clase dependiente. Es útil para comparar modelos.</p>
-    
-  </div>
-</article>
-      
       
         
           
@@ -2495,13 +2603,13 @@ El eje X es 1 - Especificidad (Falsos Negativos) y el eje Y es Sensitividad (Ver
         
         
           
-          <a href="../../category/personal/" class="md-footer__link md-footer__link--next" aria-label="Next: Personal">
+          <a href="../../category/ai/" class="md-footer__link md-footer__link--next" aria-label="Next: AI">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Personal
+                AI
               </div>
             </div>
             <div class="md-footer__button md-icon">
