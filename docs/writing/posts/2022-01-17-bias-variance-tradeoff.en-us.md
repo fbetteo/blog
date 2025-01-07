@@ -19,16 +19,17 @@ summary: Some details about Bias Variance Tradeoff
 
 Mean squared error (MSE) is a measure of how far our prediction is from the true values of the dependent variable. It's the expectation of the squared error.
 
-The squared error being:  
-$$(Y - \hat \mu(x))^2$$ 
-where Y is the true value and $ \hat \mu(x)$ is the prediction for a given x.
+The squared error being:
 
-We can decompose it into:  
-$$
-(Y - \hat \mu(x))^2 \\
+$$(Y - \hat \mu(x))^2$$ 
+
+where Y is the true value and $\hat \mu(x)$ is the prediction for a given x.
+
+We can decompose it into:
+
+$$(Y - \hat \mu(x))^2 \\
 = (Y - \mu(x) + \mu(x) - \hat \mu(x)^2) \\
-= (Y - \mu(x))^2 + 2(Y - \mu(x))(\mu(x) - \hat \mu(x)) + (\mu(x) - \hat \mu(x))^2
-$$
+= (Y - \mu(x))^2 + 2(Y - \mu(x))(\mu(x) - \hat \mu(x)) + (\mu(x) - \hat \mu(x))^2$$
 
 So, that's the squared error. The MSE is the expectation of that.  
 
@@ -50,6 +51,7 @@ $$MSE(\hat M_n(x)) = E[(Y - \hat M_n(X))^2 | X=x] \\
 = ... \\
 = \sigma^2_x + (\mu(x) -  E[\hat M_n(x)])^2 - V[\hat M_n(x)]
 $$
+
 This is our 2nd bias-variance decomposition.  
 The first term is still the irreducible error.  
 The second term is the bias of using $\hat M_n$ to approximate $\mu(x)$. Is the approximation bias/error.  
