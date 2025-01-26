@@ -1035,6 +1035,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#obisidan-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obisidan Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#entropy-and-information" class="md-nav__link">
     <span class="md-ellipsis">
       Entropy and information
@@ -1115,15 +1124,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#bias-variance-tradeoff" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bias Variance Tradeoff
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1141,6 +1141,56 @@
 <p>You can expect to find topics around statistics, AI, machine learning, learning to do business or software in general but also about myself.</p>
 <p><a class="md-button md-button--secondary" href="https://x.com/franbetteo"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg></span> Follow me on X</a></p>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-01-26 00:00:00+00:00">2025-01-26</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/personal/" class="md-meta__link">Personal</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="obisidan-workflow"><a class="toclink" href="2025/01/26/obsidian-workflow/">Obisidan Workflow</a></h2>
+<p>This is my first personal order for <a href="https://obsidian.md/">Obsidian</a> with some actual rules and not improvising everything.</p>
+<p>I've read <a href="https://stephango.com/vault">Kepano's way</a> and <a href="https://www.youtube.com/watch?v=hSTy_BInQs8.">this other guy</a> I think both are useful in some way but I' sticking closer to Kepano. Not copying as he has a lots of templates with structured information in the YAML as he seems to create a lot of lists and rankings. Currently I'm using Obsidian a lot for technical notes, daily notes, paper annotation but also some listing as books I've read, movies, etc. It's a mix and I'm not sure I know what info to put for everything that is not a book, or game. Like, notes from some technical topic I can put the area or the author but there is no ranking.</p>
+<p>Also, I like folders and he hates them.
+I'll do the following.</p>
+<ul>
+<li>Have folders by general topic to order the notes (book, movies,  companies I work for, projects). Notes will be written where they belong the most. For general technical topics (such as Xgboost, I might create a data science or technical folder with all there. I'll put reasonable tags, many notes in different folders might share tags)</li>
+<li>Notes across folders might share useful information. Maybe I have some deployment technical note on a company that could apply for another project, or even I'll want to find it without remembering where I applied it, so, I'll also add <strong>tags</strong> so I can see everything together using <a href="https://blacksmithgu.github.io/obsidian-dataview/">dataview</a></li>
+<li>I'll try to add relevant information usable by dataview in some cases, such as Author for books, or technical notes.</li>
+<li>I'll have a [[tags]] folder with relevant tags with queries from dataview so I can have stuff organized.</li>
+<li>I'll keep tags in english for technical stuff but for books, series, etc where is more natural to remember in spanish (I'm from Argentina) and won't be shared probably I'll ues them in spanish (such as "policial", "novela", etc which are words that I never use in english). </li>
+</ul>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2076,76 +2126,6 @@ where <span class="arithmatex">\(\hat \sigma_x^2\)</span> is the sample variance
 <p>As quick examples, we have <em>KNN regression</em> where the smoothing is done using only close observations to the one to predict (and getting quite noisy since depend a lot on the sample points around a small area).  </p>
 <p><em>Kernel smoothers</em> are a variant where depending on the kernel selected we get different smoothing. The main idea is that we use a windowd of data with the idea of putting more weight to points close to the one to predict. Could be Gaussian weight around X for example, or uniform around a window. Note this is different than KNN regression since we do not take the average of those points, we get a regression for that area.<br />
 A nice thing about this smoothers (and KNN regression) is that if we want to predict points far from the training data we won't get a linear extrapolation as with OLS but it will be pushed towards the closest data points we had in training.</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-01-17 00:00:00+00:00">2022-01-17</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="category/matematica/" class="md-meta__link">matematica</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="bias-variance-tradeoff"><a class="toclink" href="2022/01/17/bias-variance-tradeoff.en-us/">Bias Variance Tradeoff</a></h2>
-<p>Mean squared error (MSE) is a measure of how far our prediction is from the true values of the dependent variable. It's the expectation of the squared error.</p>
-<p>The squared error being:</p>
-<div class="arithmatex">\[(Y - \hat \mu(x))^2\]</div>
-<p>where Y is the true value and <span class="arithmatex">\(\hat \mu(x)\)</span> is the prediction for a given x.</p>
-<p>We can decompose it into:</p>
-<div class="arithmatex">\[(Y - \hat \mu(x))^2 \\
-= (Y - \mu(x) + \mu(x) - \hat \mu(x)^2) \\
-= (Y - \mu(x))^2 + 2(Y - \mu(x))(\mu(x) - \hat \mu(x)) + (\mu(x) - \hat \mu(x))^2\]</div>
-<p>So, that's the squared error. The MSE is the expectation of that.  </p>
-<p>The expectation is a linear operator so we can apply it independently to different terms of a summation.<br />
-The expectation of the first term is the variance of the error intrinsic to the DGP.<br />
-The second term goes to 0 because involves <span class="arithmatex">\(E(Y-\mu(x))\)</span> that is the expectation of the error and that's equal to 0.<br />
-The third term reamins as it is since doesn't involve random variables.  </p>
-<div class="arithmatex">\[MSE(\hat \mu(x)) = \sigma^2_x + (\mu(x) - \hat \mu(x))^2\]</div>
-<p>This is our first bias-variance decomposition. The first term is the intrinsic difficulty of the problem to model, is the variance of the error and can not be reduced, it is what it is.<br />
-The second term is how off our predictions are regarding the true expected value for that particular X.  </p>
-<p>This would be fine if we wouldn't need to consider <span class="arithmatex">\(\hat \mu(x)\)</span> a random variable itself, since it is dependent on the specific dataset we are using. Given another dataset our estimation would be different despite using the same model methodology.<br />
-What we actually want is the MSE of the method used <span class="arithmatex">\(\hat M\)</span> and not only the result of a particular realization.</p>
-<div class="arithmatex">\[MSE(\hat M_n(x)) = E[(Y - \hat M_n(X))^2 | X=x] \\
-= ... \\
-= \sigma^2_x + (\mu(x) -  E[\hat M_n(x)])^2 - V[\hat M_n(x)]
-\]</div>
-<p>This is our 2<sup>nd</sup> bias-variance decomposition.<br />
-The first term is still the irreducible error.<br />
-The second term is the bias of using <span class="arithmatex">\(\hat M_n\)</span> to approximate <span class="arithmatex">\(\mu(x)\)</span>. Is the approximation bias/error.<br />
-The third term is the variance of the estimate of the regression function. If our estimates have high variance we can have large errors despite using an unbiased approximation.  </p>
-<p>Flexible methods will be able to approximate <span class="arithmatex">\(\mu(x)\)</span> closely, however usually using more flexible methods involve increasing the variance of the estimate. That's the <strong>bias-variance tradeoff</strong>. We need to evaluate how to balance that, sometimes including some bias reduce much more the error by decreasing the variance.<br />
-Usually larger N decreases the MSE since it decreases bias and variance error.</p>
-<h5 id="reference"><a class="toclink" href="2022/01/17/bias-variance-tradeoff.en-us/#reference">Reference</a></h5>
-<p>Based on 1.4.1 from Advanced data analysis from a elementary point of view.</p>
     
   </div>
 </article>
