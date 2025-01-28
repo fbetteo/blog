@@ -773,6 +773,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#kullback-leibler-divergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kullback-Leibler divergence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual Information
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#entropy-and-information" class="md-nav__link">
     <span class="md-ellipsis">
       Entropy and information
@@ -1149,6 +1167,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#kullback-leibler-divergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kullback-Leibler divergence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual Information
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#entropy-and-information" class="md-nav__link">
     <span class="md-ellipsis">
       Entropy and information
@@ -1234,6 +1270,121 @@
       <header class="md-typeset">
         <h1 id="machine-learning">Machine Learning<a class="headerlink" href="#machine-learning" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-01-28 00:00:00+00:00">2025-01-28</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../ai/" class="md-meta__link">AI</a>, 
+              <a href="./" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="kullback-leibler-divergence"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/">Kullback-Leibler divergence</a></h2>
+<p>To understand KL divergence we need to first understand [Entropy]](<a href="https://fbetteo.github.io/blog/writing/2025/01/06/entropy/">https://fbetteo.github.io/blog/writing/2025/01/06/entropy/</a>). The most important thing to have in mind though is that entropy can be thought as a measure of "information", but what I like the most, as a measure of <em>expected surprise</em> that one gets for every observed value of the distribution.</p>
+<p>For a highly dense distribution, you will almost sure get a value from the dense region and the expected surprise will be really low (but you are highly surprised when you see a value off that region!)</p>
+<h4 id="relative-entropy"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#relative-entropy">Relative entropy</a></h4>
+<p>How this relates to KL? Well, Kullback-Leibler is a divergence but is also called <em>relative entropy</em>. This means, how that measure of entropy differs between two distributions. I find that easier to grasp.</p>
+<p>Usually we have a true distribution <span class="arithmatex">\(p(x)\)</span> and an estimated distribution <span class="arithmatex">\(q(x)\)</span> that we use to approximate <span class="arithmatex">\(p(x)\)</span>. KL divergence can help us understand how good it does the  job.</p>
+<p>If entropy is: </p>
+<p><span class="arithmatex">\(H[x] = - \sum_x p(x) \ln p(x)\)</span><br />
+(originally <span class="arithmatex">\(\log_2\)</span> but <span class="arithmatex">\(\ln\)</span> works too and it's used everywhere )</p>
+<div class="arithmatex">\[KL(p||q) = - \int{p(x) \ln q(x)dx} - (-\int{p(x) \ln p(x)dx})\]</div>
+<div class="arithmatex">\[ = - \int{p(x) \ln \frac{q(x)}{p(x)}dx}\]</div>
+<p>The first row is clear, is just the difference in entropies. 
+This is relative entropy between p(x) and q(x).</p>
+<p><strong>Important</strong>: KL divergence is not symmetrical. <span class="arithmatex">\(KL(p||q) \neq KL(q||p)\)</span>
+So, KL is not a metric of distance (but can be thought as if). It's actually a divergence.</p>
+<h4 id="why-its-not-symmetrical"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#why-its-not-symmetrical">Why it's not symmetrical?</a></h4>
+<p>I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):
+* one highly centered around one specific value 
+* the other with a uniform-ish shape, highly dispersed.</p>
+<p>The difference in "surprise" you get from both ways approximation is not the same.</p>
+<p>If you are approximating the highly dense distribution with the uniform one, you are approximating it with a distribution that surprises you  in general <span class="arithmatex">\(\ln q(x)\)</span>, let's say <em>moderately high</em> everywhere, even for the specific dense region.</p>
+<p>But the other way, if you approximate the dispersed distribution with the dense one, you are using a distribution with high surprise in most of the region of the dispersed distribution and really low surprise in one specific value.</p>
+<p>This term <span class="arithmatex">\(\int{p(x) \ln q(x)dx}\)</span> behaves differently in both scenarios and there is no guarantee or need that they should match.</p>
+<h5 id="references"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#references">References</a></h5>
+<p><a href="https://www.bishopbook.com/">Deep Learning, Bishop</a><br />
+<a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Wikipedia</a></p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-01-28 00:00:00+00:00">2025-01-28</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../ai/" class="md-meta__link">AI</a>, 
+              <a href="./" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="mutual-information"><a class="toclink" href="../../2025/01/28/mutual-information/">Mutual Information</a></h2>
+<blockquote>
+<p>When two variables <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> are independent, their joint distribution will factorize into the product of their marginals <span class="arithmatex">\(p(x,y) = p(x)p(y)\)</span>. If the variables are not independent, we can gain some idea of whether they are "close" to being independent by considering the <a href="https://fbetteo.github.io/blog/writing/2025/01/28/kullback-leibler-divergence/">KL Divergence</a> between the joint distribution and the product of the marginals, given by:</p>
+</blockquote>
+<div class="arithmatex">\[I[x,y] = KL(p(x,y)||p(x)p(y))\]</div>
+<div class="arithmatex">\[=  - \int \int p(x,y) \ln (\frac{p(x)p(y)}{p(x,y)}) \]</div>
+<p>which is called the <em>mutual information</em> between <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>.</p>
+<p>Thus, the mutual information represents the reduction in uncertainty about <span class="arithmatex">\(x\)</span> by virtue of being told the value of <span class="arithmatex">\(y\)</span> (or vice versa)</p>
+<blockquote>
+<p>From a Bayesian perspective, we can view <span class="arithmatex">\(p(x)\)</span> as the prior distribution for <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(p(x|y)\)</span> as the posterior distribution after we have observed new data <span class="arithmatex">\(y\)</span>. The mutual information therefore represents the reduction in uncertainty about <span class="arithmatex">\(x\)</span> as a consequence of the new observation <span class="arithmatex">\(y\)</span>.</p>
+</blockquote>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -1865,24 +2016,24 @@ So <span class="arithmatex">\(R^2 = \frac{a^2\mathbb{V}[X]}{a^2\mathbb{V}[X] + \
 This goes to 0 as <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  0\)</span> and it goes to 1 as  <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  \infty\)</span>. "It thus has little to do with the quality of the fit, and a lot to do with how spread out the predictor variable is. Notice also how easy it is to get a high <span class="arithmatex">\(R^2\)</span> even when the true model is not linear!"</p>
 <p>Below a quick comparison between two linear relationships, one with much higher variance than the other in the predictor.<br />
 Added a different constant for better display in plot.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="n">error</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">model1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y1 ~ x1&quot;</span><span class="p">)</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="n">error</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">model1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y1 ~ x1&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>## Error in eval(predvars, data, env): object &#39;y1&#39; not found
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>## Error in eval(predvars, data, env): object &#39;y1&#39; not found
 </span></code></pre></div>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">model2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y2 ~ x2&quot;</span><span class="p">)</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">model2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y2 ~ x2&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>## Error in eval(predvars, data, env): object &#39;y2&#39; not found
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>## Error in eval(predvars, data, env): object &#39;y2&#39; not found
 </span></code></pre></div>
     
   </div>

@@ -1035,6 +1035,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#remarks-on-r2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remarks on R2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-smoothers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Smoothers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bias-variance-tradeoff" class="md-nav__link">
     <span class="md-ellipsis">
       Bias Variance Tradeoff
@@ -1106,24 +1124,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#distribucion-gamma" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distribucion Gamma
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proceso-poisson-y-distribucion-exponencial" class="md-nav__link">
-    <span class="md-ellipsis">
-      Proceso Poisson y distribucion exponencial
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1138,6 +1138,161 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-01-23 00:00:00+00:00">2022-01-23</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/statistics/" class="md-meta__link">statistics</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="remarks-on-r2"><a class="toclink" href="../../2022/01/23/remarks-on-r2.en-us/">Remarks on R2</a></h2>
+<h4 id="r2-depends-on-the-variance-on-the-variance-of-the-predictors"><a class="toclink" href="../../2022/01/23/remarks-on-r2.en-us/#r2-depends-on-the-variance-on-the-variance-of-the-predictors">R2 depends on the variance on the variance of the predictors</a></h4>
+<p>Quoting from Shalizi[^1]
+Assuming a true linear model<br />
+$$ Y = aX + \epsilon$$<br />
+and assuming we know <span class="arithmatex">\(a\)</span> exactly.<br />
+The variance of Y will be <span class="arithmatex">\(a^2\mathbb{V}[X] + \mathbb{V}[\epsilon]\)</span>.<br />
+So <span class="arithmatex">\(R^2 = \frac{a^2\mathbb{V}[X]}{a^2\mathbb{V}[X] + \mathbb{V}[\epsilon]}\)</span><br />
+This goes to 0 as <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  0\)</span> and it goes to 1 as  <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  \infty\)</span>. "It thus has little to do with the quality of the fit, and a lot to do with how spread out the predictor variable is. Notice also how easy it is to get a high <span class="arithmatex">\(R^2\)</span> even when the true model is not linear!"</p>
+<p>Below a quick comparison between two linear relationships, one with much higher variance than the other in the predictor.<br />
+Added a different constant for better display in plot.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="n">error</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">model1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y1 ~ x1&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>## Error in eval(predvars, data, env): object &#39;y1&#39; not found
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">model2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y2 ~ x2&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>## Error in eval(predvars, data, env): object &#39;y2&#39; not found
+</span></code></pre></div>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-01-18 00:00:00+00:00">2022-01-18</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a>, 
+              <a href="../../category/algebra/" class="md-meta__link">algebra</a>, 
+              <a href="../../category/statistics/" class="md-meta__link">statistics</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="linear-smoothers"><a class="toclink" href="../../2022/01/18/linear-smoothers.en-us/">Linear Smoothers</a></h2>
+<h4 id="linear-regression-as-smoothing"><a class="toclink" href="../../2022/01/18/linear-smoothers.en-us/#linear-regression-as-smoothing">Linear regression as smoothing</a></h4>
+<p>Let's assume the DGP (data generating process) is:
+$$ Y = \mu(x) + \epsilon$$ where <span class="arithmatex">\(\mu(x)\)</span> is the mean Y value for that particular x and <span class="arithmatex">\(\epsilon\)</span> is an error with mean 0.</p>
+<p>When running OLS we are trying to approximate <span class="arithmatex">\(\mu(x)\)</span> with a linear function of the form <span class="arithmatex">\(\alpha + \beta x\)</span> and trying to retrieve the best <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> minimizing the mean-squared error.  </p>
+<p>The conclusions don't change but the math gets easier if we assume both X and Y are centered (mean=0).<br />
+With that in mind we can write down the MSE and optimize to get the best parameters.</p>
+<div class="arithmatex">\[MSE(\alpha, \beta) = \mathbb{E}[(Y - \alpha - \beta X)^2] \\
+= \mathbb{E}[\mathbb{E}[(Y - \alpha - \beta X)^2 | X]] \\
+= \mathbb{E}[\mathbb{V}[Y|X]] + \mathbb{E}[Y- \alpha - \beta X | X])^2] \\
+= \mathbb{E}[\mathbb{V}[Y|X]] + \mathbb{E}[(\mathbb{E}[Y- \alpha - \beta X | X])^2]\]</div>
+<p>Deriving with respect to <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> for optimization..<br />
+The first term can be dropped since doesn't include any parameter.</p>
+<p>$$\frac{\partial MSE}{\partial \alpha} =   \mathbb{E}[2(Y - \alpha - \beta X)(-1)] \
+ \mathbb{E}[Y - a - b X] =  0 \
+ a =  \mathbb{E}[Y] - b  \mathbb{E}[X] = 0
+ $$
+ when Y and X are centered..</p>
+<p>and
+ $$\frac{\partial MSE}{\partial \beta} =   \mathbb{E}[2(Y - \alpha - \beta X)(-X)] \
+ \mathbb{E}[XY] - b\mathbb{E}[X^2] = 0 \
+b = \frac{Cov[X,Y]}{\mathbb{V}[X]}
+$$</p>
+<p>The optimal beta is a function of the covariance between Y and X, and the variance of X.</p>
+<p>Putting together <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> we get <span class="arithmatex">\(\mu(x) = x  \frac{Cov[X,Y]}{\mathbb{V}[X]}\)</span></p>
+<p>Replacing with the values from the sampled data we get an estimation of <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span>.  </p>
+<p>Remember they are 0 centered so variance and covariance get simplified.</p>
+<div class="arithmatex">\[ \hat a = 0 \\
+\hat b = \frac{\sum_i y_i x_i}{\sum_i x_i^2}\]</div>
+<p>With all this we can see how <strong>OLS is a smoothing of the data</strong>.<br />
+Writing in terms of the data points:<br />
+$$\hat \mu(x) = \hat b x \
+= x  \frac{\sum_i y_i x_i}{\sum_i x_i^2} \
+= \sum_i y_i \frac{x_i}{\sum_j x_j^2} x \
+= \sum_i y_i \frac{x_i}{n \hat \sigma_x^2} x
+$$
+where <span class="arithmatex">\(\hat \sigma_x^2\)</span> is the sample variance of X.<br />
+<em>In words, our prediction is a weighted average of the observed values <span class="arithmatex">\(y_i\)</span> of the dependent variable, where the weights are proportional to how far <span class="arithmatex">\(x_i\)</span> is from the center (relative to the variance), and proportional to the magnitude of <span class="arithmatex">\(x\)</span>. If <span class="arithmatex">\(x_i\)</span> is on the same side of the center as <span class="arithmatex">\(x\)</span>, it gets a positive weight, and if it's on the opposite side it gets a negative weight.</em> (Shalizi 2017)</p>
+<p>If <span class="arithmatex">\(\mu(x)\)</span> is really a straight line, this is fine, but when it's not, that the weights are proportional to how far they are to the <strong>center</strong> and not the point <strong>to predict</strong> can lead to awful predictions.</p>
+<h4 id="alternative-smoothers"><a class="toclink" href="../../2022/01/18/linear-smoothers.en-us/#alternative-smoothers">Alternative smoothers</a></h4>
+<p>For that, other methods smooth the data in another ways to help mitigate that.</p>
+<p>As quick examples, we have <em>KNN regression</em> where the smoothing is done using only close observations to the one to predict (and getting quite noisy since depend a lot on the sample points around a small area).  </p>
+<p><em>Kernel smoothers</em> are a variant where depending on the kernel selected we get different smoothing. The main idea is that we use a windowd of data with the idea of putting more weight to points close to the one to predict. Could be Gaussian weight around X for example, or uniform around a window. Note this is different than KNN regression since we do not take the average of those points, we get a regression for that area.<br />
+A nice thing about this smoothers (and KNN regression) is that if we want to predict points far from the training data we won't get a linear extrapolation as with OLS but it will be pushed towards the closest data points we had in training.</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -1916,263 +2071,6 @@ Era un caso medio extremo pero sirve de ejemplo.</p>
 <h4 id="conclusiones"><a class="toclink" href="../../2020/05/03/anova/#conclusiones">Conclusiones</a></h4>
 <p>ANOVA cómo método para comparar medias poblacionales es muy sencillo de aplicar y bastante robusto frente a inconsistencias en los supuestos. Permite dar una medida objetiva de si es posible o no rechazar la hipótesis nula, más allá de que uno pueda tener una primera impresión visual.</p>
 <p>Para ir un paso más allá, ANOVA se puede relacionar directamnte con las regresiones lineales. Anova tal como lo presentamos es equivalente a correr una regresión donde la variable independiente es el grupo al que pertenece la observación. Las generalizaciones como ANCOVA, MANOVA, etc, también tienen su correlato en regresión. Esto sucede porque según el campo de estudio se eligieron caminos y convenciones distintos de análisis, llevando a distintas ramas que al final hacen lo mismo, pero genera confusión al intentar entender la estadística como un todo.</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2020-04-25 00:00:00+00:00">2020-04-25</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="../../category/r/" class="md-meta__link">R</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="distribucion-gamma"><a class="toclink" href="../../2020/04/25/distribucion-gamma/">Distribucion Gamma</a></h2>
-<h4 id="origen-y-uso-habitual"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#origen-y-uso-habitual">Origen y uso habitual</a></h4>
-<p>La distribución Gamma es continua y siempre positiva. Se parametriza con dos parámetros que deben ser positivos.</p>
-<p>Lamentablemente no hay un consenso sobre cómo llamar a los parámetros y prevalecen dos formas, bastante similares pero con distinto origen.</p>
-<ul>
-<li>La primera es con los parámetros shape <span class="arithmatex">\(k\)</span> y scale <span class="arithmatex">\(\theta\)</span>.</li>
-<li>La segunda es con los parámetros shape <span class="arithmatex">\(\alpha\)</span> y rate <span class="arithmatex">\(\beta\)</span>.</li>
-</ul>
-<p>La relación entre ambas es <span class="arithmatex">\(k = \alpha\)</span> y <span class="arithmatex">\(\theta = 1/\beta\)</span>.<br />
-Obviamente cualquiera que se use va a resultar en los mismos resultados, pero hay que estar atento para lograr la parametrización adecuada.</p>
-<p>Yo prefiero la segunda opción, donde el rate <span class="arithmatex">\(\beta\)</span> puede relacionarse al rate <span class="arithmatex">\(\lambda\)</span> de una <a href="https://fbetteo.netlify.app/2020/04/proceso-poisson-y-distribucion-exponencial">poisson</a>.</p>
-<h4 id="por-que-nos-interesa-relacionarla-con-la-poisson"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#por-que-nos-interesa-relacionarla-con-la-poisson">Por qué nos interesa relacionarla con la Poisson?</a></h4>
-<p>Uno de los usos habituales y que resulta fácil de entender es que si nos encontramos en un <em>Proceso de Poisson</em> (si no se recuerda ver <a href="https://fbetteo.netlify.app/2020/04/proceso-poisson-y-distribucion-exponencial">ACA</a>), suceden <span class="arithmatex">\(\lambda\)</span> eventos por período en promedio (la distribución poisson nos ayuda con eso), el tiempo (medido en períodos) entre un evento y otro se puede modelar con una exponencial con parámetro rate = <span class="arithmatex">\(\lambda\)</span> (el mismo de la poisson), y ahora adicionamos que el tiempo medido en períodos hasta que suceda el k-ésimo evento, se puede modelar con la distribución gamma, parametrizada con shape = <span class="arithmatex">\(k\)</span> (cantidad de eventos) y rate = <span class="arithmatex">\(\lambda\)</span> (el mismo de la poisson nuevamente.)</p>
-<p>Por ejemplo:</p>
-<p>Si podemos modelar la cantidad de veces que vamos por semana a comprar cerveza como una poisson con <span class="arithmatex">\(\lambda\)</span> = 2, es decir en promedio dos veces por semana, tendremos la siguiente distribución.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rpois</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="m">2</span><span class="p">)),</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Simulación de 10000 variables Poisson con rate = 2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">9</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-2-1.png" />
-Donde la mayoría de las semanas vamos alrededor de  2 veces.</p>
-<p>Podemos a su vez, modelar el tiempo entre cada evento con una exponencial. Se lo puede pensar como ¿cuánto tiempo falta para que vaya de nuevo a comprar cerveza a partir del momento en que estoy parado?</p>
-<p>Usaremos una exponencial, pero para verlo en días, que sería lo apropiado, cambiamos <span class="arithmatex">\(\lambda = 2\)</span> por <span class="arithmatex">\(\lambda = 2/7\)</span>, que sería el rate por día.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rexp</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">/</span><span class="m">7</span><span class="p">)),</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="s">&quot;darkgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Simulación de 10000 variables Exponenciales con rate = 2/7&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">),</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">25</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">35</span><span class="p">,</span><span class="m">40</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-3-1.png" />
-Vemos que en general faltan 1 o 2 días para que tengamos que ir de nuevo, aunque si tomamos el promedio veremos que es 3.5 dias, lo cuales lógico porque venimos de una poisson con rate de 2 veces por semana.</p>
-<p>Si ahora queremos ver en cuantos días habremos ido 5 veces, podemos usar la distribución gamma, con <span class="arithmatex">\(shape = 5\)</span> (porque queremos ver el 5 evento), y <span class="arithmatex">\(rate = 2/7\)</span> porque es el rate diario.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rgamma</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="m">2</span><span class="o">/</span><span class="m">7</span><span class="p">)),</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Simulación de 10000 variables Gamma con shape = 5  y rate = 2/7&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-4-1.png" /></p>
-<p>Podemos ver que la distribución gamma es asimétrica en este caso y en general faltan unos 12-16 días. Si tomamos el promedio vemos que es de 17.5 días, lo cual tiene sentido ya que es 5 veces el tiempo promedio de espera, que era 3.5 días.</p>
-<p>La media de una gamma puede calcularse rápidamente como <span class="arithmatex">\(media = \frac{shape}{rate} = \frac{5}{2/7} = 17.5\)</span></p>
-<p>Hay una clara relación entre la distribución Exponencial y la Gamma.<br />
-Primero, como ya vimos, la exponencial modela el tiempo hasta el próximo evento en un proceso Poisson y la Gamma hasta el k-ésimo evento.<br />
-Podemos pensar a la distribución Gamma como la suma de K distribuciones Exponenciales con un mismo rate!</p>
-<p>Yendo más allá, en realidad, la distribución Gamma es una familia de distribuciones, y la Exponencial no es más que un caso particular de la Gamma con k = 1.<br />
-Si Gamma nos permite saber el tiempo hasta el k-esimo evento, y la Exponencial es hasta el primer evento, entonces la Exponencial como caso particular de la Gamma parece obvio.</p>
-<h4 id="un-poco-de-formulas"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#un-poco-de-formulas">Un poco de formulas</a></h4>
-<p>La función de densidad de la distribución Gamma, utilizando <span class="arithmatex">\(\alpha\)</span> y <span class="arithmatex">\(\beta\)</span> es:
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{\beta^{\alpha}}{\Gamma (\alpha)}x^{\alpha - 1}e^{-\beta x}\)</span>\)</span></p>
-<p>donde <span class="arithmatex">\(\Gamma (\alpha)\)</span> = <span class="arithmatex">\((\alpha - 1)!\)</span>  </p>
-<p>Cuidado con las distintas maneras de nombrar a los parámetros. En la literatura posiblemente vean <span class="arithmatex">\(\alpha\)</span> y <span class="arithmatex">\(\beta\)</span> cuando usen shape y rate. Aquí para el ejemplo de las cervezas reemplazamos <span class="arithmatex">\(\alpha\)</span> por <span class="arithmatex">\(k\)</span> y <span class="arithmatex">\(\beta\)</span> por <span class="arithmatex">\(\lambda\)</span> para relacionarlo con la distribución Poisson.</p>
-<p>El equivalente con esa notación sería:
-<span class="arithmatex">\(<span class="arithmatex">\(\frac{\lambda^{k}}{\Gamma (k)}x^{k - 1}e^{-\lambda x}\)</span>\)</span></p>
-<p>Como dijimos si reemplazamos k por 1, obtenemos la función de densidad de la Exponencial.</p>
-<p>Otras distribuciones que son casos particulares de la Gamma son la Erlang (es Gamma pero con valores discretos de K, la exponencial también es un caso particular de Erlang con k= 1) y la Chi-Cuadrado</p>
-<h4 id="desestimar-el-significado-de-shape-y-scale"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#desestimar-el-significado-de-shape-y-scale">Desestimar el significado de Shape y Scale</a></h4>
-<p>Ya sea que prefiramos shape y scale o shape y rate como parametrización, sus nombres en inglés llevan a pensar que la dsitribución varía su forma con shape y su escala con scale. Eso no es tan así y puede llevar más a confusiones que otra cosa. Ambos parámetros pueden afectar tanto la forma y escala, por eso me parece más sencillo pensarlo con <span class="arithmatex">\(k\)</span> Y <span class="arithmatex">\(\lambda\)</span>, al menos en el ámbito de los procesos Poisson.<br />
-Igualmente, no olvidar que la distribcuión Gamma se puede usar para otros campos que no son situaciones de un Proceso de Poisson y esa interpretación de los parámetros puede ser poco apropiada.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">9</span><span class="p">)</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">x</span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">rate</span><span class="p">),</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">gamma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dgamma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))),</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">         </span><span class="n">combination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;k = &quot;</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="s">&quot;, lambda = &quot;</span><span class="p">,</span><span class="n">lambda</span><span class="p">)))</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">combination</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span><span class="c1">#geom_point() + </span>
-</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Función de Densidad para distintos parámetros de una Distribución Gamma&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Períodos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">  </span><span class="nf">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Set1&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-5-1.png" /></p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2020-04-18 00:00:00+00:00">2020-04-18</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="proceso-poisson-y-distribucion-exponencial"><a class="toclink" href="../../2020/04/18/proceso-poisson-y-distribucion-exponencial/">Proceso Poisson y distribucion exponencial</a></h2>
-<p>Basado en:<br />
-<a href="https://stats.stackexchange.com/questions/2092/relationship-between-poisson-and-exponential-distribution">https://stats.stackexchange.com/questions/2092/relationship-between-poisson-and-exponential-distribution</a><br />
-<a href="https://towardsdatascience.com/the-poisson-distribution-and-poisson-process-explained-4e2cb17d459">https://towardsdatascience.com/the-poisson-distribution-and-poisson-process-explained-4e2cb17d459</a></p>
-<p>Un proceso que sigue un <em>proceso de Poisson</em> es aquel que tiene un cantidad de eventos promedio cada determinada unidad de medida (generalmente tiempo). Estos sucesos deben ser independientes y aleatorios pero la cantidad debe estar centrada alrededor del promedio ya mencionado. Una última condición es que dos sucesos no pueden suceder en simultáneo.</p>
-<p>Para ejemplificar, podemos suponer que la cantidad de pacientes que llegan a la guardia de un hospital sigue un proceso de Poisson. </p>
-<p>Un proceso Poisson se puede "descomponer" en 2 conceptos.  </p>
-<ul>
-<li>Una disitribución <strong>Poisson (no proceso!)</strong> que provee la función de densidad de la cantidad de pacientes que ingresan al hospital. (Discreta)</li>
-<li>Una distribución <strong>exponencial</strong> que modela el tiempo que transcurre entre cada paciente. (Continua)</li>
-</ul>
-<h4 id="distribucion-poisson"><a class="toclink" href="../../2020/04/18/proceso-poisson-y-distribucion-exponencial/#distribucion-poisson">Distribución Poisson</a></h4>
-<p>Esta distribución sirve para modelar la cantidad de pacientes. Digamos que ingresan en promedio <span class="arithmatex">\(\lambda\)</span> pacientes por <em>hora</em>.</p>
-<p>La función de probabilidad (probability mass function en inglés ya que es discreta) es: 
-<span class="arithmatex">\(<span class="arithmatex">\(P(K) = e^{-\lambda}\frac{\lambda^k}{k!}\)</span>\)</span></p>
-<p>Donde K es la cantidad de pacientes en una hora y <span class="arithmatex">\(\lambda\)</span> es como dijimos,  la cantidad promedio que ingresa por hora.
-La función nos dice qué probabilidad hay de recibir K pacientes en una hora si en general llegan <span class="arithmatex">\(\lambda\)</span>.</p>
-<p>Distintos <span class="arithmatex">\(\lambda\)</span> devuelven obviamente distintas probabilidades para cada valor de K. Vemos que a medida que crece <span class="arithmatex">\(\lambda\)</span> la densidad se parece cada vez más a una normal.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">lambda</span><span class="p">)</span><span class="o">*</span><span class="m">1.5</span><span class="p">)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lambda</span><span class="p">),</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">poisson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dpois</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))))</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">poisson</span><span class="p">,</span><span class="w"> </span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Probabilidad por intervalo (1 hora)&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Cantidad K de pacientes&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2020-04-18-proceso-poisson-y-distribucion-exponencial-unnamed-chunk-2-1.png" /></p>
-<p><span class="arithmatex">\(\lambda\)</span> determina la forma de la dsitribución y como es de esperar, esta se centra alrededor del parámetro ya que es la cantidad promedio en el intervalo. Una propiedad interesante es que la varianza de la disitribución también es <span class="arithmatex">\(\lambda\)</span>.<br />
-Los pacientes que llegan al hospital siguen una distribución <span class="arithmatex">\(\sim  P(\lambda)\)</span>.</p>
-<p>Otra caracterísica es que uno puede escalar la distribución para cualquier intervalo. Es decir que si nuestro modelo era para cantidad de pacientes por hora, uno puede multiplicar <span class="arithmatex">\(\lambda\)</span> por 3 si quiere la distribución cada 3 horas, o dividir por 6 si la quiere cada 10 minutos por ejemplo. Esto es asi porque en realidad en la función de probabilidad de la distribución Poisson, <span class="arithmatex">\(\lambda\)</span> está multiplicado por el intervalo <em>t</em>,pero se simplifica y se lo asume 1. Luego uno puede derivar para el lapso que desee multiplicando.</p>
-<h4 id="distribucion-exponencial"><a class="toclink" href="../../2020/04/18/proceso-poisson-y-distribucion-exponencial/#distribucion-exponencial">Distribución Exponencial</a></h4>
-<p>Sabemos que llegan <span class="arithmatex">\(\lambda\)</span> pacientes por hora. Nos gustaría ahora saber la distribución para el tiempo de espera hasta que llegue el próximo paciente. Es decir, parados en el momento <em>t</em>, qué probabilidad hay de tener que esperar un minuto, 2, 10 hasta el próximo paciente?</p>
-<p>El concepto es el siguiente. Si queremos saber la probabilidad de que haya que esperar al menos X minutos, es lo mismo que calcular la probabilidad de que la cantidad de pacientes en el momento t+x sea igual a la cantidad de momento t. Es decir, que no haya llegado nadie.<br />
-<span class="arithmatex">\(N_{t+x} = N_{t}\)</span>.  </p>
-<p>Podemos calcular eso con la distribución Poisson. Es simplemente la probabilidad de 0 pacientes en un intervalo x.</p>
-<p>$$P(N_{t+x} - N_t = 0) = e^{-\lambda x}\frac{\lambda x^0}{0!} = e^{-\lambda x} $$
-La probabilidad de obtener un nuevo paciente en el intervalo x es 1 menos la probabilidad de no obtener ninguno,  por lo tanto:
-$$ P(X_t \leq x) = 1 -  P(N_{t+x} - N_t = 0) = 1 - e^{-\lambda x}$$
-Este último resultado es la <strong>función de probabilidad acumulada de la exponencial</strong>. La probabilidad de tener que esperar X o menos minutos depende de <span class="arithmatex">\(\lambda\)</span> y x.</p>
-<p>Con la derivada obtenemos la <strong>Función de distribución de la exponencial</strong>.
-<span class="arithmatex">\(<span class="arithmatex">\(f(x, \lambda) = \lambda e^{-\lambda x}\)</span>\)</span></p>
-<p>Si al hospital llegaran 10 personas por hora a la guardia, tendríamos la siguiente función de densidad de la exponencial.
-Tener en cuenta que <span class="arithmatex">\(\lambda\)</span> = 10 en la poisson (10 casos por unidad de tiempo (hora)), sin embargo, en la exponencial queremos medirlo en minutos, por lo que usamos un <span class="arithmatex">\(\lambda\)</span> de 10/60.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lambda</span><span class="p">),</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">exponencial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dexp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))</span><span class="o">/</span><span class="m">60</span><span class="p">))</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">exponencial</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Función de densidad de distribución exponencial: lambda = 10/60&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Minutos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Densidad&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2020-04-18-proceso-poisson-y-distribucion-exponencial-unnamed-chunk-3-1.png" /></p>
-<p>Por otro lado podemos ver la probabilidad acumulada hasta determinado minuto. Siguiendo el mismo ejemplo de 10 pacientes por hora (Poisson con <span class="arithmatex">\(\lambda = 10\)</span>), la acumulada de la distribución exponencial tiene la siguiente forma.</p>
-<p><em>Hay alrededor de 80% de chances que un paciente llegue en los próximos 10 minutos.</em></p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">lambda</span><span class="p">)</span><span class="o">*</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lambda</span><span class="p">),</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">exponencial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pexp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))</span><span class="o">/</span><span class="m">60</span><span class="p">))</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">exponencial</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Probabilidad de tener que esperar X minutos o menos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Minutos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2020-04-18-proceso-poisson-y-distribucion-exponencial-unnamed-chunk-4-1.png" /></p>
-<p>Por último, si lo quieren ver al revés. Podemos ver la probabilidad de tener que esperar al menos X minutos para que llegue el próximo.</p>
-<p><em>Hay alrededor de 5% de chances de tener que esperar 20 minutos hasta el próximo paciente</em></p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">lambda</span><span class="p">)</span><span class="o">*</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lambda</span><span class="p">),</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">exponencial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pexp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))</span><span class="o">/</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="n">lower.tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">exponencial</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkgreen&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Probabilidad de tener que esperar al menos X minutos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Minutos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">  </span><span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">))</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2020-04-18-proceso-poisson-y-distribucion-exponencial-unnamed-chunk-5-1.png" /></p>
     
   </div>
 </article>

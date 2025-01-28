@@ -1035,6 +1035,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#distribucion-gamma" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribucion Gamma
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proceso-poisson-y-distribucion-exponencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proceso Poisson y distribucion exponencial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#distintas-distancias" class="md-nav__link">
     <span class="md-ellipsis">
       Distintas Distancias
@@ -1106,24 +1124,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#introduccion-a-graficos-con-mapas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduccion a graficos con mapas
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#como-correr-un-proyecto-con-r-en-google-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      Como correr un proyecto con R en Google Cloud
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1138,6 +1138,263 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-04-25 00:00:00+00:00">2020-04-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="distribucion-gamma"><a class="toclink" href="../../2020/04/25/distribucion-gamma/">Distribucion Gamma</a></h2>
+<h4 id="origen-y-uso-habitual"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#origen-y-uso-habitual">Origen y uso habitual</a></h4>
+<p>La distribución Gamma es continua y siempre positiva. Se parametriza con dos parámetros que deben ser positivos.</p>
+<p>Lamentablemente no hay un consenso sobre cómo llamar a los parámetros y prevalecen dos formas, bastante similares pero con distinto origen.</p>
+<ul>
+<li>La primera es con los parámetros shape <span class="arithmatex">\(k\)</span> y scale <span class="arithmatex">\(\theta\)</span>.</li>
+<li>La segunda es con los parámetros shape <span class="arithmatex">\(\alpha\)</span> y rate <span class="arithmatex">\(\beta\)</span>.</li>
+</ul>
+<p>La relación entre ambas es <span class="arithmatex">\(k = \alpha\)</span> y <span class="arithmatex">\(\theta = 1/\beta\)</span>.<br />
+Obviamente cualquiera que se use va a resultar en los mismos resultados, pero hay que estar atento para lograr la parametrización adecuada.</p>
+<p>Yo prefiero la segunda opción, donde el rate <span class="arithmatex">\(\beta\)</span> puede relacionarse al rate <span class="arithmatex">\(\lambda\)</span> de una <a href="https://fbetteo.netlify.app/2020/04/proceso-poisson-y-distribucion-exponencial">poisson</a>.</p>
+<h4 id="por-que-nos-interesa-relacionarla-con-la-poisson"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#por-que-nos-interesa-relacionarla-con-la-poisson">Por qué nos interesa relacionarla con la Poisson?</a></h4>
+<p>Uno de los usos habituales y que resulta fácil de entender es que si nos encontramos en un <em>Proceso de Poisson</em> (si no se recuerda ver <a href="https://fbetteo.netlify.app/2020/04/proceso-poisson-y-distribucion-exponencial">ACA</a>), suceden <span class="arithmatex">\(\lambda\)</span> eventos por período en promedio (la distribución poisson nos ayuda con eso), el tiempo (medido en períodos) entre un evento y otro se puede modelar con una exponencial con parámetro rate = <span class="arithmatex">\(\lambda\)</span> (el mismo de la poisson), y ahora adicionamos que el tiempo medido en períodos hasta que suceda el k-ésimo evento, se puede modelar con la distribución gamma, parametrizada con shape = <span class="arithmatex">\(k\)</span> (cantidad de eventos) y rate = <span class="arithmatex">\(\lambda\)</span> (el mismo de la poisson nuevamente.)</p>
+<p>Por ejemplo:</p>
+<p>Si podemos modelar la cantidad de veces que vamos por semana a comprar cerveza como una poisson con <span class="arithmatex">\(\lambda\)</span> = 2, es decir en promedio dos veces por semana, tendremos la siguiente distribución.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rpois</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="m">2</span><span class="p">)),</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Simulación de 10000 variables Poisson con rate = 2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">9</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-2-1.png" />
+Donde la mayoría de las semanas vamos alrededor de  2 veces.</p>
+<p>Podemos a su vez, modelar el tiempo entre cada evento con una exponencial. Se lo puede pensar como ¿cuánto tiempo falta para que vaya de nuevo a comprar cerveza a partir del momento en que estoy parado?</p>
+<p>Usaremos una exponencial, pero para verlo en días, que sería lo apropiado, cambiamos <span class="arithmatex">\(\lambda = 2\)</span> por <span class="arithmatex">\(\lambda = 2/7\)</span>, que sería el rate por día.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rexp</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">/</span><span class="m">7</span><span class="p">)),</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="s">&quot;darkgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Simulación de 10000 variables Exponenciales con rate = 2/7&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">),</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">25</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">35</span><span class="p">,</span><span class="m">40</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-3-1.png" />
+Vemos que en general faltan 1 o 2 días para que tengamos que ir de nuevo, aunque si tomamos el promedio veremos que es 3.5 dias, lo cuales lógico porque venimos de una poisson con rate de 2 veces por semana.</p>
+<p>Si ahora queremos ver en cuantos días habremos ido 5 veces, podemos usar la distribución gamma, con <span class="arithmatex">\(shape = 5\)</span> (porque queremos ver el 5 evento), y <span class="arithmatex">\(rate = 2/7\)</span> porque es el rate diario.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rgamma</span><span class="p">(</span><span class="m">10000</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="m">2</span><span class="o">/</span><span class="m">7</span><span class="p">)),</span><span class="n">bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Simulación de 10000 variables Gamma con shape = 5  y rate = 2/7&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-4-1.png" /></p>
+<p>Podemos ver que la distribución gamma es asimétrica en este caso y en general faltan unos 12-16 días. Si tomamos el promedio vemos que es de 17.5 días, lo cual tiene sentido ya que es 5 veces el tiempo promedio de espera, que era 3.5 días.</p>
+<p>La media de una gamma puede calcularse rápidamente como <span class="arithmatex">\(media = \frac{shape}{rate} = \frac{5}{2/7} = 17.5\)</span></p>
+<p>Hay una clara relación entre la distribución Exponencial y la Gamma.<br />
+Primero, como ya vimos, la exponencial modela el tiempo hasta el próximo evento en un proceso Poisson y la Gamma hasta el k-ésimo evento.<br />
+Podemos pensar a la distribución Gamma como la suma de K distribuciones Exponenciales con un mismo rate!</p>
+<p>Yendo más allá, en realidad, la distribución Gamma es una familia de distribuciones, y la Exponencial no es más que un caso particular de la Gamma con k = 1.<br />
+Si Gamma nos permite saber el tiempo hasta el k-esimo evento, y la Exponencial es hasta el primer evento, entonces la Exponencial como caso particular de la Gamma parece obvio.</p>
+<h4 id="un-poco-de-formulas"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#un-poco-de-formulas">Un poco de formulas</a></h4>
+<p>La función de densidad de la distribución Gamma, utilizando <span class="arithmatex">\(\alpha\)</span> y <span class="arithmatex">\(\beta\)</span> es:
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{\beta^{\alpha}}{\Gamma (\alpha)}x^{\alpha - 1}e^{-\beta x}\)</span>\)</span></p>
+<p>donde <span class="arithmatex">\(\Gamma (\alpha)\)</span> = <span class="arithmatex">\((\alpha - 1)!\)</span>  </p>
+<p>Cuidado con las distintas maneras de nombrar a los parámetros. En la literatura posiblemente vean <span class="arithmatex">\(\alpha\)</span> y <span class="arithmatex">\(\beta\)</span> cuando usen shape y rate. Aquí para el ejemplo de las cervezas reemplazamos <span class="arithmatex">\(\alpha\)</span> por <span class="arithmatex">\(k\)</span> y <span class="arithmatex">\(\beta\)</span> por <span class="arithmatex">\(\lambda\)</span> para relacionarlo con la distribución Poisson.</p>
+<p>El equivalente con esa notación sería:
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{\lambda^{k}}{\Gamma (k)}x^{k - 1}e^{-\lambda x}\)</span>\)</span></p>
+<p>Como dijimos si reemplazamos k por 1, obtenemos la función de densidad de la Exponencial.</p>
+<p>Otras distribuciones que son casos particulares de la Gamma son la Erlang (es Gamma pero con valores discretos de K, la exponencial también es un caso particular de Erlang con k= 1) y la Chi-Cuadrado</p>
+<h4 id="desestimar-el-significado-de-shape-y-scale"><a class="toclink" href="../../2020/04/25/distribucion-gamma/#desestimar-el-significado-de-shape-y-scale">Desestimar el significado de Shape y Scale</a></h4>
+<p>Ya sea que prefiramos shape y scale o shape y rate como parametrización, sus nombres en inglés llevan a pensar que la dsitribución varía su forma con shape y su escala con scale. Eso no es tan así y puede llevar más a confusiones que otra cosa. Ambos parámetros pueden afectar tanto la forma y escala, por eso me parece más sencillo pensarlo con <span class="arithmatex">\(k\)</span> Y <span class="arithmatex">\(\lambda\)</span>, al menos en el ámbito de los procesos Poisson.<br />
+Igualmente, no olvidar que la distribcuión Gamma se puede usar para otros campos que no son situaciones de un Proceso de Poisson y esa interpretación de los parámetros puede ser poco apropiada.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">9</span><span class="p">)</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">x</span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">rate</span><span class="p">),</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">gamma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dgamma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))),</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">         </span><span class="n">combination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;k = &quot;</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="s">&quot;, lambda = &quot;</span><span class="p">,</span><span class="n">lambda</span><span class="p">)))</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">combination</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span><span class="c1">#geom_point() + </span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Función de Densidad para distintos parámetros de una Distribución Gamma&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Períodos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">  </span><span class="nf">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Set1&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2020-04-25-distribucion-gamma-unnamed-chunk-5-1.png" /></p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-04-18 00:00:00+00:00">2020-04-18</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="proceso-poisson-y-distribucion-exponencial"><a class="toclink" href="../../2020/04/18/proceso-poisson-y-distribucion-exponencial/">Proceso Poisson y distribucion exponencial</a></h2>
+<p>Basado en:<br />
+<a href="https://stats.stackexchange.com/questions/2092/relationship-between-poisson-and-exponential-distribution">https://stats.stackexchange.com/questions/2092/relationship-between-poisson-and-exponential-distribution</a><br />
+<a href="https://towardsdatascience.com/the-poisson-distribution-and-poisson-process-explained-4e2cb17d459">https://towardsdatascience.com/the-poisson-distribution-and-poisson-process-explained-4e2cb17d459</a></p>
+<p>Un proceso que sigue un <em>proceso de Poisson</em> es aquel que tiene un cantidad de eventos promedio cada determinada unidad de medida (generalmente tiempo). Estos sucesos deben ser independientes y aleatorios pero la cantidad debe estar centrada alrededor del promedio ya mencionado. Una última condición es que dos sucesos no pueden suceder en simultáneo.</p>
+<p>Para ejemplificar, podemos suponer que la cantidad de pacientes que llegan a la guardia de un hospital sigue un proceso de Poisson. </p>
+<p>Un proceso Poisson se puede "descomponer" en 2 conceptos.  </p>
+<ul>
+<li>Una disitribución <strong>Poisson (no proceso!)</strong> que provee la función de densidad de la cantidad de pacientes que ingresan al hospital. (Discreta)</li>
+<li>Una distribución <strong>exponencial</strong> que modela el tiempo que transcurre entre cada paciente. (Continua)</li>
+</ul>
+<h4 id="distribucion-poisson"><a class="toclink" href="../../2020/04/18/proceso-poisson-y-distribucion-exponencial/#distribucion-poisson">Distribución Poisson</a></h4>
+<p>Esta distribución sirve para modelar la cantidad de pacientes. Digamos que ingresan en promedio <span class="arithmatex">\(\lambda\)</span> pacientes por <em>hora</em>.</p>
+<p>La función de probabilidad (probability mass function en inglés ya que es discreta) es: 
+<span class="arithmatex">\(<span class="arithmatex">\(P(K) = e^{-\lambda}\frac{\lambda^k}{k!}\)</span>\)</span></p>
+<p>Donde K es la cantidad de pacientes en una hora y <span class="arithmatex">\(\lambda\)</span> es como dijimos,  la cantidad promedio que ingresa por hora.
+La función nos dice qué probabilidad hay de recibir K pacientes en una hora si en general llegan <span class="arithmatex">\(\lambda\)</span>.</p>
+<p>Distintos <span class="arithmatex">\(\lambda\)</span> devuelven obviamente distintas probabilidades para cada valor de K. Vemos que a medida que crece <span class="arithmatex">\(\lambda\)</span> la densidad se parece cada vez más a una normal.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">lambda</span><span class="p">)</span><span class="o">*</span><span class="m">1.5</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lambda</span><span class="p">),</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">poisson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dpois</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))))</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">poisson</span><span class="p">,</span><span class="w"> </span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Probabilidad por intervalo (1 hora)&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Cantidad K de pacientes&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2020-04-18-proceso-poisson-y-distribucion-exponencial-unnamed-chunk-2-1.png" /></p>
+<p><span class="arithmatex">\(\lambda\)</span> determina la forma de la dsitribución y como es de esperar, esta se centra alrededor del parámetro ya que es la cantidad promedio en el intervalo. Una propiedad interesante es que la varianza de la disitribución también es <span class="arithmatex">\(\lambda\)</span>.<br />
+Los pacientes que llegan al hospital siguen una distribución <span class="arithmatex">\(\sim  P(\lambda)\)</span>.</p>
+<p>Otra caracterísica es que uno puede escalar la distribución para cualquier intervalo. Es decir que si nuestro modelo era para cantidad de pacientes por hora, uno puede multiplicar <span class="arithmatex">\(\lambda\)</span> por 3 si quiere la distribución cada 3 horas, o dividir por 6 si la quiere cada 10 minutos por ejemplo. Esto es asi porque en realidad en la función de probabilidad de la distribución Poisson, <span class="arithmatex">\(\lambda\)</span> está multiplicado por el intervalo <em>t</em>,pero se simplifica y se lo asume 1. Luego uno puede derivar para el lapso que desee multiplicando.</p>
+<h4 id="distribucion-exponencial"><a class="toclink" href="../../2020/04/18/proceso-poisson-y-distribucion-exponencial/#distribucion-exponencial">Distribución Exponencial</a></h4>
+<p>Sabemos que llegan <span class="arithmatex">\(\lambda\)</span> pacientes por hora. Nos gustaría ahora saber la distribución para el tiempo de espera hasta que llegue el próximo paciente. Es decir, parados en el momento <em>t</em>, qué probabilidad hay de tener que esperar un minuto, 2, 10 hasta el próximo paciente?</p>
+<p>El concepto es el siguiente. Si queremos saber la probabilidad de que haya que esperar al menos X minutos, es lo mismo que calcular la probabilidad de que la cantidad de pacientes en el momento t+x sea igual a la cantidad de momento t. Es decir, que no haya llegado nadie.<br />
+<span class="arithmatex">\(N_{t+x} = N_{t}\)</span>.  </p>
+<p>Podemos calcular eso con la distribución Poisson. Es simplemente la probabilidad de 0 pacientes en un intervalo x.</p>
+<p>$$P(N_{t+x} - N_t = 0) = e^{-\lambda x}\frac{\lambda x^0}{0!} = e^{-\lambda x} $$
+La probabilidad de obtener un nuevo paciente en el intervalo x es 1 menos la probabilidad de no obtener ninguno,  por lo tanto:
+$$ P(X_t \leq x) = 1 -  P(N_{t+x} - N_t = 0) = 1 - e^{-\lambda x}$$
+Este último resultado es la <strong>función de probabilidad acumulada de la exponencial</strong>. La probabilidad de tener que esperar X o menos minutos depende de <span class="arithmatex">\(\lambda\)</span> y x.</p>
+<p>Con la derivada obtenemos la <strong>Función de distribución de la exponencial</strong>.
+<span class="arithmatex">\(<span class="arithmatex">\(f(x, \lambda) = \lambda e^{-\lambda x}\)</span>\)</span></p>
+<p>Si al hospital llegaran 10 personas por hora a la guardia, tendríamos la siguiente función de densidad de la exponencial.
+Tener en cuenta que <span class="arithmatex">\(\lambda\)</span> = 10 en la poisson (10 casos por unidad de tiempo (hora)), sin embargo, en la exponencial queremos medirlo en minutos, por lo que usamos un <span class="arithmatex">\(\lambda\)</span> de 10/60.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lambda</span><span class="p">),</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">exponencial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">dexp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))</span><span class="o">/</span><span class="m">60</span><span class="p">))</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">exponencial</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Función de densidad de distribución exponencial: lambda = 10/60&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Minutos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Densidad&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2020-04-18-proceso-poisson-y-distribucion-exponencial-unnamed-chunk-3-1.png" /></p>
+<p>Por otro lado podemos ver la probabilidad acumulada hasta determinado minuto. Siguiendo el mismo ejemplo de 10 pacientes por hora (Poisson con <span class="arithmatex">\(\lambda = 10\)</span>), la acumulada de la distribución exponencial tiene la siguiente forma.</p>
+<p><em>Hay alrededor de 80% de chances que un paciente llegue en los próximos 10 minutos.</em></p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">lambda</span><span class="p">)</span><span class="o">*</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lambda</span><span class="p">),</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">exponencial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pexp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))</span><span class="o">/</span><span class="m">60</span><span class="p">))</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">exponencial</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Probabilidad de tener que esperar X minutos o menos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Minutos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2020-04-18-proceso-poisson-y-distribucion-exponencial-unnamed-chunk-4-1.png" /></p>
+<p>Por último, si lo quieren ver al revés. Podemos ver la probabilidad de tener que esperar al menos X minutos para que llegue el próximo.</p>
+<p><em>Hay alrededor de 5% de chances de tener que esperar 20 minutos hasta el próximo paciente</em></p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">lambda</span><span class="p">)</span><span class="o">*</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span><span class="n">lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">lambda</span><span class="p">),</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">exponencial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pexp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">lambda</span><span class="p">))</span><span class="o">/</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="n">lower.tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">))</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="n">exponencial</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkgreen&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Probabilidad de tener que esperar al menos X minutos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Minutos&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">  </span><span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">  </span><span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">))</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2020-04-18-proceso-poisson-y-distribucion-exponencial-unnamed-chunk-5-1.png" /></p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2409,332 +2666,6 @@ Por ejemplo, cual es la probabilidad de obtener un valor igual o menos a 1.5 si 
 <p><div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>## [1] 1.499284
 </span></code></pre></div>
 La diferencia respecto al código anterior es porque redondeamos la probabilidad.</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2019-03-30 00:00:00+00:00">2019-03-30</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/r/" class="md-meta__link">R</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="introduccion-a-graficos-con-mapas"><a class="toclink" href="../../2019/03/30/introduccion-a-graficos-con-mapas/">Introduccion a graficos con mapas</a></h2>
-<h3 id="data"><a class="toclink" href="../../2019/03/30/introduccion-a-graficos-con-mapas/#data">Data</a></h3>
-<p>Vamos a ver un ejemplo sencillo para representar información visualmente sobre mapas. En este caso un pequeño dataset de incendios forestales en Argentina de 2012 a 2015. La idea es usar ggplot y mantener el enfoque de gráficos por capas.</p>
-<p>Vamos a necesitar.</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&gt; tidyverse
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>&gt; rgdal
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>&gt; rgeos
-</span></code></pre></div>
-Tendremos como input las provincias, departamento, cantidad de focos por incendio, area afectada y año de inicio y fin.
-Cada observación es un incendio.</p>
-<p>Para este ejemplo nos vamos a centrar en las provincias, los focos y su efecto sin importar la fecha.</p>
-<p>Empezamos cargando la data.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># Load Raw data</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">raw</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../../static/post/2019-03-30-introduccion-a-graficos-en-mapas/focosincendio.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">)</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">raw</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.tibble</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>## Warning: `as.tibble()` was deprecated in tibble 2.0.0.
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>## i Please use `as_tibble()` instead.
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>## i The signature and semantics have changed, see `?as_tibble`.
-</span></code></pre></div>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nf">glimpse</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>## Rows: 120
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>## Columns: 11
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>## $ pais_id         &lt;int&gt; 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32,~
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>## $ pais            &lt;chr&gt; &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina~
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>## $ provincia_id    &lt;int&gt; 6, 14, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 30, 30, 30, 30, 30, 30, 30, 30, 30, ~
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>## $ provincia       &lt;chr&gt; &quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;C~
-</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>## $ departamento_id &lt;int&gt; 833, 14, 56, 28, 28, 28, 70, 84, 84, 84, 112, 112, 119, 119, 126, 147, 154, 154, 161, 168, 168, 168, 168, 8, 15, 15, 15, 15, 28~
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>## $ departamento    &lt;chr&gt; &quot;Tres Arroyos&quot;, &quot;Calamuchita&quot;, &quot;General Alvear&quot;, &quot;Concepción&quot;, &quot;Concepción&quot;, &quot;Concepción&quot;, &quot;Goya&quot;, &quot;Itizaingó&quot;, &quot;Ituzaingo&quot;, &quot;I~
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>## $ sup_afectada    &lt;dbl&gt; 2400.00, 50.00, 257.00, 130.00, 5.00, 146.00, 30.00, 294.30, 378.00, 158.00, 300.00, 450.00, 450.00, 15.00, 20.00, 141.00, 295.~
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>## $ uni_med_id      &lt;chr&gt; &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;~
-</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>## $ cant_focos      &lt;int&gt; 1, 1, 1, 2, 1, 1, 1, 3, 1, 3, 1, 1, 5, 2, 2, 1, 3, 1, 1, 18, 2, 3, 2, 1, 0, 0, 1, 7, 0, 2, 1, 0, 0, 0, 5, 10, 10, 3, 1, 1, 1, 1~
-</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>## $ año_inicial     &lt;int&gt; 2014, 2015, 2012, 2012, 2013, 2015, 2012, 2012, 2013, 2014, 2012, 2013, 2012, 2013, 2015, 2012, 2012, 2014, 2012, 2012, 2013, 2~
-</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>## $ año_final       &lt;int&gt; 2014, 2015, 2012, 2012, 2013, 2015, 2012, 2012, 2013, 2014, 2012, 2013, 2012, 2013, 2015, 2012, 2012, 2014, 2012, 2012, 2013, 2~
-</span></code></pre></div>
-<p>Exploramos un poco el dataset. Lo que nos vas a interesar represetnar es la segunda parte del código. Variables agregadas a nivel provincia.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Generate Summary to Explore</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">sum_year</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">group_by</span><span class="p">(</span><span class="n">año_inicial</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">focos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">cant_focos</span><span class="p">),</span><span class="w"> </span><span class="n">sup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">sup_afectada</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">sup_prom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sup</span><span class="o">/</span><span class="n">focos</span><span class="p">)</span>
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="c1"># Actual data to be plotted</span>
-</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">sum_prov</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">group_by</span><span class="p">(</span><span class="n">provincia</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">focos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">cant_focos</span><span class="p">),</span><span class="w"> </span><span class="n">sup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">sup_afectada</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">sup_prom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sup</span><span class="o">/</span><span class="n">focos</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">sup_prom</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">provincia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">provincia</span><span class="p">))</span>
-</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
-</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="nf">head</span><span class="p">(</span><span class="n">sum_prov</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>## # A tibble: 6 x 4
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>##   provincia    focos   sup sup_prom
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>##   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>## 1 Buenos Aires     1 2400    2400  
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>## 2 Corrientes      55 5440.     98.9
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>## 3 Misiones        10  679      67.9
-</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>## 4 Córdoba          1   50      50  
-</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>## 5 Entre Ríos      12  594      49.5
-</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>## 6 Jujuy           62 2721.     43.9
-</span></code></pre></div>
-<p>Tenemos por provincia la cantidad de focos y la superficie  afectada. Vamos a usar la superficie promedio por foco para visualizar la magnitud de cada foco de incendio.</p>
-<p>Ahora llega lo importante. ¿Cómo representar esta data provincial en un mapa de Argentina?</p>
-<h2 id="mapa"><a class="toclink" href="../../2019/03/30/introduccion-a-graficos-con-mapas/#mapa">Mapa</a></h2>
-<p>Necesitamos un <strong>ShapeFile</strong> de Argentina, que basicamente es el tipo de archivo que se usa para representar mapas en gráficos. Contiene divisiones del país (provincias) con sus respectivas coordenadas y nombres.</p>
-<p>Utilizaremos data descargada del siguiente link.
-url &lt;- "<a href="http://biogeo.ucdavis.edu/data/diva/adm/ARG_adm.zip">http://biogeo.ucdavis.edu/data/diva/adm/ARG_adm.zip</a>"</p>
-<p>Lo descargué y deszipee en la computadora. Lo leemos con una librería particular <em>RGDAL</em>.</p>
-<p>dsn contiene la ruta a la carpeta con los archivos del shapefile.
-Layer apunta a al set de archivos que contiene la data que queremos. Generalmente hay otros sets con información no relevante al gráfico.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">argentina</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rgdal</span><span class="o">::</span><span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;../../static/post/2019-03-30-introduccion-a-graficos-en-mapas/ARG_adm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ARG_adm1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">use_iconv</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">encoding</span><span class="o">=</span><span class="s">&#39;UTF-8&#39;</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>## OGR data source with driver: ESRI Shapefile 
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>## Source: &quot;D:\DataScience\StatsBlog\blogStats\static\post\2019-03-30-introduccion-a-graficos-en-mapas\ARG_adm&quot;, layer: &quot;ARG_adm1&quot;
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>## with 24 features
-</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>## It has 9 fields
-</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>## Integer64 fields read as strings:  ID_0 ID_1
-</span></code></pre></div>
-<p>Es un archivo S4 por lo que se utiliza "@" para acceder a su contenido. Por ejemplo:</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">argentina</span><span class="o">@</span><span class="n">data</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>##   ID_0 ISO    NAME_0 ID_1                 NAME_1           TYPE_1        ENGTYPE_1 NL_NAME_1
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>## 0   12 ARG Argentina    1           Buenos Aires        Provincia         Province      &lt;NA&gt;
-</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>## 1   12 ARG Argentina    2                Córdoba        Provincia         Province      &lt;NA&gt;
-</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>## 2   12 ARG Argentina    3              Catamarca        Provincia         Province      &lt;NA&gt;
-</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>## 3   12 ARG Argentina    4                  Chaco        Provincia         Province      &lt;NA&gt;
-</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>## 4   12 ARG Argentina    5                 Chubut        Provincia         Province      &lt;NA&gt;
-</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>## 5   12 ARG Argentina    6 Ciudad de Buenos Aires Distrito Federal Federal District      &lt;NA&gt;
-</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>##                                                                               VARNAME_1
-</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>## 0                                                                   Baires|Buenos Ayres
-</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>## 1                                                                               Cordova
-</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>## 2                                                                                  &lt;NA&gt;
-</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>## 3                                                        El Chaco|Presidente Juan Peron
-</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>## 4                                                                                  &lt;NA&gt;
-</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>## 5 BUENOS AIRES D.F.|Capital Federal|Distretto Federale|Distrito Federal|Federal Capital
-</span></code></pre></div>
-<p>Este tipo de archivos tiene una estructura complicada y hay varias librerías útiles. Con el fin de mantenernos dentro del tidyverse usaremos el enfoque de ggplot por capaz para graficar.
-Primero necesitamos llevar la información del shapefile a un dataframe.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Transformo a dataframe.</span>
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">argentina_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">broom</span><span class="o">::</span><span class="nf">tidy</span><span class="p">(</span><span class="n">argentina</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>## Regions defined for each Polygons
-</span></code></pre></div>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># id es la provincia</span>
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nf">head</span><span class="p">(</span><span class="n">argentina_df</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>## # A tibble: 6 x 7
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>##    long   lat order hole  piece group id   
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;lgl&gt; &lt;fct&gt; &lt;fct&gt; &lt;chr&gt;
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>## 1 -60.2 -33.3     1 FALSE 1     0.1   0    
-</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>## 2 -60.2 -33.3     2 FALSE 1     0.1   0    
-</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>## 3 -60.2 -33.3     3 FALSE 1     0.1   0    
-</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>## 4 -60.2 -33.3     4 FALSE 1     0.1   0    
-</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>## 5 -60.2 -33.3     5 FALSE 1     0.1   0    
-</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>## 6 -60.2 -33.3     6 FALSE 1     0.1   0
-</span></code></pre></div>
-<p>Ahora genero un diccionario de ids con su respectiva provincia para poder linkear mi mapa con la data de incendios.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">ids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cbind.data.frame</span><span class="p">(</span><span class="n">provincia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">argentina</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">NAME_1</span><span class="p">),</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="nf">rownames</span><span class="p">(</span><span class="n">argentina</span><span class="o">@</span><span class="n">data</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">provincia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">provincia</span><span class="p">),</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">id</span><span class="p">))</span>
-</span></code></pre></div>
-<p>El dataframe generado a partir del shapefile tiene las coordenadas que forman cada provincia y el id. Ahora lo que haremos es pegarle la data de incendios para poder utilizarla sobre el mapa.
-Está generado el log de los focos porque en una prueba intenté usar la data transformada para suavizar outliers pero no se verá en esta versión.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># Agrego provincia por ID y data de incendios a la data del shapefile.</span>
-</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">argentina_df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">argentina_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">left_join</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">sum_prov</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;provincia&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">focos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">focos</span><span class="p">),</span><span class="m">0.5</span><span class="p">,</span><span class="n">focos</span><span class="p">),</span>
-</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">         </span><span class="n">logfocos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">focos</span><span class="p">),</span><span class="w"> </span>
-</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">         </span><span class="n">logfocos2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logfocos</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">logfocos</span><span class="p">))</span>
-</span></code></pre></div>
-<p>Por ahora vamos a poder ser capaces de graficar un mapa de argentina con sus provincias delimitadas y pintarlas según la cantidad de focos de incendio por ejemplo. Pero además vamos a querer agregar alguna forma sobre cada provincia. Por ejemplo un punto de distinto tamaño según el area afectada por cada foco en promedio. Para eso necesitamos localizar el centroide de cada poligono, es decir, el centro de cada provincia.
-Para ellos usamos la librería <strong>RGEOS</strong>
-Luego a cada centro le agrego la data que voy a querer usar. En este caso la superficie promedio afectada por foco de cada provincia.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># Calculo el centro de cada poligono (provincias)</span>
-</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1"># para obtener el &quot;centro&quot; donde iran los puntos o nombres.</span>
-</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="n">centros</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rgeos</span><span class="o">::</span><span class="nf">gCentroid</span><span class="p">(</span><span class="n">argentina</span><span class="p">,</span><span class="w"> </span><span class="n">byid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">  </span><span class="nf">as.data.frame</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">.</span><span class="p">))</span>
-</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
-</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="c1"># Agrego data relevante para el ploteo (superficie promedio)</span>
-</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="n">centros2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">centros</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">left_join</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">sum_prov</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;provincia&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">focos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">focos</span><span class="p">),</span><span class="m">0.5</span><span class="p">,</span><span class="n">focos</span><span class="p">),</span>
-</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="w">         </span><span class="n">sup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">sup</span><span class="p">),</span><span class="m">0</span><span class="p">,</span><span class="n">sup</span><span class="p">),</span>
-</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="w">         </span><span class="n">log_sup_prom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">sup_prom</span><span class="p">),</span>
-</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="w">         </span><span class="n">sup_prom_sin_outlier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">sup_prom</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">150</span><span class="p">,</span><span class="w"> </span><span class="m">150</span><span class="p">,</span><span class="n">sup_prom</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="c1"># esto es para suavizar el outlier. Buscar otro enfoque.</span>
-</span></code></pre></div>
-<h3 id="grafico"><a class="toclink" href="../../2019/03/30/introduccion-a-graficos-con-mapas/#grafico">Grafico!</a></h3>
-<p>Ya tenemos todo. Tenemos el mapa, tenemos la cantidad de focos de incendio por provincia y tenemos el centro de cada provincia donde vamos a incluir un punto que muestra la intensidad de los incendios.
-Simplemente graficamos sigueindo la lógica por capas de ggplot.
-Las provincias sin puntos son aquellas que no tuvieron ningún incendio.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="w">  </span><span class="nf">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argentina_df2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w">  </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">focos</span><span class="p">),</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># mapa de argentina</span>
-</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="w">  </span><span class="c1"># coloreado segun cantidad de focos</span>
-</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="w">  </span><span class="nf">coord_fixed</span><span class="p">(</span><span class="m">0.8</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># tamañp del mapa</span>
-</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="w">  </span><span class="nf">scale_fill_gradient2</span><span class="p">(</span><span class="s">&quot;Cantidad de Focos de incendio&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># escala de colores para focos</span>
-</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">centros2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sup_prom_sin_outlier</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># puntos por provincia con superficie promedio</span>
-</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="w">  </span><span class="nf">scale_size</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Superficie Promedio Afectada (ha)&quot;</span><span class="p">,</span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># escala de los puntos</span>
-</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="w">  </span><span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="c1"># Orden de los leyendas a la derecha.</span>
-</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="w">         </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="c1"># Por algun motivo esto discretizo la leyenda de focos</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2019-03-30-introduccion-a-graficos-con-mapas-unnamed-chunk-10-1.png" /></p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2018-11-10 00:00:00+00:00">2018-11-10</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/r/" class="md-meta__link">R</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="como-correr-un-proyecto-con-r-en-google-cloud"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/">Como correr un proyecto con R en Google Cloud</a></h2>
-<p>Hay situaciones en que nuestras computadoras no alcanzan para correr ciertos algoritmos por la cantidad de memoria o núcleos que tenemos (y comprar otra no es una opción..). Una solución es correr nuestro proyecto en "la nube", es decir en servidores ajenos mantenidos por empresas. Los servicios de esta índole más conocidos son:</p>
-<ul>
-<li>Google Cloud</li>
-<li>Amazon AWS</li>
-<li>Microsoft Azure</li>
-</ul>
-<p>En este post usaremos el primero. Como es de esperar, estos servicios son pagos y si su negocio lo amerita son una gran opción. Igualmente Google Cloud ofrece U$S300 de regalo al crear una cuenta por lo que podrían hacer uso para algún proyecto o pruebas. Les aseguro que no es particularmente bajo el monto. Solo tienen que registrarse y asociar una tarjeta de crédito y no abonar nada.</p>
-<p>Google Cloud ofrece un montón de servicios y opciones de las cuales presentaremos lo más básico pero igualmente suficiente para correr un xgboost en gigas y gigas de datos con cientos de variables je. </p>
-<ol>
-<li>Crear una máquina virtual instalando R</li>
-<li>Crear un Bucket que sirve como Disco duro para guardar data, outputs, etc</li>
-<li>Correr un algoritmo</li>
-</ol>
-<h3 id="maquina-virtual"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#maquina-virtual">Máquina Virtual</a></h3>
-<p>Una vez registrados, lo primero que vamos a hacer es crear la máquina virtual e instalar R y ciertos paquetes.
-Lamentablemente el proceso es bastante engorroso para quienes no conocen bash ni están familiarizados con Cloud. Es todo por consola y para nada intuitivo sin leer la documentación, que está en inglés.
-Es un proceso largo y la documentación más clara que encontré se encuentra en este <a href="http://grantmcdermott.com/2017/05/30/rstudio-server-compute-engine/">BLOG</a>. 
-No tiene sentido intentar decir lo mismo que él pero peor. Les recomiendo seguirlo y van a obtener una máquina virtual con Rstudio instalado y ciertas dependencias útiles para la mayoría de las librerías que se usan.</p>
-<!-- lo tengo en la pc tambien por las dudas 
-miran sino el dropbox https://www.dropbox.com/sh/8xzxv7erkeb3ncx/AADwqKGuOmXEPvy5pwNe7R1Ia/cloud?dl=0&subfolder_nav_tracking=1 -->
-
-<h3 id="crear-bucket"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#crear-bucket">Crear Bucket</a></h3>
-<p>Ir a 
-<img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/bucket1.PNG" width="200px" />
-Clickear los 3 puntos a la derecha y entrar a "Create key"</p>
-<p>Se les descargará un archivo .json que deben renombrar a ** privatekey_inicial.json ** .
-Luego ir a:
-<img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/bucket2.PNG" width="200px" /></p>
-<p>Crear un bucket cuyo nombre no tenga espacios ni caracteres raros. Va a pedirles que sea un nombre que no esté siendo usado por nadie más. 
-Hecho esto el bucket está creado y se le pueden subir archivos. Luego desde los scripts también se le van a poder escribir directamente, es decir, guardar los outputs.
-Ahora vamos a cambiar los permisos del bucket. Copiarse el account id desde aquí.
-<img alt="" height="200px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/bucket3.PNG" width="350px" /></p>
-<p>Luego ir a storage y en los 3 puntitos de nuesto bucket clickear "Edit Bucket permissions" y pegar el ID.
-<img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/bucket4.PNG" width="200px" /></p>
-<h3 id="crear-imagen"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#crear-imagen">Crear Imagen</a></h3>
-<p>Lo que haremos ahora es crear una imagen de la maquina virtual que generamos (donde instalamos R) para poder levantar futuras máquinas y que directamente tengan instalado R y los paquetes si lo deseamos (invocando a esta imagen).
-Dejo imágenes de un tutorial que van a ser más claras que yo.</p>
-<p><img alt="" height="700px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/imagen 1.PNG" width="400px" /></p>
-<p><img alt="" height="700px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/imagen2.PNG" width="400px" /></p>
-<p><img alt="" height="700px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/imagen3.PNG" width="400px" /></p>
-<p>Luego ir a Compute Engine &rarr; Images</p>
-<p><img alt="" height="700px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/imagen4.PNG" width="400px" /></p>
-<h4 id="status"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#status">Status</a></h4>
-<p>Resumiendo brevemente:</p>
-<ul>
-<li>Tenemos una cuenta y U$S 300 disponibles.</li>
-<li>Creamos una VM con R y paquetes.</li>
-<li>Generamos una imagen de esa VM para poder retutilizarla.</li>
-<li>Creamos un bucket donde almacenar inputs y outputs, linkeado a la imagen.</li>
-</ul>
-<p>Estamos casi listos. Falta correr algun script!</p>
-<h3 id="como-correr-un-script-de-r"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#como-correr-un-script-de-r">Cómo correr un script de R.</a></h3>
-<p>Una vez seteado todo lo anterior (y asegurándonos de haber apagado la maquina virtual utilizada) lo que debemos hacer es crear otras VM (instance) con los núcleos y Ram que cremos convenientes - esto depende totalmente de la complejidad del algoritmo que vayan a correr-, asignando una región donde preferentemente sea de noche o fin de semana para que esté menos saturada.
-Lo más importante es cambiar el boot disk y seleccionar dentro de "custom" la imagen que hayamos generado con R. De esta manera la VM que iniciemos ya tendrá R, Rstudio y librerías instaladas.</p>
-<p><img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/runscript1.PNG" width="200px" /></p>
-<p>Justo debajo de lo que se ve en la imagen hay opciones extras de "Management, security, disks", etc.
-Depende la importancia de lo que estén haciendo puede ser bueno asegurarse que la opción <em>Preemptibility</em> esté OFF.
-Si está ON, la VM se correrá en un servidor que máximo puede durar 24hs (posterior a eso se apaga automáticamente la VM) y más importante aún, están sujetos a disponibilidad de Google, es decir que si hay mucha demanda de servidores pueden apagarles el suyo sin consultar. Lo positivo es que son mucho más baratas.
-Al tenerlo OFF, se aseguran que su VM estará encendida durante todo lo que tarde el script en correr y no va a depender de la demanda. Queda a criterio de cada uno.</p>
-<p>Ya estamos listos para correr. Hay dos maneras sencillas:</p>
-<ol>
-<li><strong>Directo desde Rstudio en la VM.</strong></li>
-</ol>
-<p>Haciendo click en el IP de su instancia. Se abrirá Rstudio y deberán poner Usuario y Contraseña seteados durante la instalación.
-Ahi pueden trabajar como si fuera directamente R. Recomiendo tener Script listo porque no es muy dinámico trabajar en vivo ahí.</p>
-<p><img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/runscript2.PNG" width="200px" /></p>
-<ol>
-<li><strong>Desde la terminal, llamando a script en el bucket.</strong></li>
-</ol>
-<p>Otra opción es subir su script al bucket que generaron y en Rstudio (como en 1.) ir a la terminal y correr:</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Rscipt</span><span class="w"> </span><span class="o">--</span><span class="n">vanilla</span><span class="w"> </span><span class="o">~/</span><span class="n">cloud</span><span class="o">/</span><span class="n">cloud1</span><span class="o">/</span><span class="n">pathToScript</span><span class="o">/</span><span class="n">script.r</span>
-</span></code></pre></div>
-<p>O desde la consola (que basicamente system() simular ser la temrinal) :</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">system</span><span class="p">(</span><span class="n">Rscipt</span><span class="w"> </span><span class="o">--</span><span class="n">vanilla</span><span class="w"> </span><span class="o">~/</span><span class="n">cloud</span><span class="o">/</span><span class="n">cloud1</span><span class="o">/</span><span class="n">pathToScript</span><span class="o">/</span><span class="n">script.r</span><span class="p">)</span>
-</span></code></pre></div>
-<ol>
-<li><strong>Desde la terminal de la instancia.</strong></li>
-</ol>
-<p><img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/runscript3.PNG" width="200px" /></p>
-<p>Y ahí deberían poder correr sin problema.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Rscipt</span><span class="w"> </span><span class="o">--</span><span class="n">vanilla</span><span class="w"> </span><span class="o">~/</span><span class="n">cloud</span><span class="o">/</span><span class="n">cloud1</span><span class="o">/</span><span class="n">pathToScript</span><span class="o">/</span><span class="n">script.r</span>
-</span></code></pre></div>
-<p>En cualquiera de los 3 casos presten atención a las rutas que usan en sus scripts para referenciar al bucket.
-Si linkearon el bucket a la imagen de la VM como vimos en el post deberían poder usar la siguiente ruta genérica.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="s">&quot;~/cloud/cloud1/RestoDelPath/&quot;</span>
-</span></code></pre></div>
-<p>Y eso es todo. Ya pueden levantar una VM en google cloud y correr algoritmos con gigas y gigas de data sin quemar su PC! </p>
     
   </div>
 </article>

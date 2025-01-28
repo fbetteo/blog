@@ -1035,6 +1035,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#introduccion-a-graficos-con-mapas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduccion a graficos con mapas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-correr-un-proyecto-con-r-en-google-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Como correr un proyecto con R en Google Cloud
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#organizacion-de-proyectos" class="md-nav__link">
     <span class="md-ellipsis">
       Organización de Proyectos
@@ -1111,6 +1129,332 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2019-03-30 00:00:00+00:00">2019-03-30</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="introduccion-a-graficos-con-mapas"><a class="toclink" href="../../2019/03/30/introduccion-a-graficos-con-mapas/">Introduccion a graficos con mapas</a></h2>
+<h3 id="data"><a class="toclink" href="../../2019/03/30/introduccion-a-graficos-con-mapas/#data">Data</a></h3>
+<p>Vamos a ver un ejemplo sencillo para representar información visualmente sobre mapas. En este caso un pequeño dataset de incendios forestales en Argentina de 2012 a 2015. La idea es usar ggplot y mantener el enfoque de gráficos por capas.</p>
+<p>Vamos a necesitar.</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&gt; tidyverse
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>&gt; rgdal
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>&gt; rgeos
+</span></code></pre></div>
+Tendremos como input las provincias, departamento, cantidad de focos por incendio, area afectada y año de inicio y fin.
+Cada observación es un incendio.</p>
+<p>Para este ejemplo nos vamos a centrar en las provincias, los focos y su efecto sin importar la fecha.</p>
+<p>Empezamos cargando la data.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># Load Raw data</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">raw</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../../static/post/2019-03-30-introduccion-a-graficos-en-mapas/focosincendio.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="p">)</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">raw</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.tibble</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>## Warning: `as.tibble()` was deprecated in tibble 2.0.0.
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>## i Please use `as_tibble()` instead.
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>## i The signature and semantics have changed, see `?as_tibble`.
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nf">glimpse</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>## Rows: 120
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>## Columns: 11
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>## $ pais_id         &lt;int&gt; 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32,~
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>## $ pais            &lt;chr&gt; &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina&quot;, &quot;Argentina~
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>## $ provincia_id    &lt;int&gt; 6, 14, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 30, 30, 30, 30, 30, 30, 30, 30, 30, ~
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>## $ provincia       &lt;chr&gt; &quot;Buenos Aires&quot;, &quot;Córdoba&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;Corrientes&quot;, &quot;C~
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>## $ departamento_id &lt;int&gt; 833, 14, 56, 28, 28, 28, 70, 84, 84, 84, 112, 112, 119, 119, 126, 147, 154, 154, 161, 168, 168, 168, 168, 8, 15, 15, 15, 15, 28~
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>## $ departamento    &lt;chr&gt; &quot;Tres Arroyos&quot;, &quot;Calamuchita&quot;, &quot;General Alvear&quot;, &quot;Concepción&quot;, &quot;Concepción&quot;, &quot;Concepción&quot;, &quot;Goya&quot;, &quot;Itizaingó&quot;, &quot;Ituzaingo&quot;, &quot;I~
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>## $ sup_afectada    &lt;dbl&gt; 2400.00, 50.00, 257.00, 130.00, 5.00, 146.00, 30.00, 294.30, 378.00, 158.00, 300.00, 450.00, 450.00, 15.00, 20.00, 141.00, 295.~
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>## $ uni_med_id      &lt;chr&gt; &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;ha&quot;, &quot;~
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>## $ cant_focos      &lt;int&gt; 1, 1, 1, 2, 1, 1, 1, 3, 1, 3, 1, 1, 5, 2, 2, 1, 3, 1, 1, 18, 2, 3, 2, 1, 0, 0, 1, 7, 0, 2, 1, 0, 0, 0, 5, 10, 10, 3, 1, 1, 1, 1~
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>## $ año_inicial     &lt;int&gt; 2014, 2015, 2012, 2012, 2013, 2015, 2012, 2012, 2013, 2014, 2012, 2013, 2012, 2013, 2015, 2012, 2012, 2014, 2012, 2012, 2013, 2~
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>## $ año_final       &lt;int&gt; 2014, 2015, 2012, 2012, 2013, 2015, 2012, 2012, 2013, 2014, 2012, 2013, 2012, 2013, 2015, 2012, 2012, 2014, 2012, 2012, 2013, 2~
+</span></code></pre></div>
+<p>Exploramos un poco el dataset. Lo que nos vas a interesar represetnar es la segunda parte del código. Variables agregadas a nivel provincia.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Generate Summary to Explore</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">sum_year</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">group_by</span><span class="p">(</span><span class="n">año_inicial</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">focos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">cant_focos</span><span class="p">),</span><span class="w"> </span><span class="n">sup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">sup_afectada</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">sup_prom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sup</span><span class="o">/</span><span class="n">focos</span><span class="p">)</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="c1"># Actual data to be plotted</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="n">sum_prov</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raw</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">group_by</span><span class="p">(</span><span class="n">provincia</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">  </span><span class="nf">summarise</span><span class="p">(</span><span class="n">focos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">cant_focos</span><span class="p">),</span><span class="w"> </span><span class="n">sup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">sup_afectada</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">sup_prom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sup</span><span class="o">/</span><span class="n">focos</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">sup_prom</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">provincia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">provincia</span><span class="p">))</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="nf">head</span><span class="p">(</span><span class="n">sum_prov</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>## # A tibble: 6 x 4
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>##   provincia    focos   sup sup_prom
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>##   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>## 1 Buenos Aires     1 2400    2400  
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>## 2 Corrientes      55 5440.     98.9
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>## 3 Misiones        10  679      67.9
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>## 4 Córdoba          1   50      50  
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>## 5 Entre Ríos      12  594      49.5
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>## 6 Jujuy           62 2721.     43.9
+</span></code></pre></div>
+<p>Tenemos por provincia la cantidad de focos y la superficie  afectada. Vamos a usar la superficie promedio por foco para visualizar la magnitud de cada foco de incendio.</p>
+<p>Ahora llega lo importante. ¿Cómo representar esta data provincial en un mapa de Argentina?</p>
+<h2 id="mapa"><a class="toclink" href="../../2019/03/30/introduccion-a-graficos-con-mapas/#mapa">Mapa</a></h2>
+<p>Necesitamos un <strong>ShapeFile</strong> de Argentina, que basicamente es el tipo de archivo que se usa para representar mapas en gráficos. Contiene divisiones del país (provincias) con sus respectivas coordenadas y nombres.</p>
+<p>Utilizaremos data descargada del siguiente link.
+url &lt;- "<a href="http://biogeo.ucdavis.edu/data/diva/adm/ARG_adm.zip">http://biogeo.ucdavis.edu/data/diva/adm/ARG_adm.zip</a>"</p>
+<p>Lo descargué y deszipee en la computadora. Lo leemos con una librería particular <em>RGDAL</em>.</p>
+<p>dsn contiene la ruta a la carpeta con los archivos del shapefile.
+Layer apunta a al set de archivos que contiene la data que queremos. Generalmente hay otros sets con información no relevante al gráfico.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">argentina</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rgdal</span><span class="o">::</span><span class="nf">readOGR</span><span class="p">(</span><span class="n">dsn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;../../static/post/2019-03-30-introduccion-a-graficos-en-mapas/ARG_adm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ARG_adm1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">use_iconv</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">encoding</span><span class="o">=</span><span class="s">&#39;UTF-8&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>## OGR data source with driver: ESRI Shapefile 
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>## Source: &quot;D:\DataScience\StatsBlog\blogStats\static\post\2019-03-30-introduccion-a-graficos-en-mapas\ARG_adm&quot;, layer: &quot;ARG_adm1&quot;
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>## with 24 features
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>## It has 9 fields
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>## Integer64 fields read as strings:  ID_0 ID_1
+</span></code></pre></div>
+<p>Es un archivo S4 por lo que se utiliza "@" para acceder a su contenido. Por ejemplo:</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">head</span><span class="p">(</span><span class="n">argentina</span><span class="o">@</span><span class="n">data</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>##   ID_0 ISO    NAME_0 ID_1                 NAME_1           TYPE_1        ENGTYPE_1 NL_NAME_1
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>## 0   12 ARG Argentina    1           Buenos Aires        Provincia         Province      &lt;NA&gt;
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>## 1   12 ARG Argentina    2                Córdoba        Provincia         Province      &lt;NA&gt;
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>## 2   12 ARG Argentina    3              Catamarca        Provincia         Province      &lt;NA&gt;
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>## 3   12 ARG Argentina    4                  Chaco        Provincia         Province      &lt;NA&gt;
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>## 4   12 ARG Argentina    5                 Chubut        Provincia         Province      &lt;NA&gt;
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>## 5   12 ARG Argentina    6 Ciudad de Buenos Aires Distrito Federal Federal District      &lt;NA&gt;
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>##                                                                               VARNAME_1
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>## 0                                                                   Baires|Buenos Ayres
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>## 1                                                                               Cordova
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>## 2                                                                                  &lt;NA&gt;
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>## 3                                                        El Chaco|Presidente Juan Peron
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>## 4                                                                                  &lt;NA&gt;
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>## 5 BUENOS AIRES D.F.|Capital Federal|Distretto Federale|Distrito Federal|Federal Capital
+</span></code></pre></div>
+<p>Este tipo de archivos tiene una estructura complicada y hay varias librerías útiles. Con el fin de mantenernos dentro del tidyverse usaremos el enfoque de ggplot por capaz para graficar.
+Primero necesitamos llevar la información del shapefile a un dataframe.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Transformo a dataframe.</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">argentina_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">broom</span><span class="o">::</span><span class="nf">tidy</span><span class="p">(</span><span class="n">argentina</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>## Regions defined for each Polygons
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># id es la provincia</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nf">head</span><span class="p">(</span><span class="n">argentina_df</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>## # A tibble: 6 x 7
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>##    long   lat order hole  piece group id   
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>##   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;lgl&gt; &lt;fct&gt; &lt;fct&gt; &lt;chr&gt;
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>## 1 -60.2 -33.3     1 FALSE 1     0.1   0    
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>## 2 -60.2 -33.3     2 FALSE 1     0.1   0    
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>## 3 -60.2 -33.3     3 FALSE 1     0.1   0    
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>## 4 -60.2 -33.3     4 FALSE 1     0.1   0    
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>## 5 -60.2 -33.3     5 FALSE 1     0.1   0    
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>## 6 -60.2 -33.3     6 FALSE 1     0.1   0
+</span></code></pre></div>
+<p>Ahora genero un diccionario de ids con su respectiva provincia para poder linkear mi mapa con la data de incendios.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">ids</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cbind.data.frame</span><span class="p">(</span><span class="n">provincia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">argentina</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">NAME_1</span><span class="p">),</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="nf">rownames</span><span class="p">(</span><span class="n">argentina</span><span class="o">@</span><span class="n">data</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">provincia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">provincia</span><span class="p">),</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">id</span><span class="p">))</span>
+</span></code></pre></div>
+<p>El dataframe generado a partir del shapefile tiene las coordenadas que forman cada provincia y el id. Ahora lo que haremos es pegarle la data de incendios para poder utilizarla sobre el mapa.
+Está generado el log de los focos porque en una prueba intenté usar la data transformada para suavizar outliers pero no se verá en esta versión.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># Agrego provincia por ID y data de incendios a la data del shapefile.</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="n">argentina_df2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">argentina_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">left_join</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">sum_prov</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;provincia&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">focos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">focos</span><span class="p">),</span><span class="m">0.5</span><span class="p">,</span><span class="n">focos</span><span class="p">),</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">         </span><span class="n">logfocos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">focos</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">         </span><span class="n">logfocos2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logfocos</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">logfocos</span><span class="p">))</span>
+</span></code></pre></div>
+<p>Por ahora vamos a poder ser capaces de graficar un mapa de argentina con sus provincias delimitadas y pintarlas según la cantidad de focos de incendio por ejemplo. Pero además vamos a querer agregar alguna forma sobre cada provincia. Por ejemplo un punto de distinto tamaño según el area afectada por cada foco en promedio. Para eso necesitamos localizar el centroide de cada poligono, es decir, el centro de cada provincia.
+Para ellos usamos la librería <strong>RGEOS</strong>
+Luego a cada centro le agrego la data que voy a querer usar. En este caso la superficie promedio afectada por foco de cada provincia.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># Calculo el centro de cada poligono (provincias)</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1"># para obtener el &quot;centro&quot; donde iran los puntos o nombres.</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="n">centros</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rgeos</span><span class="o">::</span><span class="nf">gCentroid</span><span class="p">(</span><span class="n">argentina</span><span class="p">,</span><span class="w"> </span><span class="n">byid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="w">  </span><span class="nf">as.data.frame</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">.</span><span class="p">))</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="c1"># Agrego data relevante para el ploteo (superficie promedio)</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a><span class="n">centros2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">centros</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">left_join</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a><span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">sum_prov</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;provincia&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">focos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">focos</span><span class="p">),</span><span class="m">0.5</span><span class="p">,</span><span class="n">focos</span><span class="p">),</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="w">         </span><span class="n">sup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">sup</span><span class="p">),</span><span class="m">0</span><span class="p">,</span><span class="n">sup</span><span class="p">),</span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a><span class="w">         </span><span class="n">log_sup_prom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="n">sup_prom</span><span class="p">),</span>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a><span class="w">         </span><span class="n">sup_prom_sin_outlier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">sup_prom</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">150</span><span class="p">,</span><span class="w"> </span><span class="m">150</span><span class="p">,</span><span class="n">sup_prom</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="c1"># esto es para suavizar el outlier. Buscar otro enfoque.</span>
+</span></code></pre></div>
+<h3 id="grafico"><a class="toclink" href="../../2019/03/30/introduccion-a-graficos-con-mapas/#grafico">Grafico!</a></h3>
+<p>Ya tenemos todo. Tenemos el mapa, tenemos la cantidad de focos de incendio por provincia y tenemos el centro de cada provincia donde vamos a incluir un punto que muestra la intensidad de los incendios.
+Simplemente graficamos sigueindo la lógica por capas de ggplot.
+Las provincias sin puntos son aquellas que no tuvieron ningún incendio.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nf">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="w">  </span><span class="nf">geom_polygon</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argentina_df2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w">  </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">focos</span><span class="p">),</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># mapa de argentina</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="w">  </span><span class="c1"># coloreado segun cantidad de focos</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="w">  </span><span class="nf">coord_fixed</span><span class="p">(</span><span class="m">0.8</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># tamañp del mapa</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="w">  </span><span class="nf">scale_fill_gradient2</span><span class="p">(</span><span class="s">&quot;Cantidad de Focos de incendio&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># escala de colores para focos</span>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">centros2</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sup_prom_sin_outlier</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># puntos por provincia con superficie promedio</span>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="w">  </span><span class="nf">scale_size</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Superficie Promedio Afectada (ha)&quot;</span><span class="p">,</span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1"># escala de los puntos</span>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a><span class="w">  </span><span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="c1"># Orden de los leyendas a la derecha.</span>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a><span class="w">         </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="c1"># Por algun motivo esto discretizo la leyenda de focos</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2019-03-30-introduccion-a-graficos-con-mapas-unnamed-chunk-10-1.png" /></p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2018-11-10 00:00:00+00:00">2018-11-10</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="como-correr-un-proyecto-con-r-en-google-cloud"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/">Como correr un proyecto con R en Google Cloud</a></h2>
+<p>Hay situaciones en que nuestras computadoras no alcanzan para correr ciertos algoritmos por la cantidad de memoria o núcleos que tenemos (y comprar otra no es una opción..). Una solución es correr nuestro proyecto en "la nube", es decir en servidores ajenos mantenidos por empresas. Los servicios de esta índole más conocidos son:</p>
+<ul>
+<li>Google Cloud</li>
+<li>Amazon AWS</li>
+<li>Microsoft Azure</li>
+</ul>
+<p>En este post usaremos el primero. Como es de esperar, estos servicios son pagos y si su negocio lo amerita son una gran opción. Igualmente Google Cloud ofrece U$S300 de regalo al crear una cuenta por lo que podrían hacer uso para algún proyecto o pruebas. Les aseguro que no es particularmente bajo el monto. Solo tienen que registrarse y asociar una tarjeta de crédito y no abonar nada.</p>
+<p>Google Cloud ofrece un montón de servicios y opciones de las cuales presentaremos lo más básico pero igualmente suficiente para correr un xgboost en gigas y gigas de datos con cientos de variables je. </p>
+<ol>
+<li>Crear una máquina virtual instalando R</li>
+<li>Crear un Bucket que sirve como Disco duro para guardar data, outputs, etc</li>
+<li>Correr un algoritmo</li>
+</ol>
+<h3 id="maquina-virtual"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#maquina-virtual">Máquina Virtual</a></h3>
+<p>Una vez registrados, lo primero que vamos a hacer es crear la máquina virtual e instalar R y ciertos paquetes.
+Lamentablemente el proceso es bastante engorroso para quienes no conocen bash ni están familiarizados con Cloud. Es todo por consola y para nada intuitivo sin leer la documentación, que está en inglés.
+Es un proceso largo y la documentación más clara que encontré se encuentra en este <a href="http://grantmcdermott.com/2017/05/30/rstudio-server-compute-engine/">BLOG</a>. 
+No tiene sentido intentar decir lo mismo que él pero peor. Les recomiendo seguirlo y van a obtener una máquina virtual con Rstudio instalado y ciertas dependencias útiles para la mayoría de las librerías que se usan.</p>
+<!-- lo tengo en la pc tambien por las dudas 
+miran sino el dropbox https://www.dropbox.com/sh/8xzxv7erkeb3ncx/AADwqKGuOmXEPvy5pwNe7R1Ia/cloud?dl=0&subfolder_nav_tracking=1 -->
+
+<h3 id="crear-bucket"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#crear-bucket">Crear Bucket</a></h3>
+<p>Ir a 
+<img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/bucket1.PNG" width="200px" />
+Clickear los 3 puntos a la derecha y entrar a "Create key"</p>
+<p>Se les descargará un archivo .json que deben renombrar a ** privatekey_inicial.json ** .
+Luego ir a:
+<img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/bucket2.PNG" width="200px" /></p>
+<p>Crear un bucket cuyo nombre no tenga espacios ni caracteres raros. Va a pedirles que sea un nombre que no esté siendo usado por nadie más. 
+Hecho esto el bucket está creado y se le pueden subir archivos. Luego desde los scripts también se le van a poder escribir directamente, es decir, guardar los outputs.
+Ahora vamos a cambiar los permisos del bucket. Copiarse el account id desde aquí.
+<img alt="" height="200px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/bucket3.PNG" width="350px" /></p>
+<p>Luego ir a storage y en los 3 puntitos de nuesto bucket clickear "Edit Bucket permissions" y pegar el ID.
+<img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/bucket4.PNG" width="200px" /></p>
+<h3 id="crear-imagen"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#crear-imagen">Crear Imagen</a></h3>
+<p>Lo que haremos ahora es crear una imagen de la maquina virtual que generamos (donde instalamos R) para poder levantar futuras máquinas y que directamente tengan instalado R y los paquetes si lo deseamos (invocando a esta imagen).
+Dejo imágenes de un tutorial que van a ser más claras que yo.</p>
+<p><img alt="" height="700px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/imagen 1.PNG" width="400px" /></p>
+<p><img alt="" height="700px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/imagen2.PNG" width="400px" /></p>
+<p><img alt="" height="700px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/imagen3.PNG" width="400px" /></p>
+<p>Luego ir a Compute Engine &rarr; Images</p>
+<p><img alt="" height="700px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/imagen4.PNG" width="400px" /></p>
+<h4 id="status"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#status">Status</a></h4>
+<p>Resumiendo brevemente:</p>
+<ul>
+<li>Tenemos una cuenta y U$S 300 disponibles.</li>
+<li>Creamos una VM con R y paquetes.</li>
+<li>Generamos una imagen de esa VM para poder retutilizarla.</li>
+<li>Creamos un bucket donde almacenar inputs y outputs, linkeado a la imagen.</li>
+</ul>
+<p>Estamos casi listos. Falta correr algun script!</p>
+<h3 id="como-correr-un-script-de-r"><a class="toclink" href="../../2018/11/10/como-correr-un-proyecto-con-r-en-google-cloud/#como-correr-un-script-de-r">Cómo correr un script de R.</a></h3>
+<p>Una vez seteado todo lo anterior (y asegurándonos de haber apagado la maquina virtual utilizada) lo que debemos hacer es crear otras VM (instance) con los núcleos y Ram que cremos convenientes - esto depende totalmente de la complejidad del algoritmo que vayan a correr-, asignando una región donde preferentemente sea de noche o fin de semana para que esté menos saturada.
+Lo más importante es cambiar el boot disk y seleccionar dentro de "custom" la imagen que hayamos generado con R. De esta manera la VM que iniciemos ya tendrá R, Rstudio y librerías instaladas.</p>
+<p><img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/runscript1.PNG" width="200px" /></p>
+<p>Justo debajo de lo que se ve en la imagen hay opciones extras de "Management, security, disks", etc.
+Depende la importancia de lo que estén haciendo puede ser bueno asegurarse que la opción <em>Preemptibility</em> esté OFF.
+Si está ON, la VM se correrá en un servidor que máximo puede durar 24hs (posterior a eso se apaga automáticamente la VM) y más importante aún, están sujetos a disponibilidad de Google, es decir que si hay mucha demanda de servidores pueden apagarles el suyo sin consultar. Lo positivo es que son mucho más baratas.
+Al tenerlo OFF, se aseguran que su VM estará encendida durante todo lo que tarde el script en correr y no va a depender de la demanda. Queda a criterio de cada uno.</p>
+<p>Ya estamos listos para correr. Hay dos maneras sencillas:</p>
+<ol>
+<li><strong>Directo desde Rstudio en la VM.</strong></li>
+</ol>
+<p>Haciendo click en el IP de su instancia. Se abrirá Rstudio y deberán poner Usuario y Contraseña seteados durante la instalación.
+Ahi pueden trabajar como si fuera directamente R. Recomiendo tener Script listo porque no es muy dinámico trabajar en vivo ahí.</p>
+<p><img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/runscript2.PNG" width="200px" /></p>
+<ol>
+<li><strong>Desde la terminal, llamando a script en el bucket.</strong></li>
+</ol>
+<p>Otra opción es subir su script al bucket que generaron y en Rstudio (como en 1.) ir a la terminal y correr:</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Rscipt</span><span class="w"> </span><span class="o">--</span><span class="n">vanilla</span><span class="w"> </span><span class="o">~/</span><span class="n">cloud</span><span class="o">/</span><span class="n">cloud1</span><span class="o">/</span><span class="n">pathToScript</span><span class="o">/</span><span class="n">script.r</span>
+</span></code></pre></div>
+<p>O desde la consola (que basicamente system() simular ser la temrinal) :</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">system</span><span class="p">(</span><span class="n">Rscipt</span><span class="w"> </span><span class="o">--</span><span class="n">vanilla</span><span class="w"> </span><span class="o">~/</span><span class="n">cloud</span><span class="o">/</span><span class="n">cloud1</span><span class="o">/</span><span class="n">pathToScript</span><span class="o">/</span><span class="n">script.r</span><span class="p">)</span>
+</span></code></pre></div>
+<ol>
+<li><strong>Desde la terminal de la instancia.</strong></li>
+</ol>
+<p><img alt="" height="350px" src="/post/2018-11-10-como-correr-un-proyecto-con-r-en-google-cloud_files/runscript3.PNG" width="200px" /></p>
+<p>Y ahí deberían poder correr sin problema.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Rscipt</span><span class="w"> </span><span class="o">--</span><span class="n">vanilla</span><span class="w"> </span><span class="o">~/</span><span class="n">cloud</span><span class="o">/</span><span class="n">cloud1</span><span class="o">/</span><span class="n">pathToScript</span><span class="o">/</span><span class="n">script.r</span>
+</span></code></pre></div>
+<p>En cualquiera de los 3 casos presten atención a las rutas que usan en sus scripts para referenciar al bucket.
+Si linkearon el bucket a la imagen de la VM como vimos en el post deberían poder usar la siguiente ruta genérica.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="s">&quot;~/cloud/cloud1/RestoDelPath/&quot;</span>
+</span></code></pre></div>
+<p>Y eso es todo. Ya pueden levantar una VM en google cloud y correr algoritmos con gigas y gigas de data sin quemar su PC! </p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

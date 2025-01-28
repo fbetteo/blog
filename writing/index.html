@@ -1035,6 +1035,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#kullback-leibler-divergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kullback-Leibler divergence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutual Information
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#obisidan-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       Obisidan Workflow
@@ -1106,24 +1124,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#remarks-on-r2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Remarks on R2
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linear-smoothers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Linear Smoothers
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1141,6 +1141,121 @@
 <p>You can expect to find topics around statistics, AI, machine learning, learning to do business or software in general but also about myself.</p>
 <p><a class="md-button md-button--secondary" href="https://x.com/franbetteo"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg></span> Follow me on X</a></p>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-01-28 00:00:00+00:00">2025-01-28</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/ai/" class="md-meta__link">AI</a>, 
+              <a href="category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="kullback-leibler-divergence"><a class="toclink" href="2025/01/28/kullback-leibler-divergence/">Kullback-Leibler divergence</a></h2>
+<p>To understand KL divergence we need to first understand [Entropy]](<a href="https://fbetteo.github.io/blog/writing/2025/01/06/entropy/">https://fbetteo.github.io/blog/writing/2025/01/06/entropy/</a>). The most important thing to have in mind though is that entropy can be thought as a measure of "information", but what I like the most, as a measure of <em>expected surprise</em> that one gets for every observed value of the distribution.</p>
+<p>For a highly dense distribution, you will almost sure get a value from the dense region and the expected surprise will be really low (but you are highly surprised when you see a value off that region!)</p>
+<h4 id="relative-entropy"><a class="toclink" href="2025/01/28/kullback-leibler-divergence/#relative-entropy">Relative entropy</a></h4>
+<p>How this relates to KL? Well, Kullback-Leibler is a divergence but is also called <em>relative entropy</em>. This means, how that measure of entropy differs between two distributions. I find that easier to grasp.</p>
+<p>Usually we have a true distribution <span class="arithmatex">\(p(x)\)</span> and an estimated distribution <span class="arithmatex">\(q(x)\)</span> that we use to approximate <span class="arithmatex">\(p(x)\)</span>. KL divergence can help us understand how good it does the  job.</p>
+<p>If entropy is: </p>
+<p><span class="arithmatex">\(H[x] = - \sum_x p(x) \ln p(x)\)</span><br />
+(originally <span class="arithmatex">\(\log_2\)</span> but <span class="arithmatex">\(\ln\)</span> works too and it's used everywhere )</p>
+<div class="arithmatex">\[KL(p||q) = - \int{p(x) \ln q(x)dx} - (-\int{p(x) \ln p(x)dx})\]</div>
+<div class="arithmatex">\[ = - \int{p(x) \ln \frac{q(x)}{p(x)}dx}\]</div>
+<p>The first row is clear, is just the difference in entropies. 
+This is relative entropy between p(x) and q(x).</p>
+<p><strong>Important</strong>: KL divergence is not symmetrical. <span class="arithmatex">\(KL(p||q) \neq KL(q||p)\)</span>
+So, KL is not a metric of distance (but can be thought as if). It's actually a divergence.</p>
+<h4 id="why-its-not-symmetrical"><a class="toclink" href="2025/01/28/kullback-leibler-divergence/#why-its-not-symmetrical">Why it's not symmetrical?</a></h4>
+<p>I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):
+* one highly centered around one specific value 
+* the other with a uniform-ish shape, highly dispersed.</p>
+<p>The difference in "surprise" you get from both ways approximation is not the same.</p>
+<p>If you are approximating the highly dense distribution with the uniform one, you are approximating it with a distribution that surprises you  in general <span class="arithmatex">\(\ln q(x)\)</span>, let's say <em>moderately high</em> everywhere, even for the specific dense region.</p>
+<p>But the other way, if you approximate the dispersed distribution with the dense one, you are using a distribution with high surprise in most of the region of the dispersed distribution and really low surprise in one specific value.</p>
+<p>This term <span class="arithmatex">\(\int{p(x) \ln q(x)dx}\)</span> behaves differently in both scenarios and there is no guarantee or need that they should match.</p>
+<h5 id="references"><a class="toclink" href="2025/01/28/kullback-leibler-divergence/#references">References</a></h5>
+<p><a href="https://www.bishopbook.com/">Deep Learning, Bishop</a><br />
+<a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Wikipedia</a></p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-01-28 00:00:00+00:00">2025-01-28</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/ai/" class="md-meta__link">AI</a>, 
+              <a href="category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="mutual-information"><a class="toclink" href="2025/01/28/mutual-information/">Mutual Information</a></h2>
+<blockquote>
+<p>When two variables <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> are independent, their joint distribution will factorize into the product of their marginals <span class="arithmatex">\(p(x,y) = p(x)p(y)\)</span>. If the variables are not independent, we can gain some idea of whether they are "close" to being independent by considering the <a href="https://fbetteo.github.io/blog/writing/2025/01/28/kullback-leibler-divergence/">KL Divergence</a> between the joint distribution and the product of the marginals, given by:</p>
+</blockquote>
+<div class="arithmatex">\[I[x,y] = KL(p(x,y)||p(x)p(y))\]</div>
+<div class="arithmatex">\[=  - \int \int p(x,y) \ln (\frac{p(x)p(y)}{p(x,y)}) \]</div>
+<p>which is called the <em>mutual information</em> between <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>.</p>
+<p>Thus, the mutual information represents the reduction in uncertainty about <span class="arithmatex">\(x\)</span> by virtue of being told the value of <span class="arithmatex">\(y\)</span> (or vice versa)</p>
+<blockquote>
+<p>From a Bayesian perspective, we can view <span class="arithmatex">\(p(x)\)</span> as the prior distribution for <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(p(x|y)\)</span> as the posterior distribution after we have observed new data <span class="arithmatex">\(y\)</span>. The mutual information therefore represents the reduction in uncertainty about <span class="arithmatex">\(x\)</span> as a consequence of the new observation <span class="arithmatex">\(y\)</span>.</p>
+</blockquote>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -1971,161 +2086,6 @@ In second place we can see that the standard errors are generally bigger in comp
 </span></code></pre></div>
 <p><img alt="Image" src="img/2022-01-30-inference-is-not-valid-in-the-dataset-used-for-model-selection.en-us-unnamed-chunk-11-1.png" /></p>
 <p>My idea is to add a plot with the confidence intervals so the effect can be seen directly but I don't have the time today. Anyways, it is clear that the standad error to parameter ratio is bigger in the inference set, showing that the inference in the same dataset as model selection is invalid as it is overconfident in the results.</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-01-23 00:00:00+00:00">2022-01-23</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="category/statistics/" class="md-meta__link">statistics</a>, 
-              <a href="category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="remarks-on-r2"><a class="toclink" href="2022/01/23/remarks-on-r2.en-us/">Remarks on R2</a></h2>
-<h4 id="r2-depends-on-the-variance-on-the-variance-of-the-predictors"><a class="toclink" href="2022/01/23/remarks-on-r2.en-us/#r2-depends-on-the-variance-on-the-variance-of-the-predictors">R2 depends on the variance on the variance of the predictors</a></h4>
-<p>Quoting from Shalizi[^1]
-Assuming a true linear model<br />
-$$ Y = aX + \epsilon$$<br />
-and assuming we know <span class="arithmatex">\(a\)</span> exactly.<br />
-The variance of Y will be <span class="arithmatex">\(a^2\mathbb{V}[X] + \mathbb{V}[\epsilon]\)</span>.<br />
-So <span class="arithmatex">\(R^2 = \frac{a^2\mathbb{V}[X]}{a^2\mathbb{V}[X] + \mathbb{V}[\epsilon]}\)</span><br />
-This goes to 0 as <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  0\)</span> and it goes to 1 as  <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  \infty\)</span>. "It thus has little to do with the quality of the fit, and a lot to do with how spread out the predictor variable is. Notice also how easy it is to get a high <span class="arithmatex">\(R^2\)</span> even when the true model is not linear!"</p>
-<p>Below a quick comparison between two linear relationships, one with much higher variance than the other in the predictor.<br />
-Added a different constant for better display in plot.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="n">error</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">model1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y1 ~ x1&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>## Error in eval(predvars, data, env): object &#39;y1&#39; not found
-</span></code></pre></div>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">model2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y2 ~ x2&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>## Error in eval(predvars, data, env): object &#39;y2&#39; not found
-</span></code></pre></div>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-01-18 00:00:00+00:00">2022-01-18</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="category/machine-learning/" class="md-meta__link">Machine Learning</a>, 
-              <a href="category/algebra/" class="md-meta__link">algebra</a>, 
-              <a href="category/statistics/" class="md-meta__link">statistics</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="linear-smoothers"><a class="toclink" href="2022/01/18/linear-smoothers.en-us/">Linear Smoothers</a></h2>
-<h4 id="linear-regression-as-smoothing"><a class="toclink" href="2022/01/18/linear-smoothers.en-us/#linear-regression-as-smoothing">Linear regression as smoothing</a></h4>
-<p>Let's assume the DGP (data generating process) is:
-$$ Y = \mu(x) + \epsilon$$ where <span class="arithmatex">\(\mu(x)\)</span> is the mean Y value for that particular x and <span class="arithmatex">\(\epsilon\)</span> is an error with mean 0.</p>
-<p>When running OLS we are trying to approximate <span class="arithmatex">\(\mu(x)\)</span> with a linear function of the form <span class="arithmatex">\(\alpha + \beta x\)</span> and trying to retrieve the best <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> minimizing the mean-squared error.  </p>
-<p>The conclusions don't change but the math gets easier if we assume both X and Y are centered (mean=0).<br />
-With that in mind we can write down the MSE and optimize to get the best parameters.</p>
-<div class="arithmatex">\[MSE(\alpha, \beta) = \mathbb{E}[(Y - \alpha - \beta X)^2] \\
-= \mathbb{E}[\mathbb{E}[(Y - \alpha - \beta X)^2 | X]] \\
-= \mathbb{E}[\mathbb{V}[Y|X]] + \mathbb{E}[Y- \alpha - \beta X | X])^2] \\
-= \mathbb{E}[\mathbb{V}[Y|X]] + \mathbb{E}[(\mathbb{E}[Y- \alpha - \beta X | X])^2]\]</div>
-<p>Deriving with respect to <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> for optimization..<br />
-The first term can be dropped since doesn't include any parameter.</p>
-<p>$$\frac{\partial MSE}{\partial \alpha} =   \mathbb{E}[2(Y - \alpha - \beta X)(-1)] \
- \mathbb{E}[Y - a - b X] =  0 \
- a =  \mathbb{E}[Y] - b  \mathbb{E}[X] = 0
- $$
- when Y and X are centered..</p>
-<p>and
- $$\frac{\partial MSE}{\partial \beta} =   \mathbb{E}[2(Y - \alpha - \beta X)(-X)] \
- \mathbb{E}[XY] - b\mathbb{E}[X^2] = 0 \
-b = \frac{Cov[X,Y]}{\mathbb{V}[X]}
-$$</p>
-<p>The optimal beta is a function of the covariance between Y and X, and the variance of X.</p>
-<p>Putting together <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> we get <span class="arithmatex">\(\mu(x) = x  \frac{Cov[X,Y]}{\mathbb{V}[X]}\)</span></p>
-<p>Replacing with the values from the sampled data we get an estimation of <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span>.  </p>
-<p>Remember they are 0 centered so variance and covariance get simplified.</p>
-<div class="arithmatex">\[ \hat a = 0 \\
-\hat b = \frac{\sum_i y_i x_i}{\sum_i x_i^2}\]</div>
-<p>With all this we can see how <strong>OLS is a smoothing of the data</strong>.<br />
-Writing in terms of the data points:<br />
-$$\hat \mu(x) = \hat b x \
-= x  \frac{\sum_i y_i x_i}{\sum_i x_i^2} \
-= \sum_i y_i \frac{x_i}{\sum_j x_j^2} x \
-= \sum_i y_i \frac{x_i}{n \hat \sigma_x^2} x
-$$
-where <span class="arithmatex">\(\hat \sigma_x^2\)</span> is the sample variance of X.<br />
-<em>In words, our prediction is a weighted average of the observed values <span class="arithmatex">\(y_i\)</span> of the dependent variable, where the weights are proportional to how far <span class="arithmatex">\(x_i\)</span> is from the center (relative to the variance), and proportional to the magnitude of <span class="arithmatex">\(x\)</span>. If <span class="arithmatex">\(x_i\)</span> is on the same side of the center as <span class="arithmatex">\(x\)</span>, it gets a positive weight, and if it's on the opposite side it gets a negative weight.</em> (Shalizi 2017)</p>
-<p>If <span class="arithmatex">\(\mu(x)\)</span> is really a straight line, this is fine, but when it's not, that the weights are proportional to how far they are to the <strong>center</strong> and not the point <strong>to predict</strong> can lead to awful predictions.</p>
-<h4 id="alternative-smoothers"><a class="toclink" href="2022/01/18/linear-smoothers.en-us/#alternative-smoothers">Alternative smoothers</a></h4>
-<p>For that, other methods smooth the data in another ways to help mitigate that.</p>
-<p>As quick examples, we have <em>KNN regression</em> where the smoothing is done using only close observations to the one to predict (and getting quite noisy since depend a lot on the sample points around a small area).  </p>
-<p><em>Kernel smoothers</em> are a variant where depending on the kernel selected we get different smoothing. The main idea is that we use a windowd of data with the idea of putting more weight to points close to the one to predict. Could be Gaussian weight around X for example, or uniform around a window. Note this is different than KNN regression since we do not take the average of those points, we get a regression for that area.<br />
-A nice thing about this smoothers (and KNN regression) is that if we want to predict points far from the training data we won't get a linear extrapolation as with OLS but it will be pushed towards the closest data points we had in training.</p>
     
   </div>
 </article>
