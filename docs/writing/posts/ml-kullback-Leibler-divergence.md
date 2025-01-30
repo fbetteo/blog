@@ -41,6 +41,7 @@ So, KL is not a metric of distance (but can be thought as if). It's actually a d
 
 ### Why it's not symmetrical?
 I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):
+
 * one highly centered around one specific value 
 * the other with a uniform-ish shape, highly dispersed.
 
