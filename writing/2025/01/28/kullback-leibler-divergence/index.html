@@ -1100,7 +1100,7 @@
                 
                   <div class="md-profile md-post__profile">
                     <span class="md-author md-author--long">
-                      <img src="https://media.licdn.com/dms/image/v2/D4D03AQGGiT9NDiLy7Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1681511830071?e=1738195200&v=beta&t=Nd1WNLQTxHfCe7dT9BBaQYgaYtEHFCOPpntpImC4Lz8" alt="Franco Betteo">
+                      <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
                     </span>
                     <span class="md-profile__description">
                       <strong>
@@ -1186,9 +1186,11 @@ This is relative entropy between p(x) and q(x).</p>
 <p><strong>Important</strong>: KL divergence is not symmetrical. <span class="arithmatex">\(KL(p||q) \neq KL(q||p)\)</span>
 So, KL is not a metric of distance (but can be thought as if). It's actually a divergence.</p>
 <h3 id="why-its-not-symmetrical">Why it's not symmetrical?<a class="headerlink" href="#why-its-not-symmetrical" title="Permanent link">&para;</a></h3>
-<p>I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):
-* one highly centered around one specific value 
-* the other with a uniform-ish shape, highly dispersed.</p>
+<p>I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):</p>
+<ul>
+<li>one highly centered around one specific value </li>
+<li>the other with a uniform-ish shape, highly dispersed.</li>
+</ul>
 <p>The difference in "surprise" you get from both ways approximation is not the same.</p>
 <p>If you are approximating the highly dense distribution with the uniform one, you are approximating it with a distribution that surprises you  in general <span class="arithmatex">\(\ln q(x)\)</span>, let's say <em>moderately high</em> everywhere, even for the specific dense region.</p>
 <p>But the other way, if you approximate the dispersed distribution with the dense one, you are using a distribution with high surprise in most of the region of the dispersed distribution and really low surprise in one specific value.</p>
