@@ -11,6 +11,7 @@ nav:
       - Overview: nba_salaries/index.html
 theme:
   name: material
+  custom_dir: docs/overrides
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil 
