@@ -715,17 +715,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    AI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -735,52 +724,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#kullback-leibler-divergence" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kullback-Leibler divergence
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mutual-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mutual Information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entropy-and-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Entropy and information
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1099,41 +1042,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#kullback-leibler-divergence" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kullback-Leibler divergence
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mutual-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mutual Information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entropy-and-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Entropy and information
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1146,179 +1054,6 @@
       <header class="md-typeset">
         <h1 id="ai">AI<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
       </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-01-28 00:00:00+00:00">2025-01-28</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">AI</a>, 
-              <a href="../machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="kullback-leibler-divergence"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/">Kullback-Leibler divergence</a></h2>
-<p>To understand KL divergence we need to first understand <a href="https://fbetteo.github.io/blog/writing/2025/01/06/entropy/">Entropy</a>. The most important thing to have in mind though is that entropy can be thought as a measure of "information", but what I like the most, as a measure of <em>expected surprise</em> that one gets for every observed value of the distribution.</p>
-<p>For a highly dense distribution, you will almost sure get a value from the dense region and the expected surprise will be really low (but you are highly surprised when you see a value off that region!)</p>
-<h4 id="relative-entropy"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#relative-entropy">Relative entropy</a></h4>
-<p>How this relates to KL? Well, Kullback-Leibler is a divergence but is also called <em>relative entropy</em>. This means, how that measure of entropy differs between two distributions. I find that easier to grasp.</p>
-<p>Usually we have a true distribution <span class="arithmatex">\(p(x)\)</span> and an estimated distribution <span class="arithmatex">\(q(x)\)</span> that we use to approximate <span class="arithmatex">\(p(x)\)</span>. KL divergence can help us understand how good it does the  job.</p>
-<p>If entropy is: </p>
-<p><span class="arithmatex">\(H[x] = - \sum_x p(x) \ln p(x)\)</span><br />
-(originally <span class="arithmatex">\(\log_2\)</span> but <span class="arithmatex">\(\ln\)</span> works too and it's used everywhere )</p>
-<div class="arithmatex">\[KL(p||q) = - \int{p(x) \ln q(x)dx} - (-\int{p(x) \ln p(x)dx})\]</div>
-<div class="arithmatex">\[ = - \int{p(x) \ln \frac{q(x)}{p(x)}dx}\]</div>
-<p>The first row is clear, is just the difference in entropies. 
-This is relative entropy between p(x) and q(x).</p>
-<p><strong>Important</strong>: KL divergence is not symmetrical. <span class="arithmatex">\(KL(p||q) \neq KL(q||p)\)</span>
-So, KL is not a metric of distance (but can be thought as if). It's actually a divergence.</p>
-<h4 id="why-its-not-symmetrical"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#why-its-not-symmetrical">Why it's not symmetrical?</a></h4>
-<p>I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):</p>
-<ul>
-<li>one highly centered around one specific value </li>
-<li>the other with a uniform-ish shape, highly dispersed.</li>
-</ul>
-<p>The difference in "surprise" you get from both ways approximation is not the same.</p>
-<p>If you are approximating the highly dense distribution with the uniform one, you are approximating it with a distribution that surprises you  in general <span class="arithmatex">\(\ln q(x)\)</span>, let's say <em>moderately high</em> everywhere, even for the specific dense region.</p>
-<p>But the other way, if you approximate the dispersed distribution with the dense one, you are using a distribution with high surprise in most of the region of the dispersed distribution and really low surprise in one specific value.</p>
-<p>This term <span class="arithmatex">\(\int{p(x) \ln q(x)dx}\)</span> behaves differently in both scenarios and there is no guarantee or need that they should match.</p>
-<h5 id="references"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#references">References</a></h5>
-<p><a href="https://www.bishopbook.com/">Deep Learning, Bishop</a><br />
-<a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Wikipedia</a></p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-01-28 00:00:00+00:00">2025-01-28</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">AI</a>, 
-              <a href="../machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="mutual-information"><a class="toclink" href="../../2025/01/28/mutual-information/">Mutual Information</a></h2>
-<blockquote>
-<p>When two variables <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> are independent, their joint distribution will factorize into the product of their marginals <span class="arithmatex">\(p(x,y) = p(x)p(y)\)</span>. If the variables are not independent, we can gain some idea of whether they are "close" to being independent by considering the <a href="https://fbetteo.github.io/blog/writing/2025/01/28/kullback-leibler-divergence/">KL Divergence</a> between the joint distribution and the product of the marginals, given by:</p>
-</blockquote>
-<div class="arithmatex">\[I[x,y] = KL(p(x,y)||p(x)p(y))\]</div>
-<div class="arithmatex">\[=  - \int \int p(x,y) \ln (\frac{p(x)p(y)}{p(x,y)}) \]</div>
-<p>which is called the <em>mutual information</em> between <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>.</p>
-<p>Thus, the mutual information represents the reduction in uncertainty about <span class="arithmatex">\(x\)</span> by virtue of being told the value of <span class="arithmatex">\(y\)</span> (or vice versa)</p>
-<blockquote>
-<p>From a Bayesian perspective, we can view <span class="arithmatex">\(p(x)\)</span> as the prior distribution for <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(p(x|y)\)</span> as the posterior distribution after we have observed new data <span class="arithmatex">\(y\)</span>. The mutual information therefore represents the reduction in uncertainty about <span class="arithmatex">\(x\)</span> as a consequence of the new observation <span class="arithmatex">\(y\)</span>.</p>
-</blockquote>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-01-06 00:00:00+00:00">2025-01-06</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">AI</a>, 
-              <a href="../machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="entropy-and-information"><a class="toclink" href="../../2025/01/06/entropy/">Entropy and information</a></h2>
-<p>Term that comes from information theory.
-The most intuitive way to think about <em>information</em> of a variable is to relate to the <strong>degree of surprise</strong> on learning the value of the variable X.<br />
-This definition was mentioned both in <a href="https://www.bishopbook.com/">Deep Learning, Bishop</a> and in <a href="https://worrydream.com/refs/Hamming_1997_-_The_Art_of_Doing_Science_and_Engineering.pdf">Hamming</a>, and the former is the text I was just reading before starting this note.</p>
-<p>So, having a variable X with <code>p(x)</code>, what's <code>h(x)</code> , the information of observing X? This quantity <code>h(x)</code> should be a monotonic function of <code>p(x)</code>. Remember, information is tied to the surprise, observing an almost sure event, high p(x), reveals less information than an unexpected event,low p(x). In the extreme, observing a known value, gives 0 information.</p>
-<p>How to define the information mathematically comes (in some way intuitively) by the definition that, observing two independent variables <code>x</code> and <code>y</code> should provide an amount of information equal to the sum of the individual informations.</p>
-<div class="arithmatex">\[h(x,y) = h(x) + h(y)\]</div>
-<p>We know that for independent events <span class="arithmatex">\(p(x, y) = p(x)*p(y)\)</span>  </p>
-<p>It can be derived then that  </p>
-<div class="arithmatex">\[h(x) = - \log_2 p(x)\]</div>
-<p>The log provides the summation part coming from a multiplication. The negative ensure 0 or positive values. Remember that we are taking the log of a value between 0 and 1.</p>
-<p>Now, there is another important term, <strong>entropy</strong>.
-It summarizes the average amount of information that is transmitted <em>if a sender wishes to transmit the value of a random variable to a receiver</em>. 
-The entropy is the expectation of the information, with respect to the distribution p(x).  </p>
-<div class="arithmatex">\[H[x] = - \sum_x p(x) \log_2 p(x)\]</div>
-<p>For p(x) = 0, where the log would bring problem, we consider <span class="arithmatex">\(p(x) \log p(x)\)</span>=0</p>
-<p>Classical information theory uses <span class="arithmatex">\(\log_2\)</span> because it relates to bits and the amount of bits required to send a message but the book changes to <span class="arithmatex">\(\ln\)</span> because is much more used in ML and it's just a different unit to measure entropy. </p>
-    
-  </div>
-</article>
       
       
         
@@ -1355,7 +1090,7 @@ The entropy is the expectation of the information, with respect to the distribut
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: My words, sometimes technical, sometimes not">
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: None">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1365,7 +1100,7 @@ The entropy is the expectation of the information, with respect to the distribut
                 Previous
               </span>
               <div class="md-ellipsis">
-                My words, sometimes technical, sometimes not
+                None
               </div>
             </div>
           </a>
