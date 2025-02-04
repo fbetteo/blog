@@ -874,6 +874,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    estadistica
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="../../" class="md-nav__link md-nav__link--active">
         
   
@@ -883,6 +894,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#curvas-roc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curvas ROC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de Variables
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1040,6 +1088,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#curvas-roc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curvas ROC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de Variables
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1052,6 +1126,167 @@
       <header class="md-typeset">
         <h1 id="estadistica">estadistica<a class="headerlink" href="#estadistica" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2018-10-28 00:00:00+00:00">2018-10-28</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../" class="md-meta__link">estadistica</a>, 
+              <a href="../../../r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="curvas-roc"><a class="toclink" href="../../../../2018/10/28/curvas-roc/">Curvas ROC</a></h2>
+<p>La curva ROC y AUC (area bajo la curva) permiten evaluar la eficacia de un modelo clasificador y elegir el mejor umbral de corte donde determinar qué observación es predicha positiva y cual negativa.</p>
+<p>Vamos a generar rapidamente un clasificador con regresión logísitca utilizando el dataset <em>mtcars</em> ya provisto por R. Solo a modo ilustrativo utilizaremos AM (caja manual o automática) como la variable a predecir y mpg y drat como independientes. No separamos en train y test dadas las pocas observaciones.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">modelr</span><span class="p">)</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">pROC</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mtcars</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">am</span><span class="p">,</span><span class="w"> </span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">drat</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">am</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">am</span><span class="p">))</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="nf">summary</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>##  am          mpg             drat      
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>##  0:19   Min.   :10.40   Min.   :2.760  
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>##  1:13   1st Qu.:15.43   1st Qu.:3.080  
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>##         Median :19.20   Median :3.695  
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>##         Mean   :20.09   Mean   :3.597  
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>##         3rd Qu.:22.80   3rd Qu.:3.920  
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>##         Max.   :33.90   Max.   :4.930
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Clase dentro de todo balanceada</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">mdl.log</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="s">&quot;logit&quot;</span><span class="p">))</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">mdl.log</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nf">roc</span><span class="p">(</span><span class="n">df</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="w">  </span><span class="n">fit</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">percent</span><span class="o">=</span><span class="bp">F</span><span class="p">,</span><span class="w">   </span><span class="n">boot.n</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">ci.alpha</span><span class="o">=</span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">stratified</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">plot</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">show.thres</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">legacy.axes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">reuse.auc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="c1"># print.thres = c(0.30,0.35, 0.40, 0.45,0.48, 0.50,0.55, 0.60),#</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">    </span><span class="n">print.auc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">print.thres.col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ci</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">ci.type</span><span class="o">=</span><span class="s">&quot;bars&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">print.thres.cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;ROC curve using&quot;</span><span class="p">,</span><span class="s">&quot;(N = &quot;</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">),</span><span class="s">&quot;)&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../../../img/2018-10-28-curvas-roc-unnamed-chunk-1-1.png" /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>## 
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>## Call:
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>## roc.default(response = df[, 1], predictor = fit, percent = F,     ci = TRUE, plot = TRUE, boot.n = 1000, ci.alpha = 0.9, stratified = FALSE,     grid = TRUE, show.thres = TRUE, legacy.axes = TRUE, reuse.auc = TRUE,     print.auc = TRUE, print.thres.col = &quot;blue&quot;, ci.type = &quot;bars&quot;,     print.thres.cex = 0.7, main = paste(&quot;ROC curve using&quot;, &quot;(N = &quot;,         nrow(df), &quot;)&quot;))
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>## 
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>## Data: fit in 19 controls (df[, 1] 0) &lt; 13 cases (df[, 1] 1).
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>## Area under the curve: 0.9433
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>## 95% CI: 0.8695-1 (DeLong)
+</span></code></pre></div>
+<p>Básicamente entrenamos un modelo logístico y graficamos la curva ROC prediciendo sobre el mismo dataset con el que fue entrenado. No es lo adecuado pero dadas las pocas observaciones y el propósito explicativo no lo tomamos como un problema.
+La curva ROC es la más oscura y como vemos empieza en (0,0) y termina en el (1,1).
+El eje X es 1 - Especificidad (Falsos Negativos) y el eje Y es Sensitividad (Verdaderos Positivos) por lo tanto lo deseable es estar lo más arriba a la izquierda posible. El punto (0,1) sería óptimo ya que habría 0 falsos negativos y 100% de verdaderos positivos.</p>
+<p>Lo que representa la curva es la combinación de Sensitividad y (1 - especificidad) para varios puntos de corte. Recordemos que la regresión logística devuelve un valor entre 0 y 1 por lo tanto hay que determinar en qué valor empezamos a considerar una predicción como positiva o negativa. En este caso positivo sería tener un valor de 1 en am, por lo tanto tener caja automática. Cada punto de la curva corresponde a algún punto de corte. Como decíamos antes, el mejor debería ser el más "arriba a la izquierda" aunque depende el problema eso puede cambiar, dependiendo del costo de equivocarse en uno u otro sentido.</p>
+<p>El peor escenario es que la curva siga a la diagonal, lo que equivaldría a ser iguales a un modelo eligiendo siempre la clase mayoritaria, totalmente inútil. Si estuviera por debajo de la diagonal, sería peor aún, pero bastaría con invertir las predicciones para pasar a estar por encima. Un viejo truco no muy científico.</p>
+<p>El área bajo la curva (AUC) es una medida resumen de la curva ROC ya que justamente describe el área entre la curva ROC y la diagonal. Valores mayores se corresponden con curvas ROC más alejadas de la diagonal y por lo tanto que separan mejor a la clase dependiente. Es útil para comparar modelos.</p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2018-08-25 00:00:00+00:00">2018-08-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../" class="md-meta__link">estadistica</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="tipos-de-variables"><a class="toclink" href="../../../../2018/08/25/tipos-de-variables/">Tipos de Variables</a></h2>
+<p>Las características de las variables que podemos encontrar en un dataset son muy diversas, pero general se pueden clasificar bajo alguno de los siguientes formatos.</p>
+<p><strong>Categóricas</strong> o <strong>Cualitativas</strong></p>
+<p>Corresponden a variables con <em>etiquetas</em> o valores pero que no siguen un orden específico o no tienen jerarquía.
+Por ejemplo: color de ojos, género, sabor (dulce, salado, amargo), etc.
+Para estas variables, que una observación corresponda a un valor u a otro no revela mayor importancia o mejor ponderación  sobre otra observación, son simplemente distintas.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Persona1&quot;</span><span class="p">,</span><span class="s">&quot;Persona2&quot;</span><span class="p">,</span><span class="s">&quot;Persona3&quot;</span><span class="p">,</span><span class="s">&quot;Verde&quot;</span><span class="p">,</span><span class="s">&quot;Marron&quot;</span><span class="p">,</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">      </span><span class="s">&quot;Azul&quot;</span><span class="p">,</span><span class="w">      </span><span class="m">1.8</span><span class="p">,</span><span class="m">1.87</span><span class="p">,</span><span class="m">1.65</span><span class="p">,</span><span class="s">&quot;Secundario Completo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Universitario Completo&quot;</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">      </span><span class="s">&quot;Sin estudios&quot;</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nf">names</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;ID&quot;</span><span class="p">,</span><span class="s">&quot;Ojos&quot;</span><span class="p">,</span><span class="s">&quot;Altura&quot;</span><span class="p">,</span><span class="s">&quot;Estudios&quot;</span><span class="p">,</span><span class="s">&quot;Hijos&quot;</span><span class="p">)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">df</span><span class="o">$</span><span class="n">Ojos</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>## [1] &quot;Verde&quot;  &quot;Marron&quot; &quot;Azul&quot;
+</span></code></pre></div>
+<p>Simulamos una tabla muy básica con 4 columnas por observación. Como ejemplo de variable categórica tomamos el color de ojos de estas personas. Y vemos que puede tomar los valores azul, marrón o verde. Más allá de los gustos personales, en principio estas etiquetas no revelan ningún orden, simplemente valores distintos según el individuo.</p>
+<p><strong>Ordinales</strong></p>
+<p>Corresponden a variables con <em>etiquetas</em> pero que en este caso sí tienen un orden establecido o jerarquía. Es decir que una etiqueta es "mejor" o tiene un valor más elevado. Por otra parte, en esta jerarquía o escala no podemos determinar cuánto mejor es una etiqueta por sobre otra, solo sabemos cómo se ordenan.</p>
+<p>Volvemos al ejemplo de nuestra tabla. Este caso tomamos la columna Nivel de estudios.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Estudios</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>## [1] &quot;Secundario Completo&quot;    &quot;Universitario Completo&quot; &quot;Sin estudios&quot;
+</span></code></pre></div>
+<p>Vemos que en nuestra tabla se pueden encontrar los valores "Sin estudios", "Secundario Completo" y "Universitario Completo". Podemos decir que esta columna presenta un orden lógico entre las distintas etiquetas y que Universitario completo es más deseable que Secundario Completo y este último a su vez más deseable que Sin Estudios. 
+Por otra parte, no podemos definir concretamente cuánto más deseable una categoría sobre la otra. Es universitario Completo 2 veces mejor que Secundario completo? 1? 3?. Y esa "distancia", es la misma entre Secundario completo y Sin Estudios? No es clara amplitud.</p>
+<p><strong>Cuantitativas Discretas</strong></p>
+<p>Corresponden a variables numéricas que son <em>numerables</em>, es decir que podemos contar cuantos valores intermedios hay entre 2 valores cualquiera. Entre cada valor no hay infinitos posibles.
+Siguiendo nuestra tabla, el ejemplo a tener en cuenta es el de número de hijos.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Hijos</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>## [1] &quot;3&quot; &quot;2&quot; &quot;1&quot;
+</span></code></pre></div>
+<p>Cada persona puede tener entre 0 y digamos... 10 hijos para no ser tan extremistas. A su vez, no se pueden tener fracciones de hijo. Por lo tanto, entre 6 y 8 hijos, solo se pueden tener 7. No 7.4, ni 6.2. En ese sentido decimos que entre dos valores cualquiera podemos numerar los intermedios.</p>
+<p><strong>Cuantitativas Continuas</strong></p>
+<p>Corresponden a variables numéricas no numerables, es decir que entre 2 valores cualquiera, hay infinitos intermedios.
+En nuestro ejemplo, podemos tomar la columna Altura para ilustrarlo.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Altura</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>## [1] &quot;1.8&quot;  &quot;1.87&quot; &quot;1.65&quot;
+</span></code></pre></div>
+<p>En nuestro caso tenemos valores redondeados pero si tuviéramos valores más precisos, hay inifinitas posibilidades entre 1.7 y 1.8.
+Este tipo de variables son muy comunes y se encuentran por todos lados. Temperatura, longitudes, etc.</p>
+    
+  </div>
+</article>
       
       
         

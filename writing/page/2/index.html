@@ -20,7 +20,7 @@
     
     
       
-        <title>None - Franco Betteo</title>
+        <title>My words, sometimes technical, sometimes not - Franco Betteo</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#none" class="md-skip">
+        <a href="#my-words-sometimes-technical-sometimes-not" class="md-skip">
           Skip to content
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              None
+              My words, sometimes technical, sometimes not
             
           </span>
         </div>
@@ -1030,6 +1030,104 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#remarks-on-r2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remarks on R2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-smoothers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear Smoothers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bias-variance-tradeoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bias Variance Tradeoff
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spark-and-pyspark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark and Pyspark
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#softmax-vs-sigmoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Softmax vs sigmoid
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counter-strike-chance-of-winning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counter Strike: chance of winning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-negative-matrix-factorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non Negative Matrix Factorization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribucion-dirichlet-como-prior-de-multinomial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribucion Dirichlet como prior de Multinomial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-r-a-python-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      De R a Python 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anova" class="md-nav__link">
+    <span class="md-ellipsis">
+      ANOVA
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1040,8 +1138,944 @@
   <div class="md-content" data-md-component="content">
     <div class="md-content__inner">
       <header class="md-typeset">
-        <h1 id="none">None<a class="headerlink" href="#none" title="Permanent link">&para;</a></h1>
+        <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-01-23 00:00:00+00:00">2022-01-23</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/statistics/" class="md-meta__link">statistics</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="remarks-on-r2"><a class="toclink" href="../../2022/01/23/remarks-on-r2.en-us/">Remarks on R2</a></h2>
+<h4 id="r2-depends-on-the-variance-on-the-variance-of-the-predictors"><a class="toclink" href="../../2022/01/23/remarks-on-r2.en-us/#r2-depends-on-the-variance-on-the-variance-of-the-predictors">R2 depends on the variance on the variance of the predictors</a></h4>
+<p>Quoting from Shalizi[^1]
+Assuming a true linear model<br />
+$$ Y = aX + \epsilon$$<br />
+and assuming we know <span class="arithmatex">\(a\)</span> exactly.<br />
+The variance of Y will be <span class="arithmatex">\(a^2\mathbb{V}[X] + \mathbb{V}[\epsilon]\)</span>.<br />
+So <span class="arithmatex">\(R^2 = \frac{a^2\mathbb{V}[X]}{a^2\mathbb{V}[X] + \mathbb{V}[\epsilon]}\)</span><br />
+This goes to 0 as <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  0\)</span> and it goes to 1 as  <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  \infty\)</span>. "It thus has little to do with the quality of the fit, and a lot to do with how spread out the predictor variable is. Notice also how easy it is to get a high <span class="arithmatex">\(R^2\)</span> even when the true model is not linear!"</p>
+<p>Below a quick comparison between two linear relationships, one with much higher variance than the other in the predictor.<br />
+Added a different constant for better display in plot.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="n">error</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">model1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y1 ~ x1&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>## Error in eval(predvars, data, env): object &#39;y1&#39; not found
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">model2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y2 ~ x2&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>## Error in eval(predvars, data, env): object &#39;y2&#39; not found
+</span></code></pre></div>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-01-18 00:00:00+00:00">2022-01-18</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a>, 
+              <a href="../../category/algebra/" class="md-meta__link">algebra</a>, 
+              <a href="../../category/statistics/" class="md-meta__link">statistics</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="linear-smoothers"><a class="toclink" href="../../2022/01/18/linear-smoothers.en-us/">Linear Smoothers</a></h2>
+<h4 id="linear-regression-as-smoothing"><a class="toclink" href="../../2022/01/18/linear-smoothers.en-us/#linear-regression-as-smoothing">Linear regression as smoothing</a></h4>
+<p>Let's assume the DGP (data generating process) is:
+$$ Y = \mu(x) + \epsilon$$ where <span class="arithmatex">\(\mu(x)\)</span> is the mean Y value for that particular x and <span class="arithmatex">\(\epsilon\)</span> is an error with mean 0.</p>
+<p>When running OLS we are trying to approximate <span class="arithmatex">\(\mu(x)\)</span> with a linear function of the form <span class="arithmatex">\(\alpha + \beta x\)</span> and trying to retrieve the best <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> minimizing the mean-squared error.  </p>
+<p>The conclusions don't change but the math gets easier if we assume both X and Y are centered (mean=0).<br />
+With that in mind we can write down the MSE and optimize to get the best parameters.</p>
+<div class="arithmatex">\[MSE(\alpha, \beta) = \mathbb{E}[(Y - \alpha - \beta X)^2] \\
+= \mathbb{E}[\mathbb{E}[(Y - \alpha - \beta X)^2 | X]] \\
+= \mathbb{E}[\mathbb{V}[Y|X]] + \mathbb{E}[Y- \alpha - \beta X | X])^2] \\
+= \mathbb{E}[\mathbb{V}[Y|X]] + \mathbb{E}[(\mathbb{E}[Y- \alpha - \beta X | X])^2]\]</div>
+<p>Deriving with respect to <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span> for optimization..<br />
+The first term can be dropped since doesn't include any parameter.</p>
+<p>$$\frac{\partial MSE}{\partial \alpha} =   \mathbb{E}[2(Y - \alpha - \beta X)(-1)] \
+ \mathbb{E}[Y - a - b X] =  0 \
+ a =  \mathbb{E}[Y] - b  \mathbb{E}[X] = 0
+ $$
+ when Y and X are centered..</p>
+<p>and
+ $$\frac{\partial MSE}{\partial \beta} =   \mathbb{E}[2(Y - \alpha - \beta X)(-X)] \
+ \mathbb{E}[XY] - b\mathbb{E}[X^2] = 0 \
+b = \frac{Cov[X,Y]}{\mathbb{V}[X]}
+$$</p>
+<p>The optimal beta is a function of the covariance between Y and X, and the variance of X.</p>
+<p>Putting together <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> we get <span class="arithmatex">\(\mu(x) = x  \frac{Cov[X,Y]}{\mathbb{V}[X]}\)</span></p>
+<p>Replacing with the values from the sampled data we get an estimation of <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span>.  </p>
+<p>Remember they are 0 centered so variance and covariance get simplified.</p>
+<div class="arithmatex">\[ \hat a = 0 \\
+\hat b = \frac{\sum_i y_i x_i}{\sum_i x_i^2}\]</div>
+<p>With all this we can see how <strong>OLS is a smoothing of the data</strong>.<br />
+Writing in terms of the data points:<br />
+$$\hat \mu(x) = \hat b x \
+= x  \frac{\sum_i y_i x_i}{\sum_i x_i^2} \
+= \sum_i y_i \frac{x_i}{\sum_j x_j^2} x \
+= \sum_i y_i \frac{x_i}{n \hat \sigma_x^2} x
+$$
+where <span class="arithmatex">\(\hat \sigma_x^2\)</span> is the sample variance of X.<br />
+<em>In words, our prediction is a weighted average of the observed values <span class="arithmatex">\(y_i\)</span> of the dependent variable, where the weights are proportional to how far <span class="arithmatex">\(x_i\)</span> is from the center (relative to the variance), and proportional to the magnitude of <span class="arithmatex">\(x\)</span>. If <span class="arithmatex">\(x_i\)</span> is on the same side of the center as <span class="arithmatex">\(x\)</span>, it gets a positive weight, and if it's on the opposite side it gets a negative weight.</em> (Shalizi 2017)</p>
+<p>If <span class="arithmatex">\(\mu(x)\)</span> is really a straight line, this is fine, but when it's not, that the weights are proportional to how far they are to the <strong>center</strong> and not the point <strong>to predict</strong> can lead to awful predictions.</p>
+<h4 id="alternative-smoothers"><a class="toclink" href="../../2022/01/18/linear-smoothers.en-us/#alternative-smoothers">Alternative smoothers</a></h4>
+<p>For that, other methods smooth the data in another ways to help mitigate that.</p>
+<p>As quick examples, we have <em>KNN regression</em> where the smoothing is done using only close observations to the one to predict (and getting quite noisy since depend a lot on the sample points around a small area).  </p>
+<p><em>Kernel smoothers</em> are a variant where depending on the kernel selected we get different smoothing. The main idea is that we use a windowd of data with the idea of putting more weight to points close to the one to predict. Could be Gaussian weight around X for example, or uniform around a window. Note this is different than KNN regression since we do not take the average of those points, we get a regression for that area.<br />
+A nice thing about this smoothers (and KNN regression) is that if we want to predict points far from the training data we won't get a linear extrapolation as with OLS but it will be pushed towards the closest data points we had in training.</p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-01-17 00:00:00+00:00">2022-01-17</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/matematica/" class="md-meta__link">matematica</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="bias-variance-tradeoff"><a class="toclink" href="../../2022/01/17/bias-variance-tradeoff.en-us/">Bias Variance Tradeoff</a></h2>
+<p>Mean squared error (MSE) is a measure of how far our prediction is from the true values of the dependent variable. It's the expectation of the squared error.</p>
+<p>The squared error being:</p>
+<div class="arithmatex">\[(Y - \hat \mu(x))^2\]</div>
+<p>where Y is the true value and <span class="arithmatex">\(\hat \mu(x)\)</span> is the prediction for a given x.</p>
+<p>We can decompose it into:</p>
+<div class="arithmatex">\[(Y - \hat \mu(x))^2 \\
+= (Y - \mu(x) + \mu(x) - \hat \mu(x)^2) \\
+= (Y - \mu(x))^2 + 2(Y - \mu(x))(\mu(x) - \hat \mu(x)) + (\mu(x) - \hat \mu(x))^2\]</div>
+<p>So, that's the squared error. The MSE is the expectation of that.  </p>
+<p>The expectation is a linear operator so we can apply it independently to different terms of a summation.<br />
+The expectation of the first term is the variance of the error intrinsic to the DGP.<br />
+The second term goes to 0 because involves <span class="arithmatex">\(E(Y-\mu(x))\)</span> that is the expectation of the error and that's equal to 0.<br />
+The third term reamins as it is since doesn't involve random variables.  </p>
+<div class="arithmatex">\[MSE(\hat \mu(x)) = \sigma^2_x + (\mu(x) - \hat \mu(x))^2\]</div>
+<p>This is our first bias-variance decomposition. The first term is the intrinsic difficulty of the problem to model, is the variance of the error and can not be reduced, it is what it is.<br />
+The second term is how off our predictions are regarding the true expected value for that particular X.  </p>
+<p>This would be fine if we wouldn't need to consider <span class="arithmatex">\(\hat \mu(x)\)</span> a random variable itself, since it is dependent on the specific dataset we are using. Given another dataset our estimation would be different despite using the same model methodology.<br />
+What we actually want is the MSE of the method used <span class="arithmatex">\(\hat M\)</span> and not only the result of a particular realization.</p>
+<div class="arithmatex">\[MSE(\hat M_n(x)) = E[(Y - \hat M_n(X))^2 | X=x] \\
+= ... \\
+= \sigma^2_x + (\mu(x) -  E[\hat M_n(x)])^2 - V[\hat M_n(x)]
+\]</div>
+<p>This is our 2<sup>nd</sup> bias-variance decomposition.<br />
+The first term is still the irreducible error.<br />
+The second term is the bias of using <span class="arithmatex">\(\hat M_n\)</span> to approximate <span class="arithmatex">\(\mu(x)\)</span>. Is the approximation bias/error.<br />
+The third term is the variance of the estimate of the regression function. If our estimates have high variance we can have large errors despite using an unbiased approximation.  </p>
+<p>Flexible methods will be able to approximate <span class="arithmatex">\(\mu(x)\)</span> closely, however usually using more flexible methods involve increasing the variance of the estimate. That's the <strong>bias-variance tradeoff</strong>. We need to evaluate how to balance that, sometimes including some bias reduce much more the error by decreasing the variance.<br />
+Usually larger N decreases the MSE since it decreases bias and variance error.</p>
+<h5 id="reference"><a class="toclink" href="../../2022/01/17/bias-variance-tradeoff.en-us/#reference">Reference</a></h5>
+<p>Based on 1.4.1 from Advanced data analysis from a elementary point of view.</p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2021-07-11 00:00:00+00:00">2021-07-11</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a>, 
+              <a href="../../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="spark-and-pyspark"><a class="toclink" href="../../2021/07/11/spark.en-us/">Spark and Pyspark</a></h2>
+<h3 id="whats-spark"><a class="toclink" href="../../2021/07/11/spark.en-us/#whats-spark">What's Spark?</a></h3>
+<p>prueba
+The <a href="https://spark.apache.org/faq.html">definition</a> says:  </p>
+<blockquote>
+<p>Spark is a fast and general processing engine compatible with Hadoop data. It can run in Hadoop clusters &gt;through YARN or Spark's standalone mode, and it can process data in HDFS, HBase, Cassandra, Hive, and any &gt;Hadoop InputFormat. It is designed to perform both batch processing (similar to MapReduce) and new &gt;workloads like streaming, interactive queries, and machine learning.</p>
+</blockquote>
+<p>Basically is a framework to work with big amounts of data stored in distributed systems instead of just one machine. This allows parallelization and hence much faster calculations.<br />
+It's biggest difference with plain Hadoop is that Spark uses RAM to process data while Hadoop doesn't.  </p>
+<p>Not being a data engineer myself I can tell you that you can use Spark to work with data stored in HDFS, S3 buckets or a data lake for example. All distributed systems.  </p>
+<p>Since those usually store huge big amount of data you can see how all this relate. The use case I have been exposed to, as a data scientist, is to query this distributed data and process it before using it for some purpose (modeling, reporting, etc).</p>
+<h3 id="how-to-use-it"><a class="toclink" href="../../2021/07/11/spark.en-us/#how-to-use-it">How to use it?</a></h3>
+<p>I haven't deployed a distributed storage system myself but I think it's safe to assume that amount of data is gathered in big organizations and probably some data engineer has already done all the setup. You just want to access the data from an environment connected to the spark cluster. </p>
+<p>There are several languages that can interact with Spark. Scala is the original one but you could use Java or Python. As data scientist we are probably more familiar with Python so I will show you Pyspark</p>
+<h4 id="pyspark"><a class="toclink" href="../../2021/07/11/spark.en-us/#pyspark">Pyspark</a></h4>
+<p>Pyspark is an API to work with Spark using Python. In order to run you need also Java installed and Apache Spark.
+In our fictional organization a data engineer might have set up a server with Jupyter notebooks linked to the data lake and with all the dependencies.</p>
+<p>There are probably ways to connect to the remote spark server from your local machine but I haven't done that.</p>
+<p>So, Pyspark allows you to query the datalake/bigdata storage from a jupyter notebook and then convert that to a Pandas Dataframe and work as you are used to.</p>
+<p>Spark/Pyspark has a particular syntax that is quite clear but has some particularities based on the parallelization notion. For example, many functions don't actually retrieve all the data, that only happens when you decide to. For example <code>show()</code> or <code>collect()</code> do retrieve the data (and can take a while if you are working with a lot of data) while <code>filter()</code> or <code>withColumn()</code> don't.</p>
+<p>Another thing to notice is that you will need to create/initiate a sparkContext before actually being able to query data.</p>
+<p>To understand this and have a good amount of examples regarding the functions and syntax I highly recommend <a href="https://sparkbyexamples.com/pyspark-tutorial/">THIS SITE.</a></p>
+<h4 id="how-to-practice"><a class="toclink" href="../../2021/07/11/spark.en-us/#how-to-practice">How to practice?</a></h4>
+<p>You can practice Pyspark queries and scripts by installing Pyspark in your local machine despite not having a cluster running distributed data. With Pyspark installed you can create some data and use it as it was real.<br />
+You will be able to use all the functions and check them by yourself.</p>
+<p>How to install it? You can check <a href="https://sparkbyexamples.com/pyspark-tutorial/#pyspark-installation">THIS GUIDE FOR WINDOWS.</a></p>
+<p>I have struggled a bit to make it work so these are some things I learned during the way. </p>
+<ul>
+<li>I have downloaded Java 8 since that's what the guide says and use that at my current organization.</li>
+<li>To avoid creating an account in Oracle to download Java you can check <a href="https://gist.github.com/wavezhang/ba8425f24a968ec9b2a8619d7c2d86a6#gistcomment-3799446">THIS SOLUTION.</a></li>
+<li>When creating Environment variables avoid blank spaces</li>
+<li>If Pyspark doesn't run because can't find Java. Check the %JAVA_HOME% path.</li>
+<li>If the error is related to missing Python3 , check the %PYTHONPATH% and create in the anaconda path a copy of <code>python.exe</code> but rename it <code>python3.exe</code></li>
+</ul>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2021-01-18 00:00:00+00:00">2021-01-18</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/python/" class="md-meta__link">Python</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="softmax-vs-sigmoid"><a class="toclink" href="../../2021/01/18/softmax-vs-sigmoid.en-us/">Softmax vs sigmoid</a></h2>
+<p>When using Neural Nets for a multiclass classification problem it's standard to have a softmax layer at the end to normalize the probabilities for each class. This means that the output of our net is a vector of probabilities (one for each class) that sums to 1. If there isn't a softmax layer at the end, then the net will output a value in each of the last cells (one for each class) but without a delimited range.<br />
+Just a set of numbers where usually the highest is the one with the most probable class but it's not obvious how to value the differences between them.</p>
+<p>So, you have a ordered set of numbers, you know which one is the most probable but you want to transform that into clear probabilities. You use the softmax layer. </p>
+<p>You could use a sigmoid activation function in the last cell to have <em>individual</em> probabilities. For each class, it transforms the output of the net into a probability. However the sum of those probabilities is not guaranteed to sum 1, actually it won't in practice. It's a simple proxy but you can get better intuitions with softmax.</p>
+<p>We will compare how these two approaches affect the last group of weights by inspecting the gradient after calculating the loss for an observation.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>I'm using the <em>reticulate</em> package in R to include Python code in Rmarkdown. Pretty nice.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
+</span></code></pre></div>
+<p>We import pytorch to handle tensors and neural net functions.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="kn">import</span> <span class="nn">torch</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>## &lt;torch._C.Generator object at 0x00000262714CF730&gt;
+</span></code></pre></div>
+<ul>
+<li>1 obs  </li>
+<li>5 features (X)  </li>
+<li>3 possible classes (index 1 = class 2)  </li>
+<li>W. 3 output cells, each one with 5 weights (one per feature)  </li>
+<li>W1 = W2 because we run it twice (two scenarios) and we can't re use the same weights because of the gradient calculated</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="n">W1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="n">W2</span> <span class="o">=</span> <span class="n">W1</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> 
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span> 
+</span></code></pre></div>
+<p>We transform everything to positives to make it cleaner and we add the requires_grad_() characteristic
+that tells pytorch that those tensors need the gradient backpropagated during training</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="n">W1</span> <span class="o">=</span> <span class="n">W1</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="n">W2</span> <span class="o">=</span> <span class="n">W2</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+</span></code></pre></div>
+<p>We define both losses (softmax and sigmoid).  </p>
+<p><em>Softmax</em>  </p>
+<ul>
+<li>Weights * input: cell value</li>
+<li>we change dimension of output to use it as input of softmax</li>
+<li>We calculate the softmax (probabilities of each class that sum 1)</li>
+<li>Apply log because we will use the negative log likelihood</li>
+<li>We calculate the loss (log of softmax probabilities vs actual class)</li>
+</ul>
+<p><em>Sigmoid</em>  </p>
+<ul>
+<li>Weights * input: cell value</li>
+<li>we change dimension of output to use it as input of sigmoid</li>
+<li>We calculate the sigmoid (probabilities of each class individually)</li>
+<li>Apply log because we will use the negative log likelihood</li>
+<li>We calculate the loss (log of sigmoid probabilities vs actual class)</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># funcion con softmax al final</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="k">def</span> <span class="nf">softmax_loss</span><span class="p">(</span><span class="n">W</span><span class="p">):</span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">W</span> <span class="o">@</span> <span class="n">X</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">nll_loss</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>
+</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a><span class="c1"># funcion con una sigmoidea por activacion</span>
+</span><span id="__span-50-10"><a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a><span class="k">def</span> <span class="nf">sigmoid_loss</span><span class="p">(</span><span class="n">W</span><span class="p">):</span>
+</span><span id="__span-50-11"><a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">W</span> <span class="o">@</span> <span class="n">X</span>
+</span><span id="__span-50-12"><a id="__codelineno-50-12" name="__codelineno-50-12" href="#__codelineno-50-12"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-50-13"><a id="__codelineno-50-13" name="__codelineno-50-13" href="#__codelineno-50-13"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-14"><a id="__codelineno-50-14" name="__codelineno-50-14" href="#__codelineno-50-14"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-15"><a id="__codelineno-50-15" name="__codelineno-50-15" href="#__codelineno-50-15"></a>    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">nll_loss</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></code></pre></div>
+<p>We run the forward pass and calculate the loss for the sigmoid first. Then we look for the gradient.<br />
+As we can see in the results, only the weights that go to the correct class' output cell are modified. Classes one and three rest untouched. This is because the sigmoid activation just has the individual weights (and cross entropy only look to the correct class)</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">out_sigmoid</span> <span class="o">=</span> <span class="n">sigmoid_loss</span><span class="p">(</span><span class="n">W1</span><span class="p">)</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="n">out_sigmoid</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="n">W1</span><span class="o">.</span><span class="n">grad</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>## tensor([[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>##         [-0.0452, -0.0867, -0.0564, -0.0492, -0.0549],
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>##         [ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000]])
+</span></code></pre></div>
+On the contrary, when running the same net but with softmax layer we see that all the weights are updated. The correct class has gradient with the same sign that for the sigmoid example but the other two classes have in this case opposite sign gradients (which makes sense since you want them to go in the other direction).<br />
+This happens because the softmax includes the other classes in each cell since they are needed to normalize and return probabilities that sum up to 1.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="n">out_softmax</span> <span class="o">=</span> <span class="n">softmax_loss</span><span class="p">(</span><span class="n">W2</span><span class="p">)</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="n">out_softmax</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="n">W2</span><span class="o">.</span><span class="n">grad</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>## tensor([[ 0.5393,  1.0346,  0.6731,  0.5868,  0.6552],
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>##         [-0.5576, -1.0697, -0.6959, -0.6066, -0.6775],
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>##         [ 0.0183,  0.0351,  0.0228,  0.0199,  0.0222]])
+</span></code></pre></div>
+This is a simple case with just one layer of weights so we can clearly see this. If you had a fully connected net with more layers, this is valid just for the last one because the gradient is backpropagated and the weights from "other paths" still affect the cell that corresponds to the second class.  </p>
+<h4 id="conclusion"><a class="toclink" href="../../2021/01/18/softmax-vs-sigmoid.en-us/#conclusion">Conclusion</a></h4>
+<p>The net should evolve during training in a similar way with both last layer activations but the way they do it is different and we try to show in here why. In the end, the sigmoid still reflects the preference for one of the classes and during each epoch it will go through the desired path but just updating some of the weights and not all at the same time.</p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-10-15 00:00:00+00:00">2020-10-15</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/r/" class="md-meta__link">R</a>, 
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="counter-strike-chance-of-winning"><a class="toclink" href="../../2020/10/15/counter-strike-chance-of-winning.en-us/">Counter Strike: chance of winning</a></h2>
+<p>This <a href="https://www.kaggle.com/skihikingkevin/csgo-matchmaking-damage">CS GO Kaggle link</a> has data about several competitive CS GO matches.
+In a few words:  </p>
+<ul>
+<li>those are 5 vs 5 matches where each team tries to kill the other or complete a task (planting or defusing the bomb depending the role you are playing) before the time expires.  </li>
+<li>The goal is to win 16 rounds before the other team.  </li>
+<li>After 15 rounds both teams switch sides/role.</li>
+</ul>
+<p>The data has mostly information about each time a player damages another one (and eventually kills it), some grenades usage and some general data of each round as the amount of money spent by each team and the result of that round.  </p>
+<p>In here I have followed <a href="https://www.youtube.com/watch?v=_UVN1fwkjaU&amp;ab_channel=LanderAnalytics">Namita Nandakumar hockey example</a> to obtain and model some basic winning probability based on the lead and how many rounds have been played so far.  </p>
+<p>This is how probability of winning looks as the game progresses, grouped by how much the current winner is leading. (Averaging leads greater than 4 to keep it clean ).<br />
+The thin line is the <em>empirical probability</em>, based solely on segmenting the data.<br />
+The thick line is a local regression with its standard deviation.
+<img alt="Image" src="../../img/2020-10-15-counter-strike-chance-of-winning.en-us-unnamed-chunk-2-1.png" /></p>
+<p>So, as we see there is some noise around the trend and the approximation wiggles a bit as you go through X. We would like to have a model where winning by some amount is always better if you are closer to 16. Let's say it is not crazy to assume that if you are winning by 3, 15 to 12, you should always have higher chances to win than if you are leading 6-3.  </p>
+<p>Namita shows that xgboost is a nice tool to impose that kind of constraint to a simple model using the monotone constraint parameter.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">objective</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;binary:logistic&quot;</span><span class="p">,</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">              </span><span class="n">eval_metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;logloss&quot;</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">              </span><span class="n">max_depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">              </span><span class="n">eta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.1</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">              </span><span class="n">monotone_constraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span><span class="w"> </span>
+</span></code></pre></div>
+<p>What we get is a model that follows the constraints, although has some bias for the lower leading categories. Nevertheless is a quick approach to approximate the probabilities in a credible way.<br />
+You could use the dataset to explore other stuff since it has some rich information about locations.</p>
+<p><img alt="Image" src="../../img/2020-10-15-counter-strike-chance-of-winning.en-us-unnamed-chunk-4-1.png" /></p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-10-06 00:00:00+00:00">2020-10-06</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="non-negative-matrix-factorization"><a class="toclink" href="../../2020/10/06/non-negative-matrix-factorization.en-us/">Non Negative Matrix Factorization</a></h2>
+<p>Please follow this <a href="/flexdashboard/nnmf_nba.html">link</a><br />
+It was made with Flexboard (a package to do dashboards in R) so I think it's only visualized correctly in laptops/pc because of the layout.</p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-07-18 00:00:00+00:00">2020-07-18</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="distribucion-dirichlet-como-prior-de-multinomial"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/">Distribucion Dirichlet como prior de Multinomial</a></h2>
+<p>Basado en:<br />
+<a href="http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week6.pdf">http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week6.pdf</a><br />
+<a href="http://www.inf.ed.ac.uk/teaching/courses/mlpr/assignments/multinomial.pdf">http://www.inf.ed.ac.uk/teaching/courses/mlpr/assignments/multinomial.pdf</a></p>
+<p>La distribución Dirichlet es una distribución multivariada para un conjunto de cantidades <span class="arithmatex">\(\theta_i,...,\theta_m\)</span> donde <span class="arithmatex">\(\theta_i &gt;= 0\)</span> y <span class="arithmatex">\(\sum_{i=1}^m \theta_i = 1\)</span>. Esto la hace una candidata útil para modelar un conjunto de probabilidades de una partición (un un conjunto de eventos mutuamente excluyentes). Es decir, un grupo de probabilides de eventos excluyentes, que sumen 1.<br />
+Podemos remplazar los <span class="arithmatex">\(\theta\)</span> por <span class="arithmatex">\(p\)</span> si es más claro que hablamos de probabilidades luego.</p>
+<p>La PDF es:</p>
+<div class="arithmatex">\[f(\theta_i,...,\theta_m; \alpha_i.., \alpha_m) =   \frac{\Gamma(\sum_i{\alpha_i})}{\prod_{i=1}^m \Gamma(\alpha_i)}\prod_{i = 1}^m \theta_i^{(\alpha_1-1)}\]</div>
+<p>Donde la función <span class="arithmatex">\(\Gamma\)</span> es <span class="arithmatex">\(\Gamma(\alpha) = (\alpha -1)!\)</span>. Para más detalles ver <a href="https://en.wikipedia.org/wiki/Gamma_function">acá</a>.<br />
+Los <span class="arithmatex">\(\alpha_i\)</span> son parámetros de la distribución y deben ser mayores a 0.<br />
+Cuando m = 2, obtenemos una función <span class="arithmatex">\(beta(\alpha_1, \alpha_2)\)</span> como caso particular de la Dirichlet.</p>
+<h4 id="dirichtlet-en-inferencia-bayesiana"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/#dirichtlet-en-inferencia-bayesiana">Dirichtlet en Inferencia Bayesiana.</a></h4>
+<p>De la misma manera que la distribución Beta suele usarse como prior de la Distribución Binomial ya que es una distribución conjugada para ese caso, la distribución Dirichlet suele usarse para distribuciones <strong>Multinomiales</strong>, es decir donde hay más de 2 categorías posibles (más de 2 <span class="arithmatex">\(p_i\)</span>). También es distribución conjugada. Es simplemente la versión multinomial de la beta.  </p>
+<p>La distribución multinomial es la siguiente:</p>
+<div class="arithmatex">\[\frac{n!}{\prod_{i = 1}^m x_i!}\prod_{i=1}^m p_i^{x_i}\]</div>
+<p>Cuando m = 2, es la distribución binomial.</p>
+<p>Si tuvieramos un experimento que se puede modelar como una multinomial y queremos estimar los <span class="arithmatex">\(p_i\)</span> podemos utilizar los estimadores de máxima verosimilitud (frecuentista) o ir por el camino de bayesiano donde comenzamos con un prior para cada p, que modelaremos con la Dirichlet. El prior de cada <span class="arithmatex">\(p_i\)</span> va a ser definido con la elección de los <span class="arithmatex">\(\alpha\)</span>.</p>
+<p>Yendo por el camino bayesiano vamos a tener nuestra distribución posterior:
+$$ P(p | x) \propto P(x|p) * P(p)$$
+donde <span class="arithmatex">\(P(x|p)\)</span> no es otra cosa que la distribución multinomial y <span class="arithmatex">\(P(p)\)</span> es nuestro prior de <span class="arithmatex">\(p\)</span> dado por la Dirichlet. Omitimos el denominador que es normalizador ya que es una constante.</p>
+<p>Multiplicamos entonces la PDF multinomial por la Dirichlet y obtenemos:</p>
+<p><em>Importante notar que efectivamente cambiamos <span class="arithmatex">\(\theta\)</span> por <span class="arithmatex">\(p\)</span> en la Dirichlet para que sea consistente con la multinomial.</em></p>
+<div class="arithmatex">\[\frac{n!}{\prod_{i = 1}^m x_i!}\prod_{i=1}^m p_i^{x_i} * \frac{\Gamma(\sum_i{\alpha_i})}{\prod_{i=1}^m \Gamma(\alpha_i)}\prod_{i = 1}^m p_i^{(\alpha_1-1)} \\ \propto \prod_i p_i^{\alpha_i + x_i -1}\]</div>
+<p>Para la proporcionalidad, quitamos todo lo que es factorial (y <span class="arithmatex">\(\Gamma\)</span>) ya que es constante y combinamos los exponentes de base <span class="arithmatex">\(p_i\)</span>.</p>
+<p>Vemos entonces que nuestra distribución posterior es propocional a ese término, que si vemos, es una Dirichlet para la cual nos falta el término constante! Por eso se dice que es una prior conjugada, ya que la posterior es de la misma familia que la prior (con otros valores claro.)<br />
+Es entonces una Dirichlet con parámetros <span class="arithmatex">\(\alpha_i + x_i\)</span> y podemos completar el término faltante obteniendo: 
+$$ \frac{\Gamma(\sum_i{\alpha_i + x_i})}{\prod_{i=1}^m \Gamma(\alpha_i + x_i)}\prod_{i=1}^m p_i^{(\alpha_i + x_i-1)}$$</p>
+<p>He ahí nuestra distribución posterior para los valores de <span class="arithmatex">\(p\)</span> de la multinomial.</p>
+<p>Para calcular rápidamente la esperanza de cada <span class="arithmatex">\(p_i\)</span> hacemos simplemente:
+<span class="arithmatex">\(<span class="arithmatex">\(E(p_i) = \frac{\alpha_i + x_i}{\sum (\alpha_i +  x_i)}\)</span>\)</span></p>
+<p>Si obtenemos nueva información podemos repetir el proceso, pero nuestra nueva prior debería ser la posterior previamente calculada. Y así vamos agregando información a medida que se recolecta y actualizando nuestra inferencia acerca de <span class="arithmatex">\(p_i\)</span></p>
+<p><strong>Aclaración</strong>: La proporción de cada <span class="arithmatex">\(\alpha_i\)</span> iniciales en la Dirichlet prior sobre la suma de todos los <span class="arithmatex">\(\alpha_i\)</span> es nuestro prior de <span class="arithmatex">\(p_i\)</span>. A mayores valores absolutos, mayor peso al prior respecto a los datos, ya que nuestro nuevo <span class="arithmatex">\(p_i\)</span> es función del <span class="arithmatex">\(\alpha_i\)</span> y <span class="arithmatex">\(x_i\)</span>. Revisar bien como ajustar los <span class="arithmatex">\(alpha\)</span> según la magnitud de <span class="arithmatex">\(x\)</span>, si es que hay que hacerlo.</p>
+<h4 id="ejemplo"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/#ejemplo">Ejemplo</a></h4>
+<p>Queremos modelar la compra de remeras de basquet en una tienda. Entra un cliente al azar y tiene determinadas probabilidades de comprar una remera de los Lakers, una de los Celtics, una de San Antonio o cualquier otro equipo.  </p>
+<p>En un primer momento no sabemos las proporciones y empezamos con unos priors <span class="arithmatex">\(\alpha_1 : \alpha_4 = [8,6,4,2]\)</span> que corresponde a 40%, 30%, 20% y 10% respectivamente.</p>
+<p>Recolectamos los datos de 100 clientes y vemos que las ventas fueron las siguientes:<br />
+Lakers : 45<br />
+Celtics: 22<br />
+Spurs: 27<br />
+Otros: 6  </p>
+<p>Calculando rapidamente con la fórmula de la Esperanza las probabildades que se derivan de nuestra posterior obtenemos:</p>
+<p>Lakers = 0.442<br />
+Celtic = 0.233<br />
+Spurs  = 0.258<br />
+Otro   = 0.067  </p>
+<p>Para ser más prolijos habría que agregar la varianza de cada <span class="arithmatex">\(p\)</span>. A agregar en un futuro..</p>
+<p>Si hubieramos calculado los p  de máxima verosimilitud no sería más que la proporción de cada equipo en los datos, sin tener en cuenta nuestro prior. Vemos que acá están obviamente cercanos a la proporción en los datos pero se inclinan hacia el prior. Recordar que el peso de los priors va a verse afectar por los <span class="arithmatex">\(\alpha\)</span> elegidos y por la cantidad de datos recolectados.</p>
+<p>En ML es bastante útil para el caso donde una nueva categoría aparece en el test set. Si no fue vista en el training le va a dar probabilidad 0 mientras que con un prior podemos salvar ese problema.<br />
+En NLP es bastante habitual usar la distribución Dirichlet como prior. Investigar por ese lado.</p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-07-11 00:00:00+00:00">2020-07-11</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/r/" class="md-meta__link">R</a>, 
+              <a href="../../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="de-r-a-python-1"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/">De R a Python 1</a></h2>
+<p>Serie que documenta cuestiones prácticas que voy descubriendo a medida que empiezo a incursionar en Python un poco más enserio.
+Son más que nada recordatorios para el futuro de mecánicas que hoy entiendo, pero me voy a olvidar.</p>
+<p>Muchos de los objetos no van a tener relación entre sí o no se puede correr el código directo 
+ya que son copy/paste random de scripts.</p>
+<h4 id="usar-objetos-de-otros-scripts"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#usar-objetos-de-otros-scripts">Usar objetos de otros scripts</a></h4>
+<p>Si uno genera modelos, dataframes, etc en otro script por prolijidad y quiere utilizarlos en 
+el principal (o cualquiera en realidad) lo aconsejable es exportarlo como objeto pickle (algo 
+asi como los RDS en R.)</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="kn">import</span> <span class="nn">pickle</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>
+</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a><span class="c1"># exportar. Objeto, archivo, permisos</span>
+</span><span id="__span-61-5"><a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">OBJETO</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;working/qualifying.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span>
+</span><span id="__span-61-6"><a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a>
+</span><span id="__span-61-7"><a id="__codelineno-61-7" name="__codelineno-61-7" href="#__codelineno-61-7"></a><span class="c1"># importar</span>
+</span><span id="__span-61-8"><a id="__codelineno-61-8" name="__codelineno-61-8" href="#__codelineno-61-8"></a><span class="n">leer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;archivo.p&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="seleccionar-columas-de-dataframe-por-patron-en-el-nombre"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#seleccionar-columas-de-dataframe-por-patron-en-el-nombre">Seleccionar columas de dataframe por patrón en el nombre</a></h4>
+<p>Para seleccionar columnas basados en si contiene determinado string en su nombre y no solo por nombre
+completo o por índice. </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="c1"># Recordemos que iloc selecciona por índice</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a><span class="c1"># Función Lambda  que convierte el indice de columna en strings y devuelve mascara (True/false)</span>
+</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="c1"># si contiene determinado patrón. Creo que puede ponerse cualquier Regex</span>
+</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;_points&#39;</span><span class="p">)]</span> <span class="c1"># select column based on name</span>
+</span></code></pre></div>
+<p>Si queremos combinar esto con otras columnas con otro patrón no encontré manera más sencilla por
+el momento que combinar por separado. Quizás es muy tedioso si son muchas.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="c1"># Notar que en point_vars le pasamos la máscara al listado de columnas nuevamente</span>
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a><span class="c1"># para quedarnos con el nombre real y poder sumarlo a las otras listas</span>
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a><span class="c1"># luego lo convertimos en lista porque el objeto es de tipo índice si no.</span>
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span>
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a><span class="n">qualy_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">,</span> <span class="s1">&#39;dif_to_min_perc&#39;</span><span class="p">]</span>
+</span><span id="__span-63-6"><a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a><span class="n">point_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;_points&#39;</span><span class="p">)])</span>
+</span><span id="__span-63-7"><a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>
+</span><span id="__span-63-8"><a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a><span class="n">vars_keep</span> <span class="o">=</span> <span class="n">target</span> <span class="o">+</span> <span class="n">qualy_vars</span> <span class="o">+</span> <span class="n">point_vars</span>
+</span></code></pre></div>
+<h4 id="juntar-dataframes-por-indice"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#juntar-dataframes-por-indice">Juntar dataframes por indice</a></h4>
+<p>Los DF vienen por default con un índice. Si uno trabaja con una copia del DF original para generar nuevas columnas el índice se mantiene (si no lo reseteamos claro). También útil si se tienen varias tablas con mismo índice.</p>
+<p>Esto permite juntar tablas sin tener que hacer un merge explicito por determinadas columnas si no
+tenemos esos keys.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">driver_points_merge</span><span class="p">)</span> <span class="c1"># join by index (no need to merge with column)</span>
+</span></code></pre></div>
+<h4 id="ifelse"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#ifelse">Ifelse</a></h4>
+<p>El equivalente de IFELSE en R para rapidamente crear una columna basado en otras, fila por fila.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-65-2"><a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a><span class="c1">#               = condicion, valor si True, valor si False</span>
+</span><span id="__span-65-3"><a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="dropear-columna-de-df"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#dropear-columna-de-df">Dropear columna de DF</a></h4>
+<p>Útil para asegurar que sacan el target de las X...</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;position&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="remplazar-determinado-valor-por-nan-u-otro"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#remplazar-determinado-valor-por-nan-u-otro">Remplazar determinado valor por NaN (u otro)</a></h4>
+<p>df.replace</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="n">qualifying</span> <span class="o">=</span> <span class="n">qualifying</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">N&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="apply-aplicar-funciones-a-cada-fila-o-columna"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#apply-aplicar-funciones-a-cada-fila-o-columna">APPLY. Aplicar funciones a cada fila o columna</a></h4>
+<p>Permite aplicar una función por fila o columna.La funcion se aplica sobre la serie (la fila o columna)
+La serie mantiene los indices. Si usamos apply con axis = 1 que cada serie es una fila entera, 
+podemos llamar a la celda correspondiente usando ['columna']</p>
+<p>Apply es como las distintas versiones de apply de R y/o MAP del tidyverse cuando se aplica a un DF.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-68-2"><a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="n">rectangles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-68-3"><a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">10</span> <span class="p">},</span>
+</span><span id="__span-68-4"><a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">9</span> <span class="p">},</span>
+</span><span id="__span-68-5"><a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mf">3.4</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">4</span> <span class="p">}</span>
+</span><span id="__span-68-6"><a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a><span class="p">]</span>
+</span><span id="__span-68-7"><a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a>
+</span><span id="__span-68-8"><a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a><span class="n">rectangles_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rectangles</span><span class="p">)</span>
+</span><span id="__span-68-9"><a id="__codelineno-68-9" name="__codelineno-68-9" href="#__codelineno-68-9"></a><span class="n">rectangles_df</span>
+</span><span id="__span-68-10"><a id="__codelineno-68-10" name="__codelineno-68-10" href="#__codelineno-68-10"></a>
+</span><span id="__span-68-11"><a id="__codelineno-68-11" name="__codelineno-68-11" href="#__codelineno-68-11"></a>
+</span><span id="__span-68-12"><a id="__codelineno-68-12" name="__codelineno-68-12" href="#__codelineno-68-12"></a><span class="c1"># Suma de todas las celdas (&quot;filas&quot;) por columna</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>##    height  width
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>## 0    40.0     10
+</span><span id="__span-69-3"><a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>## 1    20.0      9
+</span><span id="__span-69-4"><a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>## 2     3.4      4
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="n">suma_por_columna</span> <span class="o">=</span> <span class="n">rectangles_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+</span><span id="__span-70-2"><a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">suma_por_columna</span><span class="p">)</span>
+</span><span id="__span-70-3"><a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>
+</span><span id="__span-70-4"><a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a><span class="c1"># Suma de todas las celdas (&quot;columnas&quot;) por filas</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>## height    63.4
+</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>## width     23.0
+</span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>## dtype: float64
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="n">suma_por_fila</span> <span class="o">=</span> <span class="n">rectangles_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">suma_por_fila</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>## 0    50.0
+</span><span id="__span-73-2"><a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>## 1    29.0
+</span><span id="__span-73-3"><a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>## 2     7.4
+</span><span id="__span-73-4"><a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>## dtype: float64
+</span></code></pre></div>
+<h4 id="apply-lambda-para-pasar-funciones-custom-en-el-momento"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#apply-lambda-para-pasar-funciones-custom-en-el-momento">Apply Lambda para pasar funciones custom en el momento</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-74-2"><a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a><span class="n">rectangles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-74-3"><a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">10</span> <span class="p">},</span>
+</span><span id="__span-74-4"><a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">9</span> <span class="p">},</span>
+</span><span id="__span-74-5"><a id="__codelineno-74-5" name="__codelineno-74-5" href="#__codelineno-74-5"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mf">3.4</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">4</span> <span class="p">}</span>
+</span><span id="__span-74-6"><a id="__codelineno-74-6" name="__codelineno-74-6" href="#__codelineno-74-6"></a><span class="p">]</span>
+</span><span id="__span-74-7"><a id="__codelineno-74-7" name="__codelineno-74-7" href="#__codelineno-74-7"></a>
+</span><span id="__span-74-8"><a id="__codelineno-74-8" name="__codelineno-74-8" href="#__codelineno-74-8"></a><span class="n">rectangles_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rectangles</span><span class="p">)</span>
+</span><span id="__span-74-9"><a id="__codelineno-74-9" name="__codelineno-74-9" href="#__codelineno-74-9"></a>
+</span><span id="__span-74-10"><a id="__codelineno-74-10" name="__codelineno-74-10" href="#__codelineno-74-10"></a><span class="k">def</span> <span class="nf">multiplicar_2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-74-11"><a id="__codelineno-74-11" name="__codelineno-74-11" href="#__codelineno-74-11"></a>   <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
+</span><span id="__span-74-12"><a id="__codelineno-74-12" name="__codelineno-74-12" href="#__codelineno-74-12"></a>
+</span><span id="__span-74-13"><a id="__codelineno-74-13" name="__codelineno-74-13" href="#__codelineno-74-13"></a><span class="c1"># Caso donde paso una funcion propia predefinida</span>
+</span><span id="__span-74-14"><a id="__codelineno-74-14" name="__codelineno-74-14" href="#__codelineno-74-14"></a><span class="n">rectangles_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">multiplicar_2</span><span class="p">)</span>
+</span><span id="__span-74-15"><a id="__codelineno-74-15" name="__codelineno-74-15" href="#__codelineno-74-15"></a>
+</span><span id="__span-74-16"><a id="__codelineno-74-16" name="__codelineno-74-16" href="#__codelineno-74-16"></a>
+</span><span id="__span-74-17"><a id="__codelineno-74-17" name="__codelineno-74-17" href="#__codelineno-74-17"></a><span class="c1"># Lo mismo pero definido en el momento</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>##    height  width
+</span><span id="__span-75-2"><a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>## 0    80.0     20
+</span><span id="__span-75-3"><a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>## 1    40.0     18
+</span><span id="__span-75-4"><a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a>## 2     6.8      8
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="n">rectangles_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>##    height  width
+</span><span id="__span-77-2"><a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>## 0    80.0     20
+</span><span id="__span-77-3"><a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>## 1    40.0     18
+</span><span id="__span-77-4"><a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>## 2     6.8      8
+</span></code></pre></div>
+<h4 id="calculos-by-group"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#calculos-by-group">Calculos by group</a></h4>
+<p>Como el bygroup de tidyverse.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="c1"># Equivalente a  groupby(raceid) %&gt;% summarise(newcol = min(best_qualy_ms))</span>
+</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a><span class="n">min_qualy_by_race</span> <span class="o">=</span> <span class="n">qualifying</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;raceId&#39;</span><span class="p">)[</span><span class="s1">&#39;best_qualy_ms&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</span></code></pre></div>
+<h4 id="by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila">By Group más complejo, con calculo acumulado en determinada ventana de obs. por cada fila</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="c1"># suma acumulada de los ultimos 4 periodos (rolling)</span>
+</span><span id="__span-79-2"><a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a><span class="c1"># luego el gorupby(level = 0).shift() es para lagearlo por grupo</span>
+</span><span id="__span-79-3"><a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a><span class="c1"># el ultimo reset_index es para quitar el indice de este ultimo agrupado</span>
+</span><span id="__span-79-4"><a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a><span class="n">driver_points</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;driverId&#39;</span><span class="p">)[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_periods</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span>
+</span></code></pre></div>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-05-03 00:00:00+00:00">2020-05-03</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="anova"><a class="toclink" href="../../2020/05/03/anova/">ANOVA</a></h2>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">patchwork</span><span class="p">)</span>
+</span></code></pre></div>
+<p>ANOVA refiere a "Analysis of Variance" en inglés y corresponde a una serie de procedimientos estadísiticos que permiten estudiar diferencias de medias poblacionales, basado en muestras. <br />
+Es una técnica muy difundida para comparar medias de 2 o más grupos. Específicamente queremos ver
+si todos los grupos comparten media o al menos uno difiere. En el caso más simple, de comparar dos medias, el resultado es equivalente al <em>test t de comparación de medias</em>  por lo que ANOVA se considera una generalización de este.</p>
+<p>El test de hipótesis sería:
+<span class="arithmatex">\(<span class="arithmatex">\(H_0: \mu_1 = ... = \mu_k\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(H_1: \text{las medias no son iguales}\)</span>\)</span>
+ANOVA tiene también una serie de supuestos que hay que tener en cuenta.  </p>
+<ul>
+<li>Independencia de las observaciones.</li>
+<li>Normalidad en los residuos. Podemos pensarlo como normalidad dentro de cada grupo, siendo el residuo la parte no explicada por la media del grupo. En muestras chicas puede ser problemático si no se cumple (reduce la potencia del test). Con muestras grandes debería cumplirse por Teorema Central del Límite.</li>
+<li>Homocedasticidad. Se supone que cada grupo tiene misma varianza. Si la muestra no es muy chica ANOVA es bastante robusto con este supuesto, si no, hay alternativas no parámetricas por ejemplo.</li>
+</ul>
+<h4 id="un-ejemplo-simulado"><a class="toclink" href="../../2020/05/03/anova/#un-ejemplo-simulado">Un ejemplo simulado</a></h4>
+<p>Generamos primero un set de datos donde la media de 3 grupos es distinta y vamos paso a paso con los cálculos.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">24</span><span class="p">)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">grupo1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">),</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">                </span><span class="n">grupo2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">),</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">                </span><span class="n">grupo3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">35</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
+</span></code></pre></div>
+<p>Tenemos 3 grupos de 35 observaciones, cada uno proveniente de poblaciones con medias notoriamente distintas.<br />
+Veamos como resultaron las medias muestrales.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">sapply</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">FUN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>##   grupo1   grupo2   grupo3 
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>## 2.916989 5.910171 8.904245
+</span></code></pre></div>
+<p>Viédolo gráficamente vemos que son muy dispares y ANOVA debería captar estas diferencias.<br />
+En el segundo gráfico, la linea vertical represnta la media general del dataset</p>
+<p><img alt="Image" src="../../img/2020-05-03-anova-unnamed-chunk-5-1.png" />
+Veamos como resulta analizar esto con ANOVA.  </p>
+<h4 id="calculos"><a class="toclink" href="../../2020/05/03/anova/#calculos">Cálculos.</a></h4>
+<p>Obviamente existen paquetes estadísticos para realizar este análisis rapidamente pero iremos paso por paso.<br />
+La lógica es comparar la media de las poblaciones y para ello nos basamos en la varianza. Más precisamente en la descomposición de la varianza.</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(SC_{Total} = SC_{Entre} +  SC_{Dentro}\)</span>\)</span>
+La suma de errores cuadrados de TODO el dataset se puede descomponer entre el desvío cuadrado de cada grupo frente a la media general (Entre) más el desvío cuadrado de cada observación respecto a su media grupal.</p>
+<p>Siendo más intuitivos. Los suma de los desvíos cuadrados de cada observación respecto a la media general 5.91 pueden ser vistos como la diferencia entre medias grupales (qué tan lejos está cada pico del gráfico de la media grupal) más qué tan dispersos están los datos dentro de cada grupo.  </p>
+<p>Cuanto más grande sea la brecha entre la variabilidad entre grupos y la variabilidad al interior de los grupos, más probable es que las medias poblacionales sean distintas. Es decir, si la variabilidad total se explica más por la diferencia entre medias grupales que por la diferencia entre desviós al interior, entonces más evidencia en favor de distintas medias grupales. Si el ratio no es tan grande, entonces tenemos menos fuerza para afirmar tal cosa.</p>
+<p>Para poder comparar correctamente, no se mira directamente <span class="arithmatex">\(SC_{Entre}\)</span> vs <span class="arithmatex">\(SC_{Dentro}\)</span> ya que estos dependen del tamaño de la muestra, sino que se los normaliza primero.  <span class="arithmatex">\(SC_{Entre}\)</span> se normaliza por sus grados de libertad siendo <em>k-1</em> (cantidad de grupos menos 1) y  <span class="arithmatex">\(SC_{Dentro}\)</span> se normaliza con <em>N-K</em> (observaciones totales menos cantidad de grupos).</p>
+<blockquote>
+<h5 id="detalle-tecnico"><a class="toclink" href="../../2020/05/03/anova/#detalle-tecnico">Detalle técnico</a></h5>
+<p>Como asumimos que los residuos son normales, entonces elevarlos al cuadrado nos devuelve una distribución <em>Chi-Cuadrado</em>. Las sumas de residuos al cuadrado son entones Chi-Cuadrado con los grados de libertad que mencionamos.
+Si dividimos dos distribuciones Chi-Cuadrado, normalizadas por sus grados de libertad, obtenemos una distribución F con grados de libertad equivalentes a los de ambas Chi-Cuadrado.</p>
+</blockquote>
+<p>Ese estadístico F, que sigue la distribución recién mencionada sera nuestro estádistico para testear la Hipótesis.</p>
+<div class="arithmatex">\[F = \frac{\frac{SC_{Entre}}{K-1}}{\frac{SC_{Dentro}}{N-K}}\]</div>
+<p>Donde:
+<span class="arithmatex">\(<span class="arithmatex">\(SC_{Entre} = \sum_{i=1}^k{n_i (\bar{x}_i} - \bar{x})^2\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(SC_{Dentro} = \sum_{i=1}^K\sum_{j=1}^{n_k}{(x_j - \bar{x}_i)^2}\)</span>\)</span>
+Luego como en cualquier test de hipótesis, comparamos el estadístico F con la distribución teórica si la hipótesis nula fuera cierto y según el valor de alfa que hayamos elegido, rechazamos o no la hipótesis nula.<br />
+Para ilustrar, la dsitribución F tiene la siguiente forma con los grados de libertad de nuestro ejemplo.</p>
+<p><img alt="Image" src="../../img/2020-05-03-anova-unnamed-chunk-6-1.png" /></p>
+<p>Donde la región en rojo es el area de la curva posterior al 95% de la distribución. Si nuestro estadístico cae en la zona rojo podemos rechazar la hipótesis nula con alfa =0.05</p>
+<p>Obtengamos los números con la función aov.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">aov</span><span class="p">(</span><span class="n">valor</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">grupo</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df_long</span><span class="p">)</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">summary</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>##              Df Sum Sq Mean Sq F value Pr(&gt;F)    
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>## grupo         2  627.3  313.66     326 &lt;2e-16 ***
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>## Residuals   102   98.1    0.96                   
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>## ---
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+</span></code></pre></div>
+<p>La tabla que devuelve la función es justamente todo lo que fuimos viendo.<br />
+Sum Sq es la suma de desvíos cuadrados. La fila de grupo corresponde a <em>Entre</em> y Residuals corresponde a <em>Dentro</em>.<br />
+DF son los grados de libertad (K-1) y (N-K).<br />
+Mean Sq es la división de Sum Sq por sus grados de libertad. Serían el numerador y denominador del estadístico F.<br />
+F value es simplemente la división de los Mean Sq. Obtenemos un estadístico de 326(!). A partir de 3 aprox ya podíamos rechazar la hipótesis nula. El p-value (la última columna) es virtualmente 0.</p>
+<p>Dado este resultado, podemos rechazar la hipótesis nula y asegurar con el 95% de confianza que las medias poblacionales no son iguales.<br />
+Era un caso medio extremo pero sirve de ejemplo.</p>
+<p>Lo que no nos dice ANOVA es si todas son distintas o cuál es diferente al resto. Para ello hay que hacer estudios posteriores pero no entramos en detalles acá.</p>
+<h4 id="un-caso-de-medias-iguales"><a class="toclink" href="../../2020/05/03/anova/#un-caso-de-medias-iguales">Un caso de medias iguales</a></h4>
+<p><img alt="Image" src="../../img/2020-05-03-anova-unnamed-chunk-10-1.png" /></p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">aov</span><span class="p">(</span><span class="n">valor</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">grupo</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df2_long</span><span class="p">)</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nf">summary</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>##              Df Sum Sq Mean Sq F value Pr(&gt;F)
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>## grupo         2   0.00  0.0014   0.001  0.999
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>## Residuals   102  98.14  0.9621
+</span></code></pre></div>
+<p>Aquí es el otro extremo. El valor del estadístico F es casi 0, por lo tanto el p-value es casi 1. No hay evidencia para rechazar la hipótesis nula.</p>
+<h4 id="conclusiones"><a class="toclink" href="../../2020/05/03/anova/#conclusiones">Conclusiones</a></h4>
+<p>ANOVA cómo método para comparar medias poblacionales es muy sencillo de aplicar y bastante robusto frente a inconsistencias en los supuestos. Permite dar una medida objetiva de si es posible o no rechazar la hipótesis nula, más allá de que uno pueda tener una primera impresión visual.</p>
+<p>Para ir un paso más allá, ANOVA se puede relacionar directamnte con las regresiones lineales. Anova tal como lo presentamos es equivalente a correr una regresión donde la variable independiente es el grupo al que pertenece la observación. Las generalizaciones como ANCOVA, MANOVA, etc, también tienen su correlato en regresión. Esto sucede porque según el campo de estudio se eligieron caminos y convenciones distintos de análisis, llevando a distintas ramas que al final hacen lo mismo, pero genera confusión al intentar entender la estadística como un todo.</p>
+    
+  </div>
+</article>
       
       
         
