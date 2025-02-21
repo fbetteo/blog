@@ -6,15 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Kullback-Leibler divergence">
+        <meta name="description" content="E-commerce Image Similarity via Visual Embeddings">
       
       
       
       
-        <link rel="prev" href="../mutual-information/">
+        <link rel="prev" href="../../../01/28/kullback-leibler-divergence/">
       
-      
-        <link rel="next" href="../../../02/21/image-similarity-ecommerce/">
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>Kullback-Leibler divergence - Franco Betteo</title>
+        <title>E-commerce Image Similarity via Visual Embeddings - Franco Betteo</title>
       
     
     
@@ -88,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kullback-leibler-divergence" class="md-skip">
+        <a href="#e-commerce-image-similarity-via-visual-embeddings" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kullback-Leibler divergence
+              E-commerce Image Similarity via Visual Embeddings
             
           </span>
         </div>
@@ -1043,28 +1041,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#relative-entropy" class="md-nav__link">
+  <a href="#objectives" class="md-nav__link">
     <span class="md-ellipsis">
-      Relative entropy
+      Objectives
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-its-not-symmetrical" class="md-nav__link">
+  <a href="#proposed-solution" class="md-nav__link">
     <span class="md-ellipsis">
-      Why it's not symmetrical?
+      Proposed Solution
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Why it's not symmetrical?">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Steps">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#step-1-download-catalog-images" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      Step 1: Download Catalog Images
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-generate-and-index-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Generate and Index Embeddings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-query-the-faiss-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Query the Faiss Index
     </span>
   </a>
   
@@ -1072,6 +1097,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
   
 </li>
       
@@ -1131,7 +1165,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-01-28 00:00:00+00:00" class="md-ellipsis">2025-01-28</time>
+                        <time datetime="2025-02-21 00:00:00+00:00" class="md-ellipsis">2025-02-21</time>
                       </div>
                     </li>
                     
@@ -1174,34 +1208,47 @@
         
 
 
-<h1 id="kullback-leibler-divergence">Kullback-Leibler divergence<a class="headerlink" href="#kullback-leibler-divergence" title="Permanent link">&para;</a></h1>
-<p>To understand KL divergence we need to first understand <a href="https://fbetteo.github.io/blog/writing/2025/01/06/entropy/">Entropy</a>. The most important thing to have in mind though is that entropy can be thought as a measure of "information", but what I like the most, as a measure of <em>expected surprise</em> that one gets for every observed value of the distribution.</p>
-<p>For a highly dense distribution, you will almost sure get a value from the dense region and the expected surprise will be really low (but you are highly surprised when you see a value off that region!)</p>
-<h3 id="relative-entropy">Relative entropy<a class="headerlink" href="#relative-entropy" title="Permanent link">&para;</a></h3>
-<p>How this relates to KL? Well, Kullback-Leibler is a divergence but is also called <em>relative entropy</em>. This means, how that measure of entropy differs between two distributions. I find that easier to grasp.</p>
-<p>Usually we have a true distribution <span class="arithmatex">\(p(x)\)</span> and an estimated distribution <span class="arithmatex">\(q(x)\)</span> that we use to approximate <span class="arithmatex">\(p(x)\)</span>. KL divergence can help us understand how good it does the  job.</p>
-<p>If entropy is: </p>
-<p><span class="arithmatex">\(H[x] = - \sum_x p(x) \ln p(x)\)</span><br />
-(originally <span class="arithmatex">\(\log_2\)</span> but <span class="arithmatex">\(\ln\)</span> works too and it's used everywhere )</p>
-<div class="arithmatex">\[KL(p||q) = - \int{p(x) \ln q(x)dx} - (-\int{p(x) \ln p(x)dx})\]</div>
-<div class="arithmatex">\[ = - \int{p(x) \ln \frac{q(x)}{p(x)}dx}\]</div>
-<p>The first row is clear, is just the difference in entropies. 
-This is relative entropy between p(x) and q(x).</p>
-<p><strong>Important</strong>: KL divergence is not symmetrical. <span class="arithmatex">\(KL(p||q) \neq KL(q||p)\)</span>
-So, KL is not a metric of distance (but can be thought as if). It's actually a divergence.</p>
-<h3 id="why-its-not-symmetrical">Why it's not symmetrical?<a class="headerlink" href="#why-its-not-symmetrical" title="Permanent link">&para;</a></h3>
-<p>I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):</p>
+<h1 id="e-commerce-image-similarity-via-visual-embeddings">E-commerce Image Similarity via Visual Embeddings<a class="headerlink" href="#e-commerce-image-similarity-via-visual-embeddings" title="Permanent link">&para;</a></h1>
+<p>How I implemented an API to retrieve similar images from an E-commerce in 3 steps</p>
+<p>In this post, we explore a system to identify similar articles solely based on e-commerce images. The approach is designed with two primary objectives in mind:</p>
+<h2 id="objectives">Objectives<a class="headerlink" href="#objectives" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Catalog Similarity:</strong><br />
+    Determine which items in the client's catalog resemble each other using only their photos.</p>
+</li>
+<li>
+<p><strong>External Querying:</strong><br />
+    Although not implemented in the current API, the plan is to eventually allow querying with external images. The envisioned workflow is to source images from suppliers, compare them with the client's catalog, and perform this embedding generation locally to keep the API lightweight.</p>
+</li>
+</ol>
+<h2 id="proposed-solution">Proposed Solution<a class="headerlink" href="#proposed-solution" title="Permanent link">&para;</a></h2>
+<p>The core idea is to use a pretrained image model to extract embeddings from each photo. Once these embeddings are available, we can perform similarity searches to find items that are visually alike.</p>
+<p>For our implementation, we experimented with both OpenAI's <strong>clip-ViT-B-32</strong> and <strong>ResNet</strong>. In general, both models produced comparable results, though we opted for CLIP in our main experiments.</p>
+<h2 id="implementation-steps">Implementation Steps<a class="headerlink" href="#implementation-steps" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-download-catalog-images">Step 1: Download Catalog Images<a class="headerlink" href="#step-1-download-catalog-images" title="Permanent link">&para;</a></h3>
 <ul>
-<li>one highly centered around one specific value </li>
-<li>the other with a uniform-ish shape, highly dispersed.</li>
+<li><strong>Script:</strong> <code>embeddings/download_images/get_images.py</code></li>
+<li><strong>Details:</strong><br />
+    This script downloads all catalog images from the e-commerce using a <code>ThreadPool</code> to speed up the process.</li>
 </ul>
-<p>The difference in "surprise" you get from both ways approximation is not the same.</p>
-<p>If you are approximating the highly dense distribution with the uniform one, you are approximating it with a distribution that surprises you  in general <span class="arithmatex">\(\ln q(x)\)</span>, let's say <em>moderately high</em> everywhere, even for the specific dense region.</p>
-<p>But the other way, if you approximate the dispersed distribution with the dense one, you are using a distribution with high surprise in most of the region of the dispersed distribution and really low surprise in one specific value.</p>
-<p>This term <span class="arithmatex">\(\int{p(x) \ln q(x)dx}\)</span> behaves differently in both scenarios and there is no guarantee or need that they should match.</p>
-<h4 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h4>
-<p><a href="https://www.bishopbook.com/">Deep Learning, Bishop</a><br />
-<a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Wikipedia</a></p>
+<h3 id="step-2-generate-and-index-embeddings">Step 2: Generate and Index Embeddings<a class="headerlink" href="#step-2-generate-and-index-embeddings" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Script:</strong> <code>embeddings/clip_faiss.py</code></li>
+<li><strong>Details:</strong><br />
+    The script generates embeddings for each photo and stores them in a Faiss index, which is saved under <code>embeddings/faiss_index/</code>.<br />
+<strong>Note:</strong> Since the process is deterministic, a simple overwrite will not impact the results. Idempotent as they call it.</li>
+</ul>
+<p>Additional notebooks are available to illustrate the process, check results, and experiment with alternative models and tests.</p>
+<h3 id="step-3-query-the-faiss-index">Step 3: Query the Faiss Index<a class="headerlink" href="#step-3-query-the-faiss-index" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>API Functionality:</strong><br />
+    The Faiss index is already built. We expose an API endpoint where you can pass an <code>article_id</code> (used during the embedding generation) and retrieve the most similar items.<br />
+<strong>Validation:</strong><br />
+    As a sanity check, querying an article should return itself as the top match with a distance of 0.</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>By leveraging pretrained image models and efficient similarity search with Faiss, this approach provides a scalable method for identifying visually similar items in an e-commerce catalog. This system not only improves internal catalog management but also sets the groundwork for integrating external image queries in the future.</p>
 
 
 
@@ -1248,7 +1295,7 @@ So, KL is not a metric of distance (but can be thought as if). It's actually a d
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../mutual-information/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mutual Information">
+          <a href="../../../01/28/kullback-leibler-divergence/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kullback-Leibler divergence">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1258,27 +1305,11 @@ So, KL is not a metric of distance (but can be thought as if). It's actually a d
                 Previous
               </span>
               <div class="md-ellipsis">
-                Mutual Information
+                Kullback-Leibler divergence
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../../02/21/image-similarity-ecommerce/" class="md-footer__link md-footer__link--next" aria-label="Next: E-commerce Image Similarity via Visual Embeddings">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                E-commerce Image Similarity via Visual Embeddings
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

@@ -752,6 +752,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#e-commerce-image-similarity-via-visual-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      E-commerce Image Similarity via Visual Embeddings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kullback-leibler-divergence" class="md-nav__link">
     <span class="md-ellipsis">
       Kullback-Leibler divergence
@@ -1106,6 +1115,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#e-commerce-image-similarity-via-visual-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      E-commerce Image Similarity via Visual Embeddings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kullback-leibler-divergence" class="md-nav__link">
     <span class="md-ellipsis">
       Kullback-Leibler divergence
@@ -1146,6 +1164,86 @@
       <header class="md-typeset">
         <h1 id="ai">AI<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-02-21 00:00:00+00:00">2025-02-21</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">AI</a>, 
+              <a href="../machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="e-commerce-image-similarity-via-visual-embeddings"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/">E-commerce Image Similarity via Visual Embeddings</a></h2>
+<p>How I implemented an API to retrieve similar images from an E-commerce in 3 steps</p>
+<p>In this post, we explore a system to identify similar articles solely based on e-commerce images. The approach is designed with two primary objectives in mind:</p>
+<h3 id="objectives"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#objectives">Objectives</a></h3>
+<ol>
+<li>
+<p><strong>Catalog Similarity:</strong><br />
+    Determine which items in the client's catalog resemble each other using only their photos.</p>
+</li>
+<li>
+<p><strong>External Querying:</strong><br />
+    Although not implemented in the current API, the plan is to eventually allow querying with external images. The envisioned workflow is to source images from suppliers, compare them with the client's catalog, and perform this embedding generation locally to keep the API lightweight.</p>
+</li>
+</ol>
+<h3 id="proposed-solution"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#proposed-solution">Proposed Solution</a></h3>
+<p>The core idea is to use a pretrained image model to extract embeddings from each photo. Once these embeddings are available, we can perform similarity searches to find items that are visually alike.</p>
+<p>For our implementation, we experimented with both OpenAI's <strong>clip-ViT-B-32</strong> and <strong>ResNet</strong>. In general, both models produced comparable results, though we opted for CLIP in our main experiments.</p>
+<h3 id="implementation-steps"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#implementation-steps">Implementation Steps</a></h3>
+<h4 id="step-1-download-catalog-images"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#step-1-download-catalog-images">Step 1: Download Catalog Images</a></h4>
+<ul>
+<li><strong>Script:</strong> <code>embeddings/download_images/get_images.py</code></li>
+<li><strong>Details:</strong><br />
+    This script downloads all catalog images from the e-commerce using a <code>ThreadPool</code> to speed up the process.</li>
+</ul>
+<h4 id="step-2-generate-and-index-embeddings"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#step-2-generate-and-index-embeddings">Step 2: Generate and Index Embeddings</a></h4>
+<ul>
+<li><strong>Script:</strong> <code>embeddings/clip_faiss.py</code></li>
+<li><strong>Details:</strong><br />
+    The script generates embeddings for each photo and stores them in a Faiss index, which is saved under <code>embeddings/faiss_index/</code>.<br />
+<strong>Note:</strong> Since the process is deterministic, a simple overwrite will not impact the results. Idempotent as they call it.</li>
+</ul>
+<p>Additional notebooks are available to illustrate the process, check results, and experiment with alternative models and tests.</p>
+<h4 id="step-3-query-the-faiss-index"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#step-3-query-the-faiss-index">Step 3: Query the Faiss Index</a></h4>
+<ul>
+<li><strong>API Functionality:</strong><br />
+    The Faiss index is already built. We expose an API endpoint where you can pass an <code>article_id</code> (used during the embedding generation) and retrieve the most similar items.<br />
+<strong>Validation:</strong><br />
+    As a sanity check, querying an article should return itself as the top match with a distance of 0.</li>
+</ul>
+<h3 id="conclusion"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#conclusion">Conclusion</a></h3>
+<p>By leveraging pretrained image models and efficient similarity search with Faiss, this approach provides a scalable method for identifying visually similar items in an e-commerce catalog. This system not only improves internal catalog management but also sets the groundwork for integrating external image queries in the future.</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

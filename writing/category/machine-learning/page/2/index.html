@@ -6,15 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Kullback-Leibler divergence">
       
       
       
+        <link rel="prev" href="../../../ai/">
       
-        <link rel="prev" href="../mutual-information/">
       
-      
-        <link rel="next" href="../../../02/21/image-similarity-ecommerce/">
+        <link rel="next" href="../../../personal/">
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>Kullback-Leibler divergence - Franco Betteo</title>
+        <title>Machine Learning - Franco Betteo</title>
       
     
     
@@ -88,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kullback-leibler-divergence" class="md-skip">
+        <a href="#machine-learning" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kullback-Leibler divergence
+              Machine Learning
             
           </span>
         </div>
@@ -253,9 +251,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -634,8 +630,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -672,13 +670,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
@@ -692,7 +688,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Categories
@@ -708,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/ai/" class="md-nav__link">
+      <a href="../../../ai/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -728,10 +724,30 @@
   
   
     
+      
+    
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/machine-learning/" class="md-nav__link">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Machine Learning
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="../../" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -740,6 +756,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#softmax-vs-sigmoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Softmax vs sigmoid
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -754,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/personal/" class="md-nav__link">
+      <a href="../../../personal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -777,7 +822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/python/" class="md-nav__link">
+      <a href="../../../python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -800,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/r/" class="md-nav__link">
+      <a href="../../../r/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -823,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/algebra/" class="md-nav__link">
+      <a href="../../../algebra/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -846,7 +891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/blog/" class="md-nav__link">
+      <a href="../../../blog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/estadistica/" class="md-nav__link">
+      <a href="../../../estadistica/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/matematica/" class="md-nav__link">
+      <a href="../../../matematica/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -915,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/statistics/" class="md-nav__link">
+      <a href="../../../statistics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1022,8 +1067,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -1043,35 +1086,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#relative-entropy" class="md-nav__link">
+  <a href="#softmax-vs-sigmoid" class="md-nav__link">
     <span class="md-ellipsis">
-      Relative entropy
+      Softmax vs sigmoid
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-its-not-symmetrical" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why it's not symmetrical?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Why it's not symmetrical?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1084,145 +1103,162 @@
             
           
           
-  <div class="md-content md-content--post" data-md-component="content">
-    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-        <div class="md-sidebar__inner md-post">
-          <nav class="md-nav md-nav--primary">
-            <div class="md-post__back">
-              <div class="md-nav__title md-nav__container">
-                <a href="../../../../" class="md-nav__link">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-                  <span class="md-ellipsis">
-                    Back to index
-                  </span>
-                </a>
-              </div>
-            </div>
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="machine-learning">Machine Learning<a class="headerlink" href="#machine-learning" title="Permanent link">&para;</a></h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2021-01-18 00:00:00+00:00">2021-01-18</time></li>
+        
+          <li class="md-meta__item">
+            in
             
-              <div class="md-post__authors md-typeset">
-                
-                  <div class="md-profile md-post__profile">
-                    <span class="md-author md-author--long">
-                      <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-                    </span>
-                    <span class="md-profile__description">
-                      <strong>
-                        
-                          <a href="https://x.com/intent/follow?screen_name=franbetteo">Franco Betteo</a>
-                        
-                      </strong>
-                      <br>
-                      Creator
-                    </span>
-                  </div>
-                
-              </div>
-            
-            <ul class="md-post__meta md-nav__list">
-              <li class="md-nav__item md-nav__item--section">
-                <div class="md-post__title">
-                  <span class="md-ellipsis">
-                    Metadata
-                  </span>
-                </div>
-                <nav class="md-nav">
-                  <ul class="md-nav__list">
-                    <li class="md-nav__item">
-                      <div class="md-nav__link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-01-28 00:00:00+00:00" class="md-ellipsis">2025-01-28</time>
-                      </div>
-                    </li>
-                    
-                    
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
-                          <span class="md-ellipsis">
-                            in
-                            
-                              <a href="../../../../category/ai/">AI</a>, 
-                              <a href="../../../../category/machine-learning/">Machine Learning</a></span>
-                        </div>
-                      </li>
-                    
-                    
-                      
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
-                          <span class="md-ellipsis">
-                            
-                              2 min read
-                            
-                          </span>
-                        </div>
-                      </li>
-                    
-                  </ul>
-                </nav>
-              </li>
-            </ul>
-          </nav>
+              <a href="../../../estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../../python/" class="md-meta__link">Python</a>, 
+              <a href="../../" class="md-meta__link">Machine Learning</a></li>
+        
+        
           
-        </div>
-      </div>
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
     </div>
-    <article class="md-content__inner md-typeset">
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="softmax-vs-sigmoid"><a class="toclink" href="../../../../2021/01/18/softmax-vs-sigmoid.en-us/">Softmax vs sigmoid</a></h2>
+<p>When using Neural Nets for a multiclass classification problem it's standard to have a softmax layer at the end to normalize the probabilities for each class. This means that the output of our net is a vector of probabilities (one for each class) that sums to 1. If there isn't a softmax layer at the end, then the net will output a value in each of the last cells (one for each class) but without a delimited range.<br />
+Just a set of numbers where usually the highest is the one with the most probable class but it's not obvious how to value the differences between them.</p>
+<p>So, you have a ordered set of numbers, you know which one is the most probable but you want to transform that into clear probabilities. You use the softmax layer. </p>
+<p>You could use a sigmoid activation function in the last cell to have <em>individual</em> probabilities. For each class, it transforms the output of the net into a probability. However the sum of those probabilities is not guaranteed to sum 1, actually it won't in practice. It's a simple proxy but you can get better intuitions with softmax.</p>
+<p>We will compare how these two approaches affect the last group of weights by inspecting the gradient after calculating the loss for an observation.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>I'm using the <em>reticulate</em> package in R to include Python code in Rmarkdown. Pretty nice.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
+</span></code></pre></div>
+<p>We import pytorch to handle tensors and neural net functions.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="kn">import</span> <span class="nn">torch</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>## &lt;torch._C.Generator object at 0x00000262714CF730&gt;
+</span></code></pre></div>
+<ul>
+<li>1 obs  </li>
+<li>5 features (X)  </li>
+<li>3 possible classes (index 1 = class 2)  </li>
+<li>W. 3 output cells, each one with 5 weights (one per feature)  </li>
+<li>W1 = W2 because we run it twice (two scenarios) and we can't re use the same weights because of the gradient calculated</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="n">W1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="n">W2</span> <span class="o">=</span> <span class="n">W1</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> 
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span> 
+</span></code></pre></div>
+<p>We transform everything to positives to make it cleaner and we add the requires_grad_() characteristic
+that tells pytorch that those tensors need the gradient backpropagated during training</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="n">W1</span> <span class="o">=</span> <span class="n">W1</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a><span class="n">W2</span> <span class="o">=</span> <span class="n">W2</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+</span></code></pre></div>
+<p>We define both losses (softmax and sigmoid).  </p>
+<p><em>Softmax</em>  </p>
+<ul>
+<li>Weights * input: cell value</li>
+<li>we change dimension of output to use it as input of softmax</li>
+<li>We calculate the softmax (probabilities of each class that sum 1)</li>
+<li>Apply log because we will use the negative log likelihood</li>
+<li>We calculate the loss (log of softmax probabilities vs actual class)</li>
+</ul>
+<p><em>Sigmoid</em>  </p>
+<ul>
+<li>Weights * input: cell value</li>
+<li>we change dimension of output to use it as input of sigmoid</li>
+<li>We calculate the sigmoid (probabilities of each class individually)</li>
+<li>Apply log because we will use the negative log likelihood</li>
+<li>We calculate the loss (log of sigmoid probabilities vs actual class)</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># funcion con softmax al final</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="k">def</span> <span class="nf">softmax_loss</span><span class="p">(</span><span class="n">W</span><span class="p">):</span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">W</span> <span class="o">@</span> <span class="n">X</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a>    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">nll_loss</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>
+</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a><span class="c1"># funcion con una sigmoidea por activacion</span>
+</span><span id="__span-50-10"><a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a><span class="k">def</span> <span class="nf">sigmoid_loss</span><span class="p">(</span><span class="n">W</span><span class="p">):</span>
+</span><span id="__span-50-11"><a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">W</span> <span class="o">@</span> <span class="n">X</span>
+</span><span id="__span-50-12"><a id="__codelineno-50-12" name="__codelineno-50-12" href="#__codelineno-50-12"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-50-13"><a id="__codelineno-50-13" name="__codelineno-50-13" href="#__codelineno-50-13"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-14"><a id="__codelineno-50-14" name="__codelineno-50-14" href="#__codelineno-50-14"></a>    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span><span id="__span-50-15"><a id="__codelineno-50-15" name="__codelineno-50-15" href="#__codelineno-50-15"></a>    <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">nll_loss</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></code></pre></div>
+<p>We run the forward pass and calculate the loss for the sigmoid first. Then we look for the gradient.<br />
+As we can see in the results, only the weights that go to the correct class' output cell are modified. Classes one and three rest untouched. This is because the sigmoid activation just has the individual weights (and cross entropy only look to the correct class)</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">out_sigmoid</span> <span class="o">=</span> <span class="n">sigmoid_loss</span><span class="p">(</span><span class="n">W1</span><span class="p">)</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="n">out_sigmoid</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="n">W1</span><span class="o">.</span><span class="n">grad</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>## tensor([[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>##         [-0.0452, -0.0867, -0.0564, -0.0492, -0.0549],
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>##         [ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000]])
+</span></code></pre></div>
+On the contrary, when running the same net but with softmax layer we see that all the weights are updated. The correct class has gradient with the same sign that for the sigmoid example but the other two classes have in this case opposite sign gradients (which makes sense since you want them to go in the other direction).<br />
+This happens because the softmax includes the other classes in each cell since they are needed to normalize and return probabilities that sum up to 1.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="n">out_softmax</span> <span class="o">=</span> <span class="n">softmax_loss</span><span class="p">(</span><span class="n">W2</span><span class="p">)</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="n">out_softmax</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="n">W2</span><span class="o">.</span><span class="n">grad</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>## tensor([[ 0.5393,  1.0346,  0.6731,  0.5868,  0.6552],
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>##         [-0.5576, -1.0697, -0.6959, -0.6066, -0.6775],
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>##         [ 0.0183,  0.0351,  0.0228,  0.0199,  0.0222]])
+</span></code></pre></div>
+This is a simple case with just one layer of weights so we can clearly see this. If you had a fully connected net with more layers, this is valid just for the last one because the gradient is backpropagated and the weights from "other paths" still affect the cell that corresponds to the second class.  </p>
+<h4 id="conclusion"><a class="toclink" href="../../../../2021/01/18/softmax-vs-sigmoid.en-us/#conclusion">Conclusion</a></h4>
+<p>The net should evolve during training in a similar way with both last layer activations but the way they do it is different and we try to show in here why. In the end, the sigmoid still reflects the preference for one of the classes and during each epoch it will go through the desired path but just updating some of the weights and not all at the same time.</p>
+    
+  </div>
+</article>
+      
       
         
-
-
-<h1 id="kullback-leibler-divergence">Kullback-Leibler divergence<a class="headerlink" href="#kullback-leibler-divergence" title="Permanent link">&para;</a></h1>
-<p>To understand KL divergence we need to first understand <a href="https://fbetteo.github.io/blog/writing/2025/01/06/entropy/">Entropy</a>. The most important thing to have in mind though is that entropy can be thought as a measure of "information", but what I like the most, as a measure of <em>expected surprise</em> that one gets for every observed value of the distribution.</p>
-<p>For a highly dense distribution, you will almost sure get a value from the dense region and the expected surprise will be really low (but you are highly surprised when you see a value off that region!)</p>
-<h3 id="relative-entropy">Relative entropy<a class="headerlink" href="#relative-entropy" title="Permanent link">&para;</a></h3>
-<p>How this relates to KL? Well, Kullback-Leibler is a divergence but is also called <em>relative entropy</em>. This means, how that measure of entropy differs between two distributions. I find that easier to grasp.</p>
-<p>Usually we have a true distribution <span class="arithmatex">\(p(x)\)</span> and an estimated distribution <span class="arithmatex">\(q(x)\)</span> that we use to approximate <span class="arithmatex">\(p(x)\)</span>. KL divergence can help us understand how good it does the  job.</p>
-<p>If entropy is: </p>
-<p><span class="arithmatex">\(H[x] = - \sum_x p(x) \ln p(x)\)</span><br />
-(originally <span class="arithmatex">\(\log_2\)</span> but <span class="arithmatex">\(\ln\)</span> works too and it's used everywhere )</p>
-<div class="arithmatex">\[KL(p||q) = - \int{p(x) \ln q(x)dx} - (-\int{p(x) \ln p(x)dx})\]</div>
-<div class="arithmatex">\[ = - \int{p(x) \ln \frac{q(x)}{p(x)}dx}\]</div>
-<p>The first row is clear, is just the difference in entropies. 
-This is relative entropy between p(x) and q(x).</p>
-<p><strong>Important</strong>: KL divergence is not symmetrical. <span class="arithmatex">\(KL(p||q) \neq KL(q||p)\)</span>
-So, KL is not a metric of distance (but can be thought as if). It's actually a divergence.</p>
-<h3 id="why-its-not-symmetrical">Why it's not symmetrical?<a class="headerlink" href="#why-its-not-symmetrical" title="Permanent link">&para;</a></h3>
-<p>I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):</p>
-<ul>
-<li>one highly centered around one specific value </li>
-<li>the other with a uniform-ish shape, highly dispersed.</li>
-</ul>
-<p>The difference in "surprise" you get from both ways approximation is not the same.</p>
-<p>If you are approximating the highly dense distribution with the uniform one, you are approximating it with a distribution that surprises you  in general <span class="arithmatex">\(\ln q(x)\)</span>, let's say <em>moderately high</em> everywhere, even for the specific dense region.</p>
-<p>But the other way, if you approximate the dispersed distribution with the dense one, you are using a distribution with high surprise in most of the region of the dispersed distribution and really low surprise in one specific value.</p>
-<p>This term <span class="arithmatex">\(\int{p(x) \ln q(x)dx}\)</span> behaves differently in both scenarios and there is no guarantee or need that they should match.</p>
-<h4 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h4>
-<p><a href="https://www.bishopbook.com/">Deep Learning, Bishop</a><br />
-<a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Wikipedia</a></p>
+          
 
 
 
-
-
-
-
-  
-  
-
-
-
-  
-
-
-  
-
-
-
+<nav class="md-pagination">
+  <a class="md-pagination__link" href="../../">1</a> <span class="md-pagination__current">2</span>
+</nav>
+        
       
-    </article>
+    </div>
   </div>
 
           
@@ -1243,12 +1279,10 @@ So, KL is not a metric of distance (but can be thought as if). It's actually a d
   
     
       
-        
-      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../mutual-information/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mutual Information">
+          <a href="../../../ai/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AI">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1258,20 +1292,20 @@ So, KL is not a metric of distance (but can be thought as if). It's actually a d
                 Previous
               </span>
               <div class="md-ellipsis">
-                Mutual Information
+                AI
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../../02/21/image-similarity-ecommerce/" class="md-footer__link md-footer__link--next" aria-label="Next: E-commerce Image Similarity via Visual Embeddings">
+          <a href="../../../personal/" class="md-footer__link md-footer__link--next" aria-label="Next: Personal">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                E-commerce Image Similarity via Visual Embeddings
+                Personal
               </div>
             </div>
             <div class="md-footer__button md-icon">
