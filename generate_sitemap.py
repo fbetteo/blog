@@ -2,6 +2,7 @@
 import os
 import xml.etree.ElementTree as ET
 import datetime
+import xml.dom.minidom
 
 # Configuration
 BASE_URL = "https://fbetteo.github.io/blog/"
@@ -19,7 +20,8 @@ EXCLUDE_FILES = {
 
 # Create the root XML element for the sitemap
 urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-today = datetime.date.today().isoformat()
+# Use full ISO 8601 datetime with timezone
+now = datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
 
 # Walk through the SITE_DIR to find .html files
 for root, dirs, files in os.walk(SITE_DIR):
@@ -47,13 +49,22 @@ for root, dirs, files in os.walk(SITE_DIR):
             url_path = relative_path
 
         full_url = BASE_URL.rstrip("/") + "/" + url_path.lstrip("/")
+        # Remove trailing slash if present, except for root URL
+        if full_url != BASE_URL.rstrip("/") + "/":
+            full_url = full_url.rstrip("/")
         url_el = ET.SubElement(urlset, "url")
         loc = ET.SubElement(url_el, "loc")
         loc.text = full_url
         lastmod = ET.SubElement(url_el, "lastmod")
-        lastmod.text = today
+        lastmod.text = now
 
-# Write the XML tree to OUTPUT_FILE
-tree = ET.ElementTree(urlset)
-tree.write(OUTPUT_FILE, encoding="utf-8", xml_declaration=True)
+# Generate pretty-printed XML
+rough_string = ET.tostring(urlset, encoding="utf-8")
+reparsed = xml.dom.minidom.parseString(rough_string)
+pretty_xml = reparsed.toprettyxml(indent="  ", encoding="utf-8")
+
+# Write the XML to OUTPUT_FILE
+with open(OUTPUT_FILE, "wb") as f:
+    f.write(pretty_xml)
+
 print(f"Sitemap generated at: {OUTPUT_FILE}")
