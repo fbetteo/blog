@@ -6,28 +6,28 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Notes on Deep Dive into LLMs Like ChatGPT - Karpathy">
       
       
       
-        <link rel="prev" href="../../category/statistics/">
+      
+        <link rel="prev" href="../../../02/21/image-similarity-ecommerce/">
       
       
-        <link rel="next" href="../2024/">
       
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
-        <title>2025 - Franco Betteo</title>
+        <title>Deep Dive into LLMs Like ChatGPT - Karpathy - Franco Betteo</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.6f8fc17f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2025" class="md-skip">
+        <a href="#deep-dive-into-llms-like-chatgpt-karpathy" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+    <a href="../../../../.." title="Franco Betteo" class="md-header__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2025
+              Deep Dive into LLMs Like ChatGPT - Karpathy
             
           </span>
         </div>
@@ -162,7 +162,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../../../../.." class="md-tabs__link">
           
   
     
@@ -184,7 +184,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../../../../" class="md-tabs__link">
           
   
     
@@ -221,7 +221,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../nba_salaries/" class="md-tabs__link">
+        <a href="../../../../../nba_salaries/" class="md-tabs__link">
           
   
     
@@ -251,7 +251,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -262,7 +264,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
+    <a href="../../../../.." title="Franco Betteo" class="md-nav__button md-logo" aria-label="Franco Betteo" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -308,7 +310,7 @@
         
   
   
-    <a href="../../.." class="md-nav__link">
+    <a href="../../../../.." class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -368,7 +370,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -398,8 +400,6 @@
                 
   
   
-    
-  
   
   
     
@@ -432,11 +432,13 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
@@ -450,7 +452,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Archive
@@ -461,34 +463,12 @@
                 
   
   
-    
-  
   
     
-      
-    
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    2025
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -497,80 +477,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deep-dive-into-llms-like-chatgpt-karpathy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deep Dive into LLMs Like ChatGPT - Karpathy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#e-commerce-image-similarity-via-visual-embeddings" class="md-nav__link">
-    <span class="md-ellipsis">
-      E-commerce Image Similarity via Visual Embeddings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kullback-leibler-divergence" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kullback-Leibler divergence
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mutual-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mutual Information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#obisidan-workflow" class="md-nav__link">
-    <span class="md-ellipsis">
-      Obisidan Workflow
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entropy-and-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Entropy and information
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -585,7 +491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2024/" class="md-nav__link">
+      <a href="../../../../archive/2024/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -608,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2022/" class="md-nav__link">
+      <a href="../../../../archive/2022/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -631,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2021/" class="md-nav__link">
+      <a href="../../../../archive/2021/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -654,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2020/" class="md-nav__link">
+      <a href="../../../../archive/2020/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -677,7 +583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2019/" class="md-nav__link">
+      <a href="../../../../archive/2019/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -700,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2018/" class="md-nav__link">
+      <a href="../../../../archive/2018/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -800,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/ai/" class="md-nav__link">
+      <a href="../../../../category/ai/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -823,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/machine-learning/" class="md-nav__link">
+      <a href="../../../../category/machine-learning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -846,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/personal/" class="md-nav__link">
+      <a href="../../../../category/personal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/python/" class="md-nav__link">
+      <a href="../../../../category/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -892,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/r/" class="md-nav__link">
+      <a href="../../../../category/r/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -915,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/algebra/" class="md-nav__link">
+      <a href="../../../../category/algebra/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -938,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/blog/" class="md-nav__link">
+      <a href="../../../../category/blog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -961,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/estadistica/" class="md-nav__link">
+      <a href="../../../../category/estadistica/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -984,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/matematica/" class="md-nav__link">
+      <a href="../../../../category/matematica/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1007,7 +913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../category/statistics/" class="md-nav__link">
+      <a href="../../../../category/statistics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1087,7 +993,7 @@
         
   
   
-    <a href="../../../nba_salaries/" class="md-nav__link">
+    <a href="../../../../../nba_salaries/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1114,6 +1020,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -1133,56 +1041,167 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#deep-dive-into-llms-like-chatgpt-karpathy" class="md-nav__link">
+  <a href="#neural-networks" class="md-nav__link">
     <span class="md-ellipsis">
-      Deep Dive into LLMs Like ChatGPT - Karpathy
+      Neural Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Neural Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpt-2-train-and-inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPT-2 train and inference
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#e-commerce-image-similarity-via-visual-embeddings" class="md-nav__link">
+  <a href="#post-training" class="md-nav__link">
     <span class="md-ellipsis">
-      E-commerce Image Similarity via Visual Embeddings
+      Post training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Post training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-we-go-from-conversations-in-the-new-dataset-to-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      How do we go from conversations in the new dataset to tokens?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hallucinations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hallucinations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hallucinations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mitigation-1-model-interrogation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mitigation #1: model interrogation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation-2-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mitigation #2: Search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models-need-tokens-to-think" class="md-nav__link">
+    <span class="md-ellipsis">
+      Models need tokens to think
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#kullback-leibler-divergence" class="md-nav__link">
+  <a href="#reinforcement-learning" class="md-nav__link">
     <span class="md-ellipsis">
-      Kullback-Leibler divergence
+      Reinforcement Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reinforcement Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deepseek-r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deepseek R1
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#mutual-information" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#alphago" class="md-nav__link">
     <span class="md-ellipsis">
-      Mutual Information
+      AlphaGo
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#obisidan-workflow" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#learning-in-unverifiable-domains-reinforcement-learning-from-humand-feedback" class="md-nav__link">
     <span class="md-ellipsis">
-      Obisidan Workflow
+      Learning in Unverifiable domains (Reinforcement learning from Humand Feedback)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Learning in Unverifiable domains (Reinforcement learning from Humand Feedback)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upside" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upside
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#entropy-and-information" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#downsides" class="md-nav__link">
     <span class="md-ellipsis">
-      Entropy and information
+      Downsides
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1195,48 +1214,97 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="2025">2025<a class="headerlink" href="#2025" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-03-10 00:00:00+00:00">2025-03-10</time></li>
-        
-          <li class="md-meta__item">
-            in
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
             
-              <a href="../../category/ai/" class="md-meta__link">AI</a>, 
-              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://x.com/intent/follow?screen_name=franbetteo">Franco Betteo</a>
+                        
+                      </strong>
+                      <br>
+                      Creator
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-03-10 00:00:00+00:00" class="md-ellipsis">2025-03-10</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/ai/">AI</a>, 
+                              <a href="../../../../category/machine-learning/">Machine Learning</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              12 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
           
-          <li class="md-meta__item">
-            
-              12 min read
-            
-          </li>
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="deep-dive-into-llms-like-chatgpt-karpathy"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/">Deep Dive into LLMs Like ChatGPT - Karpathy</a></h2>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="deep-dive-into-llms-like-chatgpt-karpathy">Deep Dive into LLMs Like ChatGPT - Karpathy<a class="headerlink" href="#deep-dive-into-llms-like-chatgpt-karpathy" title="Permanent link">&para;</a></h1>
 <p><a href="https://www.youtube.com/watch?v=7xTGNNLPyMI">Original video from Andrej Karpathy. Masterpiece.</a></p>
 <hr />
 <p><a href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">Fineweb</a></p>
@@ -1244,14 +1312,14 @@
 <p>How it works? From words to bits with encoding could be the first step. From words to 1 and 0. But this becomes a super large representation because we only have two symbols.
 We can group every 8 bits into 256 different bytes. [0 to 255]  The sequence is much shorter because we have more symbols.
 We can use this, but in SOTA we go beyond that. We use Byte-pair encoding which looks for common pairs of bytes and we create a new symbols starting from 256, and we can do this many times. More symbols, shorter representation. Gpt4 ends up with +100k symbols.</p>
-<h4 id="neural-networks"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#neural-networks">Neural Networks</a></h4>
+<h3 id="neural-networks">Neural Networks<a class="headerlink" href="#neural-networks" title="Permanent link">&para;</a></h3>
 <p>We take windows of tokens of flexible  length up to some maximum (4, 8, 16k). Too much could be computationally expensive.</p>
 <p>The idea is to predict the next token. The window used is the <em>context</em>.
 We do this for every context and token of the training data. The process will adjust the probabilities of each next token. They are initialized at random and in the end they should match the statistical properties of the dataset.</p>
 <p>Training is done via Neural Network, the mathematical expression is updated via weights. Input is the token sequence, output is the probability of each token as the next one. In the middle there is the NN architecture with transformers and etc. First parts includes the embedding into numerical representation.</p>
-<h5 id="inference"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#inference">Inference</a></h5>
+<h4 id="inference">Inference<a class="headerlink" href="#inference" title="Permanent link">&para;</a></h4>
 <p>Put an initial token and sample from the output probability distribution, this is your next token. We do that again, but now the context is 2 tokens, and so on.</p>
-<h4 id="gpt-2-train-and-inference"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#gpt-2-train-and-inference">GPT-2 train and inference</a></h4>
+<h3 id="gpt-2-train-and-inference">GPT-2 train and inference<a class="headerlink" href="#gpt-2-train-and-inference" title="Permanent link">&para;</a></h3>
 <p>Useful because the technical parts are still relevant only that now are bigger and more complex.</p>
 <p>Base model is the model that comes out after training. It's an inference machine, just token prediction but it's not useful for chat for example. Some companies release their base models but not all of them.
 GPT2 was released. A base model release requires, the model architecture and the model weights.</p>
@@ -1262,7 +1330,7 @@ GPT2 was released. A base model release requires, the model architecture and the
 <p><strong>Few shot prompt</strong>. 
 The model has some <em>in-context</em> learning, which is that the model can understand a pattern in the prompt. In the video, AK prompts a list of english words with their korean translation and left the last one without translating to make inference from that point.</p>
 <p>He also shows that you can generate some assistant type of inference via in-context learning by passing an example of human-assistant interaction and making it generate the answer to you actual question via inference.</p>
-<h4 id="post-training"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#post-training">Post training</a></h4>
+<h3 id="post-training">Post training<a class="headerlink" href="#post-training" title="Permanent link">&para;</a></h3>
 <p>Pretraining is all that we saw before. Get data from the web, tokenize it and create a base model that predicts next token. It's not an assistant, it's like a internet text generator. That's all included in pretraining and it's the expensive part, the one that takes millions of dollars and a lot of time.</p>
 <p><strong>Post training</strong><br />
 Much less computation than pretraining and it's the step that moves us from a token generator to an assistant.</p>
@@ -1272,7 +1340,7 @@ And the examples requires human labelers.
 We train the model on this responses and try to imitate that behaviour.</p>
 <p>We substitute the training dataset of the model, we remove all the internet text and we start using the conversation dataset. We keep training the model but know with this dataset and the model will pick the statistics of this new dataset and how the conversations should happen. (Supervised Finetuning aka SFT)</p>
 <p>Post training in SOTA can be in 3 hours for example vs 3 months of training in pre training and thousands of CPUs. This is because post training the dataset is human created and much smaller.</p>
-<h5 id="how-do-we-go-from-conversations-in-the-new-dataset-to-tokens"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#how-do-we-go-from-conversations-in-the-new-dataset-to-tokens">How do we go from conversations in the new dataset to tokens?</a></h5>
+<h4 id="how-do-we-go-from-conversations-in-the-new-dataset-to-tokens">How do we go from conversations in the new dataset to tokens?<a class="headerlink" href="#how-do-we-go-from-conversations-in-the-new-dataset-to-tokens" title="Permanent link">&para;</a></h4>
 <p>We need to encode and decode in some specific way. Each model has a slightly different methodology, but gpt-4o has for example a few extra tokens that represent the beginning of the new character talking (user or assistant), then a token for the user or the assistant, then a token for the start of the actual message, then the message tokenized  and then a token for the end of the message. Then we go again, same token representing the beginning, then the other token of user/assistant, etc</p>
 <p>So, when we go to chatgpt and ask a question it's sent to the backend encoded with the above format and they add the tokens for the start of a new message from the assistant and run inference there, they let the LLM complete all the next tokens.</p>
 <p><a href="https://arxiv.org/abs/2203.02155">InstructGPT paper on SFT:</a>First paper to talk about post-training.
@@ -1285,17 +1353,17 @@ In the end, chatgpt for example, is answering in the tone and guided by those ex
 <p>"What would a human labeler say in this conversation?"
  You are talking to a simulation of an average labeler (who is probably some skilled person but still)</p>
 </blockquote>
-<h4 id="hallucinations"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#hallucinations">Hallucinations</a></h4>
+<h3 id="hallucinations">Hallucinations<a class="headerlink" href="#hallucinations" title="Permanent link">&para;</a></h3>
 <p>They exist because the model is sampling from the training dataset statistics trying to answer something even if it's not the truth. The problem has been improved over the years but it's still relevant.</p>
 <p>How to fix it?</p>
 <p>We need to include in the post training dataset some conversations where the answer is that it doesn't know.</p>
-<h5 id="mitigation-1-model-interrogation"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#mitigation-1-model-interrogation">Mitigation <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/jxnl/instructor/issues/1" title="GitHub Issue: jxnl/instructor #1">#1</a>: model interrogation</a></h5>
+<h4 id="mitigation-1-model-interrogation">Mitigation <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/jxnl/instructor/issues/1" title="GitHub Issue: jxnl/instructor #1">#1</a>: model interrogation<a class="headerlink" href="#mitigation-1-model-interrogation" title="Permanent link">&para;</a></h4>
 <p>What Meta did for LLama is super clever
 . We don't know what the model knows or not exactly so we need to let it decide in some way. They assume there is some internal representation of lack of knowledge, some neuron that gets activated when it doesn't "know" something.
 So, what they did to include that pattern is to take random text (from wikipedia lets say) and they used an LLM to create a few questions with factual answers about that text.
 They interrogate the model with those questions and compare the answer to the actual truth (also another LLM as judge, no need for human). They did it a few times per question. If the model answered correctly then the conversation output is fine and all good. But if the model hallucinates and answers wrongly (as judged by another LLM based on the actual truth) then the answer to that question in the conversation dataset becomes "Sorry, I don't know". If you add some amount of answers like this (because of course you can't just add all question that don't have a true answer) then the model will get that pattern, that when that unknown neuron related to lack of knowledge gets activated, then answering I don't know is what it should do.
 This worked quite well to mitigate hallucinations!</p>
-<h5 id="mitigation-2-search"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#mitigation-2-search">Mitigation <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/jxnl/instructor/issues/2" title="GitHub Issue: jxnl/instructor #2">#2</a>: Search</a></h5>
+<h4 id="mitigation-2-search">Mitigation <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/jxnl/instructor/issues/2" title="GitHub Issue: jxnl/instructor #2">#2</a>: Search<a class="headerlink" href="#mitigation-2-search" title="Permanent link">&para;</a></h4>
 <p>Allow the model to search the internet. Allow the model to use Tools.
 We do this by introducing new tokens, in this case special tokens for search_start and search_end with a query in the middle. The Assistant will look up that query in a browser and will copy paste the information it gets just after the special tokens, so the internet information is now in the context. It goes directly into the model, like refreshing our memory as humans.</p>
 <p>To add this functionality we need again to teach the model by example, adding a bunch of examples in the dataset on how to use the search.</p>
@@ -1303,10 +1371,10 @@ We do this by introducing new tokens, in this case special tokens for search_sta
 <p>Knowledge in the parameters == Vague recollection (e.g. of something you read 1 month ago)
 Knowledge in the tokens of the context window == Working memory</p>
 </blockquote>
-<h3 id="models-need-tokens-to-think"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#models-need-tokens-to-think">Models need tokens to think</a></h3>
+<h2 id="models-need-tokens-to-think">Models need tokens to think<a class="headerlink" href="#models-need-tokens-to-think" title="Permanent link">&para;</a></h2>
 <p>Given the neural network architecture, there is a finite amount of computation that can be given for each token. Given the context your forward/inference pass will predict the next token using the network capability but it's finite/limited. We should try to expand/distribute the computation, "the thinking" between many tokens to use the full neural network computation power for each token, so we end up using more computation in total for our answer.
 In concrete, he shows a simple math problem. If we aim for the model to answer directly, we are forcing the neural network to use it's context and finite computation to answer in a single attempt. Everything that comes after that answer will be a post hoc justification. While if we aim for the model to elaborate and go step by step (disguised CoT?) it will use full computation for each step and by the time it outputs the answer, it will have a good detailed context to provide that final "calculation"</p>
-<p><img alt="image" src="../../img/Pasted%20image%2020250307130533.png" /></p>
+<p><img alt="image" src="../../../../img/Pasted%20image%2020250307130533.png" /></p>
 <p>This is the same reason why models are not good at counting. Too much expected from a single forward pass, finite computation.</p>
 <p>"use code" it's a great way to make the model good at those tasks, because the model is good at copy pasting and code gives the right answer. So, you can just copy the string to code and then use python to actually count the number of letters or whatever. Same for calculation.
 It's much more likely to have the right answer than relying on the "mental arithmetic" of the model.</p>
@@ -1314,7 +1382,7 @@ It's much more likely to have the right answer than relying on the "mental arith
 "what is bigger 9.11 or 9.9?" 
 which usually is answered wrongly or randomly.</p>
 <p>One hypothesis he mentions is that some research team said that the bible has 9.11 &gt; 9.9 in terms of verses and this can create confusion to the neural network but it's a problem not fully understood.</p>
-<h3 id="reinforcement-learning"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#reinforcement-learning">Reinforcement Learning</a></h3>
+<h2 id="reinforcement-learning">Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permanent link">&para;</a></h2>
 <p>The last major stage, some times is included  as part of post training but it's really a next separate major step.</p>
 <blockquote>
 <p>It's like going to school.</p>
@@ -1323,16 +1391,16 @@ which usually is answered wrongly or randomly.</p>
 <p>The motivation is that we as humans (labelers) don't know what's the best way for the LLM to solve a specific problem, such as a math problem. He shows a few options, like going straight to the answer, doing some arithmetic, talking in native english and giving the answer, putting the problem as a system of equations, etc. What's easier for us might not be easy for the LLM, so we need to try what approach gives best results.</p>
 <p>So, the idea is to generate multiple (thousands) solutions for some problem which isn't trivial and store the stochastic solutions / inferences / token sequence that led to a right answer among all the tries. Some will get the right answer, some don't. And then, the model will be retrained based on the right solutions. So, it's not human labeled anymore, it's just trying solutions and re-train on the ones that were correct so the network learns to keep doing that for similar situations in the future.</p>
 <p>Pre and post training are quite standard and used across all providers but the reinforcement learning step is in an earlier stage and not standardized, different providers are trying different approaches and how some details in the process are handled (which is a simple idea overall) has high impact and is not trivial, those details in how we select what is "the best answer" among the correct ones for example play a big role.</p>
-<h4 id="deepseek-r1"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#deepseek-r1">Deepseek R1</a></h4>
+<h3 id="deepseek-r1">Deepseek R1<a class="headerlink" href="#deepseek-r1" title="Permanent link">&para;</a></h3>
 <p>The <a href="https://arxiv.org/abs/2501.12948">paper</a> was innovative and game changer in part because is  open and explicit about RL while openAI and other kept the details for themselves.</p>
 <p>With RL, the model learns over time to give better answers to the questions and it's using more and more tokens to do it. It "discovers" that trying many paths and backtracking and trying again it's better to get a good answers. <em>Chain of thoughts</em> emerge without being hardcoded anywhere by researchers (would be impossible too, it's something the model needs to discover)</p>
 <blockquote>
 <p>A "thinking/reasoning" model is one that has been trained with Reinforcement Learning</p>
 </blockquote>
 <p>ChatGPT 4o is not a reasoning one, is SFT montly (learn by example, just finetuned, no RL. He says there is a bit of RL but we should think about them as SFT really). DeepSeek uses RL.  o1 and o3 are also RL ones.</p>
-<h4 id="alphago"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#alphago">AlphaGo</a></h4>
+<h3 id="alphago">AlphaGo<a class="headerlink" href="#alphago" title="Permanent link">&para;</a></h3>
 <p>RL made it possible for the model to beat top players ELO while supervised learning was not capable. RL is not restricted to human kind of plays and that's how move 37 happened, a play that was not expected by top level players but that actually was really powerful. This happened because the training wasn't guided by supervised learning but by RL (the AI playing against itself kind of)</p>
-<h4 id="learning-in-unverifiable-domains-reinforcement-learning-from-humand-feedback"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#learning-in-unverifiable-domains-reinforcement-learning-from-humand-feedback">Learning in Unverifiable domains (Reinforcement learning from Humand Feedback)</a></h4>
+<h3 id="learning-in-unverifiable-domains-reinforcement-learning-from-humand-feedback">Learning in Unverifiable domains (Reinforcement learning from Humand Feedback)<a class="headerlink" href="#learning-in-unverifiable-domains-reinforcement-learning-from-humand-feedback" title="Permanent link">&para;</a></h3>
 <p>The previous problems where easily verifiable, we could just compare in RL if the solution was correct by checking the final output of the LLM vs the right answer, maybe by direct comparison or using LLM as judge where we ask another LLM to check if the solution provided by the model is consistent with the actual solution (currently that approach is quite reliable) but this can't be done in <em>unverifiable domains</em> such as "write a joke about pelicans", "write a poem", etc</p>
 <p>For the pelican jokes, in principle you could use humans to judge if the joke is funny and reward it but as you need to evaluate thousands of generations for thousands of prompts, this becomes unfeasible. We need another strategy. This <a href="https://arxiv.org/abs/1909.08593">paper</a>introduced the RL-HF subject</p>
 <p><strong>RLHF approach</strong>
@@ -1340,12 +1408,12 @@ which usually is answered wrongly or randomly.</p>
 <strong>STEP 2</strong>: Train a neural net simulator of human preferences ("reward model")
 <strong>STEP 3</strong>: Run RL as usual, but using the simulator instead of actual humans</p>
 <p>The reward model is not a perfect human simulator but it's currently good enough to work meaningfully. </p>
-<h5 id="upside"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#upside">Upside</a></h5>
+<h4 id="upside">Upside<a class="headerlink" href="#upside" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>We can run RL in arbitrary domains (even unverifiable ones) and empirically it gives better results.</p>
 </blockquote>
 <p>He says that probably this improves the model due to <strong>discriminator - generator gap</strong>. It's easier for a human to discriminate than to generate. It's easier to say which jokes are good or bad than to create the good ones. The labeler doesn't need to create a good joke, it just leaves that hard task to the model and the labeler points out which are good and which are bad</p>
-<h5 id="downsides"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#downsides">Downsides</a></h5>
+<h4 id="downsides">Downsides<a class="headerlink" href="#downsides" title="Permanent link">&para;</a></h4>
 <p>RL is done with respect to a <em>lossy simulation</em> of humans. It might be misleading, we generate orders based on a model that might not reflect the actual human judgement.</p>
 <blockquote>
 <p>RL discovers ways to "game" the reward model.</p>
@@ -1356,325 +1424,27 @@ which usually is answered wrongly or randomly.</p>
 Just train the RL for some time and crop the training, don't go too far so you avoid the adversarial example generation.</p>
 <p><strong>This is true for RLHF, not RL</strong> .
 Plain RL can be run indefinitely because you can't really game the answer, you are looking for a specific answer and the neural net will find ways, even non standard ways, to find that answer but it's totally verifiable. RLHF is different, and a reward function can be gamed, so RLHF can't be run forever while plain RL yes.</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-02-21 00:00:00+00:00">2025-02-21</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/ai/" class="md-meta__link">AI</a>, 
-              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="e-commerce-image-similarity-via-visual-embeddings"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/">E-commerce Image Similarity via Visual Embeddings</a></h2>
-<p>How I implemented an API to retrieve similar images from an E-commerce in 3 steps</p>
-<p>In this post, we explore a system to identify similar articles solely based on e-commerce images. The approach is designed with two primary objectives in mind:</p>
-<h3 id="objectives"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#objectives">Objectives</a></h3>
-<ol>
-<li>
-<p><strong>Catalog Similarity:</strong><br />
-    Determine which items in the client's catalog resemble each other using only their photos.</p>
-</li>
-<li>
-<p><strong>External Querying:</strong><br />
-    Although not implemented in the current API, the plan is to eventually allow querying with external images. The envisioned workflow is to source images from suppliers, compare them with the client's catalog, and perform this embedding generation locally to keep the API lightweight.</p>
-</li>
-</ol>
-<h3 id="proposed-solution"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#proposed-solution">Proposed Solution</a></h3>
-<p>The core idea is to use a pretrained image model to extract embeddings from each photo. Once these embeddings are available, we can perform similarity searches to find items that are visually alike.</p>
-<p>For our implementation, we experimented with both OpenAI's <strong>clip-ViT-B-32</strong> and <strong>ResNet</strong>. In general, both models produced comparable results, though we opted for CLIP in our main experiments.</p>
-<h3 id="implementation-steps"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#implementation-steps">Implementation Steps</a></h3>
-<h4 id="step-1-download-catalog-images"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#step-1-download-catalog-images">Step 1: Download Catalog Images</a></h4>
-<ul>
-<li><strong>Script:</strong> <code>embeddings/download_images/get_images.py</code></li>
-<li><strong>Details:</strong><br />
-    This script downloads all catalog images from the e-commerce using a <code>ThreadPool</code> to speed up the process.</li>
-</ul>
-<h4 id="step-2-generate-and-index-embeddings"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#step-2-generate-and-index-embeddings">Step 2: Generate and Index Embeddings</a></h4>
-<ul>
-<li><strong>Script:</strong> <code>embeddings/clip_faiss.py</code></li>
-<li><strong>Details:</strong><br />
-    The script generates embeddings for each photo and stores them in a Faiss index, which is saved under <code>embeddings/faiss_index/</code>.<br />
-<strong>Note:</strong> Since the process is deterministic, a simple overwrite will not impact the results. Idempotent as they call it.</li>
-</ul>
-<p>Additional notebooks are available to illustrate the process, check results, and experiment with alternative models and tests.</p>
-<h4 id="step-3-query-the-faiss-index"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#step-3-query-the-faiss-index">Step 3: Query the Faiss Index</a></h4>
-<ul>
-<li><strong>API Functionality:</strong><br />
-    The Faiss index is already built. We expose an API endpoint where you can pass an <code>article_id</code> (used during the embedding generation) and retrieve the most similar items.<br />
-<strong>Validation:</strong><br />
-    As a sanity check, querying an article should return itself as the top match with a distance of 0.</li>
-</ul>
-<h3 id="conclusion"><a class="toclink" href="../../2025/02/21/image-similarity-ecommerce/#conclusion">Conclusion</a></h3>
-<p>By leveraging pretrained image models and efficient similarity search with Faiss, this approach provides a scalable method for identifying visually similar items in an e-commerce catalog. This system not only improves internal catalog management but also sets the groundwork for integrating external image queries in the future.</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-01-28 00:00:00+00:00">2025-01-28</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/ai/" class="md-meta__link">AI</a>, 
-              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="kullback-leibler-divergence"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/">Kullback-Leibler divergence</a></h2>
-<p>To understand KL divergence we need to first understand <a href="https://fbetteo.github.io/blog/writing/2025/01/06/entropy/">Entropy</a>. The most important thing to have in mind though is that entropy can be thought as a measure of "information", but what I like the most, as a measure of <em>expected surprise</em> that one gets for every observed value of the distribution.</p>
-<p>For a highly dense distribution, you will almost sure get a value from the dense region and the expected surprise will be really low (but you are highly surprised when you see a value off that region!)</p>
-<h4 id="relative-entropy"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#relative-entropy">Relative entropy</a></h4>
-<p>How this relates to KL? Well, Kullback-Leibler is a divergence but is also called <em>relative entropy</em>. This means, how that measure of entropy differs between two distributions. I find that easier to grasp.</p>
-<p>Usually we have a true distribution <span class="arithmatex">\(p(x)\)</span> and an estimated distribution <span class="arithmatex">\(q(x)\)</span> that we use to approximate <span class="arithmatex">\(p(x)\)</span>. KL divergence can help us understand how good it does the  job.</p>
-<p>If entropy is: </p>
-<p><span class="arithmatex">\(H[x] = - \sum_x p(x) \ln p(x)\)</span><br />
-(originally <span class="arithmatex">\(\log_2\)</span> but <span class="arithmatex">\(\ln\)</span> works too and it's used everywhere )</p>
-<div class="arithmatex">\[KL(p||q) = - \int{p(x) \ln q(x)dx} - (-\int{p(x) \ln p(x)dx})\]</div>
-<div class="arithmatex">\[ = - \int{p(x) \ln \frac{q(x)}{p(x)}dx}\]</div>
-<p>The first row is clear, is just the difference in entropies. 
-This is relative entropy between p(x) and q(x).</p>
-<p><strong>Important</strong>: KL divergence is not symmetrical. <span class="arithmatex">\(KL(p||q) \neq KL(q||p)\)</span>
-So, KL is not a metric of distance (but can be thought as if). It's actually a divergence.</p>
-<h4 id="why-its-not-symmetrical"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#why-its-not-symmetrical">Why it's not symmetrical?</a></h4>
-<p>I think about it this way. This is a dissimilarity between one distribution and how we approximate it. Think about two totally different distributions (awful approximations):</p>
-<ul>
-<li>one highly centered around one specific value </li>
-<li>the other with a uniform-ish shape, highly dispersed.</li>
-</ul>
-<p>The difference in "surprise" you get from both ways approximation is not the same.</p>
-<p>If you are approximating the highly dense distribution with the uniform one, you are approximating it with a distribution that surprises you  in general <span class="arithmatex">\(\ln q(x)\)</span>, let's say <em>moderately high</em> everywhere, even for the specific dense region.</p>
-<p>But the other way, if you approximate the dispersed distribution with the dense one, you are using a distribution with high surprise in most of the region of the dispersed distribution and really low surprise in one specific value.</p>
-<p>This term <span class="arithmatex">\(\int{p(x) \ln q(x)dx}\)</span> behaves differently in both scenarios and there is no guarantee or need that they should match.</p>
-<h5 id="references"><a class="toclink" href="../../2025/01/28/kullback-leibler-divergence/#references">References</a></h5>
-<p><a href="https://www.bishopbook.com/">Deep Learning, Bishop</a><br />
-<a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Wikipedia</a></p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-01-28 00:00:00+00:00">2025-01-28</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/ai/" class="md-meta__link">AI</a>, 
-              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="mutual-information"><a class="toclink" href="../../2025/01/28/mutual-information/">Mutual Information</a></h2>
-<blockquote>
-<p>When two variables <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> are independent, their joint distribution will factorize into the product of their marginals <span class="arithmatex">\(p(x,y) = p(x)p(y)\)</span>. If the variables are not independent, we can gain some idea of whether they are "close" to being independent by considering the <a href="https://fbetteo.github.io/blog/writing/2025/01/28/kullback-leibler-divergence/">KL Divergence</a> between the joint distribution and the product of the marginals, given by:</p>
-</blockquote>
-<div class="arithmatex">\[I[x,y] = KL(p(x,y)||p(x)p(y))\]</div>
-<div class="arithmatex">\[=  - \int \int p(x,y) \ln (\frac{p(x)p(y)}{p(x,y)}) \]</div>
-<p>which is called the <em>mutual information</em> between <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>.</p>
-<p>Thus, the mutual information represents the reduction in uncertainty about <span class="arithmatex">\(x\)</span> by virtue of being told the value of <span class="arithmatex">\(y\)</span> (or vice versa)</p>
-<blockquote>
-<p>From a Bayesian perspective, we can view <span class="arithmatex">\(p(x)\)</span> as the prior distribution for <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(p(x|y)\)</span> as the posterior distribution after we have observed new data <span class="arithmatex">\(y\)</span>. The mutual information therefore represents the reduction in uncertainty about <span class="arithmatex">\(x\)</span> as a consequence of the new observation <span class="arithmatex">\(y\)</span>.</p>
-</blockquote>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-01-26 00:00:00+00:00">2025-01-26</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/personal/" class="md-meta__link">Personal</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="obisidan-workflow"><a class="toclink" href="../../2025/01/26/obsidian-workflow/">Obisidan Workflow</a></h2>
-<p>This is my first personal order for <a href="https://obsidian.md/">Obsidian</a> with some actual rules and not improvising everything.</p>
-<p>I've read <a href="https://stephango.com/vault">Kepano's way</a> and <a href="https://www.youtube.com/watch?v=hSTy_BInQs8.">this other guy</a> I think both are useful in some way but I' sticking closer to Kepano. Not copying as he has a lots of templates with structured information in the YAML as he seems to create a lot of lists and rankings. Currently I'm using Obsidian a lot for technical notes, daily notes, paper annotation but also some listing as books I've read, movies, etc. It's a mix and I'm not sure I know what info to put for everything that is not a book, or game. Like, notes from some technical topic I can put the area or the author but there is no ranking.</p>
-<p>Also, I like folders and he hates them.
-I'll do the following.</p>
-<ul>
-<li>Have folders by general topic to order the notes (book, movies,  companies I work for, projects). Notes will be written where they belong the most. For general technical topics (such as Xgboost, I might create a data science or technical folder with all there. I'll put reasonable tags, many notes in different folders might share tags)</li>
-<li>Notes across folders might share useful information. Maybe I have some deployment technical note on a company that could apply for another project, or even I'll want to find it without remembering where I applied it, so, I'll also add <strong>tags</strong> so I can see everything together using <a href="https://blacksmithgu.github.io/obsidian-dataview/">dataview</a></li>
-<li>I'll try to add relevant information usable by dataview in some cases, such as Author for books, or technical notes.</li>
-<li>I'll have a [[tags]] folder with relevant tags with queries from dataview so I can have stuff organized.</li>
-<li>I'll keep tags in english for technical stuff but for books, series, etc where is more natural to remember in spanish (I'm from Argentina) and won't be shared probably I'll ues them in spanish (such as "policial", "novela", etc which are words that I never use in english). </li>
-</ul>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-01-06 00:00:00+00:00">2025-01-06</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/ai/" class="md-meta__link">AI</a>, 
-              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="entropy-and-information"><a class="toclink" href="../../2025/01/06/entropy/">Entropy and information</a></h2>
-<p>Term that comes from information theory.
-The most intuitive way to think about <em>information</em> of a variable is to relate to the <strong>degree of surprise</strong> on learning the value of the variable X.<br />
-This definition was mentioned both in <a href="https://www.bishopbook.com/">Deep Learning, Bishop</a> and in <a href="https://worrydream.com/refs/Hamming_1997_-_The_Art_of_Doing_Science_and_Engineering.pdf">Hamming</a>, and the former is the text I was just reading before starting this note.</p>
-<p>So, having a variable X with <code>p(x)</code>, what's <code>h(x)</code> , the information of observing X? This quantity <code>h(x)</code> should be a monotonic function of <code>p(x)</code>. Remember, information is tied to the surprise, observing an almost sure event, high p(x), reveals less information than an unexpected event,low p(x). In the extreme, observing a known value, gives 0 information.</p>
-<p>How to define the information mathematically comes (in some way intuitively) by the definition that, observing two independent variables <code>x</code> and <code>y</code> should provide an amount of information equal to the sum of the individual informations.</p>
-<div class="arithmatex">\[h(x,y) = h(x) + h(y)\]</div>
-<p>We know that for independent events <span class="arithmatex">\(p(x, y) = p(x)*p(y)\)</span>  </p>
-<p>It can be derived then that  </p>
-<div class="arithmatex">\[h(x) = - \log_2 p(x)\]</div>
-<p>The log provides the summation part coming from a multiplication. The negative ensure 0 or positive values. Remember that we are taking the log of a value between 0 and 1.</p>
-<p>Now, there is another important term, <strong>entropy</strong>.
-It summarizes the average amount of information that is transmitted <em>if a sender wishes to transmit the value of a random variable to a receiver</em>. 
-The entropy is the expectation of the information, with respect to the distribution p(x).  </p>
-<div class="arithmatex">\[H[x] = - \sum_x p(x) \log_2 p(x)\]</div>
-<p>For p(x) = 0, where the log would bring problem, we consider <span class="arithmatex">\(p(x) \log p(x)\)</span>=0</p>
-<p>Classical information theory uses <span class="arithmatex">\(\log_2\)</span> because it relates to bits and the amount of bits required to send a message but the book changes to <span class="arithmatex">\(\ln\)</span> because is much more used in ML and it's just a different unit to measure entropy. </p>
-    
-  </div>
-</article>
-      
-      
-        
-          
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>
-        
+  
+
+
+
+  
+
+
+  
+
+
+
       
-    </div>
+    </article>
   </div>
 
           
@@ -1695,10 +1465,12 @@ The entropy is the expectation of the information, with respect to the distribut
   
     
       
+        
+      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../category/statistics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: statistics">
+          <a href="../../../02/21/image-similarity-ecommerce/" class="md-footer__link md-footer__link--prev" aria-label="Previous: E-commerce Image Similarity via Visual Embeddings">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1708,27 +1480,11 @@ The entropy is the expectation of the information, with respect to the distribut
                 Previous
               </span>
               <div class="md-ellipsis">
-                statistics
+                E-commerce Image Similarity via Visual Embeddings
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../2024/" class="md-footer__link md-footer__link--next" aria-label="Next: 2024">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                2024
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
@@ -1757,12 +1513,12 @@ The entropy is the expectation of the information, with respect to the distribut
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.tooltips", "header.autohide", "navigation.expand", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.prune", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

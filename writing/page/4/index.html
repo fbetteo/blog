@@ -1037,6 +1037,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#esencia-del-algebra-lineal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Esencia del Algebra Lineal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#funciones-de-probabilidad-y-distribucion" class="md-nav__link">
     <span class="md-ellipsis">
       Funciones de Probabilidad y Distribucion
@@ -1117,15 +1126,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#tipos-de-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tipos de Variables
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1140,6 +1140,160 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2019-04-20 00:00:00+00:00">2019-04-20</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/matematica/" class="md-meta__link">matematica</a>, 
+              <a href="../../category/algebra/" class="md-meta__link">algebra</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              7 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="esencia-del-algebra-lineal"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/">Esencia del Algebra Lineal</a></h2>
+<p>El álgebra lineal está por todas partes en estadística y data science. Matrices, vectores y transformaciones son términos que se escuchan seguido y están detrás de muchos de los métodos y algoritmos que se usan hoy por hoy. Aunque no sea necesario saber del tema para correr un modelo empaquetado en una librería de R, es muy útil entender lo que hacemos realmente ya que nos permite ver a los modelos como algo lógico y no una caja negra mágica.</p>
+<p>Hay una serie de videos excelente en inglés que mediante visualizaciones y animaciones permite entender la intuición de muchos de los conceptos básicos, que solo con un libro puede ser medio críptico o poco imaginable.
+Para el que le interese: <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">ESSENCE OF LINEAR ALGEBRA</a> por 3Blue1Brown.</p>
+<p>Este post, aunque quizás medio desordenado y sin mucha prolijidad, es una recopilación de algunas notas. Puede que queden términos en inglés intercalados.</p>
+<h3 id="matrices-y-vectores"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#matrices-y-vectores">Matrices y vectores</a></h3>
+<ul>
+<li>Vector vive en <em>n</em> dimensiones.</li>
+<li>Suma de vectores es combinación lineal</li>
+<li>En <span class="arithmatex">\(R^{2}\)</span> <span class="arithmatex">\(\hat \imath = \left&lt; 1, 0 \right&gt; \text{y} \hat \jmath = \left&lt; 0, 1 \right&gt;\)</span> forman una base. Cualquier punto es una combinación lineal de ellos.     </li>
+<li>Span es el espacio que pueden generar x vectores. <span class="arithmatex">\(R^{2}\)</span> es el span de  <span class="arithmatex">\(\left&lt; 1, 0 \right&gt; \left&lt; 0, 1 \right&gt;\)</span></li>
+<li>Vector puede ser pensado como una flecha desde el origen (0,0) a las coordenadas que lo identifican. O como un punto directo en las coordenadas..</li>
+<li>Matriz es una transformación. Lleva un vector a otro punto. Si transformamos cada posible vector de un espacio por la matriz podemos ver como el espacio es transformado. Ej: rotar, invertir, estirar.</li>
+<li>Si transformamos una base, cada punto nuevo puede generarse transformando la nueva base. <br />
+Por ej: <span class="arithmatex">\(z = \left&lt; 3, 2 \right&gt; \text{es } 3\begin{bmatrix} 1 \\ 0 \end{bmatrix} + 2\begin{bmatrix} 0 \\ 1 \end{bmatrix} = 3\hat \imath + 2\hat \jmath\)</span><br />
+Aplicando la transformación de la matriz A = <span class="arithmatex">\(\begin{pmatrix} A &amp; B \\ C &amp; D \end{pmatrix} \text{obtenemos los nuevos vectores base } \hat \imath^{*} \text{y } \hat \jmath^{*}\)</span><br />
+<span class="arithmatex">\(z^{*} = 3\hat \imath^{*} + 2\hat \jmath^{*}\)</span> </li>
+<li>Multiplicar 2 matrices es transformar un espacio con la primera matriz ( desde la derecha) y luego transformar el resultado por la segunda matriz. Ej: Rotar un espacio y luego invertirlo.</li>
+<li>AB != BA -&gt; El orden de las transformaciones importa y se lee de derecha a izquierda.</li>
+<li>
+<p>La matriz (transformación) ya dice como van a ser las nuevas bases.<br />
+Si la matriz es <span class="arithmatex">\(\begin{pmatrix} A &amp; B \\ C &amp; D \end{pmatrix}\)</span>, el nuevo <span class="arithmatex">\(\hat \imath^{*}\)</span> es <span class="arithmatex">\(\begin{bmatrix} A \\ C \end{bmatrix}\)</span> y <span class="arithmatex">\(\hat \jmath^{*}\)</span> es <span class="arithmatex">\(\begin{bmatrix} B \\ D \end{bmatrix}\)</span><br />
+Ej: <span class="arithmatex">\(z = \left&lt; 3, 2 \right&gt;  z^{*} =  \begin{bmatrix} A &amp; B \\ C &amp; D \end{bmatrix}\begin{bmatrix} 3 \\ 2 \end{bmatrix} = \begin{bmatrix} 3A + 2B \\ 3C + 2D \end{bmatrix}\)</span><br />
+Se puede ver también como:  <span class="arithmatex">\(<span class="arithmatex">\(z = 3\hat \imath + 2\hat \jmath \text{  }  z^{*} = 3\hat \imath^{*} + 2\hat \jmath^{*} = 3\begin{bmatrix} A \\ C \end{bmatrix} + 2\begin{bmatrix} B \\ D \end{bmatrix} = \begin{bmatrix} 3A + 2B \\ 3C + 2D \end{bmatrix}\)</span>\)</span>
+&nbsp;</p>
+</li>
+<li>
+<p>!!!. Las transformaciones afectan el area (en R2, el volumen en R3..) de las figuras en el espacio (todas por igual). El <em>DETERMINANTE</em> de una matriz mide ese cambio.</p>
+</li>
+<li>Si el determinante <strong>es 0</strong> significa que se perdió una dimensión o que todo se comprimió. Pasa de <span class="arithmatex">\(R^{2}\)</span> a una recta (o a un punto!)</li>
+<li>Si el determinante ** es &lt; 0** significa que el espacio se invirtió (en sentido.. como dar vuelta una hoja) pero |DET| siguen siendo el cambio en el area.</li>
+<li>A<sup>-1</sup>A = I -&gt; una transformación que no hace nada.</li>
+<li>
+<p>Si DET(A) = 0 no existe la matriz inversa. Ej. <span class="arithmatex">\(R^{2}\)</span> -&gt; si det(A) = 0 la transformación lleva el espacio a una recta. No hay función que lleve cada vector de la recta a un punto en <span class="arithmatex">\(R{2}\)</span>. No hay vuelta atrás.
+&nbsp;
+&nbsp;</p>
+</li>
+<li>
+<p>Si una transformación lleva todos los puntos a una recta tiene rango 1, si lleva a un plano rango 2, y así.. <strong>RANGO</strong> es el número de dimensiones del output. Rango completo es cuando mantiene las dimensiones del input.</p>
+</li>
+<li>El conjunto de posibles outputs de <span class="arithmatex">\(A\vec v\)</span> es el Column Space = Span de las columnas</li>
+<li>Cuando perdés dimensiones por la transformación todo un conjunto de vectores pasa a ser (0,0). Eso se llama <strong>Null Space</strong> o <strong>Kernel</strong></li>
+<li>Matrices no cuadradas cambian la dimensión del espacio.<br />
+$$ \begin{bmatrix} A &amp; D \ B &amp; E \ C &amp; F \end{bmatrix} \begin{bmatrix} 1 \ 1 \end{bmatrix} = \begin{bmatrix} A + D \ B + E \ C + F \end{bmatrix} $$ 
+Quedan todos los puntos de <span class="arithmatex">\(R^{2}\)</span> en un plano en el espacio <span class="arithmatex">\(R^{3}\)</span>. De acá viene la restricción para multiplicar matrices. La cantidad de columnas de la transformación tiene que ser igual a la dimensión del input</li>
+</ul>
+<h4 id="dot-product-o-producto-interno"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#dot-product-o-producto-interno">DOT PRODUCT o PRODUCTO INTERNO</a></h4>
+<ul>
+<li>Dot product entre dos vectores equivale a proyectar uno en el otro y multiplicar sus largos. <span class="arithmatex">\(\vec A \cdot \vec B = |A^{*}| * |B|\)</span><br />
+<span class="arithmatex">\(A^{*}\)</span> es el vector A proyectado en B.</li>
+<li><span class="arithmatex">\(\vec B\)</span> es un vector 2D pero también se lo puede ver como una matriz 1x2 que lleva del 2D a la recta.<br />
+<span class="arithmatex">\(\vec B \cdot \vec A = B \vec A \text{que sería llevar A al espacio transformado por B.}\)</span><br />
+<span class="arithmatex">\(B = \begin{bmatrix} B_x &amp; B_y \end{bmatrix}\)</span> tiene en sus columnas donde queda <span class="arithmatex">\(\hat \imath \text{y } \hat \jmath\)</span> (los vectores unitarios) al ser transformados o algun valor escalado de esto.<br />
+<span class="arithmatex">\(\vec A \cdot \vec B\)</span> es el valor de A en la recta a la que te lleva la transformación B.</li>
+<li>Es equivalente proyecto B en A.</li>
+<li>Si Dot Product &gt; 0, tienen dirección similar.</li>
+<li>Si Dot Product = 0, son ortogonales - proyección que cae en el origen.</li>
+<li>Si Dot Product &lt; 0, tienen direcciones opuestas.</li>
+</ul>
+<p>&nbsp;
+&nbsp;</p>
+<h4 id="cross-product"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#cross-product">CROSS PRODUCT</a></h4>
+<ul>
+<li>Está definido para vectores en <span class="arithmatex">\(R^{3}\)</span></li>
+<li>El cross product <span class="arithmatex">\(\vec u \times \vec v\)</span> es el area del paralelograma que se puede imaginar con las paralelas de los vectores (imaginandolo en <span class="arithmatex">\(R^{2}\)</span>. El signo depende de la orientación de los vectores. El vector de la "derecha" tiene que estar primero para que el cross product sea &gt; 0.</li>
+<li>En realidad el paralelograma formado por dos vectores en R<sup>3</sup> tiene area equivalente al <strong>Largo</strong> del vector output de su cross product. Ese vector es ortogonal al paralelograma.</li>
+</ul>
+<p>&nbsp;
+&nbsp;</p>
+<h4 id="cambio-de-base"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#cambio-de-base">CAMBIO DE BASE</a></h4>
+<ul>
+<li>Distintos sistemas de coordenadas definen <span class="arithmatex">\(\hat \imath = \left&lt; 1, 0 \right&gt;, \hat \jmath \left&lt; 0, 1 \right&gt;\)</span> como algo distinto. <strong>NO</strong> hay una sola "grilla" válida. El espacio no tiene grilla predeterminada.</li>
+<li>Un mismo vector tiene distintas coordenadas según el sistema de bases desde donde se lo mire.</li>
+<li>Para pasar de una base a otra se aplica una transformación lineal.<br />
+Si <span class="arithmatex">\(\vec v\)</span> es un vector que queremos pasar de una base a otra, lo transformamos por la nueva base.<br />
+Y <span class="arithmatex">\(\hat \imath^{*} =  \left&lt; \hat \imath^{*}_1, \hat \imath^{*}_2 \right&gt;, \hat \jmath^{*} =  \left&lt; \hat \jmath^{*}_1, \hat \jmath^{*}_2 \right&gt;\)</span>
+Entonces:
+<span class="arithmatex">\(<span class="arithmatex">\(\begin{bmatrix} \hat \imath^{*}_1 &amp; \hat \jmath^{*}_1 \\ \hat \imath^{*}_2 &amp; \hat \jmath^{*}_2 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = \begin{bmatrix} v^{*}_1 \\ v^{*}_2 \end{bmatrix}\)</span>\)</span><br />
+Donde <span class="arithmatex">\(\begin{bmatrix} v^{*}_1 \\ v^{*}_2 \end{bmatrix}\)</span> es el vector en la nueva base, es decir, serían las coordenadas del vector <span class="arithmatex">\(\vec v\)</span> en el nuevo sistema de coordenadas y representando ese punto bajo el sistema de coordenadas original. -&gt; Como se vería <span class="arithmatex">\(\vec v\)</span> en la nueva base? desde un punto de vista de la base original.<br />
+La matriz transforma un vector siguiendo en el lenguaje de la base original.<br />
+Ej: Si <span class="arithmatex">\(\vec v\)</span> es (1,2) en el sistema cartesiano típico y aplicamos la matriz de cambio de base, un vector (1,2) bajo otros ejes se ubicaría en otro punto del espacio. Qué punto es ese bajo el sistema cartesiano? Es (1,2) en el nuevo, pero queremos saber su equivalente en el sistema original.</li>
+<li>Por otra parte si queremos saber que coordenadas tomaría el vector <span class="arithmatex">\(\vec v\)</span> bajo otra base debemos multiplicar por la inversa de la transformación. Transforma el vector al lenguaje de la nueva base.
+Responde a la pregunta. Qué coordenadas toma el punto V_1, V_2 del espacio en el sistema nuevo?
+&nbsp;</li>
+<li>Para aplicar una transformación a otra base conviene llevar el vector a transformar a la base original, transformar y reconvertir a la nueva base.
+$$ [A]^{-1}[T][A]\vec v = \vec v^{*}$$<br />
+A lo expresa en términos de la base original, luego se le aplica la transformación T y luego se lo devuelve al lenguaje de la nueva transformación.</li>
+</ul>
+<p>&nbsp;
+&nbsp;</p>
+<h4 id="eigenvalues-y-eigenvectors-autovalores-y-autovectores"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#eigenvalues-y-eigenvectors-autovalores-y-autovectores">Eigenvalues y Eigenvectors (autovalores y autovectores)</a></h4>
+<ul>
+<li>!!! Al aplicar una transformación lineal a un espacio algunos vectores no cambian de dirección, solo se estiran o contraen pero sobre la misma recta. El resto sí se mueve. Los que se mantienen son los eigenvectors, y su factor de expansión o contracción es su eigenvalue.<br />
+Si A es la matriz de transformación, <span class="arithmatex">\(\vec v\)</span> es un eigenvector y <span class="arithmatex">\(\lambda\)</span> su eigenvalue.
+$$ A\vec v = \lambda \vec v$$  </li>
+<li>Si una transformación es una matriz diagonal, lo único que hace es estirar <span class="arithmatex">\(\hat \imath \text{y } \hat \jmath\)</span> por lo tanto los vectores base son eigenvectors y la diagonal son los eigenvalues.</li>
+<li>Si cambiamos la base a una formada por los eigenvectors (que spanean el espacio) de la matriz podemos aplicar la transformación (la matriz original de donde salieron los eigenvectors) a esta nueva base y solo la va a estirar, por lo tanto es una transformación diagonal, que permite calculos mucho más fácil. Después habría que volver a la base original.<br />
+A -&gt; Matriz de transformación
+E -&gt; Matriz de autovectores que forman la nueva base <span class="arithmatex">\(\begin{bmatrix} e_11 &amp; e_21 \\ e_12 &amp; e_22 \end{bmatrix}\)</span>
+D -&gt; Matriz Diagonal cuyos valores son los eigenvalues
+$$ E^{-1}AE=D$$</li>
+</ul>
+<p>E cambia la base a eigenvectors (expresado en la base original), A aplica transformación y E<sup>-1</sup> lo lleva al lenguaje de la nueva base (queda expresado en las nuevas coordenadas)
+&nbsp;
+&nbsp;</p>
+<h4 id="espacios-vectoriales-abstractos"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#espacios-vectoriales-abstractos">Espacios Vectoriales Abstractos</a></h4>
+<ul>
+<li>!!! Ver <em>funciones</em> como un tipo especial de vectores.</li>
+<li>Las funciones se pueden sumar y escalar <span class="arithmatex">\(f(x) + g(x) \text{y } 2f(x)\)</span></li>
+<li>Existen transformaciones lineales de funciones, convierten una función en otra. También conocidas como "operadores"</li>
+<li>Para que una transformación sea lineal tiene que cumplir aditividad y mulitplicación por escalar<br />
+$$ L(\vec v + \vec  w) = L(\vec v) + L(\vec w)$$
+$$ L(c\vec v) = cL(\vec v)$$</li>
+<li>En general cualquier espacio que cumpla los axiomas los espacios vectoriales puede ser considerado uno.</li>
+</ul>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2212,86 +2366,6 @@ Ahora simplemente contamos cuántas hay de cada una y analizamos el resultado.</
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2018-08-25 00:00:00+00:00">2018-08-25</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="tipos-de-variables"><a class="toclink" href="../../2018/08/25/tipos-de-variables/">Tipos de Variables</a></h2>
-<p>Las características de las variables que podemos encontrar en un dataset son muy diversas, pero general se pueden clasificar bajo alguno de los siguientes formatos.</p>
-<p><strong>Categóricas</strong> o <strong>Cualitativas</strong></p>
-<p>Corresponden a variables con <em>etiquetas</em> o valores pero que no siguen un orden específico o no tienen jerarquía.
-Por ejemplo: color de ojos, género, sabor (dulce, salado, amargo), etc.
-Para estas variables, que una observación corresponda a un valor u a otro no revela mayor importancia o mejor ponderación  sobre otra observación, son simplemente distintas.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Persona1&quot;</span><span class="p">,</span><span class="s">&quot;Persona2&quot;</span><span class="p">,</span><span class="s">&quot;Persona3&quot;</span><span class="p">,</span><span class="s">&quot;Verde&quot;</span><span class="p">,</span><span class="s">&quot;Marron&quot;</span><span class="p">,</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">      </span><span class="s">&quot;Azul&quot;</span><span class="p">,</span><span class="w">      </span><span class="m">1.8</span><span class="p">,</span><span class="m">1.87</span><span class="p">,</span><span class="m">1.65</span><span class="p">,</span><span class="s">&quot;Secundario Completo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Universitario Completo&quot;</span><span class="p">,</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">      </span><span class="s">&quot;Sin estudios&quot;</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">))</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nf">names</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;ID&quot;</span><span class="p">,</span><span class="s">&quot;Ojos&quot;</span><span class="p">,</span><span class="s">&quot;Altura&quot;</span><span class="p">,</span><span class="s">&quot;Estudios&quot;</span><span class="p">,</span><span class="s">&quot;Hijos&quot;</span><span class="p">)</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">df</span><span class="o">$</span><span class="n">Ojos</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>## [1] &quot;Verde&quot;  &quot;Marron&quot; &quot;Azul&quot;
-</span></code></pre></div>
-<p>Simulamos una tabla muy básica con 4 columnas por observación. Como ejemplo de variable categórica tomamos el color de ojos de estas personas. Y vemos que puede tomar los valores azul, marrón o verde. Más allá de los gustos personales, en principio estas etiquetas no revelan ningún orden, simplemente valores distintos según el individuo.</p>
-<p><strong>Ordinales</strong></p>
-<p>Corresponden a variables con <em>etiquetas</em> pero que en este caso sí tienen un orden establecido o jerarquía. Es decir que una etiqueta es "mejor" o tiene un valor más elevado. Por otra parte, en esta jerarquía o escala no podemos determinar cuánto mejor es una etiqueta por sobre otra, solo sabemos cómo se ordenan.</p>
-<p>Volvemos al ejemplo de nuestra tabla. Este caso tomamos la columna Nivel de estudios.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Estudios</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>## [1] &quot;Secundario Completo&quot;    &quot;Universitario Completo&quot; &quot;Sin estudios&quot;
-</span></code></pre></div>
-<p>Vemos que en nuestra tabla se pueden encontrar los valores "Sin estudios", "Secundario Completo" y "Universitario Completo". Podemos decir que esta columna presenta un orden lógico entre las distintas etiquetas y que Universitario completo es más deseable que Secundario Completo y este último a su vez más deseable que Sin Estudios. 
-Por otra parte, no podemos definir concretamente cuánto más deseable una categoría sobre la otra. Es universitario Completo 2 veces mejor que Secundario completo? 1? 3?. Y esa "distancia", es la misma entre Secundario completo y Sin Estudios? No es clara amplitud.</p>
-<p><strong>Cuantitativas Discretas</strong></p>
-<p>Corresponden a variables numéricas que son <em>numerables</em>, es decir que podemos contar cuantos valores intermedios hay entre 2 valores cualquiera. Entre cada valor no hay infinitos posibles.
-Siguiendo nuestra tabla, el ejemplo a tener en cuenta es el de número de hijos.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Hijos</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>## [1] &quot;3&quot; &quot;2&quot; &quot;1&quot;
-</span></code></pre></div>
-<p>Cada persona puede tener entre 0 y digamos... 10 hijos para no ser tan extremistas. A su vez, no se pueden tener fracciones de hijo. Por lo tanto, entre 6 y 8 hijos, solo se pueden tener 7. No 7.4, ni 6.2. En ese sentido decimos que entre dos valores cualquiera podemos numerar los intermedios.</p>
-<p><strong>Cuantitativas Continuas</strong></p>
-<p>Corresponden a variables numéricas no numerables, es decir que entre 2 valores cualquiera, hay infinitos intermedios.
-En nuestro ejemplo, podemos tomar la columna Altura para ilustrarlo.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">df</span><span class="o">$</span><span class="n">Altura</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>## [1] &quot;1.8&quot;  &quot;1.87&quot; &quot;1.65&quot;
-</span></code></pre></div>
-<p>En nuestro caso tenemos valores redondeados pero si tuviéramos valores más precisos, hay inifinitas posibilidades entre 1.7 y 1.8.
-Este tipo de variables son muy comunes y se encuentran por todos lados. Temperatura, longitudes, etc.</p>
-    
-  </div>
-</article>
-      
       
         
           
@@ -2299,7 +2373,7 @@ Este tipo de variables son muy comunes y se encuentran por todos lados. Temperat
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../../">1</a> <a class="md-pagination__link" href="../2/">2</a> <a class="md-pagination__link" href="../3/">3</a> <span class="md-pagination__current">4</span>
+  <a class="md-pagination__link" href="../../">1</a> <a class="md-pagination__link" href="../2/">2</a> <a class="md-pagination__link" href="../3/">3</a> <span class="md-pagination__current">4</span> <a class="md-pagination__link" href="../5/">5</a>
 </nav>
         
       

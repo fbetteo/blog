@@ -1037,6 +1037,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#de-r-a-python-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      De R a Python 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#anova" class="md-nav__link">
     <span class="md-ellipsis">
       ANOVA
@@ -1117,15 +1126,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#esencia-del-algebra-lineal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Esencia del Algebra Lineal
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1140,6 +1140,186 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-07-11 00:00:00+00:00">2020-07-11</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/r/" class="md-meta__link">R</a>, 
+              <a href="../../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="de-r-a-python-1"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/">De R a Python 1</a></h2>
+<p>Serie que documenta cuestiones prácticas que voy descubriendo a medida que empiezo a incursionar en Python un poco más enserio.
+Son más que nada recordatorios para el futuro de mecánicas que hoy entiendo, pero me voy a olvidar.</p>
+<p>Muchos de los objetos no van a tener relación entre sí o no se puede correr el código directo 
+ya que son copy/paste random de scripts.</p>
+<h4 id="usar-objetos-de-otros-scripts"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#usar-objetos-de-otros-scripts">Usar objetos de otros scripts</a></h4>
+<p>Si uno genera modelos, dataframes, etc en otro script por prolijidad y quiere utilizarlos en 
+el principal (o cualquiera en realidad) lo aconsejable es exportarlo como objeto pickle (algo 
+asi como los RDS en R.)</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">reticulate</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="kn">import</span> <span class="nn">pickle</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>
+</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a><span class="c1"># exportar. Objeto, archivo, permisos</span>
+</span><span id="__span-61-5"><a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">OBJETO</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;working/qualifying.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span>
+</span><span id="__span-61-6"><a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a>
+</span><span id="__span-61-7"><a id="__codelineno-61-7" name="__codelineno-61-7" href="#__codelineno-61-7"></a><span class="c1"># importar</span>
+</span><span id="__span-61-8"><a id="__codelineno-61-8" name="__codelineno-61-8" href="#__codelineno-61-8"></a><span class="n">leer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;archivo.p&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="seleccionar-columas-de-dataframe-por-patron-en-el-nombre"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#seleccionar-columas-de-dataframe-por-patron-en-el-nombre">Seleccionar columas de dataframe por patrón en el nombre</a></h4>
+<p>Para seleccionar columnas basados en si contiene determinado string en su nombre y no solo por nombre
+completo o por índice. </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="c1"># Recordemos que iloc selecciona por índice</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a><span class="c1"># Función Lambda  que convierte el indice de columna en strings y devuelve mascara (True/false)</span>
+</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="c1"># si contiene determinado patrón. Creo que puede ponerse cualquier Regex</span>
+</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;_points&#39;</span><span class="p">)]</span> <span class="c1"># select column based on name</span>
+</span></code></pre></div>
+<p>Si queremos combinar esto con otras columnas con otro patrón no encontré manera más sencilla por
+el momento que combinar por separado. Quizás es muy tedioso si son muchas.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="c1"># Notar que en point_vars le pasamos la máscara al listado de columnas nuevamente</span>
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a><span class="c1"># para quedarnos con el nombre real y poder sumarlo a las otras listas</span>
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a><span class="c1"># luego lo convertimos en lista porque el objeto es de tipo índice si no.</span>
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span>
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a><span class="n">qualy_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">,</span> <span class="s1">&#39;dif_to_min_perc&#39;</span><span class="p">]</span>
+</span><span id="__span-63-6"><a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a><span class="n">point_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;_points&#39;</span><span class="p">)])</span>
+</span><span id="__span-63-7"><a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>
+</span><span id="__span-63-8"><a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a><span class="n">vars_keep</span> <span class="o">=</span> <span class="n">target</span> <span class="o">+</span> <span class="n">qualy_vars</span> <span class="o">+</span> <span class="n">point_vars</span>
+</span></code></pre></div>
+<h4 id="juntar-dataframes-por-indice"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#juntar-dataframes-por-indice">Juntar dataframes por indice</a></h4>
+<p>Los DF vienen por default con un índice. Si uno trabaja con una copia del DF original para generar nuevas columnas el índice se mantiene (si no lo reseteamos claro). También útil si se tienen varias tablas con mismo índice.</p>
+<p>Esto permite juntar tablas sin tener que hacer un merge explicito por determinadas columnas si no
+tenemos esos keys.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">driver_points_merge</span><span class="p">)</span> <span class="c1"># join by index (no need to merge with column)</span>
+</span></code></pre></div>
+<h4 id="ifelse"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#ifelse">Ifelse</a></h4>
+<p>El equivalente de IFELSE en R para rapidamente crear una columna basado en otras, fila por fila.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-65-2"><a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a><span class="c1">#               = condicion, valor si True, valor si False</span>
+</span><span id="__span-65-3"><a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="dropear-columna-de-df"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#dropear-columna-de-df">Dropear columna de DF</a></h4>
+<p>Útil para asegurar que sacan el target de las X...</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;position&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="remplazar-determinado-valor-por-nan-u-otro"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#remplazar-determinado-valor-por-nan-u-otro">Remplazar determinado valor por NaN (u otro)</a></h4>
+<p>df.replace</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="n">qualifying</span> <span class="o">=</span> <span class="n">qualifying</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">N&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="apply-aplicar-funciones-a-cada-fila-o-columna"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#apply-aplicar-funciones-a-cada-fila-o-columna">APPLY. Aplicar funciones a cada fila o columna</a></h4>
+<p>Permite aplicar una función por fila o columna.La funcion se aplica sobre la serie (la fila o columna)
+La serie mantiene los indices. Si usamos apply con axis = 1 que cada serie es una fila entera, 
+podemos llamar a la celda correspondiente usando ['columna']</p>
+<p>Apply es como las distintas versiones de apply de R y/o MAP del tidyverse cuando se aplica a un DF.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-68-2"><a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="n">rectangles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-68-3"><a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">10</span> <span class="p">},</span>
+</span><span id="__span-68-4"><a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">9</span> <span class="p">},</span>
+</span><span id="__span-68-5"><a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mf">3.4</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">4</span> <span class="p">}</span>
+</span><span id="__span-68-6"><a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a><span class="p">]</span>
+</span><span id="__span-68-7"><a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a>
+</span><span id="__span-68-8"><a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a><span class="n">rectangles_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rectangles</span><span class="p">)</span>
+</span><span id="__span-68-9"><a id="__codelineno-68-9" name="__codelineno-68-9" href="#__codelineno-68-9"></a><span class="n">rectangles_df</span>
+</span><span id="__span-68-10"><a id="__codelineno-68-10" name="__codelineno-68-10" href="#__codelineno-68-10"></a>
+</span><span id="__span-68-11"><a id="__codelineno-68-11" name="__codelineno-68-11" href="#__codelineno-68-11"></a>
+</span><span id="__span-68-12"><a id="__codelineno-68-12" name="__codelineno-68-12" href="#__codelineno-68-12"></a><span class="c1"># Suma de todas las celdas (&quot;filas&quot;) por columna</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>##    height  width
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>## 0    40.0     10
+</span><span id="__span-69-3"><a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>## 1    20.0      9
+</span><span id="__span-69-4"><a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>## 2     3.4      4
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="n">suma_por_columna</span> <span class="o">=</span> <span class="n">rectangles_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+</span><span id="__span-70-2"><a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">suma_por_columna</span><span class="p">)</span>
+</span><span id="__span-70-3"><a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>
+</span><span id="__span-70-4"><a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a><span class="c1"># Suma de todas las celdas (&quot;columnas&quot;) por filas</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>## height    63.4
+</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>## width     23.0
+</span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>## dtype: float64
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="n">suma_por_fila</span> <span class="o">=</span> <span class="n">rectangles_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">suma_por_fila</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>## 0    50.0
+</span><span id="__span-73-2"><a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>## 1    29.0
+</span><span id="__span-73-3"><a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>## 2     7.4
+</span><span id="__span-73-4"><a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>## dtype: float64
+</span></code></pre></div>
+<h4 id="apply-lambda-para-pasar-funciones-custom-en-el-momento"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#apply-lambda-para-pasar-funciones-custom-en-el-momento">Apply Lambda para pasar funciones custom en el momento</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-74-2"><a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a><span class="n">rectangles</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-74-3"><a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">10</span> <span class="p">},</span>
+</span><span id="__span-74-4"><a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">9</span> <span class="p">},</span>
+</span><span id="__span-74-5"><a id="__codelineno-74-5" name="__codelineno-74-5" href="#__codelineno-74-5"></a>    <span class="p">{</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="mf">3.4</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="mi">4</span> <span class="p">}</span>
+</span><span id="__span-74-6"><a id="__codelineno-74-6" name="__codelineno-74-6" href="#__codelineno-74-6"></a><span class="p">]</span>
+</span><span id="__span-74-7"><a id="__codelineno-74-7" name="__codelineno-74-7" href="#__codelineno-74-7"></a>
+</span><span id="__span-74-8"><a id="__codelineno-74-8" name="__codelineno-74-8" href="#__codelineno-74-8"></a><span class="n">rectangles_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rectangles</span><span class="p">)</span>
+</span><span id="__span-74-9"><a id="__codelineno-74-9" name="__codelineno-74-9" href="#__codelineno-74-9"></a>
+</span><span id="__span-74-10"><a id="__codelineno-74-10" name="__codelineno-74-10" href="#__codelineno-74-10"></a><span class="k">def</span> <span class="nf">multiplicar_2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span><span id="__span-74-11"><a id="__codelineno-74-11" name="__codelineno-74-11" href="#__codelineno-74-11"></a>   <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span>
+</span><span id="__span-74-12"><a id="__codelineno-74-12" name="__codelineno-74-12" href="#__codelineno-74-12"></a>
+</span><span id="__span-74-13"><a id="__codelineno-74-13" name="__codelineno-74-13" href="#__codelineno-74-13"></a><span class="c1"># Caso donde paso una funcion propia predefinida</span>
+</span><span id="__span-74-14"><a id="__codelineno-74-14" name="__codelineno-74-14" href="#__codelineno-74-14"></a><span class="n">rectangles_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">multiplicar_2</span><span class="p">)</span>
+</span><span id="__span-74-15"><a id="__codelineno-74-15" name="__codelineno-74-15" href="#__codelineno-74-15"></a>
+</span><span id="__span-74-16"><a id="__codelineno-74-16" name="__codelineno-74-16" href="#__codelineno-74-16"></a>
+</span><span id="__span-74-17"><a id="__codelineno-74-17" name="__codelineno-74-17" href="#__codelineno-74-17"></a><span class="c1"># Lo mismo pero definido en el momento</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>##    height  width
+</span><span id="__span-75-2"><a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>## 0    80.0     20
+</span><span id="__span-75-3"><a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>## 1    40.0     18
+</span><span id="__span-75-4"><a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a>## 2     6.8      8
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="n">rectangles_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>##    height  width
+</span><span id="__span-77-2"><a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>## 0    80.0     20
+</span><span id="__span-77-3"><a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>## 1    40.0     18
+</span><span id="__span-77-4"><a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>## 2     6.8      8
+</span></code></pre></div>
+<h4 id="calculos-by-group"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#calculos-by-group">Calculos by group</a></h4>
+<p>Como el bygroup de tidyverse.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="c1"># Equivalente a  groupby(raceid) %&gt;% summarise(newcol = min(best_qualy_ms))</span>
+</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a><span class="n">min_qualy_by_race</span> <span class="o">=</span> <span class="n">qualifying</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;raceId&#39;</span><span class="p">)[</span><span class="s1">&#39;best_qualy_ms&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</span></code></pre></div>
+<h4 id="by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila"><a class="toclink" href="../../2020/07/11/de-r-a-python-1/#by-group-mas-complejo-con-calculo-acumulado-en-determinada-ventana-de-obs-por-cada-fila">By Group más complejo, con calculo acumulado en determinada ventana de obs. por cada fila</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="c1"># suma acumulada de los ultimos 4 periodos (rolling)</span>
+</span><span id="__span-79-2"><a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a><span class="c1"># luego el gorupby(level = 0).shift() es para lagearlo por grupo</span>
+</span><span id="__span-79-3"><a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a><span class="c1"># el ultimo reset_index es para quitar el indice de este ultimo agrupado</span>
+</span><span id="__span-79-4"><a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a><span class="n">driver_points</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;driverId&#39;</span><span class="p">)[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_periods</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span>
+</span></code></pre></div>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2491,160 +2671,6 @@ Al igual que en regresión hay que tener cuidado con el sobreajuste. Reducir K g
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2019-04-20 00:00:00+00:00">2019-04-20</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/matematica/" class="md-meta__link">matematica</a>, 
-              <a href="../../category/algebra/" class="md-meta__link">algebra</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              7 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="esencia-del-algebra-lineal"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/">Esencia del Algebra Lineal</a></h2>
-<p>El álgebra lineal está por todas partes en estadística y data science. Matrices, vectores y transformaciones son términos que se escuchan seguido y están detrás de muchos de los métodos y algoritmos que se usan hoy por hoy. Aunque no sea necesario saber del tema para correr un modelo empaquetado en una librería de R, es muy útil entender lo que hacemos realmente ya que nos permite ver a los modelos como algo lógico y no una caja negra mágica.</p>
-<p>Hay una serie de videos excelente en inglés que mediante visualizaciones y animaciones permite entender la intuición de muchos de los conceptos básicos, que solo con un libro puede ser medio críptico o poco imaginable.
-Para el que le interese: <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">ESSENCE OF LINEAR ALGEBRA</a> por 3Blue1Brown.</p>
-<p>Este post, aunque quizás medio desordenado y sin mucha prolijidad, es una recopilación de algunas notas. Puede que queden términos en inglés intercalados.</p>
-<h3 id="matrices-y-vectores"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#matrices-y-vectores">Matrices y vectores</a></h3>
-<ul>
-<li>Vector vive en <em>n</em> dimensiones.</li>
-<li>Suma de vectores es combinación lineal</li>
-<li>En <span class="arithmatex">\(R^{2}\)</span> <span class="arithmatex">\(\hat \imath = \left&lt; 1, 0 \right&gt; \text{y} \hat \jmath = \left&lt; 0, 1 \right&gt;\)</span> forman una base. Cualquier punto es una combinación lineal de ellos.     </li>
-<li>Span es el espacio que pueden generar x vectores. <span class="arithmatex">\(R^{2}\)</span> es el span de  <span class="arithmatex">\(\left&lt; 1, 0 \right&gt; \left&lt; 0, 1 \right&gt;\)</span></li>
-<li>Vector puede ser pensado como una flecha desde el origen (0,0) a las coordenadas que lo identifican. O como un punto directo en las coordenadas..</li>
-<li>Matriz es una transformación. Lleva un vector a otro punto. Si transformamos cada posible vector de un espacio por la matriz podemos ver como el espacio es transformado. Ej: rotar, invertir, estirar.</li>
-<li>Si transformamos una base, cada punto nuevo puede generarse transformando la nueva base. <br />
-Por ej: <span class="arithmatex">\(z = \left&lt; 3, 2 \right&gt; \text{es } 3\begin{bmatrix} 1 \\ 0 \end{bmatrix} + 2\begin{bmatrix} 0 \\ 1 \end{bmatrix} = 3\hat \imath + 2\hat \jmath\)</span><br />
-Aplicando la transformación de la matriz A = <span class="arithmatex">\(\begin{pmatrix} A &amp; B \\ C &amp; D \end{pmatrix} \text{obtenemos los nuevos vectores base } \hat \imath^{*} \text{y } \hat \jmath^{*}\)</span><br />
-<span class="arithmatex">\(z^{*} = 3\hat \imath^{*} + 2\hat \jmath^{*}\)</span> </li>
-<li>Multiplicar 2 matrices es transformar un espacio con la primera matriz ( desde la derecha) y luego transformar el resultado por la segunda matriz. Ej: Rotar un espacio y luego invertirlo.</li>
-<li>AB != BA -&gt; El orden de las transformaciones importa y se lee de derecha a izquierda.</li>
-<li>
-<p>La matriz (transformación) ya dice como van a ser las nuevas bases.<br />
-Si la matriz es <span class="arithmatex">\(\begin{pmatrix} A &amp; B \\ C &amp; D \end{pmatrix}\)</span>, el nuevo <span class="arithmatex">\(\hat \imath^{*}\)</span> es <span class="arithmatex">\(\begin{bmatrix} A \\ C \end{bmatrix}\)</span> y <span class="arithmatex">\(\hat \jmath^{*}\)</span> es <span class="arithmatex">\(\begin{bmatrix} B \\ D \end{bmatrix}\)</span><br />
-Ej: <span class="arithmatex">\(z = \left&lt; 3, 2 \right&gt;  z^{*} =  \begin{bmatrix} A &amp; B \\ C &amp; D \end{bmatrix}\begin{bmatrix} 3 \\ 2 \end{bmatrix} = \begin{bmatrix} 3A + 2B \\ 3C + 2D \end{bmatrix}\)</span><br />
-Se puede ver también como:  <span class="arithmatex">\(<span class="arithmatex">\(z = 3\hat \imath + 2\hat \jmath \text{  }  z^{*} = 3\hat \imath^{*} + 2\hat \jmath^{*} = 3\begin{bmatrix} A \\ C \end{bmatrix} + 2\begin{bmatrix} B \\ D \end{bmatrix} = \begin{bmatrix} 3A + 2B \\ 3C + 2D \end{bmatrix}\)</span>\)</span>
-&nbsp;</p>
-</li>
-<li>
-<p>!!!. Las transformaciones afectan el area (en R2, el volumen en R3..) de las figuras en el espacio (todas por igual). El <em>DETERMINANTE</em> de una matriz mide ese cambio.</p>
-</li>
-<li>Si el determinante <strong>es 0</strong> significa que se perdió una dimensión o que todo se comprimió. Pasa de <span class="arithmatex">\(R^{2}\)</span> a una recta (o a un punto!)</li>
-<li>Si el determinante ** es &lt; 0** significa que el espacio se invirtió (en sentido.. como dar vuelta una hoja) pero |DET| siguen siendo el cambio en el area.</li>
-<li>A<sup>-1</sup>A = I -&gt; una transformación que no hace nada.</li>
-<li>
-<p>Si DET(A) = 0 no existe la matriz inversa. Ej. <span class="arithmatex">\(R^{2}\)</span> -&gt; si det(A) = 0 la transformación lleva el espacio a una recta. No hay función que lleve cada vector de la recta a un punto en <span class="arithmatex">\(R{2}\)</span>. No hay vuelta atrás.
-&nbsp;
-&nbsp;</p>
-</li>
-<li>
-<p>Si una transformación lleva todos los puntos a una recta tiene rango 1, si lleva a un plano rango 2, y así.. <strong>RANGO</strong> es el número de dimensiones del output. Rango completo es cuando mantiene las dimensiones del input.</p>
-</li>
-<li>El conjunto de posibles outputs de <span class="arithmatex">\(A\vec v\)</span> es el Column Space = Span de las columnas</li>
-<li>Cuando perdés dimensiones por la transformación todo un conjunto de vectores pasa a ser (0,0). Eso se llama <strong>Null Space</strong> o <strong>Kernel</strong></li>
-<li>Matrices no cuadradas cambian la dimensión del espacio.<br />
-$$ \begin{bmatrix} A &amp; D \ B &amp; E \ C &amp; F \end{bmatrix} \begin{bmatrix} 1 \ 1 \end{bmatrix} = \begin{bmatrix} A + D \ B + E \ C + F \end{bmatrix} $$ 
-Quedan todos los puntos de <span class="arithmatex">\(R^{2}\)</span> en un plano en el espacio <span class="arithmatex">\(R^{3}\)</span>. De acá viene la restricción para multiplicar matrices. La cantidad de columnas de la transformación tiene que ser igual a la dimensión del input</li>
-</ul>
-<h4 id="dot-product-o-producto-interno"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#dot-product-o-producto-interno">DOT PRODUCT o PRODUCTO INTERNO</a></h4>
-<ul>
-<li>Dot product entre dos vectores equivale a proyectar uno en el otro y multiplicar sus largos. <span class="arithmatex">\(\vec A \cdot \vec B = |A^{*}| * |B|\)</span><br />
-<span class="arithmatex">\(A^{*}\)</span> es el vector A proyectado en B.</li>
-<li><span class="arithmatex">\(\vec B\)</span> es un vector 2D pero también se lo puede ver como una matriz 1x2 que lleva del 2D a la recta.<br />
-<span class="arithmatex">\(\vec B \cdot \vec A = B \vec A \text{que sería llevar A al espacio transformado por B.}\)</span><br />
-<span class="arithmatex">\(B = \begin{bmatrix} B_x &amp; B_y \end{bmatrix}\)</span> tiene en sus columnas donde queda <span class="arithmatex">\(\hat \imath \text{y } \hat \jmath\)</span> (los vectores unitarios) al ser transformados o algun valor escalado de esto.<br />
-<span class="arithmatex">\(\vec A \cdot \vec B\)</span> es el valor de A en la recta a la que te lleva la transformación B.</li>
-<li>Es equivalente proyecto B en A.</li>
-<li>Si Dot Product &gt; 0, tienen dirección similar.</li>
-<li>Si Dot Product = 0, son ortogonales - proyección que cae en el origen.</li>
-<li>Si Dot Product &lt; 0, tienen direcciones opuestas.</li>
-</ul>
-<p>&nbsp;
-&nbsp;</p>
-<h4 id="cross-product"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#cross-product">CROSS PRODUCT</a></h4>
-<ul>
-<li>Está definido para vectores en <span class="arithmatex">\(R^{3}\)</span></li>
-<li>El cross product <span class="arithmatex">\(\vec u \times \vec v\)</span> es el area del paralelograma que se puede imaginar con las paralelas de los vectores (imaginandolo en <span class="arithmatex">\(R^{2}\)</span>. El signo depende de la orientación de los vectores. El vector de la "derecha" tiene que estar primero para que el cross product sea &gt; 0.</li>
-<li>En realidad el paralelograma formado por dos vectores en R<sup>3</sup> tiene area equivalente al <strong>Largo</strong> del vector output de su cross product. Ese vector es ortogonal al paralelograma.</li>
-</ul>
-<p>&nbsp;
-&nbsp;</p>
-<h4 id="cambio-de-base"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#cambio-de-base">CAMBIO DE BASE</a></h4>
-<ul>
-<li>Distintos sistemas de coordenadas definen <span class="arithmatex">\(\hat \imath = \left&lt; 1, 0 \right&gt;, \hat \jmath \left&lt; 0, 1 \right&gt;\)</span> como algo distinto. <strong>NO</strong> hay una sola "grilla" válida. El espacio no tiene grilla predeterminada.</li>
-<li>Un mismo vector tiene distintas coordenadas según el sistema de bases desde donde se lo mire.</li>
-<li>Para pasar de una base a otra se aplica una transformación lineal.<br />
-Si <span class="arithmatex">\(\vec v\)</span> es un vector que queremos pasar de una base a otra, lo transformamos por la nueva base.<br />
-Y <span class="arithmatex">\(\hat \imath^{*} =  \left&lt; \hat \imath^{*}_1, \hat \imath^{*}_2 \right&gt;, \hat \jmath^{*} =  \left&lt; \hat \jmath^{*}_1, \hat \jmath^{*}_2 \right&gt;\)</span>
-Entonces:
-<span class="arithmatex">\(<span class="arithmatex">\(\begin{bmatrix} \hat \imath^{*}_1 &amp; \hat \jmath^{*}_1 \\ \hat \imath^{*}_2 &amp; \hat \jmath^{*}_2 \end{bmatrix} \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} = \begin{bmatrix} v^{*}_1 \\ v^{*}_2 \end{bmatrix}\)</span>\)</span><br />
-Donde <span class="arithmatex">\(\begin{bmatrix} v^{*}_1 \\ v^{*}_2 \end{bmatrix}\)</span> es el vector en la nueva base, es decir, serían las coordenadas del vector <span class="arithmatex">\(\vec v\)</span> en el nuevo sistema de coordenadas y representando ese punto bajo el sistema de coordenadas original. -&gt; Como se vería <span class="arithmatex">\(\vec v\)</span> en la nueva base? desde un punto de vista de la base original.<br />
-La matriz transforma un vector siguiendo en el lenguaje de la base original.<br />
-Ej: Si <span class="arithmatex">\(\vec v\)</span> es (1,2) en el sistema cartesiano típico y aplicamos la matriz de cambio de base, un vector (1,2) bajo otros ejes se ubicaría en otro punto del espacio. Qué punto es ese bajo el sistema cartesiano? Es (1,2) en el nuevo, pero queremos saber su equivalente en el sistema original.</li>
-<li>Por otra parte si queremos saber que coordenadas tomaría el vector <span class="arithmatex">\(\vec v\)</span> bajo otra base debemos multiplicar por la inversa de la transformación. Transforma el vector al lenguaje de la nueva base.
-Responde a la pregunta. Qué coordenadas toma el punto V_1, V_2 del espacio en el sistema nuevo?
-&nbsp;</li>
-<li>Para aplicar una transformación a otra base conviene llevar el vector a transformar a la base original, transformar y reconvertir a la nueva base.
-$$ [A]^{-1}[T][A]\vec v = \vec v^{*}$$<br />
-A lo expresa en términos de la base original, luego se le aplica la transformación T y luego se lo devuelve al lenguaje de la nueva transformación.</li>
-</ul>
-<p>&nbsp;
-&nbsp;</p>
-<h4 id="eigenvalues-y-eigenvectors-autovalores-y-autovectores"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#eigenvalues-y-eigenvectors-autovalores-y-autovectores">Eigenvalues y Eigenvectors (autovalores y autovectores)</a></h4>
-<ul>
-<li>!!! Al aplicar una transformación lineal a un espacio algunos vectores no cambian de dirección, solo se estiran o contraen pero sobre la misma recta. El resto sí se mueve. Los que se mantienen son los eigenvectors, y su factor de expansión o contracción es su eigenvalue.<br />
-Si A es la matriz de transformación, <span class="arithmatex">\(\vec v\)</span> es un eigenvector y <span class="arithmatex">\(\lambda\)</span> su eigenvalue.
-$$ A\vec v = \lambda \vec v$$  </li>
-<li>Si una transformación es una matriz diagonal, lo único que hace es estirar <span class="arithmatex">\(\hat \imath \text{y } \hat \jmath\)</span> por lo tanto los vectores base son eigenvectors y la diagonal son los eigenvalues.</li>
-<li>Si cambiamos la base a una formada por los eigenvectors (que spanean el espacio) de la matriz podemos aplicar la transformación (la matriz original de donde salieron los eigenvectors) a esta nueva base y solo la va a estirar, por lo tanto es una transformación diagonal, que permite calculos mucho más fácil. Después habría que volver a la base original.<br />
-A -&gt; Matriz de transformación
-E -&gt; Matriz de autovectores que forman la nueva base <span class="arithmatex">\(\begin{bmatrix} e_11 &amp; e_21 \\ e_12 &amp; e_22 \end{bmatrix}\)</span>
-D -&gt; Matriz Diagonal cuyos valores son los eigenvalues
-$$ E^{-1}AE=D$$</li>
-</ul>
-<p>E cambia la base a eigenvectors (expresado en la base original), A aplica transformación y E<sup>-1</sup> lo lleva al lenguaje de la nueva base (queda expresado en las nuevas coordenadas)
-&nbsp;
-&nbsp;</p>
-<h4 id="espacios-vectoriales-abstractos"><a class="toclink" href="../../2019/04/20/esencia-del-algebra-lineal/#espacios-vectoriales-abstractos">Espacios Vectoriales Abstractos</a></h4>
-<ul>
-<li>!!! Ver <em>funciones</em> como un tipo especial de vectores.</li>
-<li>Las funciones se pueden sumar y escalar <span class="arithmatex">\(f(x) + g(x) \text{y } 2f(x)\)</span></li>
-<li>Existen transformaciones lineales de funciones, convierten una función en otra. También conocidas como "operadores"</li>
-<li>Para que una transformación sea lineal tiene que cumplir aditividad y mulitplicación por escalar<br />
-$$ L(\vec v + \vec  w) = L(\vec v) + L(\vec w)$$
-$$ L(c\vec v) = cL(\vec v)$$</li>
-<li>En general cualquier espacio que cumpla los axiomas los espacios vectoriales puede ser considerado uno.</li>
-</ul>
-    
-  </div>
-</article>
-      
       
         
           
@@ -2652,7 +2678,7 @@ $$ L(c\vec v) = cL(\vec v)$$</li>
 
 
 <nav class="md-pagination">
-  <a class="md-pagination__link" href="../../">1</a> <a class="md-pagination__link" href="../2/">2</a> <span class="md-pagination__current">3</span> <a class="md-pagination__link" href="../4/">4</a>
+  <a class="md-pagination__link" href="../../">1</a> <a class="md-pagination__link" href="../2/">2</a> <span class="md-pagination__current">3</span> <a class="md-pagination__link" href="../4/">4</a> <a class="md-pagination__link" href="../5/">5</a>
 </nav>
         
       

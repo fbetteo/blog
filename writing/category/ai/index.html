@@ -752,6 +752,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deep-dive-into-llms-like-chatgpt-karpathy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Dive into LLMs Like ChatGPT - Karpathy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#e-commerce-image-similarity-via-visual-embeddings" class="md-nav__link">
     <span class="md-ellipsis">
       E-commerce Image Similarity via Visual Embeddings
@@ -1115,6 +1124,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deep-dive-into-llms-like-chatgpt-karpathy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Dive into LLMs Like ChatGPT - Karpathy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#e-commerce-image-similarity-via-visual-embeddings" class="md-nav__link">
     <span class="md-ellipsis">
       E-commerce Image Similarity via Visual Embeddings
@@ -1164,6 +1182,165 @@
       <header class="md-typeset">
         <h1 id="ai">AI<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-03-10 00:00:00+00:00">2025-03-10</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">AI</a>, 
+              <a href="../machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              12 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="deep-dive-into-llms-like-chatgpt-karpathy"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/">Deep Dive into LLMs Like ChatGPT - Karpathy</a></h2>
+<p><a href="https://www.youtube.com/watch?v=7xTGNNLPyMI">Original video from Andrej Karpathy. Masterpiece.</a></p>
+<hr />
+<p><a href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">Fineweb</a></p>
+<p>Tokenization. From words to tokens. Tokens are not words and punctuation, they can be the root of words, they can be some sequence of letters without explicit meaning. This will change depending on the model. (<a href="tiktokenizer.vercel.appI">tiktokenizer</a> para verlo en accion)</p>
+<p>How it works? From words to bits with encoding could be the first step. From words to 1 and 0. But this becomes a super large representation because we only have two symbols.
+We can group every 8 bits into 256 different bytes. [0 to 255]  The sequence is much shorter because we have more symbols.
+We can use this, but in SOTA we go beyond that. We use Byte-pair encoding which looks for common pairs of bytes and we create a new symbols starting from 256, and we can do this many times. More symbols, shorter representation. Gpt4 ends up with +100k symbols.</p>
+<h4 id="neural-networks"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#neural-networks">Neural Networks</a></h4>
+<p>We take windows of tokens of flexible  length up to some maximum (4, 8, 16k). Too much could be computationally expensive.</p>
+<p>The idea is to predict the next token. The window used is the <em>context</em>.
+We do this for every context and token of the training data. The process will adjust the probabilities of each next token. They are initialized at random and in the end they should match the statistical properties of the dataset.</p>
+<p>Training is done via Neural Network, the mathematical expression is updated via weights. Input is the token sequence, output is the probability of each token as the next one. In the middle there is the NN architecture with transformers and etc. First parts includes the embedding into numerical representation.</p>
+<h5 id="inference"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#inference">Inference</a></h5>
+<p>Put an initial token and sample from the output probability distribution, this is your next token. We do that again, but now the context is 2 tokens, and so on.</p>
+<h4 id="gpt-2-train-and-inference"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#gpt-2-train-and-inference">GPT-2 train and inference</a></h4>
+<p>Useful because the technical parts are still relevant only that now are bigger and more complex.</p>
+<p>Base model is the model that comes out after training. It's an inference machine, just token prediction but it's not useful for chat for example. Some companies release their base models but not all of them.
+GPT2 was released. A base model release requires, the model architecture and the model weights.</p>
+<p>Llama 3 is another one more recent. 2024, 405 billions parameters</p>
+<p>Base model are somewhat good at memorization (regurgitation) which is not desirable. If you paste the first sentence of a wikipedia page it will probably output the exact rest of the article up until some point and then deviate.</p>
+<p>Wikipedia also has more weight in the model because the source is truthful. I'm not sure if this is because the wikipedia extract appears more times in the corpus because of citations and so or because some sources have more importance than other from pretraining methodology. </p>
+<p>Base model is still useful to some extent without being an assistant if you are clever with the prompt.</p>
+<p><strong>Few shot prompt</strong>. 
+The model has some <em>in-context</em> learning, which is that the model can understand a pattern in the prompt. In the video, AK prompts a list of english words with their korean translation and left the last one without translating to make inference from that point.</p>
+<p>He also shows that you can generate some assistant type of inference via in-context learning by passing an example of human-assistant interaction and making it generate the answer to you actual question via inference.</p>
+<h4 id="post-training"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#post-training">Post training</a></h4>
+<p>Pretraining is all that we saw before. Get data from the web, tokenize it and create a base model that predicts next token. It's not an assistant, it's like a internet text generator. That's all included in pretraining and it's the expensive part, the one that takes millions of dollars and a lot of time.</p>
+<p><strong>Post training</strong><br />
+Much less computation than pretraining and it's the step that moves us from a token generator to an assistant.</p>
+<p>Because this is a neural network we can't explicitly program the assistant or give them a personality or make it refuse some kind of questions. We can only do that via neural networks training on datasets.</p>
+<p>Programming by example.
+And the examples requires human labelers.
+We train the model on this responses and try to imitate that behaviour.</p>
+<p>We substitute the training dataset of the model, we remove all the internet text and we start using the conversation dataset. We keep training the model but know with this dataset and the model will pick the statistics of this new dataset and how the conversations should happen. (Supervised Finetuning aka SFT)</p>
+<p>Post training in SOTA can be in 3 hours for example vs 3 months of training in pre training and thousands of CPUs. This is because post training the dataset is human created and much smaller.</p>
+<h5 id="how-do-we-go-from-conversations-in-the-new-dataset-to-tokens"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#how-do-we-go-from-conversations-in-the-new-dataset-to-tokens">How do we go from conversations in the new dataset to tokens?</a></h5>
+<p>We need to encode and decode in some specific way. Each model has a slightly different methodology, but gpt-4o has for example a few extra tokens that represent the beginning of the new character talking (user or assistant), then a token for the user or the assistant, then a token for the start of the actual message, then the message tokenized  and then a token for the end of the message. Then we go again, same token representing the beginning, then the other token of user/assistant, etc</p>
+<p>So, when we go to chatgpt and ask a question it's sent to the backend encoded with the above format and they add the tokens for the start of a new message from the assistant and run inference there, they let the LLM complete all the next tokens.</p>
+<p><a href="https://arxiv.org/abs/2203.02155">InstructGPT paper on SFT:</a>First paper to talk about post-training.
+Mentions the heavy human labeler part from where the post training datasets with conversations emerged and some of the instructions the labelers received.
+The dataset from OpenAI is not released, but OpenAssistant is an open source alternative with a similar format.</p>
+<p>Currently LLMs are being used to help create this datasets of conversations. No need for that much human effort.
+But in the end the root of all this conversations is the initial human labelers following OpenAI and other companies instructions.
+In the end, chatgpt for example, is answering in the tone and guided by those examples, so it's kind of recreating how the labelers wrote. It's a labeler text generation machine. </p>
+<blockquote>
+<p>"What would a human labeler say in this conversation?"
+ You are talking to a simulation of an average labeler (who is probably some skilled person but still)</p>
+</blockquote>
+<h4 id="hallucinations"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#hallucinations">Hallucinations</a></h4>
+<p>They exist because the model is sampling from the training dataset statistics trying to answer something even if it's not the truth. The problem has been improved over the years but it's still relevant.</p>
+<p>How to fix it?</p>
+<p>We need to include in the post training dataset some conversations where the answer is that it doesn't know.</p>
+<h5 id="mitigation-1-model-interrogation"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#mitigation-1-model-interrogation">Mitigation <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/jxnl/instructor/issues/1" title="GitHub Issue: jxnl/instructor #1">#1</a>: model interrogation</a></h5>
+<p>What Meta did for LLama is super clever
+. We don't know what the model knows or not exactly so we need to let it decide in some way. They assume there is some internal representation of lack of knowledge, some neuron that gets activated when it doesn't "know" something.
+So, what they did to include that pattern is to take random text (from wikipedia lets say) and they used an LLM to create a few questions with factual answers about that text.
+They interrogate the model with those questions and compare the answer to the actual truth (also another LLM as judge, no need for human). They did it a few times per question. If the model answered correctly then the conversation output is fine and all good. But if the model hallucinates and answers wrongly (as judged by another LLM based on the actual truth) then the answer to that question in the conversation dataset becomes "Sorry, I don't know". If you add some amount of answers like this (because of course you can't just add all question that don't have a true answer) then the model will get that pattern, that when that unknown neuron related to lack of knowledge gets activated, then answering I don't know is what it should do.
+This worked quite well to mitigate hallucinations!</p>
+<h5 id="mitigation-2-search"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#mitigation-2-search">Mitigation <a class="magiclink magiclink-github magiclink-issue" href="https://github.com/jxnl/instructor/issues/2" title="GitHub Issue: jxnl/instructor #2">#2</a>: Search</a></h5>
+<p>Allow the model to search the internet. Allow the model to use Tools.
+We do this by introducing new tokens, in this case special tokens for search_start and search_end with a query in the middle. The Assistant will look up that query in a browser and will copy paste the information it gets just after the special tokens, so the internet information is now in the context. It goes directly into the model, like refreshing our memory as humans.</p>
+<p>To add this functionality we need again to teach the model by example, adding a bunch of examples in the dataset on how to use the search.</p>
+<blockquote>
+<p>Knowledge in the parameters == Vague recollection (e.g. of something you read 1 month ago)
+Knowledge in the tokens of the context window == Working memory</p>
+</blockquote>
+<h3 id="models-need-tokens-to-think"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#models-need-tokens-to-think">Models need tokens to think</a></h3>
+<p>Given the neural network architecture, there is a finite amount of computation that can be given for each token. Given the context your forward/inference pass will predict the next token using the network capability but it's finite/limited. We should try to expand/distribute the computation, "the thinking" between many tokens to use the full neural network computation power for each token, so we end up using more computation in total for our answer.
+In concrete, he shows a simple math problem. If we aim for the model to answer directly, we are forcing the neural network to use it's context and finite computation to answer in a single attempt. Everything that comes after that answer will be a post hoc justification. While if we aim for the model to elaborate and go step by step (disguised CoT?) it will use full computation for each step and by the time it outputs the answer, it will have a good detailed context to provide that final "calculation"</p>
+<p><img alt="image" src="../../img/Pasted%20image%2020250307130533.png" /></p>
+<p>This is the same reason why models are not good at counting. Too much expected from a single forward pass, finite computation.</p>
+<p>"use code" it's a great way to make the model good at those tasks, because the model is good at copy pasting and code gives the right answer. So, you can just copy the string to code and then use python to actually count the number of letters or whatever. Same for calculation.
+It's much more likely to have the right answer than relying on the "mental arithmetic" of the model.</p>
+<p>It's also interesting to understand why a model might be good at solving complex phD level math problems but fail at simple tasks like:
+"what is bigger 9.11 or 9.9?" 
+which usually is answered wrongly or randomly.</p>
+<p>One hypothesis he mentions is that some research team said that the bible has 9.11 &gt; 9.9 in terms of verses and this can create confusion to the neural network but it's a problem not fully understood.</p>
+<h3 id="reinforcement-learning"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#reinforcement-learning">Reinforcement Learning</a></h3>
+<p>The last major stage, some times is included  as part of post training but it's really a next separate major step.</p>
+<blockquote>
+<p>It's like going to school.</p>
+</blockquote>
+<p>He compares the training of  a model to a textbook, general explanations are like the pretraining, then the examples given in the book is like the post training with examples of how things should be solved (how to answer like an assistant) and then there are exercises which the student doesn't have the solution and needs to try to solve. You might have the final answer but not the path towards it. Reinforcement learning is like this last step.</p>
+<p>The motivation is that we as humans (labelers) don't know what's the best way for the LLM to solve a specific problem, such as a math problem. He shows a few options, like going straight to the answer, doing some arithmetic, talking in native english and giving the answer, putting the problem as a system of equations, etc. What's easier for us might not be easy for the LLM, so we need to try what approach gives best results.</p>
+<p>So, the idea is to generate multiple (thousands) solutions for some problem which isn't trivial and store the stochastic solutions / inferences / token sequence that led to a right answer among all the tries. Some will get the right answer, some don't. And then, the model will be retrained based on the right solutions. So, it's not human labeled anymore, it's just trying solutions and re-train on the ones that were correct so the network learns to keep doing that for similar situations in the future.</p>
+<p>Pre and post training are quite standard and used across all providers but the reinforcement learning step is in an earlier stage and not standardized, different providers are trying different approaches and how some details in the process are handled (which is a simple idea overall) has high impact and is not trivial, those details in how we select what is "the best answer" among the correct ones for example play a big role.</p>
+<h4 id="deepseek-r1"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#deepseek-r1">Deepseek R1</a></h4>
+<p>The <a href="https://arxiv.org/abs/2501.12948">paper</a> was innovative and game changer in part because is  open and explicit about RL while openAI and other kept the details for themselves.</p>
+<p>With RL, the model learns over time to give better answers to the questions and it's using more and more tokens to do it. It "discovers" that trying many paths and backtracking and trying again it's better to get a good answers. <em>Chain of thoughts</em> emerge without being hardcoded anywhere by researchers (would be impossible too, it's something the model needs to discover)</p>
+<blockquote>
+<p>A "thinking/reasoning" model is one that has been trained with Reinforcement Learning</p>
+</blockquote>
+<p>ChatGPT 4o is not a reasoning one, is SFT montly (learn by example, just finetuned, no RL. He says there is a bit of RL but we should think about them as SFT really). DeepSeek uses RL.  o1 and o3 are also RL ones.</p>
+<h4 id="alphago"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#alphago">AlphaGo</a></h4>
+<p>RL made it possible for the model to beat top players ELO while supervised learning was not capable. RL is not restricted to human kind of plays and that's how move 37 happened, a play that was not expected by top level players but that actually was really powerful. This happened because the training wasn't guided by supervised learning but by RL (the AI playing against itself kind of)</p>
+<h4 id="learning-in-unverifiable-domains-reinforcement-learning-from-humand-feedback"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#learning-in-unverifiable-domains-reinforcement-learning-from-humand-feedback">Learning in Unverifiable domains (Reinforcement learning from Humand Feedback)</a></h4>
+<p>The previous problems where easily verifiable, we could just compare in RL if the solution was correct by checking the final output of the LLM vs the right answer, maybe by direct comparison or using LLM as judge where we ask another LLM to check if the solution provided by the model is consistent with the actual solution (currently that approach is quite reliable) but this can't be done in <em>unverifiable domains</em> such as "write a joke about pelicans", "write a poem", etc</p>
+<p>For the pelican jokes, in principle you could use humans to judge if the joke is funny and reward it but as you need to evaluate thousands of generations for thousands of prompts, this becomes unfeasible. We need another strategy. This <a href="https://arxiv.org/abs/1909.08593">paper</a>introduced the RL-HF subject</p>
+<p><strong>RLHF approach</strong>
+<strong>STEP 1</strong> :Take 1000 prompts, generate 5 options, order them from best to worst.
+<strong>STEP 2</strong>: Train a neural net simulator of human preferences ("reward model")
+<strong>STEP 3</strong>: Run RL as usual, but using the simulator instead of actual humans</p>
+<p>The reward model is not a perfect human simulator but it's currently good enough to work meaningfully. </p>
+<h5 id="upside"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#upside">Upside</a></h5>
+<blockquote>
+<p>We can run RL in arbitrary domains (even unverifiable ones) and empirically it gives better results.</p>
+</blockquote>
+<p>He says that probably this improves the model due to <strong>discriminator - generator gap</strong>. It's easier for a human to discriminate than to generate. It's easier to say which jokes are good or bad than to create the good ones. The labeler doesn't need to create a good joke, it just leaves that hard task to the model and the labeler points out which are good and which are bad</p>
+<h5 id="downsides"><a class="toclink" href="../../2025/03/10/deep-dive-into-llms/#downsides">Downsides</a></h5>
+<p>RL is done with respect to a <em>lossy simulation</em> of humans. It might be misleading, we generate orders based on a model that might not reflect the actual human judgement.</p>
+<blockquote>
+<p>RL discovers ways to "game" the reward model.</p>
+</blockquote>
+<p>It happens that after a lot of updates, the jokes that are considered the top are non sensical. At first, we some initial updates the jokes might improve but after some point in time they become much worse, like a top joke could be "the the the the the" and somehow that gets a high score by the reward model. Those weird top answers are <em>adversarial examples</em>. Somehow the RL get some answers that go through little paths that somehow  fire good scores without making human sense. The reward model are massive neural nets and they have cracks.</p>
+<p>You could get this non sensical answers and add them to your dataset with very low ranking to make it learn that this is not a good joke but this is an infinite process, there will always be more adversarial examples to be found by the neural net.</p>
+<p>What to do?
+Just train the RL for some time and crop the training, don't go too far so you avoid the adversarial example generation.</p>
+<p><strong>This is true for RLHF, not RL</strong> .
+Plain RL can be run indefinitely because you can't really game the answer, you are looking for a specific answer and the neural net will find ways, even non standard ways, to find that answer but it's totally verifiable. RLHF is different, and a reward function can be gamed, so RLHF can't be run forever while plain RL yes.</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
