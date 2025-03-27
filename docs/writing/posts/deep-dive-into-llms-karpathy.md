@@ -21,7 +21,7 @@ tags:
 
 [Fineweb](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1)
 
-Tokenization. From words to tokens. Tokens are not words and punctuation, they can be the root of words, they can be some sequence of letters without explicit meaning. This will change depending on the model. ([tiktokenizer](tiktokenizer.vercel.appI) para verlo en accion)
+Tokenization. From words to tokens. Tokens are not words and punctuation, they can be the root of words, they can be some sequence of letters without explicit meaning. This will change depending on the model. ([tiktokenizer](https://tiktokenizer.vercel.app) para verlo en accion)
 
 How it works? From words to bits with encoding could be the first step. From words to 1 and 0. But this becomes a super large representation because we only have two symbols.
 We can group every 8 bits into 256 different bytes. [0 to 255]  The sequence is much shorter because we have more symbols.
