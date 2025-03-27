@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://fbetteo.github.io/blog/sitemap.xml
+Sitemap: https://fbetteo.github.io/blog/minimal-sitemap.xml
