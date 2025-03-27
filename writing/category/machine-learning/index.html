@@ -1312,7 +1312,7 @@
 <p><a href="https://www.youtube.com/watch?v=7xTGNNLPyMI">Original video from Andrej Karpathy. Masterpiece.</a></p>
 <hr />
 <p><a href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">Fineweb</a></p>
-<p>Tokenization. From words to tokens. Tokens are not words and punctuation, they can be the root of words, they can be some sequence of letters without explicit meaning. This will change depending on the model. (<a href="tiktokenizer.vercel.appI">tiktokenizer</a> para verlo en accion)</p>
+<p>Tokenization. From words to tokens. Tokens are not words and punctuation, they can be the root of words, they can be some sequence of letters without explicit meaning. This will change depending on the model. (<a href="https://tiktokenizer.vercel.app">tiktokenizer</a> para verlo en accion)</p>
 <p>How it works? From words to bits with encoding could be the first step. From words to 1 and 0. But this becomes a super large representation because we only have two symbols.
 We can group every 8 bits into 256 different bytes. [0 to 255]  The sequence is much shorter because we have more symbols.
 We can use this, but in SOTA we go beyond that. We use Byte-pair encoding which looks for common pairs of bytes and we create a new symbols starting from 256, and we can do this many times. More symbols, shorter representation. Gpt4 ends up with +100k symbols.</p>
