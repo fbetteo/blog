@@ -1,4 +1,15 @@
 site_name: Franco Betteo
+site_url: https://fbetteo.com
+site_author: Franco Betteo
+site_description: "Franco Betteo - Sr. Data Scientist, Machine Learning Engineer and AI Consultant with experience in CPG, retail, sports analytics and more."
+
+# Copyright
+copyright: Copyright &copy; 2025 Franco Betteo
+
+# Repository
+repo_name: fbetteo/blog
+repo_url: https://github.com/fbetteo/blog
+
 nav:
   - Home: 
       - Introduction: index.md
@@ -69,6 +80,8 @@ plugins:
       post_date_format: yyyy-MM-dd
       post_url_format: "{date}/{slug}"
       authors_file: "{blog}/.authors.yml"
+  - search
+  # - seo
 markdown_extensions:
   - abbr
   - admonition
@@ -129,5 +142,10 @@ extra:
   analytics:
     provider: google
     property: G-9PSZTJX51H
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://x.com/franbetteo
+    - icon: fontawesome/brands/github
+      link: https://github.com/fbetteo
   generator: true
 

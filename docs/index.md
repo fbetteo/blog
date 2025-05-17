@@ -4,6 +4,23 @@ I'm a consultant, sr. data scientist / machine learning engineer, solopreneur an
 
 I write about life, AI - machine learning - statistics, building a business as indiehacker and of course, sports analytics. 
 
+<!-- Structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Franco Betteo",
+  "url": "https://fbetteo.com",
+  "jobTitle": "Data Scientist & AI Consultant",
+  "description": "Sr. data scientist, machine learning engineer, and AI generalist with experience in CPG, retail, and sports analytics.",
+  "sameAs": [
+    "https://x.com/franbetteo",
+    "https://github.com/fbetteo",
+    "https://bsky.app/profile/franbetteo.bsky.social"
+  ]
+}
+</script>
+
 ## Independent Consulting
 
 I run a solo consulting practice focused on helping startups build better practises relative to machine learning implementation as many software companies transition to AI. 
@@ -37,7 +54,7 @@ I run a [job board for sports analytics](https://sportsjobs.online) and data rel
 
 This is a project I handle myself, all self hosted and that I'm growing from a personal perspective. Finding sports analytics opportunities is not easy and I have a business running 24/7 which is something I encourage anyone to try.  
 
-![Sportsjobs cover](public/img/sportsjobs_cover.png)
+![Sportsjobs Online - A job board for sports analytics and data science positions](public/img/sportsjobs_cover.png)
 
 If you want to post a job, reach out to me at franco@sportsjobs.online or by any other channel and I'll happily charge 50% if you are coming from this site.
 
