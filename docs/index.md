@@ -104,7 +104,7 @@ This project exemplifies how I approach AI engineering challenges: building syst
 **My Engineering Solution:** I engineered a complete visual similarity system using a proven 3-step methodology:
 1. Efficient image acquisition pipeline handling thousands of product images
 2. Optimized embedding generation with CLIP/ResNet models for maximum accuracy
-3. High-performance similarity search using FAISS vector indexing
+3. High-performance similarity search using FAISS vector indexing.
 
 **Business Impact:** Inmediately customer support was able to offer similar products to customers reaching out, generating new sales or speeding up the customer support response time and reducing tedious work.  
 Next application will be to compare current products with new catalogs from suppliers to identify valuable opportunities.
