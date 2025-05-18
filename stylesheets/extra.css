@@ -3,3 +3,102 @@
   --md-primary-fg-color--light: #ECB7B7;
   --md-primary-fg-color--dark:  #2a9d8f;
 }
+
+/* Custom styles for Franco Betteo's website */
+
+/* CTA Container styling */
+.cta-container {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px 25px;
+  margin: 30px 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-left: 5px solid #4CAF50;
+}
+
+.cta-benefits {
+  margin-bottom: 20px;
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+
+/* Make Google Calendar button more prominent with better text rendering */
+.gsc-calendar-button {
+  margin: 15px auto !important;
+  display: block !important;
+  transition: all 0.3s ease;
+  transform: none !important; /* Remove scale which can cause blurry text */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Create hover effect without scaling (which can cause blurriness) */
+.gsc-calendar-button:hover {
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15) !important;
+  filter: brightness(1.05) !important;
+}
+
+/* Testimonial cards styling */
+.grid.cards > :is(ul, ol) > li, .grid.cards > .card {
+  border-left: 4px solid #4CAF50;
+}
+
+/* General content improvements */
+h2 {
+  border-bottom: 2px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+/* Custom CTA button with crisp text */
+.custom-cta-button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white !important;
+  text-decoration: none !important;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin: 15px auto;
+  display: block;
+  max-width: 320px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.custom-cta-button:hover {
+  background-color: #45a049;
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+}
+
+.custom-cta-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Improve mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .cta-container {
+    padding: 15px;
+  }
+  
+  .cta-benefits {
+    font-size: 0.95em;
+  }
+  
+  .custom-cta-button {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+}
