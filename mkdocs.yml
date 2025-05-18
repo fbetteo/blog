@@ -1,5 +1,5 @@
 site_name: Franco Betteo
-site_url: https://fbetteo.com
+site_url: https://www.fbetteo.com
 site_author: Franco Betteo
 site_description: "Franco Betteo - Sr. Data Scientist, Machine Learning Engineer and AI Consultant with experience in CPG, retail, sports analytics and more."
 # Copyright
@@ -144,4 +144,3 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/fbetteo
   generator: true
-

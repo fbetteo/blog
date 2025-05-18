@@ -14,6 +14,9 @@ Checkout to "main"
 mkdocs gh-deploy
 ```
 
+### Update 2025-05-17
+I started using a custom domain. Not sure about how the sitemap is generated. Currently I see the sitemap with the right base url although generate_sitemap still has the old one. Check when I create a new post what happens.
+
 TO INCLUDE SITEMAP
 ```bash
 mkdocs build
