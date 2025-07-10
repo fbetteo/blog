@@ -1111,6 +1111,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#expectation-maximization-for-poisson-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expectation Maximization for Poisson process
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflections-on-quitting-my-ml-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reflections on quitting my ML job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#weighted-regression" class="md-nav__link">
     <span class="md-ellipsis">
       Weighted regression
@@ -1182,24 +1200,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#non-negative-matrix-factorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Non Negative Matrix Factorization
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#distribucion-dirichlet-como-prior-de-multinomial" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distribucion Dirichlet como prior de Multinomial
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1214,6 +1214,245 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-09-05 00:00:00+00:00">2024-09-05</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a>, 
+              <a href="../../category/statistics/" class="md-meta__link">statistics</a>, 
+              <a href="../../category/python/" class="md-meta__link">Python</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="expectation-maximization-for-poisson-process"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/">Expectation Maximization for Poisson process</a></h2>
+<h5 id="the-problem"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#the-problem">The problem</a></h5>
+<p>What if you want to run a regression to estimate the coefficients and retrieve the data generating process of some data <strong>BUT</strong> you are in a scenario with censored data? How does that affect my estimation? Can I do better?</p>
+<h5 id="censored-data"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#censored-data">Censored data</a></h5>
+<p>In short, you have censored data when some observation is unobserved or constrained because of some specific reason which is natural and unavoidable.</p>
+<h6 id="unobserved"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#unobserved">Unobserved</a></h6>
+<p>For instance, in survival analysis, if the subject is not yet dead (luckily) you can not observe the time of death yet and hence you don't know if he will die tomorrow or in two years. You can't observe yet the death date.  </p>
+<h6 id="constrained"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#constrained">Constrained</a></h6>
+<p>For goods with limited demand, once you deplete your stock, by definition you can't sell more and you can't observe all the demand that you would have if more items were able to be sold. Or an Airline , when selling seats, can't observe the full demand after all the seats have been sold, maybe more people were willing to flight.</p>
+<p>We will simulate an example of the latest case, for an airline with simple toy data.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></code></pre></div>
+<p>We create some fake data, where seats sold are generated from a poisson distribution, with an intercept (2) and a coefficient related to how many days are left to the departure (-0.2), the further from the departure, the less seats are sold.</p>
+<p>What we also do, is that on the last date, we constrain the demand. We don't get the full seats that would have been sold under a poisson distribution but the amount minus 3. Only ourselves know that because we want to tweak the data. In real life we would see data similar to the one generated and we couldn't see the actual sales that would have been present in a complete poisson generating process (that actually is how the tickets are sold in our example)</p>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="c1"># Step 1: Generate data</span>
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="n">n_samples</span> <span class="o">=</span> <span class="mi">20</span>
+</span><span id="__span-56-4"><a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a><span class="n">n_features</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-56-5"><a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="n">substract_sales</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span id="__span-56-6"><a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a>
+</span><span id="__span-56-7"><a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a><span class="c1"># Generate features</span>
+</span><span id="__span-56-8"><a id="__codelineno-56-8" name="__codelineno-56-8" href="#__codelineno-56-8"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
+</span><span id="__span-56-9"><a id="__codelineno-56-9" name="__codelineno-56-9" href="#__codelineno-56-9"></a><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span><span id="__span-56-10"><a id="__codelineno-56-10" name="__codelineno-56-10" href="#__codelineno-56-10"></a><span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c1"># Add intercept term</span>
+</span><span id="__span-56-11"><a id="__codelineno-56-11" name="__codelineno-56-11" href="#__codelineno-56-11"></a>
+</span><span id="__span-56-12"><a id="__codelineno-56-12" name="__codelineno-56-12" href="#__codelineno-56-12"></a><span class="c1"># True coefficients</span>
+</span><span id="__span-56-13"><a id="__codelineno-56-13" name="__codelineno-56-13" href="#__codelineno-56-13"></a><span class="n">beta_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">])</span>
+</span><span id="__span-56-14"><a id="__codelineno-56-14" name="__codelineno-56-14" href="#__codelineno-56-14"></a>
+</span><span id="__span-56-15"><a id="__codelineno-56-15" name="__codelineno-56-15" href="#__codelineno-56-15"></a><span class="c1"># Generate Poisson-distributed target values</span>
+</span><span id="__span-56-16"><a id="__codelineno-56-16" name="__codelineno-56-16" href="#__codelineno-56-16"></a><span class="n">linear_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">beta_true</span><span class="p">)</span>
+</span><span id="__span-56-17"><a id="__codelineno-56-17" name="__codelineno-56-17" href="#__codelineno-56-17"></a><span class="n">lambda_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">linear_pred</span><span class="p">)</span>
+</span><span id="__span-56-18"><a id="__codelineno-56-18" name="__codelineno-56-18" href="#__codelineno-56-18"></a><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">lambda_true</span><span class="p">)</span>
+</span><span id="__span-56-19"><a id="__codelineno-56-19" name="__codelineno-56-19" href="#__codelineno-56-19"></a><span class="c1"># y</span>
+</span><span id="__span-56-20"><a id="__codelineno-56-20" name="__codelineno-56-20" href="#__codelineno-56-20"></a>
+</span><span id="__span-56-21"><a id="__codelineno-56-21" name="__codelineno-56-21" href="#__codelineno-56-21"></a><span class="c1"># Right-censoring threshold in the last date (when the fare is closed)</span>
+</span><span id="__span-56-22"><a id="__codelineno-56-22" name="__codelineno-56-22" href="#__codelineno-56-22"></a><span class="n">censor_threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([(</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">substract_sales</span><span class="p">])])</span>
+</span><span id="__span-56-23"><a id="__codelineno-56-23" name="__codelineno-56-23" href="#__codelineno-56-23"></a><span class="n">y_censored</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">censor_threshold</span><span class="p">,</span> <span class="n">censor_threshold</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-56-24"><a id="__codelineno-56-24" name="__codelineno-56-24" href="#__codelineno-56-24"></a><span class="n">is_censored</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">censor_threshold</span><span class="p">)</span>
+</span></code></pre></div>
+Maybe it's easier to visualize.<br />
+The green curve is the actual lambda parameter for each data, based on the intercept and the real coefficient multiplied by days to departure.<br />
+The blue dots are the actual data points we see for all dates except from the last one.<br />
+The grey dot is the data we should see if there was no limit of how many seats to sell, following the poisson distribution.<br />
+The red dot is the actual data point we have, the last day the airline sold all the remaining seats and couldn't fulfill the true demand and hence we see lower sales than the ones generated by the poisson distribution.  </p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="c1"># Plot the data</span>
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Days to departure&#39;</span><span class="p">)</span>
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Bookings&#39;</span><span class="p">)</span>
+</span><span id="__span-57-4"><a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Data Plot&#39;</span><span class="p">)</span>
+</span><span id="__span-57-5"><a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+</span><span id="__span-57-6"><a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lambda_true</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lambda True&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+</span><span id="__span-57-7"><a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="c1"># plt.plot(X[:, 1], lambda_est, label=&#39;Lambda Estimated&#39;)</span>
+</span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:],</span>  <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Real unseen demand&quot;</span> <span class="p">)</span>
+</span><span id="__span-57-9"><a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">substract_sales</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Constrained&#39;</span><span class="p">)</span>
+</span><span id="__span-57-10"><a id="__codelineno-57-10" name="__codelineno-57-10" href="#__codelineno-57-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span><span id="__span-57-11"><a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2024-09-05-expectation-maximization-for-poisson-process-unnamed-chunk-5-1.png" /></p>
+<h5 id="esimation"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#esimation">Esimation</a></h5>
+<h6 id="poisson-regression"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#poisson-regression">Poisson Regression</a></h6>
+<p>First we estimate the parameters using a poisson regression. We assume the data follows a poisson process and we don't do anything to manage the constrained data.<br />
+The results are kind of ok, we get some closeness to the true parameters but it is clearly biased.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="n">model_censored</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">GLM</span><span class="p">(</span><span class="n">y_censored</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Poisson</span><span class="p">())</span>
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="n">results_censored</span> <span class="o">=</span> <span class="n">model_censored</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Estimated Censored coefficients: </span><span class="si">{</span><span class="n">results_censored</span><span class="o">.</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>## Estimated Censored coefficients: [ 1.86976922 -0.21124541]
+</span></code></pre></div>
+<h6 id="expectation-maximization"><a class="toclink" href="../../2024/09/05/expectation_maximization_poisson/#expectation-maximization">Expectation Maximization</a></h6>
+<p>OK, here is our alternative. What we can do, a bit more sophisticated, is to apply EM algorithm, which is a iterative process, to estimate the coefficients of the poisson regression, including the knowledge we have, that there might be constrained data.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="c1"># Step 2: Initialize parameters</span>
+</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="n">beta_est</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_features</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a><span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-4</span>
+</span><span id="__span-60-4"><a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="n">max_iter</span> <span class="o">=</span> <span class="mi">1000</span>
+</span><span id="__span-60-5"><a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a>
+</span><span id="__span-60-6"><a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a><span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+</span><span id="__span-60-7"><a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a>    <span class="c1"># Step 3: E-step</span>
+</span><span id="__span-60-8"><a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a>    <span class="c1"># Estimate the expected values of censored data</span>
+</span><span id="__span-60-9"><a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a>    <span class="n">lambda_est</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">beta_est</span><span class="p">))</span>
+</span><span id="__span-60-10"><a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a>    <span class="n">expected_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+</span><span id="__span-60-11"><a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a>        <span class="n">is_censored</span><span class="p">,</span>
+</span><span id="__span-60-12"><a id="__codelineno-60-12" name="__codelineno-60-12" href="#__codelineno-60-12"></a>        <span class="p">(</span><span class="n">censor_threshold</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">poisson</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">censor_threshold</span><span class="p">,</span> <span class="n">lambda_est</span><span class="p">)),</span>
+</span><span id="__span-60-13"><a id="__codelineno-60-13" name="__codelineno-60-13" href="#__codelineno-60-13"></a>        <span class="n">y_censored</span>
+</span><span id="__span-60-14"><a id="__codelineno-60-14" name="__codelineno-60-14" href="#__codelineno-60-14"></a>    <span class="p">)</span>
+</span><span id="__span-60-15"><a id="__codelineno-60-15" name="__codelineno-60-15" href="#__codelineno-60-15"></a>    <span class="c1"># Ensure expected_y values are valid</span>
+</span><span id="__span-60-16"><a id="__codelineno-60-16" name="__codelineno-60-16" href="#__codelineno-60-16"></a>    <span class="n">expected_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">expected_y</span><span class="p">,</span> <span class="n">nan</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_censored</span><span class="p">),</span> <span class="n">posinf</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y_censored</span><span class="p">),</span> <span class="n">neginf</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-60-17"><a id="__codelineno-60-17" name="__codelineno-60-17" href="#__codelineno-60-17"></a>    <span class="c1"># Step 4: M-step</span>
+</span><span id="__span-60-18"><a id="__codelineno-60-18" name="__codelineno-60-18" href="#__codelineno-60-18"></a>    <span class="c1"># Update parameter estimates using Poisson regression</span>
+</span><span id="__span-60-19"><a id="__codelineno-60-19" name="__codelineno-60-19" href="#__codelineno-60-19"></a>    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">GLM</span><span class="p">(</span><span class="n">expected_y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">families</span><span class="o">.</span><span class="n">Poisson</span><span class="p">())</span>
+</span><span id="__span-60-20"><a id="__codelineno-60-20" name="__codelineno-60-20" href="#__codelineno-60-20"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;lbfgs&quot;</span><span class="p">)</span>
+</span><span id="__span-60-21"><a id="__codelineno-60-21" name="__codelineno-60-21" href="#__codelineno-60-21"></a>    <span class="c1"># results = model.fit_regularized(L1_wt=0, alpha=0.1) </span>
+</span><span id="__span-60-22"><a id="__codelineno-60-22" name="__codelineno-60-22" href="#__codelineno-60-22"></a>    <span class="n">new_beta_est</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</span><span id="__span-60-23"><a id="__codelineno-60-23" name="__codelineno-60-23" href="#__codelineno-60-23"></a>
+</span><span id="__span-60-24"><a id="__codelineno-60-24" name="__codelineno-60-24" href="#__codelineno-60-24"></a>    <span class="c1"># Check convergence</span>
+</span><span id="__span-60-25"><a id="__codelineno-60-25" name="__codelineno-60-25" href="#__codelineno-60-25"></a>    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">new_beta_est</span> <span class="o">-</span> <span class="n">beta_est</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span><span class="p">:</span>
+</span><span id="__span-60-26"><a id="__codelineno-60-26" name="__codelineno-60-26" href="#__codelineno-60-26"></a>        <span class="k">break</span>
+</span><span id="__span-60-27"><a id="__codelineno-60-27" name="__codelineno-60-27" href="#__codelineno-60-27"></a>
+</span><span id="__span-60-28"><a id="__codelineno-60-28" name="__codelineno-60-28" href="#__codelineno-60-28"></a>    <span class="n">beta_est</span> <span class="o">=</span> <span class="n">new_beta_est</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>## &lt;string&gt;:7: RuntimeWarning: divide by zero encountered in divide
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Estimated coefficients: </span><span class="si">{</span><span class="n">beta_est</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>## Estimated coefficients: [ 2.11015996 -0.23573144]
+</span></code></pre></div>
+We can see our estimates are of course not perfect but the intercept is closer to the true parameter.<br />
+Let's visualize the results to have a clear intuition.</p>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="n">uncensored_predictions</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span><span id="__span-64-2"><a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="n">censored_predictions</span> <span class="o">=</span> <span class="n">results_censored</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</span></code></pre></div>
+Promising!<br />
+For the furthest dates we see a bias in both approaches, we are not doing better than the Poisson regression, but neither worse.<br />
+As we move closer the the departure, the EM algorithm predictions get closer and closer to the true lambdas, while the regular poisson regression continues it's biased trajectory.<br />
+The EM procedure adjusted the coefficients to better match the constrained data.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lambda_true</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lambda True&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+</span><span id="__span-65-2"><a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">uncensored_predictions</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Uncensored Predictions (EM)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+</span><span id="__span-65-3"><a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">censored_predictions</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Censored Predictions&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</span><span id="__span-65-4"><a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Days to departure&#39;</span><span class="p">)</span>
+</span><span id="__span-65-5"><a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Lambda - Poisson regression&#39;</span><span class="p">)</span>
+</span><span id="__span-65-6"><a id="__codelineno-65-6" name="__codelineno-65-6" href="#__codelineno-65-6"></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lambda Predictions&#39;</span><span class="p">)</span>
+</span><span id="__span-65-7"><a id="__codelineno-65-7" name="__codelineno-65-7" href="#__codelineno-65-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span><span id="__span-65-8"><a id="__codelineno-65-8" name="__codelineno-65-8" href="#__codelineno-65-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+<p><img alt="Image" src="../../img/2024-09-05-expectation-maximization-for-poisson-process-unnamed-chunk-9-3.png" /></p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-06-04 00:00:00+00:00">2024-06-04</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/personal/" class="md-meta__link">Personal</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="reflections-on-quitting-my-ml-job"><a class="toclink" href="../../2024/06/04/reflections-on-quitting/">Reflections on quitting my ML job</a></h2>
+<p>As I'm starting my sabbatical journey I am reading some posts of <a href="https://jxnl.co/writing/2024/06/01/advice-to-young-people/">Jason Liu</a> since he seems to have a career similar to something I would like to if I got into ML and LLM riding the hype wave. Furthermore I find his writing pleasant and his content could be useful even as a solopreneur. </p>
+<p>One of my goals for this period of time is to write more. To take more notes since I struggle memorizing without them (or even with them but at least I can read a summary later) and I want to actually <em>do</em> more. More of everything, less thinking about and more actual doing. From shipping products, to really learning and that includes writing.</p>
+<p>Reading his post and starting now my journey, a real action would be to take notes about his post, which I found useful, at least some bits of it. Not taking notes would be less writing, less doing, less memorizing. </p>
+<h3 id="choosing"><a class="toclink" href="../../2024/06/04/reflections-on-quitting/#choosing">Choosing</a></h3>
+<p>Right now, I feel more at this point</p>
+<blockquote>
+<p>"This despair arises from the realization of one's absolute freedom and the responsibility for creating one's own essence and purpose."</p>
+</blockquote>
+<p>Lately, last few years probably, I have started to realize that quote. We can go a long way by following the usual paths, at least usual to our surroundings. In my case, without major distress that turns everything upside down, it was high school, university, get a job, get married, retire. At least, that's something I (many?) thought as <em>given</em>, a fate that if didn't screw it, it would happen automatically.</p>
+<p>And as I was applied and I did good in school, I got the first 3 steps quite easily. I never really thought of going out of that path and saw the ones doing so as outliers or with greater safety nets to fail. In some cases it could be true, in others it was probably me being short sighted, I guess it was not my fault but just lack of adult life.  </p>
+<p>As years go by, I start questioning the meaning of what I'm doing. Is my job meaningful? Does it create value or help anyone? Corporate world feels like a charade. Despite I was working in analytics and studying and building ML models, I couldn't see if that was worth the effort and time. Once you go past the hype of learning models and cool tech bits, looking over that it feels empty. I changed jobs. Still the same, I was dreading in boredom and rat race. Needing to "impress" people or feeling that I need to be there for work 9-5 each day without feeling motivated was awful. I quit after a few months willing to take some time off. What am I doing? I have no purpose and my day to day means nothing. I like seeing my friends and family, traveling, etc but the regular life has a lot more things and time to fill. I can't make this for 30 more years.</p>
+<p>Fortunately, tech and ML pays high salaries so I felt <em>safe</em>. I could take some time off, I can always look for other job, etc. But the feeling of "I need to do something different" was there. I started looking for other opportunities, looking for purpose in jobs, looking for motivation. I was in despair as I understood that I needed to do my own way and no one was doing it for me. </p>
+<p>Ironically, I took another job quit quickly because it paid much more and I could just try it, maybe I was just in the wrong place. Seemed to work better, it was less of a charade, I had more time for crafting and working, I got some motivation back as I felt at least more comfortable daily. Not that I had purpose really but working was at least with less pressure. The time zone differences helped because I didn't feel like 9 hours a day I was supposed to be there, with someone 1 click away of sending a slack message to me. I stayed two years. Earning good money compared to my spending, saving and "happy". Eventually everything started to decay, the job was less free, the business request were more urgent and I quickly lost motivation and started to fall in despair again. What am I doing? Who cares about this parquet file with funny numbers?</p>
+<p>I quit, this time for good. Despair again, realization, I need to find something for myself, or try at least. I fear for its complexity, I fear if I can do it, if I can make a living in another way. I'm taking some time to rest but I know eventually I will need to figure things out. On my own, making my own way, and I see how no one will do it for me.</p>
+<p>As a side note, finding purpose, finding your way, etc was also a thing when I thought about romantic relationships. Finding someone that you really care about and that cares about you is not easy at all and it doesn't happen magically as I thought as a kid. I am not going to expand about it here but it was another topic that made me realize about our own fate and efforts.</p>
+<p>Side side note, retirement is another one. I don't see my national retirement plan as something you can live off. I see my family, that luckily does well but despite that nothing is granted and we can support the elder in my family because our own safety net. A younger me didn't know that but as my twenties went by I started to see a lot more of adult/real life. Eye opening period of my life.</p>
+<p><strong>How to be lucky</strong></p>
+<p>"Okay, I'm focused on getting X, but let's not forget to read the headlines."</p>
+<p><strong>High Agency and be the plumber</strong></p>
+<p>Reminder to myself, focus on bringing solutions and not the shiny new tool. I think I'm good at high agency or at being responsible and wanting to finish what I commit to.<br />
+I need to work on focusing on which solution am I bringing. Finding the right niche and actually bringing value.
+In my case with sportsjobs.online, not just throwing things into it, but making it clear what I am providing.
+For other topics related to ML and LLM I need to decide what I'll focus on this time coming in.</p>
+<p><strong>Impostor Syndrome</strong>
+I'm the classical example of not trusting myself  and thinking stuff like this.</p>
+<blockquote>
+<p>but at the end of the day, you must just think I have shit taste and that you've somehow tricked me into thinking you're good when you're an impostor? Right?</p>
+</blockquote>
+<p>I need to stop with that. Quitting now I had plenty of nice words for every colleague, including the desire from managers that I stay or I come back if I get bored of not having a job. Of course, as I write that, I think in the back of my mind of exceptions and that technical colleagues were less effusive as my managers and etc. but all of that is probably not true. I'm going against all evidence and just guessing and making things in my head.</p>
+<p><strong>How to Be Good at Many Things</strong>
+Consistency. Every one says this. I need to do it the right way now that I'll have the time. No excuses.</p>
+<p>Do things, practice, keep going for it. Everything will be easier and quicker.</p>
+<p>And I need to be grateful for what I have and how lucky I am to be able to get a sabbatical time to try to change the path I'm going.</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -1622,24 +1861,24 @@ So <span class="arithmatex">\(R^2 = \frac{a^2\mathbb{V}[X]}{a^2\mathbb{V}[X] + \
 This goes to 0 as <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  0\)</span> and it goes to 1 as  <span class="arithmatex">\(\mathbb{V}[X] \rightarrow  \infty\)</span>. "It thus has little to do with the quality of the fit, and a lot to do with how spread out the predictor variable is. Notice also how easy it is to get a high <span class="arithmatex">\(R^2\)</span> even when the true model is not linear!"</p>
 <p>Below a quick comparison between two linear relationships, one with much higher variance than the other in the predictor.<br />
 Added a different constant for better display in plot.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="n">error</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">model1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y1 ~ x1&quot;</span><span class="p">)</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">sd</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w">  </span><span class="n">error</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="n">model1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y1 ~ x1&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>## Error in eval(predvars, data, env): object &#39;y1&#39; not found
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>## Error in eval(predvars, data, env): object &#39;y1&#39; not found
 </span></code></pre></div>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">model2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y2 ~ x2&quot;</span><span class="p">)</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">model2</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">lm</span><span class="p">(</span><span class="s">&quot;y2 ~ x2&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>## Error in eval(predvars, data, env): object &#39;y2&#39; not found
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>## Error in eval(predvars, data, env): object &#39;y2&#39; not found
 </span></code></pre></div>
     
   </div>
@@ -2071,136 +2310,6 @@ The thick line is a local regression with its standard deviation.
 <p>What we get is a model that follows the constraints, although has some bias for the lower leading categories. Nevertheless is a quick approach to approximate the probabilities in a credible way.<br />
 You could use the dataset to explore other stuff since it has some rich information about locations.</p>
 <p><img alt="Image" src="../../img/2020-10-15-counter-strike-chance-of-winning.en-us-unnamed-chunk-4-1.png" /></p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2020-10-06 00:00:00+00:00">2020-10-06</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="../../category/r/" class="md-meta__link">R</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              1 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="non-negative-matrix-factorization"><a class="toclink" href="../../2020/10/06/non-negative-matrix-factorization.en-us/">Non Negative Matrix Factorization</a></h2>
-<p>Please follow this <a href="/flexdashboard/nnmf_nba.html">link</a><br />
-It was made with Flexboard (a package to do dashboards in R) so I think it's only visualized correctly in laptops/pc because of the layout.</p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2020-07-18 00:00:00+00:00">2020-07-18</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../../category/estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="../../category/r/" class="md-meta__link">R</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="distribucion-dirichlet-como-prior-de-multinomial"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/">Distribucion Dirichlet como prior de Multinomial</a></h2>
-<p>Basado en:<br />
-<a href="http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week6.pdf">http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week6.pdf</a><br />
-<a href="http://www.inf.ed.ac.uk/teaching/courses/mlpr/assignments/multinomial.pdf">http://www.inf.ed.ac.uk/teaching/courses/mlpr/assignments/multinomial.pdf</a></p>
-<p>La distribución Dirichlet es una distribución multivariada para un conjunto de cantidades <span class="arithmatex">\(\theta_i,...,\theta_m\)</span> donde <span class="arithmatex">\(\theta_i &gt;= 0\)</span> y <span class="arithmatex">\(\sum_{i=1}^m \theta_i = 1\)</span>. Esto la hace una candidata útil para modelar un conjunto de probabilidades de una partición (un un conjunto de eventos mutuamente excluyentes). Es decir, un grupo de probabilides de eventos excluyentes, que sumen 1.<br />
-Podemos remplazar los <span class="arithmatex">\(\theta\)</span> por <span class="arithmatex">\(p\)</span> si es más claro que hablamos de probabilidades luego.</p>
-<p>La PDF es:</p>
-<div class="arithmatex">\[f(\theta_i,...,\theta_m; \alpha_i.., \alpha_m) =   \frac{\Gamma(\sum_i{\alpha_i})}{\prod_{i=1}^m \Gamma(\alpha_i)}\prod_{i = 1}^m \theta_i^{(\alpha_1-1)}\]</div>
-<p>Donde la función <span class="arithmatex">\(\Gamma\)</span> es <span class="arithmatex">\(\Gamma(\alpha) = (\alpha -1)!\)</span>. Para más detalles ver <a href="https://en.wikipedia.org/wiki/Gamma_function">acá</a>.<br />
-Los <span class="arithmatex">\(\alpha_i\)</span> son parámetros de la distribución y deben ser mayores a 0.<br />
-Cuando m = 2, obtenemos una función <span class="arithmatex">\(beta(\alpha_1, \alpha_2)\)</span> como caso particular de la Dirichlet.</p>
-<h4 id="dirichtlet-en-inferencia-bayesiana"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/#dirichtlet-en-inferencia-bayesiana">Dirichtlet en Inferencia Bayesiana.</a></h4>
-<p>De la misma manera que la distribución Beta suele usarse como prior de la Distribución Binomial ya que es una distribución conjugada para ese caso, la distribución Dirichlet suele usarse para distribuciones <strong>Multinomiales</strong>, es decir donde hay más de 2 categorías posibles (más de 2 <span class="arithmatex">\(p_i\)</span>). También es distribución conjugada. Es simplemente la versión multinomial de la beta.  </p>
-<p>La distribución multinomial es la siguiente:</p>
-<div class="arithmatex">\[\frac{n!}{\prod_{i = 1}^m x_i!}\prod_{i=1}^m p_i^{x_i}\]</div>
-<p>Cuando m = 2, es la distribución binomial.</p>
-<p>Si tuvieramos un experimento que se puede modelar como una multinomial y queremos estimar los <span class="arithmatex">\(p_i\)</span> podemos utilizar los estimadores de máxima verosimilitud (frecuentista) o ir por el camino de bayesiano donde comenzamos con un prior para cada p, que modelaremos con la Dirichlet. El prior de cada <span class="arithmatex">\(p_i\)</span> va a ser definido con la elección de los <span class="arithmatex">\(\alpha\)</span>.</p>
-<p>Yendo por el camino bayesiano vamos a tener nuestra distribución posterior:
-$$ P(p | x) \propto P(x|p) * P(p)$$
-donde <span class="arithmatex">\(P(x|p)\)</span> no es otra cosa que la distribución multinomial y <span class="arithmatex">\(P(p)\)</span> es nuestro prior de <span class="arithmatex">\(p\)</span> dado por la Dirichlet. Omitimos el denominador que es normalizador ya que es una constante.</p>
-<p>Multiplicamos entonces la PDF multinomial por la Dirichlet y obtenemos:</p>
-<p><em>Importante notar que efectivamente cambiamos <span class="arithmatex">\(\theta\)</span> por <span class="arithmatex">\(p\)</span> en la Dirichlet para que sea consistente con la multinomial.</em></p>
-<div class="arithmatex">\[\frac{n!}{\prod_{i = 1}^m x_i!}\prod_{i=1}^m p_i^{x_i} * \frac{\Gamma(\sum_i{\alpha_i})}{\prod_{i=1}^m \Gamma(\alpha_i)}\prod_{i = 1}^m p_i^{(\alpha_1-1)} \\ \propto \prod_i p_i^{\alpha_i + x_i -1}\]</div>
-<p>Para la proporcionalidad, quitamos todo lo que es factorial (y <span class="arithmatex">\(\Gamma\)</span>) ya que es constante y combinamos los exponentes de base <span class="arithmatex">\(p_i\)</span>.</p>
-<p>Vemos entonces que nuestra distribución posterior es propocional a ese término, que si vemos, es una Dirichlet para la cual nos falta el término constante! Por eso se dice que es una prior conjugada, ya que la posterior es de la misma familia que la prior (con otros valores claro.)<br />
-Es entonces una Dirichlet con parámetros <span class="arithmatex">\(\alpha_i + x_i\)</span> y podemos completar el término faltante obteniendo: 
-$$ \frac{\Gamma(\sum_i{\alpha_i + x_i})}{\prod_{i=1}^m \Gamma(\alpha_i + x_i)}\prod_{i=1}^m p_i^{(\alpha_i + x_i-1)}$$</p>
-<p>He ahí nuestra distribución posterior para los valores de <span class="arithmatex">\(p\)</span> de la multinomial.</p>
-<p>Para calcular rápidamente la esperanza de cada <span class="arithmatex">\(p_i\)</span> hacemos simplemente:
-<span class="arithmatex">\(<span class="arithmatex">\(E(p_i) = \frac{\alpha_i + x_i}{\sum (\alpha_i +  x_i)}\)</span>\)</span></p>
-<p>Si obtenemos nueva información podemos repetir el proceso, pero nuestra nueva prior debería ser la posterior previamente calculada. Y así vamos agregando información a medida que se recolecta y actualizando nuestra inferencia acerca de <span class="arithmatex">\(p_i\)</span></p>
-<p><strong>Aclaración</strong>: La proporción de cada <span class="arithmatex">\(\alpha_i\)</span> iniciales en la Dirichlet prior sobre la suma de todos los <span class="arithmatex">\(\alpha_i\)</span> es nuestro prior de <span class="arithmatex">\(p_i\)</span>. A mayores valores absolutos, mayor peso al prior respecto a los datos, ya que nuestro nuevo <span class="arithmatex">\(p_i\)</span> es función del <span class="arithmatex">\(\alpha_i\)</span> y <span class="arithmatex">\(x_i\)</span>. Revisar bien como ajustar los <span class="arithmatex">\(alpha\)</span> según la magnitud de <span class="arithmatex">\(x\)</span>, si es que hay que hacerlo.</p>
-<h4 id="ejemplo"><a class="toclink" href="../../2020/07/18/disitrbucion-dirichlet-como-prior-de-mulitnomial/#ejemplo">Ejemplo</a></h4>
-<p>Queremos modelar la compra de remeras de basquet en una tienda. Entra un cliente al azar y tiene determinadas probabilidades de comprar una remera de los Lakers, una de los Celtics, una de San Antonio o cualquier otro equipo.  </p>
-<p>En un primer momento no sabemos las proporciones y empezamos con unos priors <span class="arithmatex">\(\alpha_1 : \alpha_4 = [8,6,4,2]\)</span> que corresponde a 40%, 30%, 20% y 10% respectivamente.</p>
-<p>Recolectamos los datos de 100 clientes y vemos que las ventas fueron las siguientes:<br />
-Lakers : 45<br />
-Celtics: 22<br />
-Spurs: 27<br />
-Otros: 6  </p>
-<p>Calculando rapidamente con la fórmula de la Esperanza las probabildades que se derivan de nuestra posterior obtenemos:</p>
-<p>Lakers = 0.442<br />
-Celtic = 0.233<br />
-Spurs  = 0.258<br />
-Otro   = 0.067  </p>
-<p>Para ser más prolijos habría que agregar la varianza de cada <span class="arithmatex">\(p\)</span>. A agregar en un futuro..</p>
-<p>Si hubieramos calculado los p  de máxima verosimilitud no sería más que la proporción de cada equipo en los datos, sin tener en cuenta nuestro prior. Vemos que acá están obviamente cercanos a la proporción en los datos pero se inclinan hacia el prior. Recordar que el peso de los priors va a verse afectar por los <span class="arithmatex">\(\alpha\)</span> elegidos y por la cantidad de datos recolectados.</p>
-<p>En ML es bastante útil para el caso donde una nueva categoría aparece en el test set. Si no fue vista en el training le va a dar probabilidad 0 mientras que con un prior podemos salvar ese problema.<br />
-En NLP es bastante habitual usar la distribución Dirichlet como prior. Investigar por ese lado.</p>
     
   </div>
 </article>

@@ -588,6 +588,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#llama-index-and-rag-starter-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llama Index and RAG starter point
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-poetry-with-conda-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use Poetry with Conda environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deep-dive-into-llms-like-chatgpt-karpathy" class="md-nav__link">
     <span class="md-ellipsis">
       Deep Dive into LLMs Like ChatGPT - Karpathy
@@ -1207,6 +1225,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#llama-index-and-rag-starter-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llama Index and RAG starter point
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-poetry-with-conda-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use Poetry with Conda environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deep-dive-into-llms-like-chatgpt-karpathy" class="md-nav__link">
     <span class="md-ellipsis">
       Deep Dive into LLMs Like ChatGPT - Karpathy
@@ -1274,6 +1310,134 @@
       <header class="md-typeset">
         <h1 id="2025">2025<a class="headerlink" href="#2025" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-07-10 00:00:00+00:00">2025-07-10</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/ai/" class="md-meta__link">AI</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="llama-index-and-rag-starter-point"><a class="toclink" href="../../2025/07/10/llama-index-and-rag-starter-point/">Llama Index and RAG starter point</a></h2>
+<p>This is me trying and playing a bit with the <a href="https://docs.llamaindex.ai/en/stable/getting_started/customization/#frequently-asked-questions-faq">starter guide</a> of Llama Index. Basic discovery of how to use this. Actually their starter is more complex, goes into agents right away, so this was more what I was looking for.</p>
+<h3 id="creating-the-environment"><a class="toclink" href="../../2025/07/10/llama-index-and-rag-starter-point/#creating-the-environment">Creating the environment</a></h3>
+<p>Poetry already installed and configured in windows to use Conda environments. Not sure how?<a href="https://fbetteo.com/writing/#how-to-use-poetry-with-conda-environments">Look here</a></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>rag<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>rag
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>poetry<span class="w"> </span>init
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>poetry<span class="w"> </span>add<span class="w"> </span>llama-index
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>poetry<span class="w"> </span>add<span class="w"> </span>sentence-transformers
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>poetry<span class="w"> </span>add<span class="w"> </span>llama-index-embeddings-huggingface
+</span></code></pre></div>
+<p>llama-index uses by default embedding from OpenAI. It requires the API key (and paying of course.)
+Should be cheap but I'll try using local embeddings to see how it goes, using Huggingface as I used for other projects via sentence-transformers.</p>
+<p>For local embedding model, we load the model from hugging face and we update the embed_model in Settings.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">embed_model</span> <span class="o">=</span> <span class="n">HuggingFaceEmbedding</span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;BAAI/bge-small-en-v1.5&quot;</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">embed_batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">Settings</span><span class="o">.</span><span class="n">embed_model</span> <span class="o">=</span> <span class="n">embed_model</span>
+</span></code></pre></div>
+<p>I think this could work alright in terms of speed for now.</p>
+<h3 id="ollama"><a class="toclink" href="../../2025/07/10/llama-index-and-rag-starter-point/#ollama">Ollama</a></h3>
+<p>I installed Ollama from their website
+Added Ollama to Environment Variables</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ollama<span class="w"> </span>pull<span class="w"> </span>gemma3
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ollama<span class="w"> </span>pull<span class="w"> </span>gemma3:4b
+</span></code></pre></div>
+<p>I've been using them in the llama_index_starter.py to avoid using any API.
+but with my cpu only computer (32gb ram) everything was really slow.
+gemma3 in the terminal was super slow (~30s) , gemma3:4b much faster (~2s) but when integrating into llama index with the retrieval, it was slow too</p>
+<p>I feel like there is no usage for local LLMs in my current computer. Maybe if I use a server or collab this could work.</p>
+<h3 id="groq"><a class="toclink" href="../../2025/07/10/llama-index-and-rag-starter-point/#groq">Groq</a></h3>
+<p>I found that they have a generous free tier (500k tokens per day for some models) that should be enough to test things and do some minimum POC. I can top up later or use another provider, that's the magic of Llama-index, it should be easy to change the provider.</p>
+<p>Also, Groq onboarding couldn't be easier. Log in, they give you API key, and that's it.</p>
+<p><code>poetry add llama-index-llms-groq</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">llama_index.llms.groq</span> <span class="kn">import</span> <span class="n">Groq</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">Settings</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">Groq</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama-3.1-8b-instant&quot;</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>                <span class="n">api_key</span><span class="o">=</span><span class="n">GROQ_API_KEY</span><span class="p">,</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>                <span class="n">request_timeout</span><span class="o">=</span><span class="mf">360.0</span><span class="p">)</span>
+</span></code></pre></div>
+<p>That's it, I'm using Groq. In the <a href="https://console.groq.com/dashboard/metrics">Dashboard</a> we can see usage, logs, etc, super cool.</p>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-07-10 00:00:00+00:00">2025-07-10</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/ai/" class="md-meta__link">AI</a>, 
+              <a href="../../category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="how-to-use-poetry-with-conda-environments"><a class="toclink" href="../../2025/07/10/how-to-use-poetry-with-conda-environments/">How to use Poetry with Conda environments</a></h2>
+<p>Poetry uses by default the system installed python and creates a new environment using that one. I prefer creating a new env with conda, install whatever python version I want and work in there.</p>
+<p>1) Create an environment with Conda and activate it</p>
+<p>2) Have setup (once, globally) that Poetry uses the current environment python version
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>poetry<span class="w"> </span>config<span class="w"> </span>virtualenvs.create<span class="w"> </span><span class="nb">false</span>
+</span></code></pre></div></p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

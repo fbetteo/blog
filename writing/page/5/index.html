@@ -1111,6 +1111,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#cadenas-de-markov" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cadenas de Markov
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulacion-de-monty-hall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulación de Monty Hall
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tipos-de-variables" class="md-nav__link">
     <span class="md-ellipsis">
       Tipos de Variables
@@ -1133,6 +1151,237 @@
       <header class="md-typeset">
         <h1 id="my-words-sometimes-technical-sometimes-not">My words, sometimes technical, sometimes not<a class="headerlink" href="#my-words-sometimes-technical-sometimes-not" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2018-08-25 00:00:00+00:00">2018-08-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/matematica/" class="md-meta__link">matematica</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="cadenas-de-markov"><a class="toclink" href="../../2018/08/25/cadenas-de-markov/">Cadenas de Markov</a></h2>
+<p>Las cadenas de Markov son herramientas muy útiles para modelar transiciones entre estados. Imaginemos un escenario sencillo con dos posibles estados: día de lluvia o día soleado. En el momento <strong>t</strong> el estado supongamos que es "día soleado". ¿Cuál será el estado en <strong>t+1</strong> ? Dadas las probabilidades de transición de un estado a otro podemos simular escenarios tras el paso del tiempo. Mismo en algunos casos puede ser útil entender si en el largo plazo esta simulación converge hacia algún resultado estable en el tiempo.</p>
+<p>Mostraremos ejemplos sencillos, pero la metodología es escalable a procesos complejos como pueden usarse en meteorología, aplicaciones financieras, etc. El <a href="http://blog.kleinproject.org/?p=1605&amp;lang=es">algoritmo de búsqueda de Google</a> está basado en cadenas de Markov, para que vean la utilidad. <sup id="fnref3:1"><a class="footnote-ref" href="../../2018/08/25/cadenas-de-markov/#fn:1">1</a></sup></p>
+<p>Lo que necesitamos para este ejercicio son las probabilidades de transición de un estado a otro y los valores iniciales en cada estado.</p>
+<p>Supongamos una clase de estadística con n estudiantes, en la que dos estados son posibles. 
+Estado A : El alumno está atento.
+Estado B : El alumno está aburrido.</p>
+<ul>
+<li>Las probablidades son las siguientes: <ul>
+<li>En t+1 el 80% de A sigue en A (y por lo tanto el 20% de A pasa a B)</li>
+<li>En t+1 el 25% de B pasa a A (y por lo tanto el 75% de B queda en B)</li>
+</ul>
+</li>
+</ul>
+<p>La matriz que representa esa probabilidades la vamos a llamar * Matriz de Transición *.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.8</span><span class="p">,</span><span class="m">0.25</span><span class="p">))</span><span class="w">  </span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1"># 80% de A sigue en A, 25% de B pasa a A en t+1</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">tmatrix</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># trasponemos porque necesitamos esta información en la primera fila.</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">tmatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">tmatrix</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">tmatrix</span><span class="p">[</span><span class="m">1</span><span class="p">,])</span><span class="w"> </span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="c1"># Agregamos la segunda fila, que es 1 menos la primera.</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">tmatrix</span><span class="w"> </span><span class="c1"># Matriz de transción</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>##      [,1] [,2]
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>## [1,]  0.8 0.25
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>## [2,]  0.2 0.75
+</span></code></pre></div>
+<p>La matriz de valores iniciales es la siguiente:
+En un primero momento (t), el 10% de los alumnos está atento y el 90% aburrido.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Matriz inicial, 10% Atento, 90% aburridos</span>
+</span></code></pre></div>
+<p>Ya tenemos toda la información necesaria para hacer nuestras primeras simulaciones.
+Supongamos que cada período de tiempo son 10 minutos, por lo tanto si t es el momento 0, t+1 es a los 10 de minutos de empezada la clase, t+2 a los 20 y así sucesivamente.</p>
+<p>Para evaluar el porcentaje de alumnos concentrados en determinado momento de la clase lo que debemos hacer es multiplicar la matriz de estado inicial por la matriz de transición tantas veces como momentos a futuro querramos simular.</p>
+<p>Por ejemplo si queremos ver que pasará con nuestros alumnos luego de 20 minutos de clase debemos multiplicar smatrix * tmatrix 2 veces.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">){</span><span class="w">            </span><span class="c1"># Loopeamos 2 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">  </span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion, </span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="p">}</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 2 iteraciones -&gt; A 42% , B 58%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>##         [,1]
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>## [1,] 0.41775
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>## [2,] 0.58225
+</span></code></pre></div>
+<p>Vemos que luego de 2 transiciones el estado A está compuesto por casi 42% de alumnos (concentrados) y 58% no atentos. Son movimientos bastante rápidos de un estado a otro.</p>
+<p>Veamos qué pasa luego de 10 iteraciones.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Reseteamos smatrix a su estado inicial</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">){</span><span class="w">           </span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Loopeamos 10 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">   </span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion, </span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="p">}</span>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 10 iteraciones -&gt; A 55% , B 45%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>##           [,1]
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>## [1,] 0.5544017
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>## [2,] 0.4455983
+</span></code></pre></div>
+<p>Luego de 10 movimientos, A pasa a tener el 55% de los alumnos dejando a 45% en B (no atentos). En este ejemplo con el paso del tiempo los alumnos se concentran más y más en la clase. Pero es este un proceso continuo e infinito? Llega un momento en que dada la matriz de transción todos los alumnos pasan a estar en el estado A, es decir, atentos?</p>
+<p>Para analizar esto podemos ver qué sucede luego de 1000 iteraciones (sería una clase muy muy larga...)</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">smatrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="m">0.9</span><span class="p">))</span><span class="w"> </span><span class="c1"># Reseteamos smatrix a su estado inicial</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">){</span><span class="w">  </span><span class="c1"># Loopeamos 10 veces. %*% es la multiplicacion matricial.</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">  </span><span class="n">smatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmatrix</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">smatrix</span><span class="w">  </span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="c1"># smatrix va tomando nuevos valores en cada iteracion,</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="c1"># reflejando el movimiento de un estado a otro</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="p">}</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="n">smatrix</span><span class="w">  </span><span class="c1"># Despues de 1000 iteraciones -&gt; A 55% , B 45%</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>##           [,1]
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>## [1,] 0.5555556
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>## [2,] 0.4444444
+</span></code></pre></div>
+<p>El resultado es casi idéntico luego de 1000 iteraciones al intento de tan solo 10 iteraciones. Por lo tanto podemos ver que esta cadena de Markov converge rápidamente a 55% en A y 45% en B. Es un estado estacionario del cual no podemos movernos dada la matriz de transición que tenemos.</p>
+<p>Este ejemplo sencillo permite ver la intuición detrás de esta potente herramienta en unos pocos pasos. Obviamente como comentamos antes se puede utilizar para procesos mucho más complejos y de muy diversas areas. 
+Queríamos mostrar los fundamentos con una aplicación rápida y que se comprenda que lo que se requiere es una matriz de transición y un estado inicial.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Para una explicación gráfica y muy didáctica dejamos el siguiente <a href="http://setosa.io/ev/markov-chains/">link en inglés.</a>&#160;<a class="footnote-backref" href="../../2018/08/25/cadenas-de-markov/#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="../../2018/08/25/cadenas-de-markov/#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="../../2018/08/25/cadenas-de-markov/#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2018-08-25 00:00:00+00:00">2018-08-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/r/" class="md-meta__link">R</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="simulacion-de-monty-hall"><a class="toclink" href="../../2018/08/25/simulacion-de-monty-hall/">Simulación de Monty Hall</a></h2>
+<p>Vamos a ver en un corto y sencillo ejemplo cómo hacer una simulación en R. El caso a utilizar es el "famoso" <a href="https://es.wikipedia.org/wiki/Problema_de_Monty_Hall">problema de Monty Hall</a>, asociado a un programa televisivo de Estados Unidos. </p>
+<p>En breve, el problema consiste en que un concursante debe elegir una entre 3 puertas (A,B y C). Detrás de una hay un premio (en general un automóvil) y tras las otras dos no hay nada (o una cabra en algunos ejemplos, lo cual no me parece tan malo en realidad..).
+Una vez que el concursante eligió una puerta, el organizador del programa, que sabe qué puerta oculta el premio y cuáles no, abre una de las dos puertas restantes, tras la cual no hay premio (recuerden que sabe qué hay detrás de cada puerta).
+Ante el nuevo escenario, el concursante debe elegir si mantiene su elección original o decide cambiar por la puerta restante, es decir, la que no eligió ni la que abrió el organizador.</p>
+<ul>
+<li>Qué conviene hacer ante tal incertidumbre? <ul>
+<li>Cambiar? </li>
+<li>Mantenerse fiel a la decisión original sin caer en los juegos psicológicos del programa? </li>
+<li>Es indistinto? 50/50 entre las dos puertas.</li>
+</ul>
+</li>
+</ul>
+<p>La simulación deberíaa darnos una respuesta acertada. Comencemos.</p>
+<p>Generamos las puertas y un vector donde vamos a guardar el resultado de la simulación.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">puertas</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span><span class="s">&quot;B&quot;</span><span class="p">,</span><span class="s">&quot;C&quot;</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">xdata</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Ahora lo que vamos a hacer es simular 10000 escenarios distintos emulando la lógica del problema. En cada uno vamos a asignarle a una puerta al azar el premio (con el comando "sample"). Luego elegiremos, como si fueramos el concursante, una puerta al azar. Descartaremos una de las puertas sin premio y por último y más importante, vamos a analizar en cada escenario qué hubiera pasado si nos quedabamos con la puerta elegida originalmente y qué hubiera pasado si cambiábamos. 
+Si no hay diferencia entre cambiar y no cambiar, luego de 10000 simulaciones deberíamos haber ganado 5000 veces al cambiar y 5000 al no cambiar (con algún margen de error). En caso contrario, alguna de las dos estrategias es superadora.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1"># 10000 iteraciones</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="n">premio</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">puertas</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="c1"># Asignar al premio una puerta al azar</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="n">eleccion</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">puertas</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="c1"># Concursante elige una puerta al azar</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="n">abrir</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">puertas</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">puertas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">eleccion</span><span class="w"> </span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="n">puertas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">premio</span><span class="p">)])[</span><span class="m">1</span><span class="p">]</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="c1"># &quot;Abren&quot; una que no es la que elegiste ni la que tiene premio</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="n">cambiarsi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">puertas</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">puertas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">eleccion</span><span class="w"> </span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="n">puertas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">abrir</span><span class="p">)]</span><span class="w"> </span><span class="c1"># Situacion si cambiaras. </span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="nf">if</span><span class="p">(</span><span class="n">eleccion</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">premio</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">xdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="s">&quot;nocambiargana&quot;</span><span class="p">))</span><span class="w"> </span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="c1"># Caso en que eleccion original ganara y guardas resultado</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">  </span><span class="nf">if</span><span class="p">(</span><span class="n">cambiarsi</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">premio</span><span class="p">)(</span><span class="n">xdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cambiargana&quot;</span><span class="p">))</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">  </span><span class="c1"># Caso en que cambiar ganara y guardas resultado</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>LLegado este punto tenemos un vector xdata que tiene para cada una de las 10000 iteraciones, qué estategia hubiera ganado. Si cambiar de puerta o no cambiar.
+Ahora simplemente contamos cuántas hay de cada una y analizamos el resultado.</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">xdata</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;cambiargana&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1"># Cantidad que hubieran ganado si cambiabas</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>## [1] 6623
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">xdata</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;nocambiargana&quot;</span><span class="p">))</span><span class="w"> </span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>## [1] 3377
+</span></code></pre></div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Cantidad que hubieran ganado si no cambiabas</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nf">table</span><span class="p">(</span><span class="n">xdata</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>## xdata
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>##   cambiargana nocambiargana 
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>##          6623          3377
+</span></code></pre></div>
+<p>Para sorpresa o no de ustedes, la elección parece obvia. Cambiar de puerta nos hace elegir el premio un 66% de las veces y no cambiar tan solo un 33%.  </p>
+<p>Entender por qué es interesante.  </p>
+<p>Al elegir inicialmente una puerta entre las 3 opciones, la probabilidad de acertarle al premio es &#8531;. De ahí que la estrategia de no cambiar de puerta es efectiva solo un 33% de las veces. Es simplemente quedarse con la elección inicial que tenia &#8531; de chances de ser correcta, independientemente de la puerta que abra el organizador.</p>
+<p>Ahora, supongamos que en la elección inicial elegimos una puerta que no contiene el premio ( 66% de probabilidades). La estrategia de no cambiar de puerta nos hace perder indiscutidamente.</p>
+<p>Si juntamos las dos proposiciones obtenemos que no cambiar de puerta nos hace ganar &#8531; de las veces, cuando elegimos bien por azar la puerta del premio inicialmente, y nos va a hacer perder el resto de las veces - &#8532; de las veces - que es cuando elegimos una puerta sin premio al principio.</p>
+<p>Otro razonamiento equivalente es que cambiar de puerta nos hacer perder siempre y cuando hayamos elegido la puerta del premio originalmente (&#8531;) pero nos va a hacer ganar siempre que hayamos elegido una sin premio (&#8532;) porque la nueva puerta si o sí tendrá el premio, ya que la tercera es la que abre el organizador y no tiene premio.</p>
+<p>En caso de que la rápida intuición nos hiciera creer que la elección entre cambiar y no cambiar era indistinto y ambas tenían 50% de chances de garantizarnos el premio, el ejercicio de simulación nos hubiera hecho elegir correctamente.</p>
+<p>En este caso razonar el problema es posible ya que involucra pocas opciones pero en situaciones más complejas la simulación puede ayudar enormemente a la toma de decisiones.</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
