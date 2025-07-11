@@ -12,6 +12,7 @@ nav:
       - Introduction: index.md
       - Good resources: good_resources.md
       - Interests: interests.md
+  - Services: services.md
   - Writing:
     - writing/index.md
   - Job Board: "https://sportsjobs.online"
