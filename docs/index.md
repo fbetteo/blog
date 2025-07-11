@@ -4,6 +4,7 @@ I'm an AI engineer, sr. data scientist, and consultant specializing in productio
 
 I write about life, AI - machine learning - statistics, building a business as indiehacker and of course, sports analytics. 
 
+ex-Nielsen. ex-InsiteAI. ex-Despegar.
 <!-- Structured data for SEO -->
 <script type="application/ld+json">
 {
