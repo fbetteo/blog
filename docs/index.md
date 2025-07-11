@@ -21,14 +21,53 @@ I write about life, AI - machine learning - statistics, building a business as i
 }
 </script>
 
-## Independent Consulting Services
+## AI Consulting Services
 
-I provide expert consulting on implementing production-ready AI systems that deliver real business value:
+<div class="grid cards" markdown>
 
-1. **AI System Assessment & Optimization**: Evaluate your current ML infrastructure and identify improvements
-2. **Production Readiness Review**: Ensure your models can handle real-world demands
-3. **ML System Architecture Design**: Build scalable, maintainable AI infrastructure
-4. **Custom AI Implementation**: End-to-end development of AI solutions for your specific business needs
+-   :material-lightbulb:{ .lg .middle } __Advisory Services__
+
+    ---
+
+    **Strategic AI guidance without the full-time commitment**
+    
+    Get expert AI roadmap development and strategic insights from dozens of successful implementations. Perfect for companies exploring AI adoption or validating their current approach.
+    
+    *Low-touch, high-value consultation*
+    
+    <span class="availability-tag available">1 spot available</span>
+    
+    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true" class="custom-cta-button small" target="_blank">Schedule Consultation</a>
+
+-   :material-rocket-launch:{ .lg .middle } __Implementation Services__
+
+    ---
+
+    **From concept to working prototype in weeks**
+    
+    Validate your AI concepts with working prototypes and get clear pathways to production. Hands-on development that proves feasibility and demonstrates real business value.
+    
+    *Intensive, outcome-focused projects*
+    
+    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true" class="custom-cta-button small" target="_blank">Schedule Consultation</a>
+
+-   :material-account-tie:{ .lg .middle } __Fractional Head of AI__
+
+    ---
+
+    **Executive AI leadership when you need it most**
+    
+    Scale your AI initiatives with experienced C-level leadership while maintaining flexibility. Get strategic direction, team building, and execution oversight without the full-time commitment.
+    
+    *Strategic leadership + hands-on oversight*
+    
+    <span class="availability-tag available">1 spot available</span>
+    
+    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true" class="custom-cta-button small" target="_blank">Schedule Consultation</a>
+
+</div>
+
+[:octicons-arrow-right-24: **View All Services & Pricing**](services.md)
 
 Current and past clients include: [Diggity](https://es.linkedin.com/company/digitty), [Oxford University](https://www.cs.ox.ac.uk/research/ai_ml/index.html), and several CPG startups.
 
