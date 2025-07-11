@@ -21,6 +21,22 @@ I write about life, AI - machine learning - statistics, building a business as i
 }
 </script>
 
+## About me
+
+I've been there, I've worked with massive amounts of data, felt the pain of long pipelines that end up not working. I've seen that data not matching between reports, I've seen it duplicated in a side project, I've seen the wrong numbers in a coworker's customer facing powerpoint.
+
+I've built prediction models, I've deployed them, I've created AI agents and RAG applications and I know, because of experience, where the problems and uncertainties might appear, and I can help you be prepared for that.
+
+### My approach: Building AI systems you can actually control
+
+**Measurable over mysterious** - Turn your "black box" AI into systems you can debug, measure, and improve. No more guessing why things break or hoping they work.
+
+**Hands-on, not hands-off** - I build alongside your team with your data, your codebase, your specific problems. You get working solutions, not just recommendations.
+
+**Team empowerment over dependency** - The goal is making your team self-sufficient. You learn the systematic approaches that let you maintain and improve AI systems long after our engagement ends.
+
+When leadership asks "What's our AI strategy?" or "Why did this fail?" - you'll have clear answers backed by data, not excuses.
+
 ## AI Consulting Services
 
 <div class="grid cards" markdown>
