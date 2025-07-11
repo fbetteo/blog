@@ -87,6 +87,359 @@ h2 {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Small CTA buttons for service cards */
+.custom-cta-button.small {
+  font-size: 14px;
+  padding: 8px 16px;
+  margin: 10px 0 0 0;
+  max-width: 200px;
+  display: block;
+  text-align: center;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.custom-cta-button.small:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Service section CTA buttons spacing */
+.md-content .custom-cta-button.small {
+  margin: 20px 0 10px 0;
+  font-size: 13px;
+  padding: 8px 18px;
+}
+
+/* Enhanced service cards styling */
+.grid.cards .card-service {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.grid.cards .card-service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Service comparison table styling */
+.service-comparison {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.service-comparison table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.service-comparison th {
+  background: #2a9d8f;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.service-comparison td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+}
+
+.service-comparison tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.service-comparison tr:hover {
+  background: #f0f0f0;
+}
+
+/* Pricing cards enhancement */
+.pricing-card {
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 25px;
+  margin: 15px 0;
+  background: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  border-color: #4CAF50;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.pricing-card.featured {
+  border-color: #4CAF50;
+  border-width: 3px;
+  background: linear-gradient(135deg, #f8fff8 0%, #e8f5e8 100%);
+}
+
+.pricing-card.featured::before {
+  content: "Most Popular";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4CAF50;
+  color: white;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pricing-price {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: #2a9d8f;
+  margin: 10px 0;
+}
+
+.pricing-period {
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Service benefits list styling */
+.service-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.service-benefits li {
+  padding: 8px 0;
+  position: relative;
+  padding-left: 25px;
+}
+
+.service-benefits li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* Process timeline styling */
+.process-timeline {
+  margin: 30px 0;
+  position: relative;
+}
+
+.process-step {
+  display: flex;
+  align-items: flex-start;
+  margin: 25px 0;
+  position: relative;
+}
+
+.process-step::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 35px;
+  bottom: -25px;
+  width: 2px;
+  background: #e0e0e0;
+}
+
+.process-step:last-child::before {
+  display: none;
+}
+
+.process-number {
+  background: #4CAF50;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 20px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.process-content h4 {
+  margin: 0 0 10px 0;
+  color: #2a9d8f;
+}
+
+.process-content p {
+  margin: 0;
+  color: #666;
+}
+
+/* Success stories styling */
+.success-story {
+  background: #f8f9fa;
+  border-left: 4px solid #4CAF50;
+  padding: 20px 25px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.success-story h4 {
+  color: #2a9d8f;
+  margin: 0 0 10px 0;
+}
+
+.success-story .challenge {
+  font-weight: 600;
+  color: #333;
+}
+
+.success-story .result {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+/* ROI highlight boxes */
+.roi-highlight {
+  background: linear-gradient(135deg, #4CAF50 0%, #2a9d8f 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.roi-highlight .number {
+  font-size: 2.5em;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.roi-highlight .description {
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+/* Availability tags for service cards */
+.availability-tag {
+  display: inline-block;
+  background: #e0e0e0;
+  color: #666;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 500;
+  margin-top: 15px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.availability-tag.available {
+  background: linear-gradient(135deg, #4CAF50 0%, #2a9d8f 100%);
+  color: white;
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+  }
+}
+
+/* Enhanced typography hierarchy for services page */
+.md-content h1 + h1 {
+  font-size: 1.8em;
+  color: #2a9d8f;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.md-content blockquote {
+  border-left: 4px solid #4CAF50;
+  background: #f8fff8;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.md-content blockquote p {
+  margin: 0;
+  color: #333;
+  font-style: italic;
+}
+
+.md-content h3 {
+  color: #2a9d8f;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+/* Service list styling */
+.md-content ul li strong {
+  color: #2a9d8f;
+  font-size: 1.05em;
+}
+
+.md-content ul li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/* Investment/pricing highlight */
+.md-content p strong:contains("Investment:") {
+  color: #4CAF50;
+  font-size: 1.1em;
+}
+
+/* Fix number rendering issues in investment/pricing text */
+.md-content p strong,
+.md-content td,
+.md-content th {
+  font-variant-numeric: normal;
+  font-feature-settings: normal;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/* Ensure Investment text renders properly */
+.md-content p:has(strong:contains("Investment")) {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-variant-numeric: normal;
+  font-feature-settings: "kern" 1;
+}
+
+/* Force normal text rendering for all pricing elements */
+.md-content table td,
+.md-content table th,
+.md-content strong {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant: normal;
+  font-feature-settings: normal;
+}
+
 /* Improve mobile responsiveness */
 @media screen and (max-width: 768px) {
   .cta-container {
@@ -101,4 +454,49 @@ h2 {
     font-size: 15px;
     padding: 10px 20px;
   }
+  
+  .service-comparison {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  
+  .pricing-card {
+    padding: 20px 15px;
+  }
+  
+  .process-step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .process-step::before {
+    display: none;
+  }
+  
+  .process-number {
+    margin: 0 0 15px 0;
+  }
+  
+  .roi-highlight .number {
+    font-size: 2em;
+  }
+}
+
+/* Dark mode support for services */
+[data-md-color-scheme="slate"] .service-comparison {
+  background: #2a2a2a;
+}
+
+[data-md_color-scheme="slate"] .success-story {
+  background: #2a2a2a;
+  border-left-color: #4CAF50;
+}
+
+[data-md_color-scheme="slate"] .service-comparison th {
+  background: #1e3c40;
+}
+
+[data-md_color-scheme="slate"] .service-comparison td {
+  border-color: #444;
 }
