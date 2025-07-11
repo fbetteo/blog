@@ -101,7 +101,7 @@ Transform your business with strategic AI implementation. Choose the engagement 
 
 ### Your dedicated AI executive:
 
-- 1-3 days per week on-site or remote presence based on your needs
+- Remote AI direction. Full time async slack availability.
 - Direct participation in executive team meetings and strategic decisions
 - Ownership of AI initiatives from conception through deployment
 - Performance tracking and optimization of AI team and projects
