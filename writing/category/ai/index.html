@@ -863,6 +863,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-karpathy-uses-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Karpathy uses LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llama-index-and-rag-starter-point" class="md-nav__link">
     <span class="md-ellipsis">
       Llama Index and RAG starter point
@@ -1253,6 +1262,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-karpathy-uses-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Karpathy uses LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llama-index-and-rag-starter-point" class="md-nav__link">
     <span class="md-ellipsis">
       Llama Index and RAG starter point
@@ -1329,6 +1347,104 @@
       <header class="md-typeset">
         <h1 id="ai">AI<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-07-25 00:00:00+00:00">2025-07-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">AI</a>, 
+              <a href="../machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="how-karpathy-uses-llms"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/">How Karpathy uses LLMs</a></h2>
+<p><a href="https://www.youtube.com/watch?v=EWvNQjAaOHw">Original video from Andrej Karpathy.</a></p>
+<hr />
+<p>Models are good at writing.</p>
+<p>We collaborate with the assistant in the creation of the context window, both providing tokens, by message or by generation.</p>
+<p><strong>We must be careful with the context</strong> <br />
+The longer the context, the more the model can get "distracted" by old tokens, reducing accuracy.<br />
+With longer context, generation becomes a bit more expensive (computationally) and so the model is slowed down a bit. <br />
+It's the working memory. We should keep it simple and short to make it work better. If the long context is relevant well, then use it of course.
+He suggests to start new conversations to clean up the context and obviously when you change subjects.</p>
+<h5 id="thinking-models"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#thinking-models">Thinking models</a></h5>
+<p>He uses 4o usually but when he thinks the answers could be better, he tries a thinking model. Of course, he doesn't do this for simple questions but for example, for not obvious coding problems.</p>
+<h4 id="how-to-use-search-tool"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#how-to-use-search-tool">How to use Search Tool</a></h4>
+<p>Think about it as googling and inserting a bunch of internet text in the context and then it goes back to your question and tries to answer with all the relevant information got from the internet.</p>
+<p>Some models detect that they need to search because the question is recent and they use it automatically but  if you know it's needed, just use the search tool. Questions that need recent information require search because the pretraining happened several months ago and have a training cutoff.</p>
+<h4 id="deep-research"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#deep-research">Deep Research</a></h4>
+<p>...</p>
+<h4 id="file-upload"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#file-upload">File Upload</a></h4>
+<p>Similar, it probably just uploads the text into context.
+He starts by asking "can you summarize this paper?"</p>
+<p>He reads and uses LLMs. He copy/paste the chapter he is reading to the LLM. "Please summarize this chapter to starts". He reads summary, then he reads the actual book and ask questions. His retention and understanding increases a lot. Specially useful for fields you are not an expert or old books with different language / context / culture.</p>
+<h4 id="code-interpreter"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#code-interpreter">Code interpreter</a></h4>
+<p>Use python to answer questions, such as calculations that you should do with a calculator at least.</p>
+<h4 id="advanced-data-analysis"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#advanced-data-analysis">Advanced Data analysis</a></h4>
+<p>Kind of a Junior data analyst.
+Needs verification, it might do some assumptions without telling or hallucinate.</p>
+<h4 id="claude-artifacts"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#claude-artifacts">Claude Artifacts</a></h4>
+<p>He asked for Flashcards based on the chapter of a book and then asked the artifact to create an app to use those flashcards and the app is usable in the browser.</p>
+<p>He doesn't use much but he finds useful to create diagrams.</p>
+<h4 id="cursor"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#cursor">Cursor</a></h4>
+<p>He uses apps for AI coding, Cursor right now. Using web interpreter is too slow.</p>
+<h4 id="audio"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#audio">Audio</a></h4>
+<p>He speak to models regularly (in the phone or computer)</p>
+<h5 id="microphone"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#microphone">Microphone</a></h5>
+<p>The microphone is to transcript what you say into text (in cellphone)</p>
+<p>In computer you don't have the microphone button, you have the audio logo. He then uses some app to transcripts (whisper superwhisper   )
+But this doesn't work super well for libraries and programs, and etc. He types that kind of content.
+Anyways, this is "fake audio" since in reality is sending the audio as text to the context</p>
+<p>There are text to audio apps if you are not using chatgpt which has the functionality </p>
+<h5 id="real-audio"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#real-audio">Real audio</a></h5>
+<p>Advanced voice mode in chatgpt. 
+Here the voice is handled natively in the model, converting into tokens and outputting audio if you want (maybe it's the only option)
+It's a bit annoying and rejects many requests but still really insteresting.</p>
+<h4 id="images"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#images">Images</a></h4>
+<p>Transform the images into tokens and fill the context. In the end the transformer/model doesn't know that the input originally was an image, they are just tokens for it, but we can know at the decondig stage.</p>
+<p>For real use cases, he shows a nutritional table and he wants to know more about the "ingredients".
+He uses 2 stages, first transcribe the image, so we can be sure that the model is reading correctly the image.
+And then ask questions about the content.</p>
+<p>Also for evaluating mathematical formulas.
+Paste image, transcript and then ask questions.</p>
+<p>Dalle3 outputs (images) are not the direct output of the neural net. It generates a caption and under the hood sends it to another model that is an image generator.</p>
+<h4 id="video"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#video">Video</a></h4>
+<p>In advanced mode, there is a video mode where you can ask questions about what you are pointing your phone to.</p>
+<h4 id="memory"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#memory">Memory</a></h4>
+<p>Every new chat erases the whole context but there is a way to keep something in memory across chats (when you see "Memory updated"). Usually you need to invoke it, ask for it to remember.</p>
+<p>These memories (what it knows about you) are always prepended to the contexts so it's always available with some things personalized for you.</p>
+<p>Custom Instructions. You can tune chatgpt to your like, give it identity and traits.</p>
+<h4 id="custom-gpts"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#custom-gpts">Custom GPTs</a></h4>
+<p>He uses them mostly for specific actions, like generate flashcards for korean vocabulary</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

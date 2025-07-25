@@ -1148,6 +1148,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-karpathy-uses-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Karpathy uses LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llama-index-and-rag-starter-point" class="md-nav__link">
     <span class="md-ellipsis">
       Llama Index and RAG starter point
@@ -1228,15 +1237,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#motivation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Motivation
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1254,6 +1254,104 @@
 <p>You can expect to find topics around statistics, AI, machine learning, learning to do business or software in general but also about myself.</p>
 <p><a class="md-button md-button--secondary" href="https://x.com/franbetteo"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.2 4.2 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.52 8.52 0 0 1-5.33 1.84q-.51 0-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23"/></svg></span> Follow me on X</a></p>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-07-25 00:00:00+00:00">2025-07-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/ai/" class="md-meta__link">AI</a>, 
+              <a href="category/machine-learning/" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="how-karpathy-uses-llms"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/">How Karpathy uses LLMs</a></h2>
+<p><a href="https://www.youtube.com/watch?v=EWvNQjAaOHw">Original video from Andrej Karpathy.</a></p>
+<hr />
+<p>Models are good at writing.</p>
+<p>We collaborate with the assistant in the creation of the context window, both providing tokens, by message or by generation.</p>
+<p><strong>We must be careful with the context</strong> <br />
+The longer the context, the more the model can get "distracted" by old tokens, reducing accuracy.<br />
+With longer context, generation becomes a bit more expensive (computationally) and so the model is slowed down a bit. <br />
+It's the working memory. We should keep it simple and short to make it work better. If the long context is relevant well, then use it of course.
+He suggests to start new conversations to clean up the context and obviously when you change subjects.</p>
+<h5 id="thinking-models"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#thinking-models">Thinking models</a></h5>
+<p>He uses 4o usually but when he thinks the answers could be better, he tries a thinking model. Of course, he doesn't do this for simple questions but for example, for not obvious coding problems.</p>
+<h4 id="how-to-use-search-tool"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#how-to-use-search-tool">How to use Search Tool</a></h4>
+<p>Think about it as googling and inserting a bunch of internet text in the context and then it goes back to your question and tries to answer with all the relevant information got from the internet.</p>
+<p>Some models detect that they need to search because the question is recent and they use it automatically but  if you know it's needed, just use the search tool. Questions that need recent information require search because the pretraining happened several months ago and have a training cutoff.</p>
+<h4 id="deep-research"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#deep-research">Deep Research</a></h4>
+<p>...</p>
+<h4 id="file-upload"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#file-upload">File Upload</a></h4>
+<p>Similar, it probably just uploads the text into context.
+He starts by asking "can you summarize this paper?"</p>
+<p>He reads and uses LLMs. He copy/paste the chapter he is reading to the LLM. "Please summarize this chapter to starts". He reads summary, then he reads the actual book and ask questions. His retention and understanding increases a lot. Specially useful for fields you are not an expert or old books with different language / context / culture.</p>
+<h4 id="code-interpreter"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#code-interpreter">Code interpreter</a></h4>
+<p>Use python to answer questions, such as calculations that you should do with a calculator at least.</p>
+<h4 id="advanced-data-analysis"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#advanced-data-analysis">Advanced Data analysis</a></h4>
+<p>Kind of a Junior data analyst.
+Needs verification, it might do some assumptions without telling or hallucinate.</p>
+<h4 id="claude-artifacts"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#claude-artifacts">Claude Artifacts</a></h4>
+<p>He asked for Flashcards based on the chapter of a book and then asked the artifact to create an app to use those flashcards and the app is usable in the browser.</p>
+<p>He doesn't use much but he finds useful to create diagrams.</p>
+<h4 id="cursor"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#cursor">Cursor</a></h4>
+<p>He uses apps for AI coding, Cursor right now. Using web interpreter is too slow.</p>
+<h4 id="audio"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#audio">Audio</a></h4>
+<p>He speak to models regularly (in the phone or computer)</p>
+<h5 id="microphone"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#microphone">Microphone</a></h5>
+<p>The microphone is to transcript what you say into text (in cellphone)</p>
+<p>In computer you don't have the microphone button, you have the audio logo. He then uses some app to transcripts (whisper superwhisper   )
+But this doesn't work super well for libraries and programs, and etc. He types that kind of content.
+Anyways, this is "fake audio" since in reality is sending the audio as text to the context</p>
+<p>There are text to audio apps if you are not using chatgpt which has the functionality </p>
+<h5 id="real-audio"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#real-audio">Real audio</a></h5>
+<p>Advanced voice mode in chatgpt. 
+Here the voice is handled natively in the model, converting into tokens and outputting audio if you want (maybe it's the only option)
+It's a bit annoying and rejects many requests but still really insteresting.</p>
+<h4 id="images"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#images">Images</a></h4>
+<p>Transform the images into tokens and fill the context. In the end the transformer/model doesn't know that the input originally was an image, they are just tokens for it, but we can know at the decondig stage.</p>
+<p>For real use cases, he shows a nutritional table and he wants to know more about the "ingredients".
+He uses 2 stages, first transcribe the image, so we can be sure that the model is reading correctly the image.
+And then ask questions about the content.</p>
+<p>Also for evaluating mathematical formulas.
+Paste image, transcript and then ask questions.</p>
+<p>Dalle3 outputs (images) are not the direct output of the neural net. It generates a caption and under the hood sends it to another model that is an image generator.</p>
+<h4 id="video"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#video">Video</a></h4>
+<p>In advanced mode, there is a video mode where you can ask questions about what you are pointing your phone to.</p>
+<h4 id="memory"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#memory">Memory</a></h4>
+<p>Every new chat erases the whole context but there is a way to keep something in memory across chats (when you see "Memory updated"). Usually you need to invoke it, ask for it to remember.</p>
+<p>These memories (what it knows about you) are always prepended to the contexts so it's always available with some things personalized for you.</p>
+<p>Custom Instructions. You can tune chatgpt to your like, give it identity and traits.</p>
+<h4 id="custom-gpts"><a class="toclink" href="2025/07/25/how-karpathy-uses-llms/#custom-gpts">Custom GPTs</a></h4>
+<p>He uses them mostly for specific actions, like generate flashcards for korean vocabulary</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -1897,78 +1995,6 @@ I'm expanding these notes as I encounter situations where I regret the status of
 <li><strong>Daily notes on what I've done in my full time job (YYYY-MM-DD)</strong>. I can always come back if someone asks, sometimes I put some briefs about decisions made on meetings. Specially useful for Mondays where I forget what I did/talked on Friday.  </li>
 <li><strong>Notes on how I did something that I did for the first time.</strong> In my job or in my side businesses, including decisions, commands, installation processes. I find myself coming back to these really often and I think this saves my huge amounts of time, stress and frustration. It's surprising how I forget THE command I've been running twice a day for some deployment test if I have to come back to that topic two weeks later. Something that seems impossible to forget at some point just vanishes. Also, super useful for my side business where I setup something once (DB, platform, server, whatever) and I need to revisit how I did it or what resource I followed in case I have to do it again.  </li>
 <li><strong>Studying.</strong> I'm also taking side notes on books and papers that I later write down in the form of more structured texts. What I understood about papers, doubts, summaries. As usual, while reading I feel I understand but then if I need to revisit the paper without notes it feels like I need to re read it. Many times I read my notes and I feel surprised as I don't remembered a lot of contents, is like the note was given to me by someone else.</li>
-</ul>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-12-03 00:00:00+00:00">2024-12-03</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/personal/" class="md-meta__link">Personal</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="motivation"><a class="toclink" href="2024/12/03/motivation/">Motivation</a></h2>
-<p>It's a tough topic because everyone has a different perception and it's hard to share emotions but I feel what I call motivation really has an impact on me. Sometimes is a silent impact, I'm talking now about lack ok motivation, noticeable only when it comes back.<br />
-You don't know what you don't know. You don't know how much energy and willingness to do things you should have if you never realized it.  </p>
-<p>My biggest adulthood lack of motivation came from jobs. I can't complain, I work in software/Machine learning, good salaries, remote work if desired, etc, but still, a day to day that is not fulfilling has devastating effects. Even more, probably fully remote work post pandemic plays a role in this despite I think the net effect is positive as I can't value enough the commute time regained.</p>
-<p>The difference between being motivated to do something and being indifferent is the largest gap possible. If you truly desire something and work for it the odds of succeding increase exponentially. </p>
-<h3 id="things-ive-realized-that-affect-my-motivation"><a class="toclink" href="2024/12/03/motivation/#things-ive-realized-that-affect-my-motivation">Things I've realized that affect my motivation:</a></h3>
-<ul>
-<li><strong>Sleep</strong>. I have regular issues sleeping. Usually after 2 days of bad sleep my brain doesn't work anymore. I work poorly, I get anxious because I can't get anything done nor I can think properly. I sleep bad again and so on. Disaster.</li>
-<li><strong>Anxiety</strong>. It's related to sleep but not always. Feeling I can't do something or that I don't understand some topic or how to solve a problem, makes me anxious and after a while I want to quit. I trust I can understand or solve complex machine learning topics but usually not having a clear North is really stressful. If only I could have someone guiding a bit, everything looks better. Not knowing if you are on the right path and you have a short time to figure out something is horrible. For instance, we need to solve X problem. You ask a few days for research, you accumulate papers or blogposts, but sometimes none is exactly your solution, and then all have something different, and then you don't know what to read and all are long pieces of text, and they mention other topics you don't know. I feel anxious just by writing this, but one needs to make peace with the fact that you can't have a phD in every topic to solve. Maybe in none if you are just in industry and you are responsible for multiple projects, and things will be done suboptimally probably. But it's hard to really accept it and on top of that, is you have a boss or some coleague asking for this, the stress is twice as big, at least for me. Fear of disappointing. Maybe that's another whole note.  </li>
-<li><strong>Daily meetings</strong>. Daily standup or just status meetings are terrible for me. I feel the pressure to explain myself every day, to tell someone else what did I do for 8 hours and sometimes, when motivations it's at a low level, is not that much, or maybe I am just researching without having grasped full understanding so it seems unfruitful, and this goes back to anxiety. Every day feeling the need to have something meaningful to share. Currently I don't have daily meetings, I have some freedom to work and then put up to speed my manager. I feel more free and funny enough, I feel that I do more progress on a daily basis this way.</li>
-<li><strong>Social media</strong>. You can see unrealistic success stories all day long that feel like someone found the way to live in a 5 minute revelation and minimum effort. All fake, all lies but you can quickly fall in that trap of feeling less than others. You just have to compare yourself with previous you, not others that are even probably fake. On top of that, when you realize all the time you get back you feel like your days are longer and you can fight the anxiety better. At some point I realized this and when I automatically reached my phone, which happened really often, to open Twitter, I would hit my wrist (without hurting!) and took a deep breath, then drop the phone. You get back 5/10 minutes of time you would use in social media, and that accumulates fast.</li>
-</ul>
-<p>I've quit because of this, because of not being happy, because of being stressed every morning by lack of progress. Maybe I wasn't up to the task, maybe if you know exactly what you are doing you can move forward steadily without worrynig about this but I'm sure there was another time in a project where I felt all this lack of motivation and it was not because of "skill issue" but because of continuous urgency. Every morning I could (or maybe not, you don't know until you check your phone) with some urgent message of modifying something because yadda yadda the client. Sometimes it made sense, others.. not so much, and that feeling of being alert and thinking about slack messages all the time was awful, you can't focus, you can't feel you are working in peace in something. </p>
-<h3 id="consequence"><a class="toclink" href="2024/12/03/motivation/#consequence">Consequence</a></h3>
-<p>Eventually I quit all that and started learning about how to set up a job board, reading , drinking coffee, I took a 6 month sabbatical, at least, industry sabbatical, but I would spend time in the computer learning, working in the job board, etc. But I was free and owner of my own time, no one expecting anything. If I wanted to do nothing and just play with my dog all afternoon, there was no daily standup the next morning to dread. I could enjoy things without worrying.</p>
-<p>Unfortunately in those six months I didn't make a fortune nor won the jackpot so I went back to industry but without ruhsing. I looked for jobs that at least, before joining, made me want to join. Maybe because of the area, maybe because of the technology and in some case, maybe because it seemed chill. I had my share of rejections and processes that went nowhere but I ended up in a startup with a really enjoyable day to day structure. I'm really grateful about it, I have a couple of meetings per weeks and that's it. I can do things at my own pace (given some realistic timelines), I can share ideas with my manager but I don't need to impress anyone on a daily basis. You could think that I'm chilling but not, I work hard, I learn a lot of stuff and I put the best of me because I feel comfortable and grateful to how my manager handles the startup. </p>
-<h3 id="conclusions"><a class="toclink" href="2024/12/03/motivation/#conclusions">Conclusions</a></h3>
-<ul>
-<li>Fix your sleep. Try everything and don't give up for too much time. 
-You can try:<ul>
-<li>Magnesium</li>
-<li>Having dinner earlier</li>
-<li>Start relaxing one hour before (lights down, no screens, reading a bit, etc). This is the most unrealistic for me, can be done once, not regularly if you are anxious.</li>
-<li>Drink some relaxing tea.</li>
-<li>Legal drugs (alprazolam or similar, check with doctor.)</li>
-<li>Nose strips</li>
-<li>Meditate</li>
-</ul>
-</li>
-</ul>
-<p>You need to find what's the main cause but if it's only "being anxious", start trying stuff, at least you will feel doing something about it.</p>
-<ul>
-<li>If you can afford it, change your job, take a sabbatical, take some time and look for what you really want.</li>
 </ul>
     
   </div>

@@ -6,19 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Llama Index and RAG starter point">
+        <meta name="description" content="How Karpathy uses LLMs">
       
       
         <meta name="author" content="Franco Betteo">
       
       
-        <link rel="canonical" href="https://fbetteo.com/writing/2025/07/10/llama-index-and-rag-starter-point/">
+        <link rel="canonical" href="https://fbetteo.com/writing/2025/07/25/how-karpathy-uses-llms/">
       
       
-        <link rel="prev" href="../how-to-use-poetry-with-conda-environments/">
+        <link rel="prev" href="../../10/llama-index-and-rag-starter-point/">
       
-      
-        <link rel="next" href="../../25/how-karpathy-uses-llms/">
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
@@ -26,7 +24,7 @@
     
     
       
-        <title>Llama Index and RAG starter point - Franco Betteo</title>
+        <title>How Karpathy uses LLMs - Franco Betteo</title>
       
     
     
@@ -92,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#llama-index-and-rag-starter-point" class="md-skip">
+        <a href="#how-karpathy-uses-llms" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Llama Index and RAG starter point
+              How Karpathy uses LLMs
             
           </span>
         </div>
@@ -1152,27 +1150,141 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-the-environment" class="md-nav__link">
+  <a href="#thinking-models" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating the environment
+      Thinking models
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ollama" class="md-nav__link">
+  <a href="#how-to-use-search-tool" class="md-nav__link">
     <span class="md-ellipsis">
-      Ollama
+      How to use Search Tool
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#groq" class="md-nav__link">
+  <a href="#deep-research" class="md-nav__link">
     <span class="md-ellipsis">
-      Groq
+      Deep Research
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Upload
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-interpreter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code interpreter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Data analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claude Artifacts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cursor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#microphone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microphone
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real audio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Images
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-gpts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom GPTs
     </span>
   </a>
   
@@ -1234,7 +1346,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-07-10 00:00:00+00:00" class="md-ellipsis">2025-07-10</time>
+                        <time datetime="2025-07-25 00:00:00+00:00" class="md-ellipsis">2025-07-25</time>
                       </div>
                     </li>
                     
@@ -1257,7 +1369,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              2 min read
+                              4 min read
                             
                           </span>
                         </div>
@@ -1277,7 +1389,7 @@
         
 
   
-    <a href="https://github.com/fbetteo/blog/edit/master/docs/writing/posts/ml-how_to_start_rag.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/fbetteo/blog/edit/master/docs/writing/posts/ml-how-karpathy-uses-llms.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1286,57 +1398,72 @@
     
       
     
-    <a href="https://github.com/fbetteo/blog/raw/master/docs/writing/posts/ml-how_to_start_rag.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/fbetteo/blog/raw/master/docs/writing/posts/ml-how-karpathy-uses-llms.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="llama-index-and-rag-starter-point">Llama Index and RAG starter point<a class="headerlink" href="#llama-index-and-rag-starter-point" title="Permanent link">&para;</a></h1>
-<p>This is me trying and playing a bit with the <a href="https://docs.llamaindex.ai/en/stable/getting_started/customization/#frequently-asked-questions-faq">starter guide</a> of Llama Index. Basic discovery of how to use this. Actually their starter is more complex, goes into agents right away, so this was more what I was looking for.</p>
-<h2 id="creating-the-environment">Creating the environment<a class="headerlink" href="#creating-the-environment" title="Permanent link">&para;</a></h2>
-<p>Poetry already installed and configured in windows to use Conda environments. Not sure how?<a href="https://fbetteo.com/writing/2025/07/10/how-to-use-poetry-with-conda-environments/">Look here</a></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>rag<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>rag
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>poetry<span class="w"> </span>init
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>poetry<span class="w"> </span>add<span class="w"> </span>llama-index
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>poetry<span class="w"> </span>add<span class="w"> </span>sentence-transformers
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>poetry<span class="w"> </span>add<span class="w"> </span>llama-index-embeddings-huggingface
-</span></code></pre></div>
-<p>llama-index uses by default embedding from OpenAI. It requires the API key (and paying of course.)
-Should be cheap but I'll try using local embeddings to see how it goes, using Huggingface as I used for other projects via sentence-transformers.</p>
-<p>For local embedding model, we load the model from hugging face and we update the embed_model in Settings.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">embed_model</span> <span class="o">=</span> <span class="n">HuggingFaceEmbedding</span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;BAAI/bge-small-en-v1.5&quot;</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">embed_batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">Settings</span><span class="o">.</span><span class="n">embed_model</span> <span class="o">=</span> <span class="n">embed_model</span>
-</span></code></pre></div>
-<p>I think this could work alright in terms of speed for now.</p>
-<h2 id="ollama">Ollama<a class="headerlink" href="#ollama" title="Permanent link">&para;</a></h2>
-<p>I installed Ollama from their website
-Added Ollama to Environment Variables</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ollama<span class="w"> </span>pull<span class="w"> </span>gemma3
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ollama<span class="w"> </span>pull<span class="w"> </span>gemma3:4b
-</span></code></pre></div>
-<p>I've been using them in the llama_index_starter.py to avoid using any API.
-but with my cpu only computer (32gb ram) everything was really slow.
-gemma3 in the terminal was super slow (~30s) , gemma3:4b much faster (~2s) but when integrating into llama index with the retrieval, it was slow too</p>
-<p>I feel like there is no usage for local LLMs in my current computer. Maybe if I use a server or collab this could work.</p>
-<h2 id="groq">Groq<a class="headerlink" href="#groq" title="Permanent link">&para;</a></h2>
-<p>I found that they have a generous free tier (500k tokens per day for some models) that should be enough to test things and do some minimum POC. I can top up later or use another provider, that's the magic of Llama-index, it should be easy to change the provider.</p>
-<p>Also, Groq onboarding couldn't be easier. Log in, they give you API key, and that's it.</p>
-<p><code>poetry add llama-index-llms-groq</code></p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">llama_index.llms.groq</span> <span class="kn">import</span> <span class="n">Groq</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">Settings</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">Groq</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama-3.1-8b-instant&quot;</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                <span class="n">api_key</span><span class="o">=</span><span class="n">GROQ_API_KEY</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>                <span class="n">request_timeout</span><span class="o">=</span><span class="mf">360.0</span><span class="p">)</span>
-</span></code></pre></div>
-<p>That's it, I'm using Groq. In the <a href="https://console.groq.com/dashboard/metrics">Dashboard</a> we can see usage, logs, etc, super cool.</p>
+<h1 id="how-karpathy-uses-llms">How Karpathy uses LLMs<a class="headerlink" href="#how-karpathy-uses-llms" title="Permanent link">&para;</a></h1>
+<p><a href="https://www.youtube.com/watch?v=EWvNQjAaOHw">Original video from Andrej Karpathy.</a></p>
+<hr />
+<p>Models are good at writing.</p>
+<p>We collaborate with the assistant in the creation of the context window, both providing tokens, by message or by generation.</p>
+<p><strong>We must be careful with the context</strong> <br />
+The longer the context, the more the model can get "distracted" by old tokens, reducing accuracy.<br />
+With longer context, generation becomes a bit more expensive (computationally) and so the model is slowed down a bit. <br />
+It's the working memory. We should keep it simple and short to make it work better. If the long context is relevant well, then use it of course.
+He suggests to start new conversations to clean up the context and obviously when you change subjects.</p>
+<h4 id="thinking-models">Thinking models<a class="headerlink" href="#thinking-models" title="Permanent link">&para;</a></h4>
+<p>He uses 4o usually but when he thinks the answers could be better, he tries a thinking model. Of course, he doesn't do this for simple questions but for example, for not obvious coding problems.</p>
+<h3 id="how-to-use-search-tool">How to use Search Tool<a class="headerlink" href="#how-to-use-search-tool" title="Permanent link">&para;</a></h3>
+<p>Think about it as googling and inserting a bunch of internet text in the context and then it goes back to your question and tries to answer with all the relevant information got from the internet.</p>
+<p>Some models detect that they need to search because the question is recent and they use it automatically but  if you know it's needed, just use the search tool. Questions that need recent information require search because the pretraining happened several months ago and have a training cutoff.</p>
+<h3 id="deep-research">Deep Research<a class="headerlink" href="#deep-research" title="Permanent link">&para;</a></h3>
+<p>...</p>
+<h3 id="file-upload">File Upload<a class="headerlink" href="#file-upload" title="Permanent link">&para;</a></h3>
+<p>Similar, it probably just uploads the text into context.
+He starts by asking "can you summarize this paper?"</p>
+<p>He reads and uses LLMs. He copy/paste the chapter he is reading to the LLM. "Please summarize this chapter to starts". He reads summary, then he reads the actual book and ask questions. His retention and understanding increases a lot. Specially useful for fields you are not an expert or old books with different language / context / culture.</p>
+<h3 id="code-interpreter">Code interpreter<a class="headerlink" href="#code-interpreter" title="Permanent link">&para;</a></h3>
+<p>Use python to answer questions, such as calculations that you should do with a calculator at least.</p>
+<h3 id="advanced-data-analysis">Advanced Data analysis<a class="headerlink" href="#advanced-data-analysis" title="Permanent link">&para;</a></h3>
+<p>Kind of a Junior data analyst.
+Needs verification, it might do some assumptions without telling or hallucinate.</p>
+<h3 id="claude-artifacts">Claude Artifacts<a class="headerlink" href="#claude-artifacts" title="Permanent link">&para;</a></h3>
+<p>He asked for Flashcards based on the chapter of a book and then asked the artifact to create an app to use those flashcards and the app is usable in the browser.</p>
+<p>He doesn't use much but he finds useful to create diagrams.</p>
+<h3 id="cursor">Cursor<a class="headerlink" href="#cursor" title="Permanent link">&para;</a></h3>
+<p>He uses apps for AI coding, Cursor right now. Using web interpreter is too slow.</p>
+<h3 id="audio">Audio<a class="headerlink" href="#audio" title="Permanent link">&para;</a></h3>
+<p>He speak to models regularly (in the phone or computer)</p>
+<h4 id="microphone">Microphone<a class="headerlink" href="#microphone" title="Permanent link">&para;</a></h4>
+<p>The microphone is to transcript what you say into text (in cellphone)</p>
+<p>In computer you don't have the microphone button, you have the audio logo. He then uses some app to transcripts (whisper superwhisper   )
+But this doesn't work super well for libraries and programs, and etc. He types that kind of content.
+Anyways, this is "fake audio" since in reality is sending the audio as text to the context</p>
+<p>There are text to audio apps if you are not using chatgpt which has the functionality </p>
+<h4 id="real-audio">Real audio<a class="headerlink" href="#real-audio" title="Permanent link">&para;</a></h4>
+<p>Advanced voice mode in chatgpt. 
+Here the voice is handled natively in the model, converting into tokens and outputting audio if you want (maybe it's the only option)
+It's a bit annoying and rejects many requests but still really insteresting.</p>
+<h3 id="images">Images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h3>
+<p>Transform the images into tokens and fill the context. In the end the transformer/model doesn't know that the input originally was an image, they are just tokens for it, but we can know at the decondig stage.</p>
+<p>For real use cases, he shows a nutritional table and he wants to know more about the "ingredients".
+He uses 2 stages, first transcribe the image, so we can be sure that the model is reading correctly the image.
+And then ask questions about the content.</p>
+<p>Also for evaluating mathematical formulas.
+Paste image, transcript and then ask questions.</p>
+<p>Dalle3 outputs (images) are not the direct output of the neural net. It generates a caption and under the hood sends it to another model that is an image generator.</p>
+<h3 id="video">Video<a class="headerlink" href="#video" title="Permanent link">&para;</a></h3>
+<p>In advanced mode, there is a video mode where you can ask questions about what you are pointing your phone to.</p>
+<h3 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h3>
+<p>Every new chat erases the whole context but there is a way to keep something in memory across chats (when you see "Memory updated"). Usually you need to invoke it, ask for it to remember.</p>
+<p>These memories (what it knows about you) are always prepended to the contexts so it's always available with some things personalized for you.</p>
+<p>Custom Instructions. You can tune chatgpt to your like, give it identity and traits.</p>
+<h3 id="custom-gpts">Custom GPTs<a class="headerlink" href="#custom-gpts" title="Permanent link">&para;</a></h3>
+<p>He uses them mostly for specific actions, like generate flashcards for korean vocabulary</p>
 
 
 
@@ -1383,7 +1510,7 @@ gemma3 in the terminal was super slow (~30s) , gemma3:4b much faster (~2s) but w
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../how-to-use-poetry-with-conda-environments/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How to use Poetry with Conda environments">
+          <a href="../../10/llama-index-and-rag-starter-point/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Llama Index and RAG starter point">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1393,27 +1520,11 @@ gemma3 in the terminal was super slow (~30s) , gemma3:4b much faster (~2s) but w
                 Previous
               </span>
               <div class="md-ellipsis">
-                How to use Poetry with Conda environments
+                Llama Index and RAG starter point
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../25/how-karpathy-uses-llms/" class="md-footer__link md-footer__link--next" aria-label="Next: How Karpathy uses LLMs">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                How Karpathy uses LLMs
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

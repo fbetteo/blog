@@ -886,6 +886,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-karpathy-uses-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Karpathy uses LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llama-index-and-rag-starter-point" class="md-nav__link">
     <span class="md-ellipsis">
       Llama Index and RAG starter point
@@ -961,15 +970,6 @@
   <a href="#weighted-regression" class="md-nav__link">
     <span class="md-ellipsis">
       Weighted regression
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inference-is-not-valid-in-the-dataset-used-for-model-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inference is not valid in the dataset used for model selection.
     </span>
   </a>
   
@@ -1280,6 +1280,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-karpathy-uses-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Karpathy uses LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#llama-index-and-rag-starter-point" class="md-nav__link">
     <span class="md-ellipsis">
       Llama Index and RAG starter point
@@ -1360,15 +1369,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#inference-is-not-valid-in-the-dataset-used-for-model-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inference is not valid in the dataset used for model selection.
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1383,6 +1383,104 @@
       <header class="md-typeset">
         <h1 id="machine-learning">Machine Learning<a class="headerlink" href="#machine-learning" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-07-25 00:00:00+00:00">2025-07-25</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../ai/" class="md-meta__link">AI</a>, 
+              <a href="./" class="md-meta__link">Machine Learning</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="how-karpathy-uses-llms"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/">How Karpathy uses LLMs</a></h2>
+<p><a href="https://www.youtube.com/watch?v=EWvNQjAaOHw">Original video from Andrej Karpathy.</a></p>
+<hr />
+<p>Models are good at writing.</p>
+<p>We collaborate with the assistant in the creation of the context window, both providing tokens, by message or by generation.</p>
+<p><strong>We must be careful with the context</strong> <br />
+The longer the context, the more the model can get "distracted" by old tokens, reducing accuracy.<br />
+With longer context, generation becomes a bit more expensive (computationally) and so the model is slowed down a bit. <br />
+It's the working memory. We should keep it simple and short to make it work better. If the long context is relevant well, then use it of course.
+He suggests to start new conversations to clean up the context and obviously when you change subjects.</p>
+<h5 id="thinking-models"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#thinking-models">Thinking models</a></h5>
+<p>He uses 4o usually but when he thinks the answers could be better, he tries a thinking model. Of course, he doesn't do this for simple questions but for example, for not obvious coding problems.</p>
+<h4 id="how-to-use-search-tool"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#how-to-use-search-tool">How to use Search Tool</a></h4>
+<p>Think about it as googling and inserting a bunch of internet text in the context and then it goes back to your question and tries to answer with all the relevant information got from the internet.</p>
+<p>Some models detect that they need to search because the question is recent and they use it automatically but  if you know it's needed, just use the search tool. Questions that need recent information require search because the pretraining happened several months ago and have a training cutoff.</p>
+<h4 id="deep-research"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#deep-research">Deep Research</a></h4>
+<p>...</p>
+<h4 id="file-upload"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#file-upload">File Upload</a></h4>
+<p>Similar, it probably just uploads the text into context.
+He starts by asking "can you summarize this paper?"</p>
+<p>He reads and uses LLMs. He copy/paste the chapter he is reading to the LLM. "Please summarize this chapter to starts". He reads summary, then he reads the actual book and ask questions. His retention and understanding increases a lot. Specially useful for fields you are not an expert or old books with different language / context / culture.</p>
+<h4 id="code-interpreter"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#code-interpreter">Code interpreter</a></h4>
+<p>Use python to answer questions, such as calculations that you should do with a calculator at least.</p>
+<h4 id="advanced-data-analysis"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#advanced-data-analysis">Advanced Data analysis</a></h4>
+<p>Kind of a Junior data analyst.
+Needs verification, it might do some assumptions without telling or hallucinate.</p>
+<h4 id="claude-artifacts"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#claude-artifacts">Claude Artifacts</a></h4>
+<p>He asked for Flashcards based on the chapter of a book and then asked the artifact to create an app to use those flashcards and the app is usable in the browser.</p>
+<p>He doesn't use much but he finds useful to create diagrams.</p>
+<h4 id="cursor"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#cursor">Cursor</a></h4>
+<p>He uses apps for AI coding, Cursor right now. Using web interpreter is too slow.</p>
+<h4 id="audio"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#audio">Audio</a></h4>
+<p>He speak to models regularly (in the phone or computer)</p>
+<h5 id="microphone"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#microphone">Microphone</a></h5>
+<p>The microphone is to transcript what you say into text (in cellphone)</p>
+<p>In computer you don't have the microphone button, you have the audio logo. He then uses some app to transcripts (whisper superwhisper   )
+But this doesn't work super well for libraries and programs, and etc. He types that kind of content.
+Anyways, this is "fake audio" since in reality is sending the audio as text to the context</p>
+<p>There are text to audio apps if you are not using chatgpt which has the functionality </p>
+<h5 id="real-audio"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#real-audio">Real audio</a></h5>
+<p>Advanced voice mode in chatgpt. 
+Here the voice is handled natively in the model, converting into tokens and outputting audio if you want (maybe it's the only option)
+It's a bit annoying and rejects many requests but still really insteresting.</p>
+<h4 id="images"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#images">Images</a></h4>
+<p>Transform the images into tokens and fill the context. In the end the transformer/model doesn't know that the input originally was an image, they are just tokens for it, but we can know at the decondig stage.</p>
+<p>For real use cases, he shows a nutritional table and he wants to know more about the "ingredients".
+He uses 2 stages, first transcribe the image, so we can be sure that the model is reading correctly the image.
+And then ask questions about the content.</p>
+<p>Also for evaluating mathematical formulas.
+Paste image, transcript and then ask questions.</p>
+<p>Dalle3 outputs (images) are not the direct output of the neural net. It generates a caption and under the hood sends it to another model that is an image generator.</p>
+<h4 id="video"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#video">Video</a></h4>
+<p>In advanced mode, there is a video mode where you can ask questions about what you are pointing your phone to.</p>
+<h4 id="memory"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#memory">Memory</a></h4>
+<p>Every new chat erases the whole context but there is a way to keep something in memory across chats (when you see "Memory updated"). Usually you need to invoke it, ask for it to remember.</p>
+<p>These memories (what it knows about you) are always prepended to the contexts so it's always available with some things personalized for you.</p>
+<p>Custom Instructions. You can tune chatgpt to your like, give it identity and traits.</p>
+<h4 id="custom-gpts"><a class="toclink" href="../../2025/07/25/how-karpathy-uses-llms/#custom-gpts">Custom GPTs</a></h4>
+<p>He uses them mostly for specific actions, like generate flashcards for korean vocabulary</p>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -2227,227 +2325,6 @@ We get an intercept of 0.19, non-significant when the actual value is 0 and a sl
 </span></code></pre></div>
 <p>We get an intercept of 0, non-significant too but much closer to 0 and with lower standard error and a slope of 4.99 also much closer to the actual value of 5 and with lower standard error.</p>
 <p><strong>Conclusion:</strong> if we know the right weights we can get better estimates from a linear regression in case of heteroscedasticity.  </p>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://cdn.sportsjobs.online/personal_profile_pic.jpg" alt="Franco Betteo">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2022-01-30 00:00:00+00:00">2022-01-30</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="../estadistica/" class="md-meta__link">estadistica</a>, 
-              <a href="../statistics/" class="md-meta__link">statistics</a>, 
-              <a href="./" class="md-meta__link">Machine Learning</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="inference-is-not-valid-in-the-dataset-used-for-model-selection"><a class="toclink" href="../../2022/01/30/inference-is-not-valid-in-the-dataset-used-for-model-selection.en-us/">Inference is not valid in the dataset used for model selection.</a></h2>
-<p>Let's say we have a dataset and we want to fit a model to it and do some inference such as obtaining the coefficients and look for their confidence intervals.</p>
-<p>For such a task we would first need to find a model that we think approximates to the real data generating process behind the phenomenon.<br />
-This will be the <strong>model  selection</strong> step.<br />
-Then we would look at the output of our model and get the standard error of the coefficients or calculate the confidence interval or any other similar task. This will be the <strong>inference step</strong>.  </p>
-<p>The issue here is that, if we don't know the true model and we do model selection, our own model will be a random object. Why? Because the particular dataset we are using is also a set of random variables. Other datasets might return another model formula as the best between our options since that particular dataset would have other observations and particularities.  </p>
-<h5 id="main-problem"><a class="toclink" href="../../2022/01/30/inference-is-not-valid-in-the-dataset-used-for-model-selection.en-us/#main-problem">Main problem:</a></h5>
-<p>since we are selecting a model based on a particular dataset, the standard errors and p-values will be smaller than then actual ones.  </p>
-<blockquote>
-<p>"That means there is some extra randomness in your estimated parameters (and everything else), which isn't accounted for by formulas which assume a fixed model.<br />
-This is not just a problem with formal model-selection devices like cross-validation. If you do an initial, exploratory data analysis before deciding which model to use - and that's generally a good idea - you are, yourself, acting as a noisy, complicated model-selection device" (Sharizi 2017)</p>
-</blockquote>
-<p>The most straightforward way to deal with this (if you are using independent observations) is to split the data, do model selection in one part and then fit the best model in the other part. Your second fit will be the one useful for inference.<br />
-You could fit the model to the full data but that would include the part used for model selection and you would still get false, overconfident standard errors.</p>
-<p>Let's see an example.<br />
-We will generate data following a somewhat "complicated" model with interactions.
-We will split the data in two equal size parts. One for model selection and one for inference.<br />
-We will then fit a couple formulas to model selection part and pick the one with the minimum RMSE. We will compare the standard errors obtained in the model selection part and the ones obtained fitting that model to the inference part.</p>
-<p>Thanks to <a href="https://twitter.com/brodriguesco">BrunoRodrigues</a> for this <a href="https://www.brodrigues.co/blog/2018-11-25-tidy_cv/">post</a> that I used as guideline to fit models with Cross Validation in R.</p>
-<p>We start by generating the data, including interactions.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5000</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">b0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">b1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">b2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">b3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">b4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">b5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
-</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="n">x3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">runif</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">40</span><span class="p">)</span>
-</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">200</span><span class="p">)</span>
-</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
-</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b1</span><span class="o">*</span><span class="n">x1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b2</span><span class="o">*</span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b3</span><span class="o">*</span><span class="n">x3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b4</span><span class="o">*</span><span class="n">x1</span><span class="o">*</span><span class="n">x2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b5</span><span class="o">*</span><span class="n">x2</span><span class="o">*</span><span class="n">x3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span>
-</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
-</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
-</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">x3</span><span class="p">)</span>
-</span></code></pre></div>
-<p>We do the first split, df_selection will be the one used to try different models and pick one.<br />
-df_inference will be used to do the actual inference given the model selected.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">prop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">selection_inference_split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">initial_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">prop</span><span class="o">=</span><span class="n">prop</span><span class="p">)</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">df_selection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">training</span><span class="p">(</span><span class="n">selection_inference_split</span><span class="p">)</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">df_inference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">testing</span><span class="p">(</span><span class="n">selection_inference_split</span><span class="p">)</span>
-</span></code></pre></div>
-<p>To select a model using df_selection we will use Cross validation to try to get the model that best generalizes.<br />
-We will generate 30 split of 70% of the data and use the other 30% to calculate RMSE metric.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">validation_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mc_cv</span><span class="p">(</span><span class="n">df_selection</span><span class="p">,</span><span class="w"> </span><span class="n">prop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span><span class="p">)</span>
-</span></code></pre></div>
-<p>We create two functions, my_lm() will run a linear regression for the training part of each split of CV and get the prediction for the testing part of each split. We will run this for a couple of formulas.<br />
-return_model will fit the model to the whole training data to extract the parameters and standard errors we get if we use the same dataset that was used to do model selection.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">my_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span><span class="w"> </span><span class="n">split</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">){</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="n">analysis_set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">analysis</span><span class="p">(</span><span class="n">split</span><span class="p">)</span><span class="w">  </span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formula</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">analysis_set</span><span class="p">)</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="n">assessment_set</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">assessment</span><span class="p">(</span><span class="n">split</span><span class="p">)</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
-</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">    </span><span class="n">pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tibble</span><span class="o">::</span><span class="nf">tibble</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="s">&quot;formula&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formula</span><span class="p">,</span>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">        </span><span class="s">&quot;truth&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">assessment_set</span><span class="o">$</span><span class="n">y</span><span class="p">,</span>
-</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">        </span><span class="s">&quot;prediction&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">unlist</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">assessment_set</span><span class="p">)))</span>
-</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
-</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="p">}</span>
-</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
-</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>
-</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="n">return_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">formula</span><span class="p">){</span>
-</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>
-</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
-</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">    </span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formula</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">df_selection</span><span class="p">)</span>
-</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">model</span><span class="o">$</span><span class="n">coefficients</span><span class="p">,</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
-</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>
-</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>We will try 5 formulas. The first one is the actual data generating process and should the best in terms of RMSE. We will exclude that one for model selection since the aim of this is to simulate a scenario where we don't know the actual formula behind the data. We calculate it just for reference but we will pick one of the other 4 models for inference.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">formulas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s">&quot;y ~ x1 + x2 +x3 + x1*x2 + x2*x3&quot;</span><span class="p">,</span><span class="w"> </span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">                </span><span class="s">&quot;y ~ .&quot;</span><span class="p">,</span><span class="w"> </span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">                </span><span class="s">&quot;y ~ x1 + x2&quot;</span><span class="p">,</span><span class="w"> </span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">                </span><span class="s">&quot;y ~ x1 + x2 + x3 + x1*x2&quot;</span><span class="p">,</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">                </span><span class="s">&quot;y ~ x1 + x2 + x3 + x2*x3&quot;</span><span class="p">)</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">()</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">models</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nf">for </span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">formulas</span><span class="p">){</span>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="n">results_selection</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">map2_df</span><span class="p">(</span><span class="n">.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">validation_data</span><span class="o">$</span><span class="n">splits</span><span class="p">,</span>
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">                           </span><span class="n">.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">validation_data</span><span class="o">$</span><span class="n">id</span><span class="p">,</span>
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">                           </span><span class="o">~</span><span class="nf">my_lm</span><span class="p">(</span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">formula</span><span class="p">,</span><span class="w"> </span><span class="n">split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.x</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.y</span><span class="p">))</span>
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
-</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">return_model</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span>
-</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
-</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>
-</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="n">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rbind.data.frame</span><span class="p">(</span><span class="n">results</span><span class="p">,</span><span class="w"> </span><span class="n">results_selection</span><span class="p">)</span>
-</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="n">models</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">models</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="p">)</span>
-</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
-</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>We retrieve the mean RMSE across the splits, calculated in the test part of each split.<br />
-We can see that the real model is the best in terms of RMSE. Between the others, we can see  that the one including the x2:x3 interaction is the best. 
-So, we will keep that one as our "model selected"</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">results</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nf">group_by</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">formula</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="nf">rmse</span><span class="p">(</span><span class="n">truth</span><span class="p">,</span><span class="w"> </span><span class="n">prediction</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nf">group_by</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="nf">summarise</span><span class="p">(</span><span class="n">mean_rmse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">.estimate</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="nf">as.data.frame</span><span class="p">()</span>
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>##                           formula mean_rmse
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>## 1                           y ~ .  219.4756
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>## 2                     y ~ x1 + x2  625.0173
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>## 3        y ~ x1 + x2 + x3 + x1*x2  217.3185
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>## 4        y ~ x1 + x2 + x3 + x2*x3  198.9802
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>## 5 y ~ x1 + x2 +x3 + x1*x2 + x2*x3  196.4747
-</span></code></pre></div>
-<p>We can check the parameters and the standard errors when fitted to the whole selection dataset.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>## 
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>## Call:
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>## lm(formula = formula, data = df_selection)
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>## 
-</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>## Residuals:
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>##     Min      1Q  Median      3Q     Max 
-</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>## -854.07 -132.91   -0.97  137.65  714.53 
-</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>## 
-</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>## Coefficients:
-</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>##              Estimate Std. Error t value Pr(&gt;|t|)    
-</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>## (Intercept) -245.1084   138.9684  -1.764   0.0779 .  
-</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>## x1            82.7919     1.3540  61.148   &lt;2e-16 ***
-</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>## x2            15.7118     6.8628   2.289   0.0221 *  
-</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>## x3            -1.5177     4.5626  -0.333   0.7394    
-</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>## x2:x3          5.1676     0.2256  22.906   &lt;2e-16 ***
-</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>## ---
-</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>## 
-</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>## Residual standard error: 199.1 on 2495 degrees of freedom
-</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>## Multiple R-squared:  0.947,  Adjusted R-squared:  0.9469 
-</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>## F-statistic: 1.115e+04 on 4 and 2495 DF,  p-value: &lt; 2.2e-16
-</span></code></pre></div>
-<p>And let's see what happens if we fit the same model to the inference set.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">model_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formulas</span><span class="p">[[</span><span class="m">5</span><span class="p">]],</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">df_inference</span><span class="p">)</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nf">summary</span><span class="p">(</span><span class="n">model_test</span><span class="p">)</span>
-</span></code></pre></div>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>## 
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>## Call:
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>## lm(formula = formulas[[5]], data = df_inference)
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>## 
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>## Residuals:
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>##     Min      1Q  Median      3Q     Max 
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>## -656.47 -138.67   -5.64  130.21  773.99 
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>## 
-</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>## Coefficients:
-</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>##              Estimate Std. Error t value Pr(&gt;|t|)    
-</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>## (Intercept) -438.7059   140.2618  -3.128 0.001782 ** 
-</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>## x1            81.4724     1.3622  59.812  &lt; 2e-16 ***
-</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>## x2            23.4856     6.9475   3.380 0.000735 ***
-</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>## x3             3.6309     4.5942   0.790 0.429417    
-</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>## x2:x3          4.9750     0.2275  21.869  &lt; 2e-16 ***
-</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>## ---
-</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>## 
-</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>## Residual standard error: 199.4 on 2495 degrees of freedom
-</span><span id="__span-20-20"><a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>## Multiple R-squared:  0.9473, Adjusted R-squared:  0.9472 
-</span><span id="__span-20-21"><a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>## F-statistic: 1.121e+04 on 4 and 2495 DF,  p-value: &lt; 2.2e-16
-</span></code></pre></div>
-First we can see that the parameters have changed a bit.<br />
-In second place we can see that the standard errors are generally bigger in comparison to the parameter for the inference set and will generate a wider confidence interval.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ratio_df</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">parameter</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">ratio</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">set</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">legend.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">())</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span><span class="nf">theme_light</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Ratio&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Absolute ratio between SD and Estimate&quot;</span><span class="p">)</span>
-</span></code></pre></div>
-<p><img alt="Image" src="../../img/2022-01-30-inference-is-not-valid-in-the-dataset-used-for-model-selection.en-us-unnamed-chunk-11-1.png" /></p>
-<p>My idea is to add a plot with the confidence intervals so the effect can be seen directly but I don't have the time today. Anyways, it is clear that the standad error to parameter ratio is bigger in the inference set, showing that the inference in the same dataset as model selection is invalid as it is overconfident in the results.</p>
     
   </div>
 </article>
