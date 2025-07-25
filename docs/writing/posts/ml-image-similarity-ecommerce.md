@@ -18,6 +18,8 @@ How I implemented an API to retrieve similar images from an E-commerce in 3 step
 
 In this post, we explore a system to identify similar articles solely based on e-commerce images. The approach is designed with two primary objectives in mind:
 
+Do you want to see how it looks? Check [my portfolio example](https://huggingface.co/spaces/fbetteo/fashion_similarity)!
+
 ## Objectives
 
 1. **Catalog Similarity:**  
