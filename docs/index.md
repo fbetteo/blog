@@ -165,8 +165,8 @@ This project exemplifies how I approach AI engineering challenges: building syst
 **Business Impact:** Inmediately customer support was able to offer similar products to customers reaching out, generating new sales or speeding up the customer support response time and reducing tedious work.  
 Next application will be to compare current products with new catalogs from suppliers to identify valuable opportunities.
 
-[Read this blogpost](/writing/posts/image-similarity-ecommerce/) to see how  this inmediate high ROI problem was solved.  
-Or check the [portfolio example](https://huggingface.co/spaces/fbetteo/fashion_similarity.)  
+[Read this blogpost](/writing/2025/02/21/image-similarity-ecommerce/) to see how  this inmediate high ROI problem was solved.  
+Or check the [portfolio example](https://huggingface.co/spaces/fbetteo/fashion_similarity)  
 **Could your business benefit from similar AI-powered product discovery?** [Schedule a consultation](https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true) to discuss your specific needs.
 
 
