@@ -62,3 +62,7 @@ Additional notebooks are available to illustrate the process, check results, and
 ## Conclusion
 
 By leveraging pretrained image models and efficient similarity search with Faiss, this approach provides a scalable method for identifying visually similar items in an e-commerce catalog. This system not only improves internal catalog management but also sets the groundwork for integrating external image queries in the future.
+
+## From technical approach to business use
+
+For the project scope, what was built, and what is known about its use, see the [ecommerce image similarity project](../../projects/ecommerce-image-similarity.md). If your team wants to test visual product search on its own catalog, see my [AI consulting services](../../services.md).

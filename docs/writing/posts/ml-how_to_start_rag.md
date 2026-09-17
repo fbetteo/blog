@@ -14,6 +14,8 @@ tags:
 ---
 # Llama Index and RAG starter point
 
+This is a learning note about a RAG library. If you are evaluating a RAG application for a business workflow, my [AI consulting services](../../services.md) explain how I scope and test applied AI projects.
+
 This is me trying and playing a bit with the [starter guide](https://docs.llamaindex.ai/en/stable/getting_started/customization/#frequently-asked-questions-faq) of Llama Index. Basic discovery of how to use this. Actually their starter is more complex, goes into agents right away, so this was more what I was looking for.
 
 ## Creating the environment 

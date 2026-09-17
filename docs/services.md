@@ -1,140 +1,52 @@
-# AI Consulting Services
-
-Transform your business with strategic AI implementation. Choose the engagement model that fits your needs and accelerate your AI journey with expert guidance.
-
+---
+title: AI Consulting Services for Retail and CPG
+description: Work with Franco Betteo on AI opportunity assessment, prototype development, or ongoing technical guidance for retail and CPG teams.
 ---
 
-## Advisory Services
-# Strategic AI Guidance Without the Full-Time Commitment
+# AI consulting services
 
-> **Perfect for:** Companies exploring AI adoption, teams needing strategic direction, startups requiring expert guidance without full-time commitment.
+I work with retail and CPG teams that have a business problem, data, and a question about whether AI or machine learning can help. Engagements start by defining the decision or workflow to improve, the evidence needed to judge success, and the people who will use the result.
 
-### What you get:
+[See selected client work](projects/index.md) · [Book an introductory call](https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true)
 
-- **Strategic AI Roadmap Development**  
-  Clear, actionable plans aligned with your business objectives
+## AI opportunity assessment
 
-- **Technology Stack Recommendations**  
-  Optimal tools and platforms for your specific needs  
+**For teams deciding where to start.** We review a use case, available data, current workflow, and the costs and risks of implementation. You receive a practical recommendation: what to test first, how to measure it, and what would make the project unsuitable.
 
-- **Risk Assessment & Mitigation**  
-  Avoid costly mistakes with insights from dozens of implementations
+Typical questions include whether an image search system could improve product discovery, whether a forecasting model would change an operational decision, or whether a language model application can be evaluated reliably.
 
-- **Team Training & Knowledge Transfer**  
-  Empower your team with AI expertise and best practices
+My [selected work](projects/index.md) includes private client projects in demand forecasting, optimization, pricing, segmentation, and image search.
 
-- **Architecture Reviews**  
-  Optimize existing systems for maximum efficiency and scalability
+A one-off assessment is quoted based on the question, data, and deliverable.
 
-### How we work together:
+## Prototype and implementation
 
-- Direct access via Slack/Teams for quick questions and guidance
-- Weekly or bi-weekly strategy calls to review progress and address challenges
-- Monthly deep-dive sessions with comprehensive analysis and recommendations
-- Detailed documentation and reports for your team and stakeholders
+**For teams with a defined problem to test.** I build with your team, agree on an evaluation approach, and demonstrate the result against that approach. The scope can include data preparation, a model or retrieval pipeline, an API, and a documented path to production.
 
-**Investment:** \$1,000-\$3,000/month depending on scope and access level
+A prototype is a test of feasibility and value. Production deployment, monitoring, and support are scoped explicitly if needed.
 
-<a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true" class="custom-cta-button small" target="_blank">Book Advisory Consultation</a>
+The current indicative project range is **$5,000–$100,000**. That range spans very different scopes; the proposal specifies deliverables and a price before work begins.
 
----
+[See how I built an ecommerce image similarity system](projects/ecommerce-image-similarity.md)
 
-## Implementation Services  
-# From Concept to Working Prototype in Weeks
+## Ongoing technical guidance
 
-> **Perfect for:** Companies with specific AI use cases to validate, teams wanting proof of feasibility before full commitment, businesses exploring AI potential with controlled risk.
+**For teams already building AI systems.** I can review architecture, evaluation, data quality, and delivery plans, or work alongside your team on a defined area. The cadence and responsibilities are agreed before work begins.
 
-### What you get:
-
-- **Working Prototypes**  
-  Functional AI solutions that demonstrate real business value
-
-- **Production Pathway Planning**  
-  Clear roadmap from prototype to full deployment
-
-- **Integration Assessment**  
-  Comprehensive analysis of how AI fits with your existing systems
-
-- **Performance Optimization**  
-  Fine-tuned solutions that meet your speed and accuracy requirements
-
-- **Team Collaboration**  
-  Work directly with your team for seamless knowledge transfer
-
-### Our proven process:
-
-- POC development with regular demonstrations and feedback loops
-- Collaborative development ensuring your team understands and can extend the solution
-- Detailed production planning with step-by-step deployment guidance
-- Post-POC consultation to support your production decisions
-
-**Investment:** \$5,000-\$100,000 depending on project complexity (individual budget assessment)
-
-<a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true" class="custom-cta-button small" target="_blank">Discuss Your Project</a>
-
----
+For ongoing advisory work, the current indicative range is **$1,000–$3,000 per month**, depending on scope and access.
 
 ## Fractional Head of AI
-# Executive AI Leadership When You Need It Most
 
-> **Perfect for:** Growing companies ready to scale AI initiatives, organizations needing AI leadership without full-time hire commitment, businesses undergoing AI transformation.
+**For organizations that need ongoing AI leadership.** I can help set priorities, guide delivery, evaluate vendors, and support the team responsible for implementation. The role, decision rights, and time commitment are agreed in advance.
 
-### What you get:
+The current indicative range is **$10,000–$20,000 per month**, based on responsibilities and time commitment.
 
-- **AI Strategy Development & Execution**  
-  Comprehensive roadmaps with hands-on implementation oversight
+## How an engagement starts
 
-- **Team Building & Leadership**  
-  Hiring guidance, team structure design, and direct management
+1. **Introductory call:** You describe the problem, users, data, constraints, and timing.
+2. **Scoped proposal:** I describe the work, deliverables, evaluation criteria, timeline, and price for your situation.
+3. **Delivery:** We review progress and findings together so your team can use and maintain the result.
 
-- **Technology & Vendor Evaluation**  
-  Expert assessment and selection of AI tools and partnerships  
+If you already have a brief, email it to [francobetteo@gmail.com](mailto:francobetteo@gmail.com). A few sentences are enough to start.
 
-- **Budget Planning & Resource Allocation**  
-  Optimize investments for maximum ROI
-
-- **Cross-Functional Collaboration**  
-  Bridge AI initiatives with business units and stakeholders
-
-- **Board & Executive Reporting**  
-  Regular updates on progress, metrics, and strategic decisions
-
-### Your dedicated AI executive:
-
-- Remote AI direction. Full time async slack availability.
-- Direct participation in executive team meetings and strategic decisions
-- Ownership of AI initiatives from conception through deployment
-- Performance tracking and optimization of AI team and projects
-
-**Investment:** \$10,000-\$20,000/month based on time commitment and scope
-
-<a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true" class="custom-cta-button small" target="_blank">Explore Leadership Role</a>
-
----
-
-## Service Comparison
-
-| Service | Duration | Commitment Level | Investment Range | Best For |
-|---------|----------|------------------|------------------|----------|
-| **Advisory** | 2 weeks - ongoing | Low-touch | \$1,000-\$3,000/month | Strategic guidance & planning |
-| **Implementation** | 2-12 weeks | High-touch | \$5,000-\$100,000 project | POC development & validation |
-| **Fractional Head of AI** | 3-12 months | Medium-high touch | \$10,000-\$20,000/month | Leadership & team scaling |
-
----
-
-## Ready to Transform Your Business with AI?
-
-Don't just adopt AI - implement it strategically for real business impact. Every engagement starts with a comprehensive assessment to ensure we deliver maximum value for your specific situation.
-
-<div class="cta-container" markdown>
-  <div class="cta-benefits" markdown>
-  
-  ✓ **Personalized solutions** tailored to your specific challenges  
-  ✓ **Implementation support** from concept to production  
-  ✓ **Clear communication** without unnecessary technical jargon  
-  ✓ **Measurable results** focused on business outcomes, not just technical metrics  
-  
-  </div>
-  <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true" class="custom-cta-button" target="_blank">Schedule Your Free 30-Minute Consultation</a>
-</div>
-
+[Book a 30-minute introduction](https://calendar.google.com/calendar/appointments/schedules/AcZssZ0JQSYOeX4y5slQlDYH66ugJq05Yx9Mj2gwfAOam5kfXNTRJZIZZUuJoHT-BsbKS-HgIM7M67ij?gv=true){ .md-button .md-button--primary }

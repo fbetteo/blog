@@ -5,7 +5,7 @@ import datetime
 import xml.dom.minidom
 
 # Configuration
-BASE_URL = "https://fbetteo.github.io/blog"  # Removed trailing slash
+BASE_URL = "https://fbetteo.com"  # Match site_url in mkdocs.yml
 SITE_DIR = "site"  # MkDocs build output directory
 OUTPUT_FILE = os.path.join(SITE_DIR, "sitemap.xml")
 EXCLUDE_DIRS = {

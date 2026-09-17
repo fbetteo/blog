@@ -1,7 +1,7 @@
 site_name: Franco Betteo
 site_url: https://fbetteo.com
 site_author: Franco Betteo
-site_description: "Franco Betteo - Sr. Data Scientist, Machine Learning Engineer and AI Consultant with experience in CPG, retail, sports analytics and more."
+site_description: "Franco Betteo helps retail and CPG teams evaluate and build useful AI and machine learning systems."
 # Copyright
 copyright: Copyright &copy; 2025 Franco Betteo
 # Repository
@@ -9,10 +9,13 @@ repo_name: fbetteo/blog
 repo_url: https://github.com/fbetteo/blog
 nav:
   - Home: 
-      - Introduction: index.md
+      - Overview: index.md
       - Good resources: good_resources.md
       - Interests: interests.md
   - Services: services.md
+  - Projects:
+    - projects/index.md
+    - Ecommerce image similarity: projects/ecommerce-image-similarity.md
   - Writing:
     - writing/index.md
   - Job Board: "https://sportsjobs.online"
