@@ -1,4 +1,5 @@
 ---
+description: "Introducción a la familia de funciones map de purrr (tidyverse) en R como alternativa más clara y consistente a apply, lapply y sapply."
 title: "Hola MAP. Chau Apply."
 authors:
   - fbetteo

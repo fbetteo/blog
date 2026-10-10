@@ -2,4 +2,61 @@
 
 {% block extrahead %}
 <meta name="google-site-verification" content="sTlnUEhcBU3K5YuzTyLOLr1IF6e9zoBRLK5w9Lm-AmQ" />
+
+{#- Per-page values, falling back to site-wide defaults -#}
+{%- if page.meta and page.meta.title -%}
+  {%- set og_title = page.meta.title -%}
+{%- elif page.title and not page.is_homepage -%}
+  {%- set og_title = page.title | striptags -%}
+{%- else -%}
+  {%- set og_title = config.site_name -%}
+{%- endif -%}
+{%- set og_description = (page.meta.description if page.meta and page.meta.description else config.site_description) -%}
+{%- set og_image = config.site_url ~ (page.meta.image if page.meta and page.meta.image else "public/img/og-default.png") -%}
+{%- set og_type = "article" if page.meta and page.meta.date else "website" -%}
+
+<!-- Open Graph (LinkedIn, Facebook, Slack, WhatsApp) -->
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:site_name" content="{{ config.site_name }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ og_description }}">
+<meta property="og:url" content="{{ page.canonical_url }}">
+<meta property="og:image" content="{{ og_image }}">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@franbetteo">
+<meta name="twitter:title" content="{{ og_title }}">
+<meta name="twitter:description" content="{{ og_description }}">
+<meta name="twitter:image" content="{{ og_image }}">
+
+{#- Structured data: who you are and what you offer, on the pages that matter -#}
+{%- if page.url in ["", "about/", "services/"] %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ config.site_url }}#person",
+      "name": "Franco Betteo",
+      "url": "{{ config.site_url }}",
+      "jobTitle": "AI Engineer and Senior Data Scientist",
+      "knowsAbout": ["Machine learning", "Demand forecasting", "Optimization", "Pricing analysis", "Retail analytics", "Applied AI"],
+      "sameAs": ["https://github.com/fbetteo", "https://x.com/franbetteo"]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "{{ config.site_url }}#service",
+      "name": "Franco Betteo AI Consulting",
+      "url": "{{ config.site_url }}services/",
+      "description": "AI and machine learning consulting for retail and CPG teams: opportunity assessment, prototypes, and ongoing technical guidance.",
+      "provider": { "@id": "{{ config.site_url }}#person" },
+      "areaServed": "Worldwide",
+      "email": "francobetteo@gmail.com"
+    }
+  ]
+}
+</script>
+{%- endif %}
 {% endblock %}

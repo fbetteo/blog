@@ -1,4 +1,5 @@
 ---
+description: "Remarks on R-squared: why it depends on the variance of the predictors more than on fit quality, with a simulated example in R."
 title: Remarks on R2
 authors:
   - fbetteo 

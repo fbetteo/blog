@@ -1,4 +1,5 @@
 ---
+description: "Resumen del capítulo de regresión lineal de Introduction to Statistical Learning (ISLR): estimación, inferencia, interpretación y supuestos."
 title: Regresion Lineal - ISLR Capítulo 3
 authors:
   - fbetteo 

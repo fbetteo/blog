@@ -1,4 +1,5 @@
 ---
+description: "The bias-variance tradeoff explained: decomposing prediction error, why flexible models overfit, and what it means for model selection."
 title: Bias Variance Tradeoff
 authors:
   - fbetteo 

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import os
 import xml.etree.ElementTree as ET
-import datetime
 import xml.dom.minidom
 
 # Configuration
@@ -10,8 +9,6 @@ SITE_DIR = "site"  # MkDocs build output directory
 OUTPUT_FILE = os.path.join(SITE_DIR, "sitemap.xml")
 EXCLUDE_DIRS = {
     "overrides",
-    "about",
-    "user_manual",
     "github-site",
 }  # directories to skip
 EXCLUDE_FILES = {
@@ -20,8 +17,6 @@ EXCLUDE_FILES = {
 
 # Create the root XML element for the sitemap
 urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-# Use simple YYYY-MM-DD format
-now = datetime.datetime.now().strftime("%Y-%m-%d")
 
 # Walk through the SITE_DIR to find .html files
 urls_added = set()  # Track URLs to avoid duplicates
@@ -63,8 +58,6 @@ for root, dirs, files in os.walk(SITE_DIR):
         url_el = ET.SubElement(urlset, "url")
         loc = ET.SubElement(url_el, "loc")
         loc.text = full_url
-        lastmod = ET.SubElement(url_el, "lastmod")
-        lastmod.text = now
 
 # # Generate pretty-printed XML
 # rough_string = ET.tostring(urlset, encoding="utf-8")

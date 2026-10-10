@@ -1,4 +1,5 @@
 ---
+description: "Tipos de variables en estadística y ciencia de datos: cualitativas, cuantitativas, discretas, continuas, nominales y ordinales, con ejemplos simples."
 title: Tipos de Variables
 authors:
   - fbetteo 

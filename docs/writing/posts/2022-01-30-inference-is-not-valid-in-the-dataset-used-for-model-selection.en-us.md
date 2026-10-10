@@ -1,4 +1,5 @@
 ---
+description: "Why p-values and confidence intervals are over-optimistic when computed on the same data used to select the model, with a simulated example."
 title: Inference is not valid in the dataset used for model selection.
 authors:
   - fbetteo

@@ -6,7 +6,7 @@ categories:
 - Machine Learning 
 comments: true
 date: 2025-03-10
-description: Notes on Deep Dive into LLMs Like ChatGPT - Karpathy
+description: "Notes on Andrej Karpathy's Deep Dive into LLMs like ChatGPT: tokenization, pretraining, neural network training, and how assistants are built."
 draft: false
 slug: deep-dive-into-llms
 tags:

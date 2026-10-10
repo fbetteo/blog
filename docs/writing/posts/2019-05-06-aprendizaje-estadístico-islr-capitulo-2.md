@@ -1,4 +1,5 @@
 ---
+description: "Resumen del capítulo 2 de Introduction to Statistical Learning (ISLR): qué es el aprendizaje estadístico, sesgo-varianza y evaluación de modelos."
 title: Aprendizaje Estadístico - ISLR Capitulo 2
 authors:
   - fbetteo 

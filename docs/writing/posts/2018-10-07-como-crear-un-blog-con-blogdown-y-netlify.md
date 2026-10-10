@@ -1,4 +1,5 @@
 ---
+description: "Guía paso a paso para crear un blog con RStudio, blogdown, GitHub y Netlify, gratis y publicando directamente desde R Markdown."
 title: "Como crear un blog con Blogdown y Netlify"
 authors:
   - fbetteo 

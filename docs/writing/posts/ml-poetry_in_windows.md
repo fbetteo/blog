@@ -6,7 +6,7 @@ categories:
 - Machine Learning 
 comments: true
 date: 2025-07-10
-description: How to use Poetry with Conda environments
+description: "How to use Poetry with Conda environments on Windows: create the env with Conda, then make Poetry install into it instead of its own virtualenv."
 draft: false
 slug: how-to-use-poetry-with-conda-environments
 tags:

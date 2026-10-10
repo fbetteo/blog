@@ -1,4 +1,5 @@
 ---
+description: "Qué es un proceso Poisson y cómo se relacionan la distribución Poisson y la exponencial: conteo de eventos vs tiempo entre eventos, con R."
 title: Proceso Poisson y distribucion exponencial
 authors:
   - fbetteo 

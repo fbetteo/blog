@@ -1,4 +1,5 @@
 ---
+description: "Modeling Counter-Strike round win probability with XGBoost and monotonic constraints, so predictions behave sensibly as the game changes."
 title: 'Counter Strike: chance of winning'
 authors:
   - fbetteo 

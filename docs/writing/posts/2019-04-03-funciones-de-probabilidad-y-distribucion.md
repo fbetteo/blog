@@ -1,4 +1,5 @@
 ---
+description: "Variables aleatorias, funciones de probabilidad, de densidad y de distribución acumulada explicadas con ejemplos y código en R."
 title: Funciones de Probabilidad y Distribucion
 authors:
   - fbetteo 

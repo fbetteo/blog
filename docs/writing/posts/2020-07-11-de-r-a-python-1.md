@@ -1,4 +1,5 @@
 ---
+description: "Aprendizajes de pasar de R a Python para ciencia de datos: equivalencias entre tidyverse y pandas y diferencias a tener en cuenta."
 title: "De R a Python 1"
 authors:
   - fbetteo 

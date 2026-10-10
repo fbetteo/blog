@@ -1,4 +1,5 @@
 ---
+description: "Cómo crear una máquina virtual en Google Cloud y ejecutar scripts de R en un servidor: configuración, almacenamiento en buckets y ejecución."
 title: 'Como correr un proyecto con R en Google Cloud '
 authors:
   - fbetteo 

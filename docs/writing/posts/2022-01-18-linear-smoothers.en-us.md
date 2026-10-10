@@ -1,4 +1,5 @@
 ---
+description: "OLS as a linear smoother: how linear regression predictions are a weighted average of the training outcomes, and what that implies."
 title: Linear Smoothers
 authors:
   - fbetteo 

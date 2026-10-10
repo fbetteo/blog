@@ -17,7 +17,7 @@ Good evaluations in testing ensuring no form of leakage is present is also impor
 
 ### Decisions under constraints
 
-I have used linear optimization with PuLP to generate optimal assormtnet allocations across stores. The useful output is a feasible recommendation and a clear explanation of which constraints drive it. The right formulation depends on the decisions, tradeoffs, and data available to the team. For instance, we had first a demand forecast model to predict future sales and that was an input for the allocation. Simpler alternatives can be done too.
+I have used linear optimization with PuLP to generate optimal assortment allocations across stores. The useful output is a feasible recommendation and a clear explanation of which constraints drive it. The right formulation depends on the decisions, tradeoffs, and data available to the team. For instance, we had first a demand forecast model to predict future sales and that was an input for the allocation. Simpler alternatives can be done too.
 
 ### Pricing and segmentation
 

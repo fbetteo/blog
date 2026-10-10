@@ -6,7 +6,7 @@ categories:
 - Machine Learning 
 comments: true
 date: 2025-01-28
-description: Kullback-Leibler divergence
+description: "Kullback-Leibler divergence explained as relative entropy: how to measure how well an estimated distribution approximates the true one."
 draft: false
 slug: kullback-leibler-divergence
 tags:
@@ -14,7 +14,7 @@ tags:
 ---
 # Kullback-Leibler divergence
 
-To understand KL divergence we need to first understand [Entropy](https://fbetteo.github.io/blog/writing/2025/01/06/entropy/). The most important thing to have in mind though is that entropy can be thought as a measure of "information", but what I like the most, as a measure of _expected surprise_ that one gets for every observed value of the distribution.
+To understand KL divergence we need to first understand [Entropy](https://fbetteo.com/writing/2025/01/06/entropy/). The most important thing to have in mind though is that entropy can be thought as a measure of "information", but what I like the most, as a measure of _expected surprise_ that one gets for every observed value of the distribution.
 
 For a highly dense distribution, you will almost sure get a value from the dense region and the expected surprise will be really low (but you are highly surprised when you see a value off that region!)
 

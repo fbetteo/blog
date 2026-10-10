@@ -6,7 +6,7 @@ categories:
 - Machine Learning 
 comments: true
 date: 2025-07-25
-description: How Karpathy uses LLMs
+description: "Notes on how Andrej Karpathy uses LLMs day to day: managing context, when to use thinking models, search tools, and other practical tips."
 draft: false
 slug: how-karpathy-uses-llms
 tags:

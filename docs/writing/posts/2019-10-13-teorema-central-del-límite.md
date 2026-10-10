@@ -1,4 +1,5 @@
 ---
+description: "Explicación del teorema central del límite y las diferencias entre sus versiones (Lindeberg-Lévy y Lyapunov), con simulaciones en R."
 title: "Teorema Central del Limite"
 authors:
   - fbetteo 

@@ -1,4 +1,5 @@
 ---
+description: "Introducción a gráficos con mapas en R usando ggplot: cargar datos geográficos, dibujar regiones y colorear mapas según una variable."
 title: Introduccion a graficos con mapas
 authors:
   - fbetteo 

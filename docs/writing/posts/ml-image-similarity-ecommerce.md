@@ -6,7 +6,7 @@ categories:
 - Machine Learning 
 comments: true
 date: 2025-02-21
-description: E-commerce Image Similarity via Visual Embeddings
+description: "How I built an API to find visually similar products in an ecommerce catalog using CLIP image embeddings and a FAISS index, with a live demo."
 draft: false
 slug: image-similarity-ecommerce
 tags:

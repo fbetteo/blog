@@ -1,4 +1,5 @@
 ---
+description: "Qué son las curvas ROC y el área bajo la curva (AUC), cómo se construyen y cómo usarlas para evaluar modelos de clasificación, con ejemplos en R."
 title: "Curvas ROC"
 authors:
   - fbetteo 

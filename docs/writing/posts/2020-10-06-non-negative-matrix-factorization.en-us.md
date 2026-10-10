@@ -1,4 +1,5 @@
 ---
+description: "Non-negative matrix factorization (NMF) applied to NBA shooting data from the 2018-19 season, with an explanation of how the method works."
 title: Non Negative Matrix Factorization
 authors:
   - fbetteo 

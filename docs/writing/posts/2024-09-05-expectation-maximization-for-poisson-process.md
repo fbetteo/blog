@@ -1,4 +1,5 @@
 ---
+description: "Using expectation-maximization to estimate Poisson regression parameters with censored data, compared with a naive fit that is biased."
 title: Expectation Maximization for Poisson process
 authors: 
   - fbetteo 

@@ -1,4 +1,5 @@
 ---
+description: "La distribución Dirichlet como prior conjugado de la multinomial: cómo actualizar las creencias con nuevos datos, con un ejemplo práctico."
 title: Distribucion Dirichlet como prior de Multinomial
 authors:
   - fbetteo 

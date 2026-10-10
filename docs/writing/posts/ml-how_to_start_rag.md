@@ -6,7 +6,7 @@ categories:
 - Machine Learning 
 comments: true
 date: 2025-07-10
-description: Llama Index and RAG starter point
+description: "Learning notes on building a first RAG application with LlamaIndex: environment setup, local embeddings, indexing documents and querying them."
 draft: false
 slug: llama-index-and-rag-starter-point
 tags:

@@ -1,4 +1,5 @@
 ---
+description: "Resumen de métodos de resampleo de ISLR: validación cruzada, leave-one-out, k-fold y bootstrap para estimar el error de un modelo."
 title: "Metodos de Resampleo - ISLR Capitulo 5"
 authors:
   - fbetteo 

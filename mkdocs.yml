@@ -11,8 +11,8 @@ nav:
   - Home: 
       - Overview: index.md
       - Good resources: good_resources.md
-      - Interests: interests.md
   - Services: services.md
+  - About: about.md
   - Projects:
     - projects/index.md
     - Ecommerce image similarity: projects/ecommerce-image-similarity.md

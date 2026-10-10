@@ -1,4 +1,5 @@
 ---
+description: "When and how to use weighted regression: handling heteroscedasticity and unequal observation reliability, with examples in Python and R."
 title: Weighted regression
 authors:
   - fbetteo

@@ -1,4 +1,5 @@
 ---
+description: "Notas y resumen de la serie Essence of Linear Algebra de 3Blue1Brown: vectores, transformaciones lineales, determinantes y autovalores."
 title: Esencia del Algebra Lineal
 authors:
   - fbetteo 

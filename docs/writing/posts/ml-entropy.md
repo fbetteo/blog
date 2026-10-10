@@ -6,7 +6,7 @@ categories:
 - Machine Learning 
 comments: true
 date: 2025-01-06
-description: Entropy and information theory
+description: "Entropy and information explained intuitively: information as surprise, why it uses a logarithm, and how entropy measures expected surprise."
 draft: false
 slug: entropy
 tags:

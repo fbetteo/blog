@@ -1,4 +1,5 @@
 ---
+description: "Cómo organizar proyectos de ciencia de datos: estructura de carpetas, separación de datos y código, y hábitos que facilitan reproducir el trabajo."
 title: Organización de Proyectos
 authors:
   - fbetteo 

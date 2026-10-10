@@ -1,4 +1,5 @@
 ---
+description: "Softmax vs sigmoid in a neural network's output layer: how they differ and how the last layer's weights are updated with each one."
 title: Softmax vs sigmoid
 authors:
   - fbetteo 

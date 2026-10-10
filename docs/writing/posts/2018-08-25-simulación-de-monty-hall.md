@@ -1,4 +1,5 @@
 ---
+description: "Simulación en R del problema de Monty Hall: por qué cambiar de puerta duplica la probabilidad de ganar, comprobado con miles de repeticiones."
 title: "Simulación de Monty Hall"
 authors:
   - fbetteo 

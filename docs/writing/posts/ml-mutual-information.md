@@ -6,7 +6,7 @@ categories:
 - Machine Learning 
 comments: true
 date: 2025-01-28
-description: Mutual information
+description: "Mutual information explained through KL divergence: how much knowing one variable reduces uncertainty about another."
 draft: false
 slug: mutual-information
 tags:
@@ -16,7 +16,7 @@ tags:
 # Mutual Information
 
 
-> When two variables $x$ and $y$ are independent, their joint distribution will factorize into the product of their marginals $p(x,y) = p(x)p(y)$. If the variables are not independent, we can gain some idea of whether they are "close" to being independent by considering the [KL Divergence](https://fbetteo.github.io/blog/writing/2025/01/28/kullback-leibler-divergence/) between the joint distribution and the product of the marginals, given by:
+> When two variables $x$ and $y$ are independent, their joint distribution will factorize into the product of their marginals $p(x,y) = p(x)p(y)$. If the variables are not independent, we can gain some idea of whether they are "close" to being independent by considering the [KL Divergence](https://fbetteo.com/writing/2025/01/28/kullback-leibler-divergence/) between the joint distribution and the product of the marginals, given by:
 
 $$I[x,y] = KL(p(x,y)||p(x)p(y))$$
 

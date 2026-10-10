@@ -1,4 +1,5 @@
 ---
+description: "Introducción a las cadenas de Markov con un ejemplo en R: matriz de transición, estados y cómo predecir la evolución de un sistema paso a paso."
 title: Cadenas de Markov
 authors:
   - fbetteo

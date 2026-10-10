@@ -1,4 +1,5 @@
 ---
+description: "La distribución Gamma explicada a partir de procesos Poisson: tiempo hasta el k-ésimo evento, parámetros y relación con la exponencial."
 title: Distribucion Gamma
 authors:
   - fbetteo 

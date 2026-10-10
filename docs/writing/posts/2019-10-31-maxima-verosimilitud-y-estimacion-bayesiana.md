@@ -1,4 +1,5 @@
 ---
+description: "Máxima verosimilitud (MLE) vs estimación bayesiana para estimar un parámetro desconocido: intuición, cálculo y diferencias, con ejemplos."
 title: "Maxima Verosimilitud y estimacion bayesiana"
 authors:
   - fbetteo 

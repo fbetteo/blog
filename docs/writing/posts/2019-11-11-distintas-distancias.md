@@ -1,4 +1,5 @@
 ---
+description: "Distintas medidas de distancia y similaridad (euclídea, Manhattan, coseno, Jaccard y más) y cuándo conviene usar cada una."
 title: 'Distintas Distancias'
 authors:
   - fbetteo 
