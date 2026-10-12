@@ -500,3 +500,97 @@ h2 {
 [data-md_color-scheme="slate"] .service-comparison td {
   border-color: #444;
 }
+/* Pages with the sidebar hidden (home, services, about): keep lines at a readable width */
+.md-sidebar--primary[hidden] ~ .md-content {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+/* Testimonial cards */
+.md-typeset .grid.testimonials {
+  grid-template-columns: 1fr;
+}
+.testimonials > ul > li {
+  font-style: italic;
+}
+.testimonials > ul > li strong {
+  font-style: normal;
+}
+
+/* Home page hero: headline and buttons beside the photo */
+.md-typeset .hero {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 1rem 0 1.5rem;
+}
+.md-typeset .hero__text {
+  flex: 1;
+}
+.md-typeset .hero h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--md-primary-fg-color);
+  margin: 0 0 1rem;
+}
+.md-typeset .hero__text p {
+  font-size: 1.05rem;
+}
+.md-typeset .hero .md-button {
+  font-size: 0.8rem;
+  margin: 0.3rem 0.4rem 0.3rem 0;
+}
+.md-typeset .hero__photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+.md-typeset .credibility {
+  text-align: center;
+  color: var(--md-default-fg-color--light);
+  border-top: 1px solid #eaecef;
+  border-bottom: 1px solid #eaecef;
+  padding: 0.8rem 0;
+  margin-bottom: 2rem;
+}
+.md-typeset .credibility strong {
+  color: var(--md-default-fg-color);
+}
+
+/* Phones: photo above the text, smaller */
+@media screen and (max-width: 640px) {
+  .md-typeset .hero {
+    flex-direction: column-reverse;
+    gap: 1rem;
+    text-align: center;
+  }
+  .md-typeset .hero__photo {
+    width: 140px;
+    height: 140px;
+  }
+  .md-typeset .hero h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* About page: small round photo next to the intro */
+.md-typeset .about-photo {
+  float: right;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 0 1rem 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+@media screen and (max-width: 640px) {
+  .md-typeset .about-photo {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem;
+  }
+}
